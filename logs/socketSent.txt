@@ -1,0 +1,2878 @@
+SENT: 2020/06/26 17:19:49 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:19:51 websocket.go:157: Length of channel: 0 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:19:51 websocket.go:157: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593172603,"71deb767e8937002a27623b4e1279c2cfc12c8f92e001d3d66afcfc9167cde3a"]}]
+SENT: 2020/06/26 17:19:51 websocket.go:157: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:19:51 websocket.go:157: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:19:51 websocket.go:157: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593172603,"cf39860350e6931df29d5034ccf6f3304c679fc8d8f13083907dd68ba814e077"]}]
+SENT: 2020/06/26 17:19:51 websocket.go:157: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:03 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:22:04 websocket.go:157: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:22:04 websocket.go:157: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593172736,"65e2125fd8b7439a4ea83507dd26ede759f586b4c506bd84f30df7a7431f91b3"]}]
+SENT: 2020/06/26 17:22:04 websocket.go:157: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:04 websocket.go:157: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:22:04 websocket.go:157: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593172736,"eebea640acbc8b42d380207e5274c150855b5b0d9555ffbe8f6763fb52c6f54b"]}]
+SENT: 2020/06/26 17:22:04 websocket.go:157: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:39 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:22:40 websocket.go:157: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:22:40 websocket.go:157: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593172772,"a0585cb5fe2637dc21e83d3958feb743a6e57305e8c4f9b53304727e1797e479"]}]
+SENT: 2020/06/26 17:22:40 websocket.go:157: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:40 websocket.go:157: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:22:40 websocket.go:157: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593172772,"867f9dbbfc8c4164a99a29713880fe5658c0e6930694dc8611218983ad7dd453"]}]
+SENT: 2020/06/26 17:22:40 websocket.go:157: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:50 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:22:51 websocket.go:157: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:22:51 websocket.go:157: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593172783,"bfc246caf3c05cd3d36c5c79315373a4518f1167af298fbf20614de5fb5c5ca8"]}]
+SENT: 2020/06/26 17:22:51 websocket.go:157: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:51 websocket.go:157: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:22:51 websocket.go:157: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593172783,"2568d4d045030cec22bb86fc58ab150d8fa0df6ffd3c9c6974b1e793a234f6fb"]}]
+SENT: 2020/06/26 17:22:51 websocket.go:157: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:58 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:22:59 websocket.go:157: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:22:59 websocket.go:157: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593172791,"448f591d8814f258f3dce98d26780fabfbe4a2017dec71c45cceb8a504461bb0"]}]
+SENT: 2020/06/26 17:22:59 websocket.go:157: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:22:59 websocket.go:157: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:22:59 websocket.go:157: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593172791,"dd025cc5e0b7ca7cc9a79d76007118f84ecad7479a54e1ccaaac2e466cd08398"]}]
+SENT: 2020/06/26 17:22:59 websocket.go:157: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:34:43 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:35:13 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:35:14 websocket.go:158: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:35:14 websocket.go:158: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593173526,"c89cb0c5c7bf1ef142ba6134c02842499be3c57db4a45c4c05c6027fea712682"]}]
+SENT: 2020/06/26 17:35:14 websocket.go:158: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:35:14 websocket.go:158: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:35:14 websocket.go:158: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593173526,"0b84fa80851a8f55a397e40ff9922ce2eda63c09b75bda01252a1bd5d7aaabaf"]}]
+SENT: 2020/06/26 17:35:14 websocket.go:158: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:35:58 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:35:59 websocket.go:158: Length of channel: 2 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:35:59 websocket.go:158: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593173571,"fb2046f9841a00fbd7199aa2287156f127beef8abb7a9a1c78bacb6d68f9405c"]}]
+SENT: 2020/06/26 17:35:59 websocket.go:158: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:35:59 websocket.go:158: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:35:59 websocket.go:158: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593173571,"5ffd677b7ea4a97ff5ad912e0fdc3d088433c21db159a259048721435a02ede0"]}]
+SENT: 2020/06/26 17:35:59 websocket.go:158: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:36:08 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:36:14 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:38:25 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:39:12 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:39:13 websocket.go:158: Length of channel: 3 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:39:13 websocket.go:158: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593173765,"487e1a2b929bd78c98ba9f6ea68eee695bff32a8584ac2e1bb98a904f34afb6e"]}]
+SENT: 2020/06/26 17:39:13 websocket.go:158: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:39:13 websocket.go:158: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:39:13 websocket.go:158: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593173765,"8bd927c2b8450b8c3a235b06eaeed5eeed299b0a7e191734ef51a5d83fa15d10"]}]
+SENT: 2020/06/26 17:39:13 websocket.go:158: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:50:03 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:50:04 websocket.go:158: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:50:04 websocket.go:158: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593174416,"6f72367f627adc2f53668073358eb1ff7e7785432170d49eece5472a3fd4425c"]}]
+SENT: 2020/06/26 17:50:04 websocket.go:158: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:50:04 websocket.go:158: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:50:04 websocket.go:158: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593174416,"50e98c3f74b548d6bf5d25aba51f92aefaf8bb8870fd8d917992b2483fc15269"]}]
+SENT: 2020/06/26 17:50:04 websocket.go:158: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:56:21 websocket.go:58: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 17:56:23 websocket.go:158: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 17:56:23 websocket.go:158: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593174795,"bb5a4a1e9fa2bd63b802ed308defdd3631bbcdc7f347687c9fdc24e4279d2fa9"]}]
+SENT: 2020/06/26 17:56:23 websocket.go:158: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 17:56:23 websocket.go:158: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 17:56:23 websocket.go:158: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593174795,"a15b2c0203b8c3801aa569515757a297947bd0c9ad46ac924403bad2344e233b"]}]
+SENT: 2020/06/26 17:56:23 websocket.go:158: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 21:38:50 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 21:38:53 websocket.go:160: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 21:38:53 websocket.go:160: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593188145,"c014adb9aecc58dde48d24017633f01474f211c3d1a8bcec711aaf2ae5c5f8e4"]}]
+SENT: 2020/06/26 21:38:53 websocket.go:160: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 21:38:53 websocket.go:160: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 21:38:53 websocket.go:160: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593188145,"63a7c8b5db8d0b8e8418b5204c861f6016191438fd29bdba853b760eef5ed31d"]}]
+SENT: 2020/06/26 21:38:53 websocket.go:160: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 21:39:10 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 21:39:55 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 21:39:56 websocket.go:160: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 21:39:56 websocket.go:160: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593188208,"b9384c8ca11c70fc3d433725a36782f1a96ff54e164a4a7a6476dae579becc47"]}]
+SENT: 2020/06/26 21:39:56 websocket.go:160: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 21:39:56 websocket.go:160: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 21:39:56 websocket.go:160: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593188208,"b2ebfb5843d452e080321988a20404cf504a311ff8059096422096d431f32135"]}]
+SENT: 2020/06/26 21:39:56 websocket.go:160: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 21:41:55 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 21:41:56 websocket.go:160: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 21:41:56 websocket.go:160: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593188328,"b9cfc4c005f145d39469536ec62b31041b3f8f3add26abb5f657640dfa19aa9c"]}]
+SENT: 2020/06/26 21:41:56 websocket.go:160: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 21:41:56 websocket.go:160: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 21:41:56 websocket.go:160: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593188328,"c8527aeb532f212f52d90ec5f4f47b052ca85cd57975a662757bb328fc40b73d"]}]
+SENT: 2020/06/26 21:41:56 websocket.go:160: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 21:42:25 websocket.go:171: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 21:43:01 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:15:51 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:15:53 websocket.go:160: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:15:53 websocket.go:160: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593190365,"9260856ebde6ee149c60735b2468f07e897ed188548e7af14767b3c9a5df2276"]}]
+SENT: 2020/06/26 22:15:53 websocket.go:160: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:15:53 websocket.go:160: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:15:53 websocket.go:160: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593190365,"330e74aec7322c47d2b2d44cd02edd17cc7084dd5f65817636423a6835b577c2"]}]
+SENT: 2020/06/26 22:15:53 websocket.go:160: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:16:10 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 22:16:53 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:16:54 websocket.go:160: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:16:54 websocket.go:160: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593190426,"42eaac8d72e3cf2de06721e6e28870cd1b87b4191f76029381f099de1c169fe6"]}]
+SENT: 2020/06/26 22:16:54 websocket.go:160: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:16:54 websocket.go:160: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:16:54 websocket.go:160: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593190426,"c63a1904f1458660ef5e7d68dc0ac8b8742022e8acafa1010c92318082b80eef"]}]
+SENT: 2020/06/26 22:16:54 websocket.go:160: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:17:23 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 22:18:25 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:23:52 websocket.go:160: Length of channel: 4 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:23:52 websocket.go:160: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593190844,"670e6925ae8c5aeb1d92f542e84c8fb2ed59fb8ab0dbc5061864e66b1c76e4a0"]}]
+SENT: 2020/06/26 22:23:52 websocket.go:160: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:23:52 websocket.go:160: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:23:52 websocket.go:160: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593190844,"3d04ed3a9f27fc83d10901c95a566b119805ac4ac95ed6370bc55c2276a626bb"]}]
+SENT: 2020/06/26 22:23:52 websocket.go:160: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:26:49 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:26:51 websocket.go:159: Length of channel: 1 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:26:51 websocket.go:159: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593191023,"f1247bafd6a13a6da86c68358b42dd944ddb03ee60b9b3a6d32c32affd61f0db"]}]
+SENT: 2020/06/26 22:26:51 websocket.go:159: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:26:51 websocket.go:159: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:26:51 websocket.go:159: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593191023,"75a132226ddac0ba4233f980a070588d262105ac3580f4bb64760dacf7bb5dc3"]}]
+SENT: 2020/06/26 22:26:51 websocket.go:159: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:27:09 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:27:11 websocket.go:159: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:27:11 websocket.go:159: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593191043,"574ff200225bad1aff8b2f79f5288e210a677517d048ab15d48e0d6819af35cc"]}]
+SENT: 2020/06/26 22:27:11 websocket.go:159: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:27:11 websocket.go:159: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:27:11 websocket.go:159: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593191043,"36553c4a70bdbf8b40bb02ab3906e448a3d0feda69ae0c12a27657a5433cf92e"]}]
+SENT: 2020/06/26 22:27:11 websocket.go:159: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:27:22 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 22:33:29 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 22:34:52 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:34:54 websocket.go:159: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:34:54 websocket.go:159: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593191506,"23b6edc06b18c41e40ce8fd333b6983329883cf61fdae23936811e0d3956bc07"]}]
+SENT: 2020/06/26 22:34:54 websocket.go:159: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:34:54 websocket.go:159: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:34:54 websocket.go:159: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593191506,"0a3df9da408c87b9d194ffa4a4727d4f1b00df41077796585eb49d6183745c0f"]}]
+SENT: 2020/06/26 22:34:54 websocket.go:159: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:35:26 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 22:36:31 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:49:21 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:52:27 websocket.go:156: Length of channel: 2 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:52:27 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593192559,"6f43774e16d0000b76067e484fa76528b20ec85943324c2b1dccacea4ca8e530"]}]
+SENT: 2020/06/26 22:52:27 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:52:27 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:52:27 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593192559,"94b24b0fb9e86b9617c6547432d1dcf80284593fd14cdcff0fba6461c06d031d"]}]
+SENT: 2020/06/26 22:52:27 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:58:19 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:58:21 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:58:21 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593192913,"8e7461491c1c7d55ce78c6393a61983256fe03bb2541dbae4024c0ad70ae0c33"]}]
+SENT: 2020/06/26 22:58:21 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:58:21 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:58:21 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593192913,"ccf643e12153a684734afcc41963aaea6bc44c2d6c43ffaad30d32b3287ae1db"]}]
+SENT: 2020/06/26 22:58:21 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:58:58 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:59:00 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:59:00 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593192952,"e7410f9e835c3419590f404e6eb005b2bf038fcdc5d4bd71d31487df60e2ac85"]}]
+SENT: 2020/06/26 22:59:00 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:59:00 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:59:00 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593192952,"b1b52b1f2d59ae307fe288b27d8dab3e4e90342203d8806dfb26912af09417b8"]}]
+SENT: 2020/06/26 22:59:00 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:59:17 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:59:18 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:59:18 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593192970,"d55ffbf66122ebd327a531ac895faa16f265059c5313f2c90a5f98f489fcaabf"]}]
+SENT: 2020/06/26 22:59:18 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:59:18 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:59:18 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593192970,"60eef854eac92429d37afff62a8013aad01ebc39c693a2e8d25a3a2e09789682"]}]
+SENT: 2020/06/26 22:59:18 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:59:44 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 22:59:46 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 22:59:46 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593192998,"87103427b73e403bc40aeaf5ed4c42206036808ae8ae69ec6de73fe0a1c018d7"]}]
+SENT: 2020/06/26 22:59:46 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 22:59:46 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 22:59:46 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593192998,"46add3b59dd0bcbd5e7e4be9d3af4796551a5d6a079d3bee97ed6fb3bf847ea8"]}]
+SENT: 2020/06/26 22:59:46 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:00:16 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:00:18 websocket.go:156: Length of channel: 2 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:00:18 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593193030,"2e9940cedf757f09f7cdbae1aa43ea2d910e00f6d7166c5c8255f54a671cbd89"]}]
+SENT: 2020/06/26 23:00:18 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:00:18 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:00:18 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593193030,"dcf029ebb0800ac528a66d12985f932b505fc04af4eca74ac3f3b36de0eeb241"]}]
+SENT: 2020/06/26 23:00:18 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:00:30 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:01:53 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:01:55 websocket.go:157: Length of channel: 1 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:01:55 websocket.go:157: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593193127,"8d258641947cb43bce3adf2855644d981088dc48d15254133ba4d3b779849e3c"]}]
+SENT: 2020/06/26 23:01:55 websocket.go:157: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:01:55 websocket.go:157: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:01:55 websocket.go:157: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593193127,"f5b7cbfe1ccbe1191ca126e430ace7bc2e3a1ad1fa475a80c6891ab430b85696"]}]
+SENT: 2020/06/26 23:01:55 websocket.go:157: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:02:06 websocket.go:141: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:03:06 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:03:07 websocket.go:157: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:03:07 websocket.go:157: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593193199,"c1e32b3d894c8f0797d0f6b5a0d42f4c5e2c12a76fe767b7cbc3fc953d60c045"]}]
+SENT: 2020/06/26 23:03:07 websocket.go:157: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:03:08 websocket.go:157: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:03:08 websocket.go:157: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593193199,"76b102b09f5626c12441a9d2d1202f09cce1f32746d66bdea11b801912024340"]}]
+SENT: 2020/06/26 23:03:08 websocket.go:157: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:03:20 websocket.go:141: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:05:04 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:05:06 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:05:06 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593193318,"777bece90eaf33839707856df7ddbdb8988acb5a58dd45e5e0e418f71596a699"]}]
+SENT: 2020/06/26 23:05:06 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:05:06 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:05:06 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593193318,"b82c87a3af856b43370876443dd18f51414b607ebae4b9086e05a0be7f1391c4"]}]
+SENT: 2020/06/26 23:05:06 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:05:22 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:05:24 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:05:24 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593193336,"2ace277d8d797293f4d0d244f9babf19b3f67659b2eb5a0813257bbc59027284"]}]
+SENT: 2020/06/26 23:05:24 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:05:24 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:05:24 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593193336,"4735052be072379c50ad6d9f5238bb8c532341d0c3015518bc229a1226cd26cd"]}]
+SENT: 2020/06/26 23:05:24 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:05:33 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:08:10 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:08:12 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:08:12 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593193504,"112af5781e43373115094918ad0e2737c2bc3a3f4205a3a1f800a8a25e030123"]}]
+SENT: 2020/06/26 23:08:12 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:08:12 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:08:12 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593193504,"25549e18c6f6e4dbf9cea4ee23ca0411810c0c00aaca744cf515526937ac951a"]}]
+SENT: 2020/06/26 23:08:12 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:18:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:18:35 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:18:35 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593194127,"0acf9e1e5cf7b217b12b0848916ebb40b6001ea1d4860583b9736f57eaaa1f05"]}]
+SENT: 2020/06/26 23:18:35 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:18:35 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:18:35 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593194127,"876b32d9457b070acb568a0a7f0450acea8f03c061eeb6560adb5516db160df2"]}]
+SENT: 2020/06/26 23:18:35 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:18:49 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:19:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:35:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:35:29 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:35:37 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:35:39 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:35:39 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593195151,"d97579da626b37b57afa8ae7b50fe03af016255d4c34d2086f77ff63f1445fa6"]}]
+SENT: 2020/06/26 23:35:39 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:35:39 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:35:39 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593195151,"74f632f2a5b52fa01d09dc7f3998cdf26ee9a6abd581a1f32e36634ac465698d"]}]
+SENT: 2020/06/26 23:35:39 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:35:56 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:37:58 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:38:09 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:39:47 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:39:49 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:39:49 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593195401,"94b7c28894b0284457405686ca7abef16d928e74302e93be27902a92b4b16279"]}]
+SENT: 2020/06/26 23:39:49 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:39:49 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:39:49 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593195401,"0364fbf0d071bd26c4676f5bc61827316c4a26b66d37a3b989dd3d774b6a3cc8"]}]
+SENT: 2020/06/26 23:39:49 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:40:13 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:40:14 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXD","hostAccount"]
+SENT: 2020/06/26 23:40:14 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXD","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXD",1593195426,"b240102aaf6c6133deab945b98cf2a93bd03d999cad43242fee51e88d33159c9"]}]
+SENT: 2020/06/26 23:40:14 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXD","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:40:14 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:40:14 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593195426,"263116e9a68c7bbb2acdb0b508c3d648b12aef512debd28ba25a8344a8d2a5d0"]}]
+SENT: 2020/06/26 23:40:14 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:41:04 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:41:05 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:41:05 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593195477,"0fd6046ead6d67ee5e5b05625b179653d8e4823be433a7301274939046356bd6"]}]
+SENT: 2020/06/26 23:41:05 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:41:05 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:41:05 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593195477,"b9475cff353b3a210154b4a14b757e973d2c997c34a1555250498782f13f43da"]}]
+SENT: 2020/06/26 23:41:05 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:46:15 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:46:16 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:46:16 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593195788,"cf1a94e9dd23c0a10ced20f433d6bd7325a97e2b971dad491f77a6424558a68c"]}]
+SENT: 2020/06/26 23:46:16 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:46:16 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:46:16 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593195788,"c710ffcf6bf7652dcd46962ab62ad925028e02ab451691c2447e686b190a34b8"]}]
+SENT: 2020/06/26 23:46:16 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:46:19 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:46:21 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:46:21 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593195793,"29527bc7054af19d33c77c8169bde7c695134196c6eed09c1fcf3d27ba19a95e"]}]
+SENT: 2020/06/26 23:46:21 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:46:21 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:46:21 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593195793,"f6eb609d3ee8fbbecb355f677899d5fe8d4c69aa45d484599d57df0acf8741ee"]}]
+SENT: 2020/06/26 23:46:21 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:47:18 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:47:20 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXD","hostAccount"]
+SENT: 2020/06/26 23:47:20 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXD","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXD",1593195852,"f6357ecf445dc8e518504cdca80f5fdfadded929377d74c7a14894ef2094378a"]}]
+SENT: 2020/06/26 23:47:20 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXD","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:47:20 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:47:20 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593195852,"677bbf914f0d5e62c2449187405397aa328c304faec82fe0d652448fcb4fba58"]}]
+SENT: 2020/06/26 23:47:20 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:50:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:50:10 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:50:10 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593196022,"2dc5b47f69f07aaa2eff5b19ebd340bdaeb93d98ca2590c0ce3ab0f820250d34"]}]
+SENT: 2020/06/26 23:50:10 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:50:10 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:50:10 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593196022,"ad7fe9871094cd8f3aa14826459dfa0cc9ccc13ba716053350121c5987ccd488"]}]
+SENT: 2020/06/26 23:50:10 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:50:24 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:50:26 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXD","hostAccount"]
+SENT: 2020/06/26 23:50:26 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXD","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXD",1593196038,"d32bea04516f13592296bf75ed011f4a1a94d7bd4cd171fbfda4e065daa69d29"]}]
+SENT: 2020/06/26 23:50:26 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXD","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:50:26 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:50:26 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593196038,"8db9cae2a3f4f908770b22b3fae469858f92fc23531de1e3c67c82526cb92690"]}]
+SENT: 2020/06/26 23:50:26 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:53:09 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:53:10 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:53:10 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593196202,"a4dbf99b89402bc000b49ecdaebef4ad1d1dd9f4479094cfa7a731a200b633bd"]}]
+SENT: 2020/06/26 23:53:10 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:53:10 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:53:10 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593196202,"a1323a5ede5e885b38da6f4eca8348ec41ab94be1cbd7f5b8a6c4290cad88330"]}]
+SENT: 2020/06/26 23:53:10 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:54:12 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:54:14 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:54:14 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593196266,"1f5850c13d33fb1163f1bb394706f149a7490bc377b90ced5f6b4e67db0be98b"]}]
+SENT: 2020/06/26 23:54:14 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:54:14 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:54:14 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593196266,"a05e75b8bcb4ab1501f54b6be965ec7f1526d70ac6030b8b1844d40cdbaacf9f"]}]
+SENT: 2020/06/26 23:54:14 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:58:28 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/26 23:58:29 websocket.go:156: Length of channel: 4 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:58:29 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593196521,"18b077cec1d9fedf9d450ae1b07e6c4c0a4f61d8253a3ca5df0de7ff2bae640e"]}]
+SENT: 2020/06/26 23:58:29 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:58:29 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:58:29 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593196521,"5d3a53caca6b563acc86999c56c51104e877274da73b537c20b866f68bdc3be9"]}]
+SENT: 2020/06/26 23:58:29 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:58:33 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:58:35 websocket.go:156: Length of channel: 2 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:58:35 websocket.go:156: Length of channel: 1 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593196527,"9bd1f3003460ad39d7f086fefd78681a953c5e913d167292dd5d756a14157585"]}]
+SENT: 2020/06/26 23:58:35 websocket.go:156: Length of channel: 0 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:58:40 websocket.go:140: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/06/26 23:58:41 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/26 23:58:41 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593196533,"2c8ae8f796ca7f149737f13527cef8468c7646131840efe6b5e457de8460cb36"]}]
+SENT: 2020/06/26 23:58:41 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/26 23:58:41 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/26 23:58:41 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593196533,"8889697de3a48fd368171107fd8180ecc7bea82373af5ce0cb449d30626fdf92"]}]
+SENT: 2020/06/26 23:58:41 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/27 02:23:26 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/27 02:23:28 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/27 02:23:28 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593205220,"90cc4ee0ef8d824d8d031557ef963af7245f3b05b5cfdfcd41a66908f2defb67"]}]
+SENT: 2020/06/27 02:23:28 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/27 02:23:28 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/27 02:23:28 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593205220,"fc326b5b6e3c6b3417c6071c4005944b46075dab978af1bf96860614694259ee"]}]
+SENT: 2020/06/27 02:23:28 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:09:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:10:06 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:10:08 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:10:08 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593344819,"6a2c1153e7a291dfc5993ab3dd437925e3bf8d6ffd6e904573a4a80d3d999c55"]}]
+SENT: 2020/06/28 17:10:08 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:10:08 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:10:08 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593344819,"33fddb9bc23117af7f7fb7a69b61e8dd407a04dc9956366fb31a5b4881a3ba68"]}]
+SENT: 2020/06/28 17:10:08 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:30:30 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:30:38 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:30:52 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:31:03 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:31:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:32:17 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:32:28 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:32:51 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:33:01 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:33:02 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:33:02 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593346194,"21da4318d28528e943d817a5f3c5f8fe8000d5d0a7e590f5e716e97146906f43"]}]
+SENT: 2020/06/28 17:33:02 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:33:02 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:33:02 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593346194,"9475e7b5bc39b7a8d2c71605dd36c6e794e01b76931fc4b64c9a527a05da9449"]}]
+SENT: 2020/06/28 17:33:02 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:33:28 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:34:18 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:34:19 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:34:19 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593346271,"e2e8ab5d7d769d735e7bdb69a1651984662d994836492034bae35a93e2b9345f"]}]
+SENT: 2020/06/28 17:34:19 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:34:19 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:34:19 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593346271,"0474e80084e01bbb3b57ae781ee34f309aba875bdb9315cfcc79f81eeb9a4842"]}]
+SENT: 2020/06/28 17:34:19 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:34:36 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:34:37 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:34:37 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593346289,"07577982ad55584c37bdf4473808dd48bd172d65029588786ad83107f438d18e"]}]
+SENT: 2020/06/28 17:34:37 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:34:37 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:34:37 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593346289,"3cbac9bf4963c53d1b9557232c8c07e8c32450412621ff105678a8de01b7b54c"]}]
+SENT: 2020/06/28 17:34:37 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:35:16 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:35:17 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:35:17 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593346329,"2291f423b7345aec378e171767f827b99c10312ae3f19994077ae87e32f38e65"]}]
+SENT: 2020/06/28 17:35:17 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:35:17 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:35:17 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593346329,"0b03981c7c2cd358e3839180c43b69a18e39367d318cbac647bee8534513d105"]}]
+SENT: 2020/06/28 17:35:17 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:36:03 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:36:05 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:36:05 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593346377,"74051f48eae1466b3b7c09f1cc405e8f6c039651c546063487437237a0c974e2"]}]
+SENT: 2020/06/28 17:36:05 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:36:05 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:36:05 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593346377,"11e660cc5f2b04d32acd1daad330a56a4107b3a3add77f5cf2f84685491cf414"]}]
+SENT: 2020/06/28 17:36:05 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:36:27 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:36:28 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:36:28 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593346400,"459fa879c0038a7856fb799ffe9dbbeac92108a52a7d07a4570f09588859aa7e"]}]
+SENT: 2020/06/28 17:36:28 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:36:28 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:36:28 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593346400,"bac3d8a02e83c378054053adc3b6c46bcc540d6cea81f276ea1c182b04c5998e"]}]
+SENT: 2020/06/28 17:36:28 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:36:39 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 17:36:40 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 17:36:40 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593346412,"7fa117e38961d9c5131017d0f7c30462501383c713698bb42c07fcbdbf674469"]}]
+SENT: 2020/06/28 17:36:40 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 17:36:40 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 17:36:40 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593346412,"b521788ce98d41d099585773aee089a280890108938af62db4baf3b0f472a010"]}]
+SENT: 2020/06/28 17:36:40 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 19:32:47 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 19:32:49 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 19:32:49 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593353381,"7a2c8b5893951714be60beeddf61c2177300d3e11166427d177d28043259eede"]}]
+SENT: 2020/06/28 19:32:49 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 19:32:49 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 19:32:49 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593353381,"b185f311dd0a4034965a2fe090fcc04c3b5dba61934a45e1917ef561a8f173dd"]}]
+SENT: 2020/06/28 19:32:49 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 19:33:13 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/28 19:33:14 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/28 19:33:14 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593353406,"491aa3d435d87e7302dc163a702327c4a0db1f332e3ebe202e2c017505214ec2"]}]
+SENT: 2020/06/28 19:33:14 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/28 19:33:14 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/28 19:33:14 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593353406,"5db9c37f509cfc7f0fd15a2cd45f13bcf7c710bbc0f344e0f8cbc6e9c9a3de8f"]}]
+SENT: 2020/06/28 19:33:14 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 00:33:12 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/29 00:33:14 websocket.go:156: Length of channel: 4 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/29 00:33:14 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593371406,"3999e1261fec91fa0ec6f69a5276bec9462dbd9078e83e2518bb34f9c9e3facb"]}]
+SENT: 2020/06/29 00:33:14 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 00:33:14 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/29 00:33:14 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593371406,"10e287eb2adc6710dc01713d290830ed776d3ac1f1e4804206926a74ca30fa09"]}]
+SENT: 2020/06/29 00:33:14 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 00:33:27 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/29 00:33:28 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/29 00:33:28 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593371420,"5156cd2e674d3304cf5ea8d02ca5b17d2c47b6846819113672694dadcea8e753"]}]
+SENT: 2020/06/29 00:33:28 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 00:33:28 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/29 00:33:28 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593371420,"d2f53e32e9bbac83da2b282f7bcc225e8805e1461972a6d62aa0150f6bc7e611"]}]
+SENT: 2020/06/29 00:33:28 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 00:37:05 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/29 00:37:06 websocket.go:156: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/29 00:37:06 websocket.go:156: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593371638,"9c0ee0dc688e27cd207371fab37c06700389b4df0bf20de07319feb163561523"]}]
+SENT: 2020/06/29 00:37:06 websocket.go:156: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 00:37:06 websocket.go:156: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/29 00:37:06 websocket.go:156: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593371638,"ae7441691c654ee8e5e533271f0485478bae154c91960e4ff139561f8c645d83"]}]
+SENT: 2020/06/29 00:37:06 websocket.go:156: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 23:15:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/29 23:15:10 websocket.go:159: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/29 23:15:10 websocket.go:159: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593453122,"a2295a3d75c690f0b5913488f0cb4383de9dbf501a11b0e967cee64fb49093b5"]}]
+SENT: 2020/06/29 23:15:10 websocket.go:159: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/29 23:15:10 websocket.go:159: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/29 23:15:10 websocket.go:159: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593453122,"93ef0949cdf271773fab4f81c1ff66905d922def2db9ef5d9909437502d6f15c"]}]
+SENT: 2020/06/29 23:15:10 websocket.go:159: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/30 09:04:58 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 09:04:59 websocket.go:174: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/30 09:04:59 websocket.go:174: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593488511,"5b048859e45176449d63a0e403daf8534abee7d40178562952ea0d6e35ab4b7a"]}]
+SENT: 2020/06/30 09:04:59 websocket.go:174: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/30 09:04:59 websocket.go:174: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/30 09:04:59 websocket.go:174: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593488511,"2d783d6cbdb65dc2f17455bb7154081bdaf7c51560bca7ab0c870950c89a4511"]}]
+SENT: 2020/06/30 09:04:59 websocket.go:174: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/30 10:05:14 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 10:05:15 websocket.go:176: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/30 10:05:15 websocket.go:176: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593492127,"0c42fe3a94d1eabcc226b8f58c2d2d6f7df9b9a138d98e9f3b5c5df5008d9730"]}]
+SENT: 2020/06/30 10:05:15 websocket.go:176: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/30 10:05:15 websocket.go:176: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/30 10:05:15 websocket.go:176: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593492127,"e5c729c6886937dca6c6a2daafe4f7b7d5b99ca4810f53a5effcacf37b23d5c7"]}]
+SENT: 2020/06/30 10:05:15 websocket.go:176: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/30 10:23:03 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 10:24:22 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:24:18 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:25:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:25:40 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:26:40 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:28:47 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:31:41 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:32:23 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:36:32 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:36:50 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:36:55 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:42:36 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:43:00 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 11:43:14 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:44:35 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:45:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:45:52 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:45:53 websocket.go:175: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/06/30 18:45:53 websocket.go:175: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593523365,"f409cc57b111c68d2e8558eff95bc7f4ef6b8e039a91ec0ac866eddf8dfe84cb"]}]
+SENT: 2020/06/30 18:45:53 websocket.go:175: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/30 18:45:53 websocket.go:175: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/06/30 18:45:53 websocket.go:175: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593523365,"8e757e9b149de8c460e83f8ea8d8d9c0787d572cebf5f6c11248e962c0c6e495"]}]
+SENT: 2020/06/30 18:45:53 websocket.go:175: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/06/30 18:47:04 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:47:35 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:48:13 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:50:09 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:50:21 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/06/30 18:51:56 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 01:19:35 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 01:21:06 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 01:21:53 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 01:21:55 websocket.go:175: Length of channel: 5 Message: [1,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount"]
+SENT: 2020/07/01 01:21:55 websocket.go:175: Length of channel: 4 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"authKeyExpires","args":["SMMZp55J5uE3TDle7sEkdXDK",1593547127,"766653fcdadbb856a66ad88ec88423c3cb2b7ff77d1ffb1735964c5fbe48a62f"]}]
+SENT: 2020/07/01 01:21:55 websocket.go:175: Length of channel: 3 Message: [0,"SMMZp55J5uE3TDle7sEkdXDK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/01 01:21:55 websocket.go:175: Length of channel: 2 Message: [1,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/07/01 01:21:55 websocket.go:175: Length of channel: 1 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"authKeyExpires","args":["MTt1sBtIg2Xn-EOExU2viDNd",1593547127,"573074d8a1195b0e64a458ca7da5febca104fb4271497ccafaf61063cbac57da"]}]
+SENT: 2020/07/01 01:21:55 websocket.go:175: Length of channel: 0 Message: [0,"MTt1sBtIg2Xn-EOExU2viDNd","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/01 01:21:55 websocket.go:175: Length of channel: 0 Message: [2,"MTt1sBtIg2Xn-EOExU2viDNd",""]
+SENT: 2020/07/01 21:26:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 21:26:48 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 21:33:00 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 21:33:52 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 21:38:16 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/01 21:41:18 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/03 17:20:02 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/03 17:21:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/03 17:21:10 websocket.go:175: Length of channel: 4 Message: [1,"bPwTc7eTdhoDo5i38NXjoFkK","hostAccount"]
+SENT: 2020/07/03 17:21:10 websocket.go:175: Length of channel: 4 Message: [0,"bPwTc7eTdhoDo5i38NXjoFkK","hostAccount",{"op":"authKeyExpires","args":["bPwTc7eTdhoDo5i38NXjoFkK",1593777482,"c237f5783b7ad4cf9c43d46ceb0f0e76f37320581400f3931f0985d7d5bde3dd"]}]
+SENT: 2020/07/03 17:21:10 websocket.go:175: Length of channel: 3 Message: [0,"bPwTc7eTdhoDo5i38NXjoFkK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 17:21:10 websocket.go:175: Length of channel: 2 Message: [1,"DBsE2e13_3Wi5ubHg6kXUkhI",""]
+SENT: 2020/07/03 17:21:10 websocket.go:175: Length of channel: 1 Message: [0,"DBsE2e13_3Wi5ubHg6kXUkhI","",{"op":"authKeyExpires","args":["DBsE2e13_3Wi5ubHg6kXUkhI",1593777482,"b43b8ed3b87fea925d44f10e3b667eb91e182a1849fd97638224e0509b3e1c05"]}]
+SENT: 2020/07/03 17:21:10 websocket.go:175: Length of channel: 0 Message: [0,"DBsE2e13_3Wi5ubHg6kXUkhI","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 17:22:20 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/03 17:22:22 websocket.go:175: Length of channel: 4 Message: [1,"bPwTc7eTdhoDo5i38NXjoFkK","hostAccount"]
+SENT: 2020/07/03 17:22:22 websocket.go:175: Length of channel: 4 Message: [0,"bPwTc7eTdhoDo5i38NXjoFkK","hostAccount",{"op":"authKeyExpires","args":["bPwTc7eTdhoDo5i38NXjoFkK",1593777554,"9058f4765c16d5eab02a3fb1c709a560fc61ebafe47f716b6e1436f78a7b472c"]}]
+SENT: 2020/07/03 17:22:22 websocket.go:175: Length of channel: 3 Message: [0,"bPwTc7eTdhoDo5i38NXjoFkK","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 17:22:22 websocket.go:175: Length of channel: 2 Message: [1,"DBsE2e13_3Wi5ubHg6kXUkhI",""]
+SENT: 2020/07/03 17:22:22 websocket.go:175: Length of channel: 1 Message: [0,"DBsE2e13_3Wi5ubHg6kXUkhI","",{"op":"authKeyExpires","args":["DBsE2e13_3Wi5ubHg6kXUkhI",1593777554,"9161534a479cd759926211c203d3e423a269e2dd7314b5c98b5bab6d5e70916f"]}]
+SENT: 2020/07/03 17:22:22 websocket.go:175: Length of channel: 0 Message: [0,"DBsE2e13_3Wi5ubHg6kXUkhI","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 17:27:15 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/03 17:27:17 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/03 17:27:17 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1593777849,"102b55e39c82b39054ac0121278843eecd893c1cf197d6bfa654c69a902abbbb"]}]
+SENT: 2020/07/03 17:27:17 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 17:27:17 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/03 17:27:17 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1593777849,"fcaf2d3a09dc22510edc04dfd064c66b678422b11df867168b2aa6a0cb6fc7eb"]}]
+SENT: 2020/07/03 17:27:17 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 17:37:27 websocket.go:186: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/07/03 17:37:32 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/03 17:37:32 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1593778464,"26a5f673fa9822e819f0f02fc86a4c63f4ceca78c0f0bfecc95e24ebee0ce682"]}]
+SENT: 2020/07/03 17:37:32 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 17:37:32 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/03 17:37:32 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1593778464,"7b234007f96df8c16214c3be1cad6ceb20f4531371749a898d4a69dddc634563"]}]
+SENT: 2020/07/03 17:37:32 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 18:16:19 websocket.go:186: 
+
+WriteFromChannelToWS Closed
+
+SENT: 2020/07/03 18:16:31 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/03 18:16:31 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1593780803,"ef59b80fda27560039e1cbdd8103da2c8f87a8ce30404a921f0bdb7d097a5225"]}]
+SENT: 2020/07/03 18:16:31 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 18:16:31 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/03 18:16:31 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1593780803,"30a9f29c4e25c36a2d78d0b6817eae1964bfe28720befa0b75a225a2d5802d45"]}]
+SENT: 2020/07/03 18:16:31 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 23:27:31 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/03 23:27:35 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/03 23:27:35 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1593799467,"da9c0993cd7ab7b4b768c83f5cbfe5b86e90e5c0b67535d98c4bbffd48d58c2a"]}]
+SENT: 2020/07/03 23:27:35 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/03 23:27:35 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/03 23:27:35 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1593799467,"cae275cd83c7702bb81b226e3f3f844d8e1741ea72bf6f78ab89a3c4f0dcd28e"]}]
+SENT: 2020/07/03 23:27:35 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/05 12:48:13 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/05 12:48:30 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/05 15:14:54 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/05 15:14:57 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/05 15:14:57 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1593942709,"7c8a346ec2a08520a89a9a04baf17a2a1a727fb4e86ae894ce2d92b405ac0512"]}]
+SENT: 2020/07/05 15:14:57 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/05 15:14:57 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/05 15:14:57 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1593942709,"48f7a97040d21fe575e34a84851ab1e59f0df31131b58399740ede5c0a56dd2e"]}]
+SENT: 2020/07/05 15:14:57 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/05 15:20:15 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/05 15:20:27 websocket.go:175: Length of channel: 2 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/05 15:20:27 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1593943039,"89ab711e05df17d7815393a7e7f8f09b822d16a484b3d21d302cf401d9ec2834"]}]
+SENT: 2020/07/05 15:20:27 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/05 15:20:27 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/05 15:20:27 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1593943039,"8bca9eb57dd3808b1ecdf19fe311b3be3eddfc7c4befc3795a940da5638440b8"]}]
+SENT: 2020/07/05 15:20:27 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/05 22:29:14 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/05 23:23:00 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/05 23:28:57 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 17:47:13 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 17:48:20 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 17:48:46 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 17:48:47 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/06 17:48:47 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594038339,"cebbd76cd16eab34d448daaad2220871a61c8c3733d75d66c5e77312e8332745"]}]
+SENT: 2020/07/06 17:48:47 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 17:48:47 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 17:48:47 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594038339,"f05f6d4513faaaf79253c59f643444951e4d364e74e63d05a1c0a66bdcdc1285"]}]
+SENT: 2020/07/06 17:48:47 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 17:49:19 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 18:56:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 18:56:47 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 18:56:50 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/06 18:56:50 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594042422,"0ae5733139bf84160b72c3d5d5b05393db711e4bf7a63b78d25de2503dcaba43"]}]
+SENT: 2020/07/06 18:56:50 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 18:56:50 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 18:56:50 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594042422,"b685bc56dadf0f9c16c66abc2a7c6311d4104cb02ad3038bfc32dd3e613f5174"]}]
+SENT: 2020/07/06 18:56:50 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 19:43:46 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 19:43:48 websocket.go:175: Length of channel: 0 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/06 19:43:48 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594045240,"93ce538c61f4bed1c6886ba25ba660338f0dd229e9bb5abf3a5465b32be2e305"]}]
+SENT: 2020/07/06 19:43:48 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 19:43:48 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 19:43:48 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594045240,"32a020794d80afb34417f394cd750bad440469e27faee793c399484de586c472"]}]
+SENT: 2020/07/06 19:43:48 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 19:45:41 websocket.go:175: Length of channel: 0 Message: [2,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 22:00:05 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:01:52 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:01:57 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/06 22:01:57 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594053529,"04026bb32c6cd5f372f43aeb085378a0d6c939e8214c3e3439b2dadb232510d4"]}]
+SENT: 2020/07/06 22:01:57 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:01:57 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 22:01:57 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594053529,"ece4a8a78149213c9bfe1949e50dee58d2f5b383cf63b9a4bb8a47a717dba054"]}]
+SENT: 2020/07/06 22:01:57 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:08:57 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:10:55 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:10:57 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/06 22:10:57 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594054069,"607d648658dcea1dc155683e60089382b10c77316f0c06bcdf756be9aeb4775d"]}]
+SENT: 2020/07/06 22:10:57 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:10:57 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 22:10:57 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594054069,"2fbb3998093b7e57e454e0b4c5eddb31c61ecbdc918a4b4f904ba97142c4b9e2"]}]
+SENT: 2020/07/06 22:10:57 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:22:39 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:22:41 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/06 22:22:41 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594054773,"518f2d700883d3f0fc27a23d362f8f7018f2f53174b8b8d0824584ce05b9f7e1"]}]
+SENT: 2020/07/06 22:22:41 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:22:41 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 22:22:41 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594054773,"ff1e7e3e016dc574afa72ca7cae07b9062684cf584ca683671f050b6e639a680"]}]
+SENT: 2020/07/06 22:22:41 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:23:58 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:24:26 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:24:32 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:25:39 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:25:51 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:27:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:27:38 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:31:27 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:31:30 websocket.go:175: Length of channel: 4 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/06 22:31:30 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594055302,"ed64c4e34d280cf7c23d839785b51cc0255edbe53c889efa0aa16bed365b5a69"]}]
+SENT: 2020/07/06 22:31:30 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:31:30 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/06 22:31:30 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594055302,"7a1e0b1b824054895600ac50ac45e491fc2c5c08c23524873938c4a92c1ad2b0"]}]
+SENT: 2020/07/06 22:31:30 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/06 22:35:19 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:39:09 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:47:47 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/06 22:47:50 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 18:53:46 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 18:55:10 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 18:55:21 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 18:59:17 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 18:59:19 websocket.go:175: Length of channel: 1 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/13 18:59:19 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594647371,"62d09899030afcc38e9b33a8095783ecafbb13e2e04a75b9c55a6c081a5a6311"]}]
+SENT: 2020/07/13 18:59:19 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 18:59:19 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/13 18:59:19 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594647371,"148e1ced24cdceb562cd34fbfd4d33d9222c40a1a41e5585c8070deb7d5620d1"]}]
+SENT: 2020/07/13 18:59:19 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 18:59:52 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 18:59:54 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/13 18:59:54 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594647406,"629d54106ecb9dec88f9604894bb2e01264791865065ff34f68ea6ff2147f8ca"]}]
+SENT: 2020/07/13 18:59:54 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 18:59:54 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/13 18:59:54 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594647406,"b0f4961d1e5e7cf787864481d6a4668f39c1c90518f4b30c97235ba262d9c042"]}]
+SENT: 2020/07/13 18:59:54 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 19:00:02 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:00:30 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:00:38 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:00:39 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/13 19:00:39 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594647451,"9a0878e87fdf2e64e17ba5b941b974050b145a84d04c3cf211a4607b5cd3dab2"]}]
+SENT: 2020/07/13 19:00:39 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 19:00:39 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/13 19:00:39 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594647451,"5f2ad2298ba485fb56b308d893be9f8997fcdbb0750c4f170961a3390a83e637"]}]
+SENT: 2020/07/13 19:00:39 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 19:01:54 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:02:12 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:02:21 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:02:30 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:02:31 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/13 19:02:31 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594647563,"512c77dbeb99591b9cef45b96f92bf7bdccfeab8d6853d8eb60dc481bf03dd3e"]}]
+SENT: 2020/07/13 19:02:31 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 19:02:31 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/13 19:02:31 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594647563,"c6dd30406dcbb21d1d0499a53c11af509db69a9cea696d340fca9207d886db63"]}]
+SENT: 2020/07/13 19:02:31 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 19:02:38 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:21:54 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 19:21:56 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/13 19:21:56 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594648728,"349d2330a8a43d2ff85747eb69657dae3dfe7d9c25595af11bf21de7fe58095a"]}]
+SENT: 2020/07/13 19:21:56 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 19:21:56 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/13 19:21:56 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594648728,"0c68cad034cbf48bf5c2b0328dc87fb9ac3183cdb1bbd88eb9afdc4d21cf515c"]}]
+SENT: 2020/07/13 19:21:56 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 20:00:24 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 20:00:25 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/13 20:00:25 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594651037,"8f34ad4a3ea02c06d2cd7485e02d5a7d118522adb0a2571be84f7e04df13711d"]}]
+SENT: 2020/07/13 20:00:25 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 20:00:25 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/13 20:00:25 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594651037,"7cfda5a443fb3c2e070fa6779a7d57d325bc9319a30eca3120d41d716cf6c211"]}]
+SENT: 2020/07/13 20:00:25 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 20:01:22 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 20:01:27 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 20:03:55 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 20:04:19 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 20:04:30 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/13 20:04:32 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/13 20:04:32 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594651284,"635803f79be1aff5a80fc943d2ddf46498317fb9a145c8026fa3343db991a83e"]}]
+SENT: 2020/07/13 20:04:32 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/13 20:04:32 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/13 20:04:32 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594651284,"bc6ececb986b52577febb0ba470a58fb693aa8ef0b7d7af120e1f87d572a50bb"]}]
+SENT: 2020/07/13 20:04:32 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/14 15:24:12 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/14 15:25:53 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/14 15:25:54 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/14 15:25:54 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594720966,"39f1a3e6f665bdb65b87bbb826d90462277b417e7be1a2139612c0f62c570d7a"]}]
+SENT: 2020/07/14 15:25:54 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/14 15:25:54 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/14 15:25:54 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594720966,"5ae8c53bfd6512475bba6e76a11d138d7a09a8d328211ba0b078ff756cc42a76"]}]
+SENT: 2020/07/14 15:25:54 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/14 15:26:12 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/14 15:26:33 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/14 15:28:11 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/14 15:47:15 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/14 15:51:21 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/14 20:07:02 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 16:22:16 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 16:22:44 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 16:24:11 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:09:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:09:32 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:09:48 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:11:54 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:12:26 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:12:46 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:13:11 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:36:57 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:36:58 websocket.go:175: Length of channel: 1 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/15 17:36:58 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594815230,"91af55e0a075539338495f05bfe9033c000ed4f367f2060ae1c74cc34b39506b"]}]
+SENT: 2020/07/15 17:36:58 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/15 17:36:58 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/15 17:36:58 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594815230,"a7c716a3e5f05bc05c6386573c959fc3541fbd513571224cb0667c10e34bc5ed"]}]
+SENT: 2020/07/15 17:36:58 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/15 17:37:07 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:37:15 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 17:37:16 websocket.go:175: Length of channel: 2 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/15 17:37:16 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594815248,"cb695b25378369f4cc6420ea79f6137379ae5953ed2f54c8b05983d8ea4fc43e"]}]
+SENT: 2020/07/15 17:37:16 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/15 17:37:16 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/15 17:37:16 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594815248,"2562de9669d9ca8d8e70a0e53f89fcde31863be569befdb23926a9fb80bd6922"]}]
+SENT: 2020/07/15 17:37:16 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/15 18:09:41 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 18:09:42 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/15 18:09:42 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1594817194,"15764b6b272f22791e251d328745a296b02eca5eb8f739732eea2e9531cbd8fd"]}]
+SENT: 2020/07/15 18:09:42 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/15 18:09:42 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/15 18:09:42 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1594817194,"d6ede145420788c185d936841563db6940f26a88736b1d7c99f637c9c6e78dcd"]}]
+SENT: 2020/07/15 18:09:42 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/15 18:10:02 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 18:40:26 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 18:40:43 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 18:40:47 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 18:41:45 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 18:42:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/15 19:02:04 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/19 17:13:13 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/19 17:13:26 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/19 17:14:29 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/19 17:14:30 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/19 17:14:30 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1595159482,"89257876787d92a388e16fa93694b7a809253e5b69a29a2facfb4d0153f6f3e9"]}]
+SENT: 2020/07/19 17:14:30 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/19 17:14:30 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/19 17:14:30 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1595159482,"a1e2a1a71441f3546d79208df61384c5405af8ea0c6f94cebdbffaeb206d31be"]}]
+SENT: 2020/07/19 17:14:30 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/19 17:14:51 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/19 17:14:52 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/19 17:14:52 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1595159504,"5c98f66c9f4e0fabc8b0aa35c7550199a1db44b6d4ba9f2f177c09ed05956fb5"]}]
+SENT: 2020/07/19 17:14:52 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/19 17:14:52 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/19 17:14:52 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1595159504,"87a5ef1f6871b1064fe4e65c1e4911b7075373404e5a1a8d4a3ca6b391d52345"]}]
+SENT: 2020/07/19 17:14:52 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/19 17:15:40 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/19 17:15:41 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/19 17:15:41 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1595159553,"4f48fce149aaccd64d42160a71294e1a917c827bb2fa58289f3d9a8a1a03d0f6"]}]
+SENT: 2020/07/19 17:15:41 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/19 17:15:41 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/19 17:15:41 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1595159553,"f062d3bc9e711b2d0753c305470c4024151896d1a23c7bf83fd56bf39e1de087"]}]
+SENT: 2020/07/19 17:15:41 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/22 10:29:26 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/22 10:29:39 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/22 10:29:41 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/22 10:29:41 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1595394393,"106708e4e364b1819ff687c37c10a82cf51d0ca1159862709157dea48139fe35"]}]
+SENT: 2020/07/22 10:29:41 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/22 10:29:41 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/22 10:29:41 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1595394393,"cf36934a93692bf4577b0107ed9d67146690025ce65bbdc16c3938dc62fd58bc"]}]
+SENT: 2020/07/22 10:29:41 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/22 10:29:53 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/22 10:29:54 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/22 10:29:54 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1595394406,"70705bf9fa741e591ca1c7da6a63bb5e0b332e9ac155cbc0434f6248d8d1bf5a"]}]
+SENT: 2020/07/22 10:29:54 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/22 10:29:54 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/22 10:29:54 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1595394406,"32692e2ee1b8d3e26b52436a62cc0bfcd56f4ba6663786f26241a601107f6bf9"]}]
+SENT: 2020/07/22 10:29:54 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/22 10:31:37 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/24 12:18:54 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/24 12:18:55 websocket.go:175: Length of channel: 5 Message: [1,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount"]
+SENT: 2020/07/24 12:18:55 websocket.go:175: Length of channel: 4 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"authKeyExpires","args":["DrOejbYGNXq6Ci9rcXa00-wy",1595573747,"2e671e5dc17349c0c75e05514b098a9ddac12791339f59ed3950baa8e61c6f7c"]}]
+SENT: 2020/07/24 12:18:55 websocket.go:175: Length of channel: 3 Message: [0,"DrOejbYGNXq6Ci9rcXa00-wy","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/24 12:18:55 websocket.go:175: Length of channel: 2 Message: [1,"kM48RyootuZz0cwimCIIZzDW",""]
+SENT: 2020/07/24 12:18:55 websocket.go:175: Length of channel: 1 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"authKeyExpires","args":["kM48RyootuZz0cwimCIIZzDW",1595573747,"324172bafa0180d6434b27e2f7c52526e176d43725211e34e2e4ca8527d9bc08"]}]
+SENT: 2020/07/24 12:18:55 websocket.go:175: Length of channel: 0 Message: [0,"kM48RyootuZz0cwimCIIZzDW","",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 00:54:50 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 00:54:51 websocket.go:175: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 00:54:51 websocket.go:175: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595619103,"97bc3dbafd7b0db05707ca5574538630bc3df94c774a41cc00b7b289018d790f"]}]
+SENT: 2020/07/25 00:54:51 websocket.go:175: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 00:55:25 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 00:55:26 websocket.go:175: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 00:55:26 websocket.go:175: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595619138,"a5d802af2d784f50963c4b914d045132e19d6416bb3d3e8d2f954f0e0d53b3f9"]}]
+SENT: 2020/07/25 00:55:26 websocket.go:175: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 00:56:45 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 00:56:46 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 00:56:46 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595619218,"8d96a69854a423c29aba94b658481965fa565a77f32134fa28f8229c8594a947"]}]
+SENT: 2020/07/25 00:56:46 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 00:57:04 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 00:57:05 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 00:57:05 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595619237,"4bd180212abe034a4dd11f85369512d7ae4eb34cdef7b6d825d9d78688ad754c"]}]
+SENT: 2020/07/25 00:57:05 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 17:52:31 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 17:52:32 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 17:52:32 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595680164,"7f5c2f2f918b04064a82f3640046469615ca5b8f33fba9e95d635e3b4551bd28"]}]
+SENT: 2020/07/25 17:52:32 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 17:54:08 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 17:54:09 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 17:54:09 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595680261,"842931ea29650c93280239daf06ff47618b45cfcd2c8cce6aac9205759d42b68"]}]
+SENT: 2020/07/25 17:54:09 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 17:54:54 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 17:54:55 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 17:54:55 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595680307,"3c74bbfb97544ab39054c81019fd330cdc00d66c18c0182ff212ce494fddff3a"]}]
+SENT: 2020/07/25 17:54:55 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 17:55:31 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 17:55:33 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 17:55:33 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595680345,"c88643d23b901e8c5d0b5773634f9ba9b9e6c385bfc3fe17d1fa0527c880844a"]}]
+SENT: 2020/07/25 17:55:33 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 17:56:15 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 17:56:16 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 17:56:16 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595680388,"7767c6a180de255e111c4710facb162ca126f10e54c1b91c4cea1c361b7a8102"]}]
+SENT: 2020/07/25 17:56:16 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 17:56:51 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 17:56:52 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 17:56:52 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595680424,"cb3a49574698261709b1753e6a1523d0fda09e457c0b6b3b4124f55ed248c21b"]}]
+SENT: 2020/07/25 17:56:52 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/25 17:57:16 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/25 17:57:16 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/25 17:57:16 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595680448,"70c4392221ac365fbd3507e4a6f133d85b4ef618b5c817ff6a22467ec2ef279e"]}]
+SENT: 2020/07/25 17:57:16 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 11:26:28 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 11:26:29 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 11:26:29 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595829801,"c3bcdd6857af3eb66ed80f5e6e8deec1c85d4f31ed32f5747deac0004cd0df1d"]}]
+SENT: 2020/07/27 11:26:29 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 11:27:07 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 11:27:08 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 11:27:08 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595829840,"0216af76f11f7479569654b4be66171a469a161c9a7fe8dc52e8d2ac584b5f4d"]}]
+SENT: 2020/07/27 11:27:08 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 11:28:01 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 11:28:02 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 11:28:02 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595829894,"006fb7acd0e7bbd08be1391cf67dcb15795d3fd40321d467ee24f2b978b90c98"]}]
+SENT: 2020/07/27 11:28:02 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 11:29:12 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 11:29:13 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 11:29:13 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595829965,"5750a06c3818ee082e8476b30cd4c8d6675a1eff86d6824eff2a9abc257f821d"]}]
+SENT: 2020/07/27 11:29:13 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 11:30:48 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 11:30:49 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 11:30:49 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595830061,"32bc747028e4fec38a3af43aee5107d60430028ce35eee401f53c524f395475b"]}]
+SENT: 2020/07/27 11:30:49 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 11:31:34 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 11:31:35 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 11:31:35 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595830107,"9c66826f4c3f411de4da9ab9658818ee895f7e7e83d1fe1bf9d99452ead35c20"]}]
+SENT: 2020/07/27 11:31:35 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 11:35:04 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 11:35:05 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 11:35:05 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595830317,"90499439ce2a46a3bc559697b2b0e6996dd8abb8129258a562ed20602ea07ec5"]}]
+SENT: 2020/07/27 11:35:05 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 17:09:52 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 17:09:54 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 17:09:54 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595850406,"bab0fee3f66671b901685a7ad812d42439eb6d62511d662c15bcae0808aca3e0"]}]
+SENT: 2020/07/27 17:09:54 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:24:46 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:24:48 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:24:48 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858500,"2c0ec217931144c4d4f7efac1e11ab3ffc708d02bee0702d802fefa3a69aa020"]}]
+SENT: 2020/07/27 19:24:48 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:25:12 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:25:13 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:25:13 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858525,"797c2d7c6604f822babed8b9562e6bb9dcb68eb0b22c45941d2ba93916c92572"]}]
+SENT: 2020/07/27 19:25:13 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:25:29 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:25:30 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:25:30 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858542,"4a124dae2c43aa38b32af015311df36cd8cb357c6b8ca1cb7a6d703b8fcb4c5e"]}]
+SENT: 2020/07/27 19:25:30 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:25:41 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:25:42 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:25:42 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858554,"eca3d303f18f4de50bdedcf8f2acb36911746d8f8240e853108344bd4446af6a"]}]
+SENT: 2020/07/27 19:25:42 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:27:28 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:27:30 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:27:30 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858662,"833ef47c10e49659aebc4dd0e1cac155ecab3b4b35a11c51ceba0113c20ade32"]}]
+SENT: 2020/07/27 19:27:30 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:27:58 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:27:59 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:27:59 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858691,"af1e9e2055ce3b7bc870a79c6c981d0e7b1044bd099aca066d46a3cceb84d656"]}]
+SENT: 2020/07/27 19:27:59 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:28:24 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:28:25 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:28:25 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858717,"d7e9e5e244e113a5079264362fd75cdcd684884cd2eeb2d5dec98022b3c32057"]}]
+SENT: 2020/07/27 19:28:25 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:29:02 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:29:02 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 19:29:02 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595858754,"c9579c36025b22b201cd516870297fce8c47ba3bac9f03e549fcfe69a1fab7ae"]}]
+SENT: 2020/07/27 19:29:02 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]
+SENT: 2020/07/27 19:58:05 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 19:58:54 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 20:03:14 websocket.go:59: 
+
+
+
+##################################################	New Session	##################################################
+
+
+
+
+SENT: 2020/07/27 20:03:15 websocket.go:176: Length of channel: 2 Message: [1,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount"]
+SENT: 2020/07/27 20:03:15 websocket.go:176: Length of channel: 1 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"authKeyExpires","args":["hPawIhWrPeMAEpdmjDBZXZqw",1595860807,"1a74eea11c9c92dc4c1944f812348f43cd44be314280168794226db62661a996"]}]
+SENT: 2020/07/27 20:03:15 websocket.go:176: Length of channel: 0 Message: [0,"hPawIhWrPeMAEpdmjDBZXZqw","hostAccount",{"op":"subscribe","args":["order","position","margin"]}]

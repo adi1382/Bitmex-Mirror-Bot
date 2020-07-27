@@ -1,0 +1,63 @@
+{
+
+    "Settings": {
+        "Testnet": true,
+        "RatioUpdateRate": 3600,
+        "CalibrationRate": 60,
+        "LimitFilledTimeout": 10
+    },
+
+    "HostAccount": {
+        "ApiKey": "DrOejbYGNXq6Ci9rcXa00-wy",
+        "ApiSecret": "bU6qtKBgZlcO9ZPnAInKVJmSxn_a5s3QTiRkGaRvpHyFDyD2"
+    },
+
+    "SubAccounts": {
+
+        "Account 1": {
+            "Enabled": true,
+            "CopyLeverage": true,
+            "BalanceProportion": false,
+            "FixedProportion": 1,
+            "ApiKey": "kM48RyootuZz0cwimCIIZzDW",
+            "Secret": "-zqVilHjpPYNo2jFtiIyVOitiGfg1WIqKIra9u8L0GVgnlOY"
+        },
+
+        "Account 2": {
+            "Enabled": false,
+            "CopyLeverage": true,
+            "BalanceProportion": false,
+            "FixedProportion": 1,
+            "ApiKey": "",
+            "Secret": ""
+        },
+
+        "Account 3": {
+            "Enabled": false,
+            "CopyLeverage": true,
+            "BalanceProportion": false,
+            "FixedProportion": 1,
+            "ApiKey": "",
+            "Secret": ""
+        },
+
+        "Account 4": {
+            "Enabled": false,
+            "CopyLeverage": true,
+            "BalanceProportion": false,
+            "FixedProportion": 1,
+            "ApiKey": "",
+            "Secret": ""
+        },
+
+        "Account 5": {
+            "Enabled": false,
+            "CopyLeverage": true,
+            "BalanceProportion": false,
+            "FixedProportion": 1,
+            "ApiKey": "",
+            "Secret": ""
+        }
+    }
+
+}
