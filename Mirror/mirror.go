@@ -28,9 +28,12 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 
 	defer func() {
 		m.Host.CloseConnection()
+
+		m.subLock.Lock()
 		for _, v := range m.Subs {
 			v.CloseConnection()
 		}
+		m.subLock.Unlock()
 	}()
 
 	for {
@@ -61,6 +64,7 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 		socketTopic := u[2].(string)
 
 		go func() {
+			m.subLock.Lock()
 			for _, v := range m.Subs {
 
 				if !v.RunningStatus() {
@@ -73,12 +77,14 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 					}
 				}
 			}
+			m.subLock.Unlock()
 		}()
 
 		go func() {
 			if socketTopic == "hostAccount" {
 				m.Host.Push(&message)
 			} else {
+				m.subLock.Lock()
 				for _, v := range m.Subs {
 
 					if !v.RunningStatus() {
@@ -90,6 +96,7 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 						break
 					}
 				}
+				m.subLock.Unlock()
 			}
 		}()
 	}
@@ -110,12 +117,14 @@ func (m *Mirror) SubChecker() {
 }
 
 func (m *Mirror) remover() {
+	m.subLock.Lock()
 	for i := range m.Subs {
 		if !m.Subs[i].RunningStatus() {
 			m.Subs = append(m.Subs[:i], m.Subs[i+1:]...)
 			break
 		}
 	}
+	m.subLock.Unlock()
 }
 
 //func (m *Mirror) SocketResponseDistributor(c <-chan []byte, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
