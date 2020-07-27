@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/Mirror"
 	"github.com/adi1382/Bitmex-Mirror-Bot/hostClient"
+	"github.com/adi1382/Bitmex-Mirror-Bot/subClient"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"go.uber.org/atomic"
 	"log"
@@ -44,7 +45,9 @@ func main() {
 
 	var RestartC uint32
 	RestartCounter := atomic.NewUint32(RestartC)
+	var wg sync.WaitGroup
 	var mirror Mirror.Mirror
+	mirror.RestartCounter = RestartCounter
 
 	fmt.Println("started")
 
@@ -57,21 +60,15 @@ func main() {
 		panic(err)
 	}
 
-	var wg sync.WaitGroup
-
 	chReadFromWS := make(chan []byte, 100)
-	go websocket.ReadFromWSToChannel(conn, chReadFromWS, RestartCounter)
+	go websocket.ReadFromWSToChannel(conn, chReadFromWS, RestartCounter, &wg)
 
 	// Listen write WS
 	chWriteToWS := make(chan interface{}, 100)
-	wg.Add(1)
 	go websocket.WriteFromChannelToWS(conn, chWriteToWS, RestartCounter, &wg)
-
-	wg.Add(1)
-	go mirror.SocketResponseDistributor(chReadFromWS, RestartCounter, &wg)
 	//go config.SocketResponseDistributor(chReadFromWS, RestartCounter, &wg)
 
-	websocket.PingPong(conn, RestartCounter)
+	websocket.PingPong(conn, RestartCounter, &wg)
 
 	RestartCounter.Store(0)
 
@@ -83,27 +80,64 @@ func main() {
 
 	hostApi := "hPawIhWrPeMAEpdmjDBZXZqw"
 	hostSecret := "_IQpR1WpEX2Ls4J8QhJHUX82W9xbjZHRsyUOoWlko2tfB0AK"
+
+	subApi := "L-uYMpCeBqQswmFL971PcZIs"
+	subSecret := "zlhP-sCl0rXEgm5Y1o7I2qmOtYZPQXR6_0wigHk05kYZ2Dej"
+
 	host := hostClient.NewHostClient(hostApi, hostSecret, true, chWriteToWS, 10, RestartCounter)
+	sub := subClient.NewSubClient(subApi, subSecret, true, false, 1, chWriteToWS,
+		60, 10, 10, RestartCounter, host)
 	mirror.Host = host
-	fmt.Println("reached")
+	mirror.Subs = append(mirror.Subs, sub)
+
+	go mirror.SocketResponseDistributor(chReadFromWS, &wg)
+
+	sub.Initialize()
 	host.Initialize()
 	host.SubscribeTopics("order", "position", "margin")
+
+	sub.SubscribeTopics("order", "position", "margin")
+
+	sub.WaitForPartial()
+	fmt.Println("Sub Partial Received")
+
+	fmt.Println("reached")
+
 	//host.WaitForPartial()
-	time.Sleep(5 * time.Second)
+	//time.Sleep(5 * time.Second)
 	fmt.Println("Printing margin balance")
 	fmt.Println(host.GetMarginBalance())
 	host.WaitForPartial()
 	fmt.Println("Partials Received")
 
-	//fmt.Println(host.ActiveOrders())
-	n := 0
-	for {
-		if len(host.ActiveOrders()) != n {
-			n = len(host.ActiveOrders())
-			fmt.Println(host.ActiveOrders())
+	go func() {
+		for {
+			if RestartCounter.Load() > 0 {
+				_ = conn.Close()
+				chWriteToWS <- "quit"
+				break
+			}
 		}
-		time.Sleep(time.Nanosecond)
-	}
+	}()
 
-	//select {}
+	//go func() {
+	//	time.Sleep(time.Second*20)
+	//	RestartCounter.Add(1)
+	//	fmt.Println("Added to counter", time.Now())
+	//}()
+
+	wg.Wait()
+	fmt.Println("All wait groups completed", time.Now())
+
+	//fmt.Println(host.ActiveOrders())
+	//n := 0
+	//for {
+	//	if len(host.ActiveOrders()) != n {
+	//		n = len(host.ActiveOrders())
+	//		fmt.Println(host.ActiveOrders())
+	//	}
+	//	time.Sleep(time.Nanosecond)
+	//}
+
+	select {}
 }

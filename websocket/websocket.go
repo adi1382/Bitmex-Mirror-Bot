@@ -12,7 +12,6 @@ import (
 	"log"
 	"net/url"
 	"os"
-	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -102,97 +101,158 @@ func Connect(host string) (*websocket.Conn, error) {
 //	}
 //}
 
-func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter *atomic.Uint32) {
-	var message []byte
-	var err error
-	var readWSLocal atomic.Int32
-L:
+//func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
+//	wg.Add(1)
+//	defer wg.Done()
+//	var message []byte
+//	var err error
+//	var readWSLocal atomic.Int32
+//L:
+//	for {
+//		readWSLocal.Store(0)
+//		go func() {
+//			readWSLocal.Store(0)
+//			_, message, err = c.ReadMessage()
+//			fmt.Println(string(message))
+//			readWSLocal.Store(1)
+//		}()
+//
+//		for {
+//			time.Sleep(time.Nanosecond)
+//			if readWSLocal.Load() == 1 {
+//				break
+//			} else {
+//				if RestartCounter.Load() > 0 {
+//					receiveLogger.Println("ReadFromWSToChannel Closed")
+//					InfoLogger.Printf("ReadFromWSToChannel Closed")
+//					break L
+//				}
+//			}
+//		}
+//
+//		if RestartCounter.Load() > 0 {
+//			receiveLogger.Println("ReadFromWSToChannel Closed")
+//			InfoLogger.Printf("ReadFromWSToChannel Closed")
+//			break L
+//		}
+//
+//		tools.WebsocketErr(err, RestartCounter)
+//		receiveLogger.Println("Length of channel:", len(chRead), "Message:", string(message))
+//
+//		chRead <- message
+//	}
+//}
+
+func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
+	wg.Add(1)
+	defer wg.Done()
+	defer func() {
+		fmt.Println("Channel Reader Closed")
+	}()
+
 	for {
-		readWSLocal.Store(0)
-		go func() {
-			readWSLocal.Store(0)
-			_, message, err = c.ReadMessage()
-			fmt.Println(string(message))
-			readWSLocal.Store(1)
-		}()
+		messageType, message, err := c.ReadMessage()
 
-		for {
-			time.Sleep(time.Nanosecond)
-			if readWSLocal.Load() == 1 {
-				break
-			} else {
-				if RestartCounter.Load() > 0 {
-					receiveLogger.Println("ReadFromWSToChannel Closed")
-					InfoLogger.Printf("ReadFromWSToChannel Closed")
-					break L
-				}
-			}
+		if RestartCounter.Load() != 0 {
+			chRead <- []byte("quit")
+			break
 		}
 
-		if RestartCounter.Load() > 0 {
-			receiveLogger.Println("ReadFromWSToChannel Closed")
-			InfoLogger.Printf("ReadFromWSToChannel Closed")
-			break L
+		if err != nil {
+			RestartCounter.Add(1)
+			ErrorLogger.Println(err)
+			chRead <- []byte("quit")
+			break
 		}
 
-		tools.WebsocketErr(err, RestartCounter)
-		receiveLogger.Println("Length of channel:", len(chRead), "Message:", string(message))
-
-		chRead <- message
+		if messageType == 1 {
+			chRead <- message
+		} else {
+			continue
+		}
 	}
 }
 
+//func WriteFromChannelToWS(c *websocket.Conn, chWrite <-chan interface{}, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
+//	wg.Add(1)
+//	defer wg.Done()
+//L:
+//	for {
+//		//a := chWrite.(string)
+//		time.Sleep(time.Nanosecond)
+//
+//		select {
+//		case message := <-chWrite:
+//
+//			if RestartCounter.Load() > 0 {
+//
+//				if RestartCounter.Load() >= 3 {
+//					for len(chWrite) > 0 {
+//						<-chWrite
+//					}
+//					sendLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
+//					_ = c.Close()
+//					InfoLogger.Println(runtime.NumGoroutine())
+//					InfoLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
+//					break L
+//				}
+//
+//				for len(chWrite) > 0 {
+//					<-chWrite
+//				}
+//				continue L
+//			}
+//
+//			message, err := json.Marshal(message)
+//			tools.WebsocketErr(err, RestartCounter)
+//
+//			sendLogger.Println("Length of channel:", len(chWrite), "Message:", string(message.([]byte)))
+//			err = c.WriteMessage(websocket.TextMessage, message.([]byte))
+//
+//			tools.WebsocketErr(err, RestartCounter)
+//
+//		default:
+//			//fmt.Println(atomic.LoadInt32(RestartCounter))
+//			if RestartCounter.Load() >= 3 {
+//				for len(chWrite) > 0 {
+//					<-chWrite
+//				}
+//				sendLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
+//				_ = c.Close()
+//				InfoLogger.Println(runtime.NumGoroutine())
+//				InfoLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
+//				break L
+//			}
+//		}
+//	}
+//}
+
 func WriteFromChannelToWS(c *websocket.Conn, chWrite <-chan interface{}, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
-L:
+	wg.Add(1)
+	defer wg.Done()
+
+	defer func() {
+		fmt.Println("Socket writer Closed")
+	}()
+
 	for {
-		//a := chWrite.(string)
-		time.Sleep(time.Nanosecond)
-
-		select {
-		case message := <-chWrite:
-
-			if RestartCounter.Load() > 0 {
-
-				if RestartCounter.Load() >= 3 {
-					for len(chWrite) > 0 {
-						<-chWrite
-					}
-					sendLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
-					_ = c.Close()
-					InfoLogger.Println(runtime.NumGoroutine())
-					InfoLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
-					break L
-				}
-
-				for len(chWrite) > 0 {
-					<-chWrite
-				}
-				continue L
-			}
-
-			message, err := json.Marshal(message)
-			tools.WebsocketErr(err, RestartCounter)
-
-			sendLogger.Println("Length of channel:", len(chWrite), "Message:", string(message.([]byte)))
-			err = c.WriteMessage(websocket.TextMessage, message.([]byte))
-
-			tools.WebsocketErr(err, RestartCounter)
-
-		default:
-			//fmt.Println(atomic.LoadInt32(RestartCounter))
-			if RestartCounter.Load() >= 3 {
-				for len(chWrite) > 0 {
-					<-chWrite
-				}
-				sendLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
-				_ = c.Close()
-				InfoLogger.Println(runtime.NumGoroutine())
-				InfoLogger.Printf("\n\nWriteFromChannelToWS Closed\n\n")
-				break L
+		message := <-chWrite
+		s, ok := message.(string)
+		if ok {
+			if s == "quit" {
+				break
 			}
 		}
+
+		message, err := json.Marshal(message)
+		if err != nil {
+			continue
+		}
+
+		err = c.WriteMessage(websocket.TextMessage, message.([]byte))
+
+		tools.WebsocketErr(err, RestartCounter)
 	}
-	wg.Done()
 }
 
 func GetAuthMessage(key string, secret string) Message {

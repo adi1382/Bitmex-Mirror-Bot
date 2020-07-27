@@ -4,10 +4,13 @@ import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/gorilla/websocket"
 	"go.uber.org/atomic"
+	"sync"
 	"time"
 )
 
-func PingPong(conn *websocket.Conn, RestartCounter *atomic.Uint32) {
+func PingPong(conn *websocket.Conn, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
+	wg.Add(1)
+	defer wg.Done()
 
 	InfoLogger.Println("Ping Pong protocol Initiated")
 

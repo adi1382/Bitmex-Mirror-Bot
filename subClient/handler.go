@@ -14,6 +14,7 @@ import (
 func (c *SubClient) OrderHandler() {
 
 	c.WaitForPartial()
+	c.hostClient.WaitForPartial()
 
 	defer func() {
 		InfoLogger.Println("Order Handler Closed for subClient ", c.ApiKey)

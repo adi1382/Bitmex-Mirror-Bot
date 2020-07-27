@@ -115,9 +115,7 @@ func (c *SubClient) Initialize() {
 	c.Authorize()
 	go c.marginUpdate()
 	go c.dataHandler()
-
-	c.WaitForPartial()
-	c.OrderHandler()
+	go c.OrderHandler()
 
 	InfoLogger.Println("New SubClient Initialized | ", c.WebsocketTopic, " | ", c.ApiKey)
 }
@@ -126,15 +124,14 @@ func (c *SubClient) Initialize() {
 //////////////////////////////////////////////////////////////////
 func (c *SubClient) CloseConnection() {
 
-	if c.RunningStatus() {
-		InfoLogger.Println("Close connection request initiated for subClient ", c.ApiKey)
-		c.active.Store(false)
-		var message []interface{}
-		message = append(message, 2, c.ApiKey, c.WebsocketTopic)
-		c.chWriteToWSClient <- message
-		c.chReadFromWSClient <- []byte("quit")
-		c.removeCurrentClient()
-	}
+	InfoLogger.Println("Close connection request initiated for subClient", c.ApiKey)
+	c.active.Store(false)
+	var message []interface{}
+	message = append(message, 2, c.ApiKey, c.WebsocketTopic)
+	c.chWriteToWSClient <- message
+	c.chReadFromWSClient <- []byte("quit")
+	c.removeCurrentClient()
+
 }
 
 func (c *SubClient) DropConnection() {
@@ -237,7 +234,7 @@ func (c *SubClient) Authorize() {
 	c.chWriteToWSClient <- message
 }
 
-func (c *SubClient) Subscribe(tables ...string) {
+func (c *SubClient) SubscribeTopics(tables ...string) {
 	var message []interface{}
 	command := websocket.Message{Op: "subscribe"}
 
@@ -252,7 +249,7 @@ func (c *SubClient) Subscribe(tables ...string) {
 	c.chWriteToWSClient <- message
 }
 
-func (c *SubClient) Unsubscribe(tables ...string) {
+func (c *SubClient) UnsubscribeTopics(tables ...string) {
 
 	InfoLogger.Println("Unsubscribing tables ", tables, " on subClient ", c.ApiKey)
 

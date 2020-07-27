@@ -97,8 +97,13 @@ func (c *HostClient) Initialize() {
 }
 
 func (c *HostClient) CloseConnection() {
-	c.restartCounter.Add(1)
 	c.active.Store(false)
+	var message []interface{}
+	message = append(message, 2, c.ApiKey, c.WebsocketTopic)
+	c.chWriteToWSClient <- message
+	c.chReadFromWSClient <- []byte("quit")
+	c.restartCounter.Add(1)
+	InfoLogger.Println("Closed connection for hostClient", c.ApiKey)
 }
 
 func (c *HostClient) WaitForPartial() {
@@ -115,10 +120,8 @@ func (c *HostClient) WaitForPartial() {
 
 func (c *HostClient) marginUpdate() {
 
-	//atomic.StoreInt64(&(c.marginUpdated), 0)
 	c.marginUpdated.Store(false)
-	time.Sleep(2)
-	//c.WaitForPartial()
+
 	for {
 		if !c.RunningStatus() {
 			break
@@ -131,17 +134,16 @@ func (c *HostClient) marginUpdate() {
 
 		c.marginBalance.Store(marginBalance)
 
-		//atomic.StoreInt64(&(c.marginBalance), marginBalance)
-		//atomic.StoreInt64(&(c.marginUpdated), 1)
 		c.marginUpdated.Store(true)
 
 		InfoLogger.Println("Margin updated on ", c.ApiKey)
 
+		resetTime := time.Now().Add(time.Second * time.Duration(c.marginUpdateTime))
+
 		time.Sleep(time.Second * 5)
 
-		resetTime := time.Now().Add(time.Second * time.Duration(c.marginUpdateTime))
 		for {
-			time.Sleep(time.Microsecond)
+			time.Sleep(time.Second * 5)
 			if time.Now().Unix() > resetTime.Unix() {
 				break
 			} else {
