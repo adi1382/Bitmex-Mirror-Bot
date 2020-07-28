@@ -120,45 +120,45 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 
 			orders := make([]map[string]interface{}, 0, 5)
 
-			for _, h := range orderResponse.Data {
+			for h := range orderResponse.Data {
 
 				ord := make(map[string]interface{})
-				ord["clOrdID"] = random() + h.OrderID.Value[8:]
-				if h.Symbol.Valid {
-					ord["symbol"] = h.Symbol.Value
+				ord["clOrdID"] = random() + orderResponse.Data[h].OrderID.Value[8:]
+				if orderResponse.Data[h].Symbol.Valid {
+					ord["symbol"] = orderResponse.Data[h].Symbol.Value
 				}
-				if h.Side.Valid {
-					ord["side"] = h.Side.Value
+				if orderResponse.Data[h].Side.Valid {
+					ord["side"] = orderResponse.Data[h].Side.Value
 				}
-				if h.LeavesQty.Valid {
-					ord["orderQty"] = int(h.LeavesQty.Value * ratio)
+				if orderResponse.Data[h].LeavesQty.Valid {
+					ord["orderQty"] = int(orderResponse.Data[h].LeavesQty.Value * ratio)
 				}
-				if h.Price.Valid {
-					ord["price"] = h.Price.Value
+				if orderResponse.Data[h].Price.Valid {
+					ord["price"] = orderResponse.Data[h].Price.Value
 				}
-				if h.DisplayQty.Valid {
-					ord["displayQty"] = int(h.DisplayQty.Value * ratio)
+				if orderResponse.Data[h].DisplayQty.Valid {
+					ord["displayQty"] = int(orderResponse.Data[h].DisplayQty.Value * ratio)
 				}
-				if h.StopPx.Valid {
-					ord["stopPx"] = h.StopPx.Value
+				if orderResponse.Data[h].StopPx.Valid {
+					ord["stopPx"] = orderResponse.Data[h].StopPx.Value
 				}
-				if h.PegOffsetValue.Valid {
-					ord["pegOffsetValue"] = h.PegOffsetValue.Value
+				if orderResponse.Data[h].PegOffsetValue.Valid {
+					ord["pegOffsetValue"] = orderResponse.Data[h].PegOffsetValue.Value
 				}
-				if h.PegPriceType.Valid {
-					ord["pegPriceType"] = h.PegPriceType.Value
+				if orderResponse.Data[h].PegPriceType.Valid {
+					ord["pegPriceType"] = orderResponse.Data[h].PegPriceType.Value
 				}
-				if h.OrdType.Valid {
-					ord["ordType"] = h.OrdType.Value
+				if orderResponse.Data[h].OrdType.Valid {
+					ord["ordType"] = orderResponse.Data[h].OrdType.Value
 				}
-				if h.TimeInForce.Valid {
-					ord["timeInForce"] = h.TimeInForce.Value
+				if orderResponse.Data[h].TimeInForce.Valid {
+					ord["timeInForce"] = orderResponse.Data[h].TimeInForce.Value
 				}
-				if h.ExecInst.Valid {
-					ord["execInst"] = h.ExecInst.Value
+				if orderResponse.Data[h].ExecInst.Valid {
+					ord["execInst"] = orderResponse.Data[h].ExecInst.Value
 				}
-				if h.Text.Valid {
-					ord["text"] = h.Text.Value
+				if orderResponse.Data[h].Text.Valid {
+					ord["text"] = orderResponse.Data[h].Text.Value
 				}
 				orders = append(orders, ord)
 			}
@@ -193,22 +193,22 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 			activeOrders := c.ActiveOrders()
 
 			var toCancel []string
-			for _, h := range orderResponse.Data {
+			for h := range orderResponse.Data {
 
-				if h.OrdStatus.Valid {
-					if h.OrdStatus.Value == "Filled" || h.OrdStatus.Value == "PartiallyFilled" {
-						InfoLogger.Println("Order " + h.OrdStatus.Value)
+				if orderResponse.Data[h].OrdStatus.Valid {
+					if orderResponse.Data[h].OrdStatus.Value == "Filled" || orderResponse.Data[h].OrdStatus.Value == "PartiallyFilled" {
+						InfoLogger.Println("Order " + orderResponse.Data[h].OrdStatus.Value)
 						*calibrateBool = false
 						*calibrateBoolReset = time.Now().Add(time.Second * time.Duration(c.LimitFilledTimeout))
 					}
 				}
 
-				if !h.OrdStatus.Valid {
-					if h.Price.Valid || h.StopPx.Valid || h.LeavesQty.Valid || h.PegOffsetValue.Valid {
+				if !orderResponse.Data[h].OrdStatus.Valid {
+					if orderResponse.Data[h].Price.Valid || orderResponse.Data[h].StopPx.Valid || orderResponse.Data[h].LeavesQty.Valid || orderResponse.Data[h].PegOffsetValue.Valid {
 
 						InfoLogger.Println("Amended order detected for SubClient ", c.ApiKey)
 
-						subOrders := getSubOrder(h.OrderID.Value, activeOrders)
+						subOrders := getSubOrder(orderResponse.Data[h].OrderID.Value, activeOrders)
 
 						if len(subOrders) == 0 {
 							continue
@@ -217,74 +217,76 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 						subOrder := subOrders[0]
 
 						if len(subOrders) > 1 {
-							for _, v := range subOrders[1:] {
-								toCancel = append(toCancel, v.OrderID.Value)
+							extraOrders := subOrders[1:]
+							for i := range extraOrders {
+								toCancel = append(toCancel, extraOrders[i].OrderID.Value)
 							}
 						}
 
-						if (h.OrdType.Value == "StopLimit" || h.OrdType.Value == "LimitIfTouched") &&
-							h.Triggered.Value != "" {
+						if (orderResponse.Data[h].OrdType.Value == "StopLimit" || orderResponse.Data[h].OrdType.Value == "LimitIfTouched") &&
+							orderResponse.Data[h].Triggered.Value != "" {
 
-							if h.Price.Value != subOrder.Price.Value ||
-								int(h.LeavesQty.Value*ratio) != int(subOrder.LeavesQty.Value) {
+							if orderResponse.Data[h].Price.Value != subOrder.Price.Value ||
+								int(orderResponse.Data[h].LeavesQty.Value*ratio) != int(subOrder.LeavesQty.Value) {
 
 								amend := make(map[string]interface{})
 
 								amend["symbol"] = subOrder.Symbol.Value
 								amend["orderID"] = subOrder.OrderID.Value
-								if h.Price.Valid {
-									amend["price"] = h.Price.Value
+								if orderResponse.Data[h].Price.Valid {
+									amend["price"] = orderResponse.Data[h].Price.Value
 								}
-								if h.LeavesQty.Valid {
-									amend["orderQty"] = int(h.LeavesQty.Value * ratio)
+								if orderResponse.Data[h].LeavesQty.Valid {
+									amend["orderQty"] = int(orderResponse.Data[h].LeavesQty.Value * ratio)
 								}
 
 								amendOrders = append(amendOrders, amend)
 							}
 
 						} else {
-							if h.Price.Value != subOrder.Price.Value ||
-								int(h.LeavesQty.Value*ratio) != int(subOrder.LeavesQty.Value) ||
-								h.StopPx.Value != subOrder.StopPx.Value ||
-								h.PegOffsetValue.Value != subOrder.PegOffsetValue.Value {
+							if orderResponse.Data[h].Price.Value != subOrder.Price.Value ||
+								int(orderResponse.Data[h].LeavesQty.Value*ratio) != int(subOrder.LeavesQty.Value) ||
+								orderResponse.Data[h].StopPx.Value != subOrder.StopPx.Value ||
+								orderResponse.Data[h].PegOffsetValue.Value != subOrder.PegOffsetValue.Value {
 
 								amend := make(map[string]interface{})
 
 								amend["symbol"] = subOrder.Symbol.Value
 								amend["orderID"] = subOrder.OrderID.Value
-								if h.Price.Valid {
-									amend["price"] = h.Price.Value
+								if orderResponse.Data[h].Price.Valid {
+									amend["price"] = orderResponse.Data[h].Price.Value
 								}
-								if h.LeavesQty.Valid {
-									amend["orderQty"] = int(h.LeavesQty.Value * ratio)
+								if orderResponse.Data[h].LeavesQty.Valid {
+									amend["orderQty"] = int(orderResponse.Data[h].LeavesQty.Value * ratio)
 								}
-								if h.StopPx.Valid {
-									amend["stopPx"] = h.StopPx.Value
+								if orderResponse.Data[h].StopPx.Valid {
+									amend["stopPx"] = orderResponse.Data[h].StopPx.Value
 								}
-								if h.PegOffsetValue.Valid {
-									amend["pegOffsetValue"] = h.PegOffsetValue.Value
+								if orderResponse.Data[h].PegOffsetValue.Valid {
+									amend["pegOffsetValue"] = orderResponse.Data[h].PegOffsetValue.Value
 								}
 								amendOrders = append(amendOrders, amend)
 							}
 						}
 
 					}
-				} else if h.OrdStatus.Valid {
+				} else if orderResponse.Data[h].OrdStatus.Valid {
 
-					subOrders := getSubOrder(h.OrderID.Value, activeOrders)
+					subOrders := getSubOrder(orderResponse.Data[h].OrderID.Value, activeOrders)
 
 					if len(subOrders) == 0 {
 						continue
 					}
 					subOrder := subOrders[0]
 
-					if h.OrdStatus.Value == "Canceled" {
+					if orderResponse.Data[h].OrdStatus.Value == "Canceled" {
 						toCancel = append(toCancel, subOrder.OrderID.Value)
 					}
 
 					if len(subOrders) > 1 {
-						for _, v := range subOrders[1:] {
-							toCancel = append(toCancel, v.OrderID.Value)
+						extraOrders := subOrders[1:]
+						for i := range extraOrders {
+							toCancel = append(toCancel, extraOrders[i].OrderID.Value)
 						}
 					}
 				}
@@ -326,24 +328,25 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 
 		if positionResponse.Action == "update" {
 
-			for _, v := range positionResponse.Data {
+			for i := range positionResponse.Data {
 
-				if v.CrossMargin.Valid {
-					if v.CrossMargin.Value {
-						c.UpdateLeverage(v.Symbol.Value, 0)
+				if positionResponse.Data[i].CrossMargin.Valid {
+					if positionResponse.Data[i].CrossMargin.Value {
+						c.UpdateLeverage(positionResponse.Data[i].Symbol.Value, 0)
 
-					} else if v.Leverage.Valid {
-						c.UpdateLeverage(v.Symbol.Value, v.Leverage.Value)
+					} else if positionResponse.Data[i].Leverage.Valid {
+						c.UpdateLeverage(positionResponse.Data[i].Symbol.Value, positionResponse.Data[i].Leverage.Value)
 
 					} else {
-						for _, activePosition := range c.hostClient.ActivePositions() {
-							if activePosition.Symbol.Value == v.Symbol.Value {
-								c.UpdateLeverage(v.Symbol.Value, activePosition.Leverage.Value)
+						activePositions := c.hostClient.ActivePositions()
+						for i := range activePositions {
+							if activePositions[i].Symbol.Value == positionResponse.Data[i].Symbol.Value {
+								c.UpdateLeverage(positionResponse.Data[i].Symbol.Value, activePositions[i].Leverage.Value)
 							}
 						}
 					}
-				} else if v.Leverage.Valid {
-					c.UpdateLeverage(v.Symbol.Value, v.Leverage.Value)
+				} else if positionResponse.Data[i].Leverage.Valid {
+					c.UpdateLeverage(positionResponse.Data[i].Symbol.Value, positionResponse.Data[i].Leverage.Value)
 
 				}
 			}
@@ -354,9 +357,9 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 
 func getSubOrder(id string, orders websocket.OrderSlice) []swagger.Order {
 	returnValue := make([]swagger.Order, 0, 5)
-	for _, order := range orders {
-		if order.ClOrdID.Value[8:] == id[8:] {
-			returnValue = append(returnValue, order)
+	for i := range orders {
+		if orders[i].ClOrdID.Value[8:] == id[8:] {
+			returnValue = append(returnValue, orders[i])
 		}
 	}
 
