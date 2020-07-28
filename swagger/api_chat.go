@@ -92,7 +92,7 @@ func (a *ChatApiService) ChatGet(ctx context.Context, localVarOptionals *ChatGet
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -211,7 +211,7 @@ func (a *ChatApiService) ChatGetChannels(ctx context.Context) ([]ChatChannel, *h
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -331,7 +331,7 @@ func (a *ChatApiService) ChatGetConnected(ctx context.Context) (ConnectedUsers, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -463,7 +463,7 @@ func (a *ChatApiService) ChatNew(ctx context.Context, message string, localVarOp
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

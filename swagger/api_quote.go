@@ -112,7 +112,7 @@ func (a *QuoteApiService) QuoteGet(ctx context.Context, localVarOptionals *Quote
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -286,7 +286,7 @@ func (a *QuoteApiService) QuoteGetBucketed(ctx context.Context, localVarOptional
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

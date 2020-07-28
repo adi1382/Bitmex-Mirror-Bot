@@ -130,7 +130,7 @@ func (a *OrderApiService) OrderAmend(localVarOptionals *OrderAmendOpts) (Order, 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -262,7 +262,7 @@ func (a *OrderApiService) OrderAmendBulk(localVarOptionals *OrderAmendBulkOpts) 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -404,7 +404,7 @@ func (a *OrderApiService) OrderCancel(localVarOptionals *OrderCancelOpts) ([]Ord
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -545,7 +545,7 @@ func (a *OrderApiService) OrderCancelAll(localVarOptionals *OrderCancelAllOpts) 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -669,7 +669,7 @@ func (a *OrderApiService) OrderCancelAllAfter(timeout float64) (interface{}, *ht
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -803,7 +803,7 @@ func (a *OrderApiService) OrderClosePosition(symbol string, localVarOptionals *O
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -970,7 +970,7 @@ func (a *OrderApiService) OrderGetOrders(localVarOptionals *OrderGetOrdersOpts) 
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1179,7 +1179,7 @@ func (a *OrderApiService) OrderNew(localVarOptionals *OrderNewOpts) (Order, *htt
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -1322,7 +1322,7 @@ func (a *OrderApiService) OrderNewBulk(localVarOptionals *OrderNewBulkOpts) ([]O
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

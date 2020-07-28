@@ -260,7 +260,11 @@ func WriteFromChannelToWS(c *websocket.Conn, chWrite <-chan interface{}, Restart
 func GetAuthMessage(key, secret string) Message {
 	timestamp := time.Now().Add(time.Second * 412).Unix()
 	sig := hmac.New(sha256.New, []byte(secret))
-	sig.Write([]byte(fmt.Sprintf("GET/realtime%d", timestamp)))
+	_, err := sig.Write([]byte(fmt.Sprintf("GET/realtime%d", timestamp)))
+
+	if err != nil {
+		ErrorLogger.Fatal("Was unable to generate signature for socket authentication!!!")
+	}
 
 	signature := hex.EncodeToString(sig.Sum(nil))
 

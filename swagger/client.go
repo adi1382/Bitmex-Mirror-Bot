@@ -236,13 +236,13 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Setup path and query parameters
-	url, err := url.Parse(path)
+	url_, err := url.Parse(path)
 	if err != nil {
 		return nil, err
 	}
 
 	// Adding Query Param
-	query := url.Query()
+	query := url_.Query()
 	for k, v := range queryParams {
 		for _, iv := range v {
 			query.Add(k, iv)
@@ -250,13 +250,13 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Encode the parameters.
-	url.RawQuery = query.Encode()
+	url_.RawQuery = query.Encode()
 
 	// Generate a new request
 	if body != nil {
-		localVarRequest, err = http.NewRequest(method, url.String(), body)
+		localVarRequest, err = http.NewRequest(method, url_.String(), body)
 	} else {
-		localVarRequest, err = http.NewRequest(method, url.String(), nil)
+		localVarRequest, err = http.NewRequest(method, url_.String(), nil)
 	}
 	if err != nil {
 		return nil, err
@@ -269,16 +269,16 @@ func (c *APIClient) prepareRequest(
 			headerParams["api-key"] = apiKey.Key
 			expires := strconv.FormatInt(time.Now().Unix()+60, 10) // 60 seconds
 			headerParams["api-expires"] = expires
-			payload := method + url.Path
-			if url.RawQuery != "" {
-				payload += "?" + url.RawQuery
+			payload := method + url_.Path
+			if url_.RawQuery != "" {
+				payload += "?" + url_.RawQuery
 			}
 			payload += expires
 			if body != nil {
 				payload += body.String()
 			}
 			h := hmac.New(sha256.New, []byte(apiKey.Secret))
-			h.Write([]byte(payload))
+			_, err = h.Write([]byte(payload))
 			headerParams["api-signature"] = hex.EncodeToString(h.Sum(nil))
 		}
 	}
@@ -356,7 +356,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	} else if jsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
 	} else if xmlCheck.MatchString(contentType) {
-		xml.NewEncoder(bodyBuf).Encode(body)
+		err = xml.NewEncoder(bodyBuf).Encode(body)
 	}
 
 	if err != nil {

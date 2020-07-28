@@ -77,7 +77,7 @@ func (a *SchemaApiService) SchemaGet(ctx context.Context, localVarOptionals *Sch
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -196,7 +196,7 @@ func (a *SchemaApiService) SchemaWebsocketHelp(ctx context.Context) (interface{}
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}

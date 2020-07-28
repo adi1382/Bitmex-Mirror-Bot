@@ -65,7 +65,7 @@ func (a *StatsApiService) StatsGet(ctx context.Context) ([]Stats, *http.Response
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -184,7 +184,7 @@ func (a *StatsApiService) StatsHistory(ctx context.Context) ([]StatsHistory, *ht
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
@@ -303,7 +303,7 @@ func (a *StatsApiService) StatsHistoryUSD(ctx context.Context) ([]StatsUsd, *htt
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
+	_ = localVarHttpResponse.Body.Close()
 	if err != nil {
 		return localVarReturnValue, localVarHttpResponse, err
 	}
