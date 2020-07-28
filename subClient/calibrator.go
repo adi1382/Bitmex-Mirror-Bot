@@ -279,76 +279,72 @@ func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 
 	//////////////////////////////////////////////////////////
 
-	{ // Leverage Update
-		for hIdx := range hostPositions {
+	// Leverage Update
+	for hIdx := range hostPositions {
 
-			positionFound := false
+		positionFound := false
 
-			for sIdx := range subPositions {
+		for sIdx := range subPositions {
 
-				if hostPositions[hIdx].Symbol.Value == subPositions[sIdx].Symbol.Value {
-					positionFound = true
-					if hostPositions[hIdx].CrossMargin.Value {
-						if !subPositions[sIdx].CrossMargin.Value {
-							subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, 0)
-						}
-					} else {
-						if subPositions[sIdx].CrossMargin.Value {
-							subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, hostPositions[hIdx].Leverage.Value)
-						} else if hostPositions[hIdx].Leverage.Value != subPositions[sIdx].Leverage.Value {
-							subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, hostPositions[hIdx].Leverage.Value)
-						}
+			if hostPositions[hIdx].Symbol.Value == subPositions[sIdx].Symbol.Value {
+				positionFound = true
+				if hostPositions[hIdx].CrossMargin.Value {
+					if !subPositions[sIdx].CrossMargin.Value {
+						subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, 0)
+					}
+				} else {
+					if subPositions[sIdx].CrossMargin.Value {
+						subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, hostPositions[hIdx].Leverage.Value)
+					} else if hostPositions[hIdx].Leverage.Value != subPositions[sIdx].Leverage.Value {
+						subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, hostPositions[hIdx].Leverage.Value)
 					}
 				}
 			}
+		}
 
-			if !positionFound {
-				if hostPositions[hIdx].CrossMargin.Value {
-					subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, 0)
-				} else {
-					subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, hostPositions[hIdx].Leverage.Value)
-				}
+		if !positionFound {
+			if hostPositions[hIdx].CrossMargin.Value {
+				subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, 0)
+			} else {
+				subClient.UpdateLeverage(hostPositions[hIdx].Symbol.Value, hostPositions[hIdx].Leverage.Value)
 			}
 		}
 	}
 
 	////////////////////////// Calibrate Position ////////////////////////////////
 
-	{
-		for hIdx := range hostPositions {
+	for hIdx := range hostPositions {
 
-			positionFound := false
-
-			for sIdx := range subPositions {
-				if hostPositions[hIdx].Symbol.Value == subPositions[sIdx].Symbol.Value {
-					positionFound = true
-					if int(hostPositions[hIdx].CurrentQty.Value*ratio) != int(subPositions[sIdx].CurrentQty.Value) {
-						subClient.OrderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio)-int(subPositions[sIdx].CurrentQty.Value))
-					}
-				}
-			}
-
-			if !positionFound {
-				subClient.OrderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio))
-			}
-
-		}
+		positionFound := false
 
 		for sIdx := range subPositions {
-
-			positionFound := false
-
-			for hIdx := range hostPositions {
-				if subPositions[sIdx].Symbol.Value == hostPositions[hIdx].Symbol.Value {
-					positionFound = true
+			if hostPositions[hIdx].Symbol.Value == subPositions[sIdx].Symbol.Value {
+				positionFound = true
+				if int(hostPositions[hIdx].CurrentQty.Value*ratio) != int(subPositions[sIdx].CurrentQty.Value) {
+					subClient.OrderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio)-int(subPositions[sIdx].CurrentQty.Value))
 				}
-			}
-
-			if !positionFound {
-				subClient.OrderNewMarket(subPositions[sIdx].Symbol.Value, -int(subPositions[sIdx].CurrentQty.Value))
 			}
 		}
 
+		if !positionFound {
+			subClient.OrderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio))
+		}
+
+	}
+
+	for sIdx := range subPositions {
+
+		positionFound := false
+
+		for hIdx := range hostPositions {
+			if subPositions[sIdx].Symbol.Value == hostPositions[hIdx].Symbol.Value {
+				positionFound = true
+			}
+		}
+
+		if !positionFound {
+			subClient.OrderNewMarket(subPositions[sIdx].Symbol.Value, -int(subPositions[sIdx].CurrentQty.Value))
+		}
 	}
 
 	//////////////////////////////////// Calibrate Position Margin ////////////////////////////////////

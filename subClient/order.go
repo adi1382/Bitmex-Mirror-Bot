@@ -162,16 +162,15 @@ func (c *SubClient) OrderCancelBulk(toCancelOrderIDs *[]string) {
 
 		c.ordersLock.Lock()
 		for v := range res {
-			{
-				if len(c.activeOrders) > 0 {
-					for i := range c.activeOrders {
-						if res[v].OrderID.Value == c.activeOrders[i].OrderID.Value {
-							c.activeOrders = append(c.activeOrders[:i], c.activeOrders[i+1:]...)
-							break
-						}
+			if len(c.activeOrders) > 0 {
+				for i := range c.activeOrders {
+					if res[v].OrderID.Value == c.activeOrders[i].OrderID.Value {
+						c.activeOrders = append(c.activeOrders[:i], c.activeOrders[i+1:]...)
+						break
 					}
 				}
 			}
+
 		}
 
 		defer c.ordersLock.Unlock()
