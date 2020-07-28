@@ -176,8 +176,7 @@ func (c *HostClient) startSocketConnection() {
 func (c *HostClient) socketAuthentication() {
 	var message []interface{}
 	InfoLogger.Println("Authenticating websocket connection of subClient ", c.ApiKey)
-	message = append(message, 0, c.ApiKey, c.WebsocketTopic)
-	message = append(message, websocket.GetAuthMessage(c.ApiKey, c.apiSecret))
+	message = append(message, 0, c.ApiKey, c.WebsocketTopic, websocket.GetAuthMessage(c.ApiKey, c.apiSecret))
 	c.chWriteToWSClient <- message
 }
 
@@ -191,8 +190,7 @@ func (c *HostClient) SubscribeTopics(tables ...string) {
 
 	InfoLogger.Println("Subscribing tables ", tables, " on subClient ", c.ApiKey)
 
-	message = append(message, 0, c.ApiKey, c.WebsocketTopic)
-	message = append(message, command)
+	message = append(message, 0, c.ApiKey, c.WebsocketTopic, command)
 	c.chWriteToWSClient <- message
 }
 
@@ -207,8 +205,7 @@ func (c *HostClient) UnsubscribeTopics(tables ...string) {
 		command.AddArgument(v)
 	}
 
-	message = append(message, 0, c.ApiKey, c.WebsocketTopic)
-	message = append(message, command)
+	message = append(message, 0, c.ApiKey, c.WebsocketTopic, command)
 	c.chWriteToWSClient <- message
 }
 

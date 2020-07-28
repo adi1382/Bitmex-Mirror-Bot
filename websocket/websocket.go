@@ -265,9 +265,7 @@ func GetAuthMessage(key, secret string) Message {
 	signature := hex.EncodeToString(sig.Sum(nil))
 
 	var msgKey []interface{}
-	msgKey = append(msgKey, key)
-	msgKey = append(msgKey, timestamp)
-	msgKey = append(msgKey, signature)
+	msgKey = append(msgKey, key, timestamp, signature)
 
 	return Message{"authKeyExpires", msgKey}
 }
