@@ -11,17 +11,14 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"mime/multipart"
+	"log"
 	"net/http"
 	"net/url"
-	"os"
-	"path/filepath"
 	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
-	"unicode/utf8"
 )
 
 var (
@@ -154,20 +151,6 @@ func contains(haystack []string, needle string) bool {
 	return false
 }
 
-// Verify optional parameters are of the correct type.
-func typeCheckParameter(obj interface{}, expected, name string) error {
-	// Make sure there is an object.
-	if obj == nil {
-		return nil
-	}
-
-	// Check the type is as expected.
-	if reflect.TypeOf(obj).String() != expected {
-		return fmt.Errorf("Expected %s to be of type %s but received %s.", name, expected, reflect.TypeOf(obj).String())
-	}
-	return nil
-}
-
 // parameterToString convert interface{} parameters to string, using a delimiter if format is provided.
 func parameterToString(obj interface{}, collectionFormat string) string {
 	var delimiter string
@@ -206,8 +189,7 @@ func (c *APIClient) prepareRequest(
 	path, method string,
 	postBody interface{},
 	headerParams map[string]string,
-	queryParams, formParams url.Values,
-	fileName string, fileBytes []byte) (localVarRequest *http.Request, err error) {
+	queryParams, formParams url.Values) (localVarRequest *http.Request, err error) {
 
 	var body *bytes.Buffer
 
@@ -228,7 +210,7 @@ func (c *APIClient) prepareRequest(
 	// Add form parameters
 	if len(formParams) > 0 {
 		if body != nil {
-			return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
+			return nil, errors.New("cannot specify postBody and multipart form at the same time")
 		}
 		body = bytes.NewBuffer([]byte(formParams.Encode()))
 		headerParams["Content-Type"] = "application/x-www-form-urlencoded"
@@ -279,6 +261,9 @@ func (c *APIClient) prepareRequest(
 			}
 			h := hmac.New(sha256.New, []byte(apiKey.Secret))
 			_, err = h.Write([]byte(payload))
+			if err != nil {
+				log.Fatal("Unable to generate signature for rest call!!")
+			}
 			headerParams["api-signature"] = hex.EncodeToString(h.Sum(nil))
 		}
 	}
@@ -317,33 +302,9 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 	return errors.New("undefined response type")
 }
 
-// Add a file to the multipart request
-func addFile(w *multipart.Writer, fieldName, path string) error {
-	file, err := os.Open(path)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
-	if err != nil {
-		return err
-	}
-	_, err = io.Copy(part, file)
-
-	return err
-}
-
-// Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) error {
-	return fmt.Errorf(format, a...)
-}
-
 // Set request body from an interface{}
 func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
-	if bodyBuf == nil {
-		bodyBuf = &bytes.Buffer{}
-	}
+	bodyBuf = &bytes.Buffer{}
 
 	if reader, ok := body.(io.Reader); ok {
 		_, err = bodyBuf.ReadFrom(reader)
@@ -438,10 +399,6 @@ func CacheExpires(r *http.Response) time.Time {
 		}
 	}
 	return expires
-}
-
-func strlen(s string) int {
-	return utf8.RuneCountInString(s)
 }
 
 // GenericSwaggerError Provides access to the body, error and model on returned errors.
