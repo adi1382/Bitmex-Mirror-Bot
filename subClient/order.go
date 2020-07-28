@@ -161,11 +161,11 @@ func (c *SubClient) OrderCancelBulk(toCancelOrderIDs *[]string) {
 		}
 
 		c.ordersLock.Lock()
-		for _, v := range res {
+		for v := range res {
 			{
 				if len(c.activeOrders) > 0 {
-					for i, o := range c.activeOrders {
-						if v.OrderID.Value == o.OrderID.Value {
+					for i := range c.activeOrders {
+						if res[v].OrderID.Value == c.activeOrders[i].OrderID.Value {
 							c.activeOrders = append(c.activeOrders[:i], c.activeOrders[i+1:]...)
 							break
 						}
@@ -211,12 +211,12 @@ func (c *SubClient) OrderNewBulk(toPlace *[]interface{}) {
 
 		c.ordersLock.Lock()
 
-		for _, no := range or {
+		for no := range or {
 			{
 				d := false
 				if len(c.activeOrders) > 0 {
 					for idx := range c.activeOrders {
-						if no.OrderID.Value == c.activeOrders[idx].OrderID.Value {
+						if or[no].OrderID.Value == c.activeOrders[idx].OrderID.Value {
 							d = true
 							break
 						}
@@ -226,7 +226,7 @@ func (c *SubClient) OrderNewBulk(toPlace *[]interface{}) {
 					continue
 				}
 			}
-			c.activeOrders = append(c.activeOrders, no)
+			c.activeOrders = append(c.activeOrders, or[no])
 		}
 		defer c.ordersLock.Unlock()
 	}

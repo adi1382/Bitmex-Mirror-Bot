@@ -51,128 +51,128 @@ type MarginResponseData struct {
 func (margin *MarginSlice) MarginPartial(inserts *[]MarginResponseData) {
 	InfoLogger.Println("Margin Partials Processing")
 	*margin = nil
-	for _, v := range *inserts {
+	for v := range *inserts {
 		var insertMargin swagger.Margin
 
-		insertMargin.Account.Value = v.Account.Value
-		insertMargin.Account.Valid = v.Account.Valid
+		insertMargin.Account.Value = (*inserts)[v].Account.Value
+		insertMargin.Account.Valid = (*inserts)[v].Account.Valid
 
-		insertMargin.Currency.Value = v.Currency.Value
-		insertMargin.Currency.Valid = v.Currency.Valid
+		insertMargin.Currency.Value = (*inserts)[v].Currency.Value
+		insertMargin.Currency.Valid = (*inserts)[v].Currency.Valid
 
-		insertMargin.RiskLimit.Value = v.RiskLimit.Value
-		insertMargin.RiskLimit.Valid = v.RiskLimit.Valid
+		insertMargin.RiskLimit.Value = (*inserts)[v].RiskLimit.Value
+		insertMargin.RiskLimit.Valid = (*inserts)[v].RiskLimit.Valid
 
-		insertMargin.PrevState.Value = v.PrevState.Value
-		insertMargin.PrevState.Valid = v.PrevState.Valid
+		insertMargin.PrevState.Value = (*inserts)[v].PrevState.Value
+		insertMargin.PrevState.Valid = (*inserts)[v].PrevState.Valid
 
-		insertMargin.State.Value = v.State.Value
-		insertMargin.State.Valid = v.State.Valid
+		insertMargin.State.Value = (*inserts)[v].State.Value
+		insertMargin.State.Valid = (*inserts)[v].State.Valid
 
-		insertMargin.Action.Value = v.Action.Value
-		insertMargin.Action.Valid = v.Action.Valid
+		insertMargin.Action.Value = (*inserts)[v].Action.Value
+		insertMargin.Action.Valid = (*inserts)[v].Action.Valid
 
-		insertMargin.Amount.Value = v.Amount.Value
-		insertMargin.Amount.Valid = v.Amount.Valid
+		insertMargin.Amount.Value = (*inserts)[v].Amount.Value
+		insertMargin.Amount.Valid = (*inserts)[v].Amount.Valid
 
-		insertMargin.PendingCredit.Value = v.PendingCredit.Value
-		insertMargin.PendingCredit.Valid = v.PendingCredit.Valid
+		insertMargin.PendingCredit.Value = (*inserts)[v].PendingCredit.Value
+		insertMargin.PendingCredit.Valid = (*inserts)[v].PendingCredit.Valid
 
-		insertMargin.PendingDebit.Value = v.PendingDebit.Value
-		insertMargin.PendingDebit.Valid = v.PendingDebit.Valid
+		insertMargin.PendingDebit.Value = (*inserts)[v].PendingDebit.Value
+		insertMargin.PendingDebit.Valid = (*inserts)[v].PendingDebit.Valid
 
-		insertMargin.ConfirmedDebit.Value = v.ConfirmedDebit.Value
-		insertMargin.ConfirmedDebit.Valid = v.ConfirmedDebit.Valid
+		insertMargin.ConfirmedDebit.Value = (*inserts)[v].ConfirmedDebit.Value
+		insertMargin.ConfirmedDebit.Valid = (*inserts)[v].ConfirmedDebit.Valid
 
-		insertMargin.PrevRealisedPnl.Value = v.PrevRealisedPnl.Value
-		insertMargin.PrevRealisedPnl.Valid = v.PrevRealisedPnl.Valid
+		insertMargin.PrevRealisedPnl.Value = (*inserts)[v].PrevRealisedPnl.Value
+		insertMargin.PrevRealisedPnl.Valid = (*inserts)[v].PrevRealisedPnl.Valid
 
-		insertMargin.PrevUnrealisedPnl.Value = v.PrevUnrealisedPnl.Value
-		insertMargin.PrevUnrealisedPnl.Valid = v.PrevUnrealisedPnl.Valid
+		insertMargin.PrevUnrealisedPnl.Value = (*inserts)[v].PrevUnrealisedPnl.Value
+		insertMargin.PrevUnrealisedPnl.Valid = (*inserts)[v].PrevUnrealisedPnl.Valid
 
-		insertMargin.GrossComm.Value = v.GrossComm.Value
-		insertMargin.GrossComm.Valid = v.GrossComm.Valid
+		insertMargin.GrossComm.Value = (*inserts)[v].GrossComm.Value
+		insertMargin.GrossComm.Valid = (*inserts)[v].GrossComm.Valid
 
-		insertMargin.GrossOpenCost.Value = v.GrossOpenCost.Value
-		insertMargin.GrossOpenCost.Valid = v.GrossOpenCost.Valid
+		insertMargin.GrossOpenCost.Value = (*inserts)[v].GrossOpenCost.Value
+		insertMargin.GrossOpenCost.Valid = (*inserts)[v].GrossOpenCost.Valid
 
-		insertMargin.GrossOpenPremium.Value = v.GrossOpenPremium.Value
-		insertMargin.GrossOpenPremium.Valid = v.GrossOpenPremium.Valid
+		insertMargin.GrossOpenPremium.Value = (*inserts)[v].GrossOpenPremium.Value
+		insertMargin.GrossOpenPremium.Valid = (*inserts)[v].GrossOpenPremium.Valid
 
-		insertMargin.GrossExecCost.Value = v.GrossExecCost.Value
-		insertMargin.GrossExecCost.Valid = v.GrossExecCost.Valid
+		insertMargin.GrossExecCost.Value = (*inserts)[v].GrossExecCost.Value
+		insertMargin.GrossExecCost.Valid = (*inserts)[v].GrossExecCost.Valid
 
-		insertMargin.GrossMarkValue.Value = v.GrossMarkValue.Value
-		insertMargin.GrossMarkValue.Valid = v.GrossMarkValue.Valid
+		insertMargin.GrossMarkValue.Value = (*inserts)[v].GrossMarkValue.Value
+		insertMargin.GrossMarkValue.Valid = (*inserts)[v].GrossMarkValue.Valid
 
-		insertMargin.RiskLimit.Value = v.RiskLimit.Value
-		insertMargin.RiskLimit.Valid = v.RiskLimit.Valid
+		insertMargin.RiskLimit.Value = (*inserts)[v].RiskLimit.Value
+		insertMargin.RiskLimit.Valid = (*inserts)[v].RiskLimit.Valid
 
-		insertMargin.TaxableMargin.Value = v.TaxableMargin.Value
-		insertMargin.TaxableMargin.Valid = v.TaxableMargin.Valid
+		insertMargin.TaxableMargin.Value = (*inserts)[v].TaxableMargin.Value
+		insertMargin.TaxableMargin.Valid = (*inserts)[v].TaxableMargin.Valid
 
-		insertMargin.InitMargin.Value = v.InitMargin.Value
-		insertMargin.InitMargin.Valid = v.InitMargin.Valid
+		insertMargin.InitMargin.Value = (*inserts)[v].InitMargin.Value
+		insertMargin.InitMargin.Valid = (*inserts)[v].InitMargin.Valid
 
-		insertMargin.MaintMargin.Value = v.MaintMargin.Value
-		insertMargin.MaintMargin.Valid = v.MaintMargin.Valid
+		insertMargin.MaintMargin.Value = (*inserts)[v].MaintMargin.Value
+		insertMargin.MaintMargin.Valid = (*inserts)[v].MaintMargin.Valid
 
-		insertMargin.SessionMargin.Value = v.SessionMargin.Value
-		insertMargin.SessionMargin.Valid = v.SessionMargin.Valid
+		insertMargin.SessionMargin.Value = (*inserts)[v].SessionMargin.Value
+		insertMargin.SessionMargin.Valid = (*inserts)[v].SessionMargin.Valid
 
-		insertMargin.TargetExcessMargin.Value = v.TargetExcessMargin.Value
-		insertMargin.TargetExcessMargin.Valid = v.TargetExcessMargin.Valid
+		insertMargin.TargetExcessMargin.Value = (*inserts)[v].TargetExcessMargin.Value
+		insertMargin.TargetExcessMargin.Valid = (*inserts)[v].TargetExcessMargin.Valid
 
-		insertMargin.VarMargin.Value = v.VarMargin.Value
-		insertMargin.VarMargin.Valid = v.VarMargin.Valid
+		insertMargin.VarMargin.Value = (*inserts)[v].VarMargin.Value
+		insertMargin.VarMargin.Valid = (*inserts)[v].VarMargin.Valid
 
-		insertMargin.RealisedPnl.Value = v.RealisedPnl.Value
-		insertMargin.RealisedPnl.Valid = v.RealisedPnl.Valid
+		insertMargin.RealisedPnl.Value = (*inserts)[v].RealisedPnl.Value
+		insertMargin.RealisedPnl.Valid = (*inserts)[v].RealisedPnl.Valid
 
-		insertMargin.UnrealisedPnl.Value = v.UnrealisedPnl.Value
-		insertMargin.UnrealisedPnl.Valid = v.UnrealisedPnl.Valid
+		insertMargin.UnrealisedPnl.Value = (*inserts)[v].UnrealisedPnl.Value
+		insertMargin.UnrealisedPnl.Valid = (*inserts)[v].UnrealisedPnl.Valid
 
-		insertMargin.UnrealisedPnl.Value = v.UnrealisedPnl.Value
-		insertMargin.UnrealisedPnl.Valid = v.UnrealisedPnl.Valid
+		insertMargin.UnrealisedPnl.Value = (*inserts)[v].UnrealisedPnl.Value
+		insertMargin.UnrealisedPnl.Valid = (*inserts)[v].UnrealisedPnl.Valid
 
-		insertMargin.UnrealisedProfit.Value = v.UnrealisedProfit.Value
-		insertMargin.UnrealisedProfit.Valid = v.UnrealisedProfit.Valid
+		insertMargin.UnrealisedProfit.Value = (*inserts)[v].UnrealisedProfit.Value
+		insertMargin.UnrealisedProfit.Valid = (*inserts)[v].UnrealisedProfit.Valid
 
-		insertMargin.SyntheticMargin.Value = v.SyntheticMargin.Value
-		insertMargin.SyntheticMargin.Valid = v.SyntheticMargin.Valid
+		insertMargin.SyntheticMargin.Value = (*inserts)[v].SyntheticMargin.Value
+		insertMargin.SyntheticMargin.Valid = (*inserts)[v].SyntheticMargin.Valid
 
-		insertMargin.WalletBalance.Value = v.WalletBalance.Value
-		insertMargin.WalletBalance.Valid = v.WalletBalance.Valid
+		insertMargin.WalletBalance.Value = (*inserts)[v].WalletBalance.Value
+		insertMargin.WalletBalance.Valid = (*inserts)[v].WalletBalance.Valid
 
-		insertMargin.MarginBalance.Value = v.MarginBalance.Value
-		insertMargin.MarginBalance.Valid = v.MarginBalance.Valid
+		insertMargin.MarginBalance.Value = (*inserts)[v].MarginBalance.Value
+		insertMargin.MarginBalance.Valid = (*inserts)[v].MarginBalance.Valid
 
-		insertMargin.MarginBalancePcnt.Value = v.MarginBalancePcnt.Value
-		insertMargin.MarginBalancePcnt.Valid = v.MarginBalancePcnt.Valid
+		insertMargin.MarginBalancePcnt.Value = (*inserts)[v].MarginBalancePcnt.Value
+		insertMargin.MarginBalancePcnt.Valid = (*inserts)[v].MarginBalancePcnt.Valid
 
-		insertMargin.MarginLeverage.Value = v.MarginLeverage.Value
-		insertMargin.MarginLeverage.Valid = v.MarginLeverage.Valid
+		insertMargin.MarginLeverage.Value = (*inserts)[v].MarginLeverage.Value
+		insertMargin.MarginLeverage.Valid = (*inserts)[v].MarginLeverage.Valid
 
-		insertMargin.MarginUsedPcnt.Value = v.MarginUsedPcnt.Value
-		insertMargin.MarginUsedPcnt.Valid = v.MarginUsedPcnt.Valid
+		insertMargin.MarginUsedPcnt.Value = (*inserts)[v].MarginUsedPcnt.Value
+		insertMargin.MarginUsedPcnt.Valid = (*inserts)[v].MarginUsedPcnt.Valid
 
-		insertMargin.ExcessMargin.Value = v.ExcessMargin.Value
-		insertMargin.ExcessMargin.Valid = v.ExcessMargin.Valid
+		insertMargin.ExcessMargin.Value = (*inserts)[v].ExcessMargin.Value
+		insertMargin.ExcessMargin.Valid = (*inserts)[v].ExcessMargin.Valid
 
-		insertMargin.ExcessMarginPcnt.Value = v.ExcessMarginPcnt.Value
-		insertMargin.ExcessMarginPcnt.Valid = v.ExcessMarginPcnt.Valid
+		insertMargin.ExcessMarginPcnt.Value = (*inserts)[v].ExcessMarginPcnt.Value
+		insertMargin.ExcessMarginPcnt.Valid = (*inserts)[v].ExcessMarginPcnt.Valid
 
-		insertMargin.AvailableMargin.Value = v.AvailableMargin.Value
-		insertMargin.AvailableMargin.Valid = v.AvailableMargin.Valid
+		insertMargin.AvailableMargin.Value = (*inserts)[v].AvailableMargin.Value
+		insertMargin.AvailableMargin.Valid = (*inserts)[v].AvailableMargin.Valid
 
-		insertMargin.WithdrawableMargin.Value = v.WithdrawableMargin.Value
-		insertMargin.WithdrawableMargin.Valid = v.WithdrawableMargin.Valid
+		insertMargin.WithdrawableMargin.Value = (*inserts)[v].WithdrawableMargin.Value
+		insertMargin.WithdrawableMargin.Valid = (*inserts)[v].WithdrawableMargin.Valid
 
-		insertMargin.Timestamp.Value = v.Timestamp.Value
-		insertMargin.Timestamp.Valid = v.Timestamp.Valid
+		insertMargin.Timestamp.Value = (*inserts)[v].Timestamp.Value
+		insertMargin.Timestamp.Valid = (*inserts)[v].Timestamp.Valid
 
-		insertMargin.GrossLastValue.Value = v.GrossLastValue.Value
-		insertMargin.GrossLastValue.Valid = v.GrossLastValue.Valid
+		insertMargin.GrossLastValue.Value = (*inserts)[v].GrossLastValue.Value
+		insertMargin.GrossLastValue.Valid = (*inserts)[v].GrossLastValue.Valid
 
 		*margin = append(*margin, insertMargin)
 	}
@@ -181,128 +181,128 @@ func (margin *MarginSlice) MarginPartial(inserts *[]MarginResponseData) {
 
 func (margin *MarginSlice) MarginInsert(inserts *[]MarginResponseData) {
 	InfoLogger.Println("Margin Inserts Processing")
-	for _, v := range *inserts {
+	for v := range *inserts {
 		var insertMargin swagger.Margin
 
-		insertMargin.Account.Value = v.Account.Value
-		insertMargin.Account.Valid = v.Account.Valid
+		insertMargin.Account.Value = (*inserts)[v].Account.Value
+		insertMargin.Account.Valid = (*inserts)[v].Account.Valid
 
-		insertMargin.Currency.Value = v.Currency.Value
-		insertMargin.Currency.Valid = v.Currency.Valid
+		insertMargin.Currency.Value = (*inserts)[v].Currency.Value
+		insertMargin.Currency.Valid = (*inserts)[v].Currency.Valid
 
-		insertMargin.RiskLimit.Value = v.RiskLimit.Value
-		insertMargin.RiskLimit.Valid = v.RiskLimit.Valid
+		insertMargin.RiskLimit.Value = (*inserts)[v].RiskLimit.Value
+		insertMargin.RiskLimit.Valid = (*inserts)[v].RiskLimit.Valid
 
-		insertMargin.PrevState.Value = v.PrevState.Value
-		insertMargin.PrevState.Valid = v.PrevState.Valid
+		insertMargin.PrevState.Value = (*inserts)[v].PrevState.Value
+		insertMargin.PrevState.Valid = (*inserts)[v].PrevState.Valid
 
-		insertMargin.State.Value = v.State.Value
-		insertMargin.State.Valid = v.State.Valid
+		insertMargin.State.Value = (*inserts)[v].State.Value
+		insertMargin.State.Valid = (*inserts)[v].State.Valid
 
-		insertMargin.Action.Value = v.Action.Value
-		insertMargin.Action.Valid = v.Action.Valid
+		insertMargin.Action.Value = (*inserts)[v].Action.Value
+		insertMargin.Action.Valid = (*inserts)[v].Action.Valid
 
-		insertMargin.Amount.Value = v.Amount.Value
-		insertMargin.Amount.Valid = v.Amount.Valid
+		insertMargin.Amount.Value = (*inserts)[v].Amount.Value
+		insertMargin.Amount.Valid = (*inserts)[v].Amount.Valid
 
-		insertMargin.PendingCredit.Value = v.PendingCredit.Value
-		insertMargin.PendingCredit.Valid = v.PendingCredit.Valid
+		insertMargin.PendingCredit.Value = (*inserts)[v].PendingCredit.Value
+		insertMargin.PendingCredit.Valid = (*inserts)[v].PendingCredit.Valid
 
-		insertMargin.PendingDebit.Value = v.PendingDebit.Value
-		insertMargin.PendingDebit.Valid = v.PendingDebit.Valid
+		insertMargin.PendingDebit.Value = (*inserts)[v].PendingDebit.Value
+		insertMargin.PendingDebit.Valid = (*inserts)[v].PendingDebit.Valid
 
-		insertMargin.ConfirmedDebit.Value = v.ConfirmedDebit.Value
-		insertMargin.ConfirmedDebit.Valid = v.ConfirmedDebit.Valid
+		insertMargin.ConfirmedDebit.Value = (*inserts)[v].ConfirmedDebit.Value
+		insertMargin.ConfirmedDebit.Valid = (*inserts)[v].ConfirmedDebit.Valid
 
-		insertMargin.PrevRealisedPnl.Value = v.PrevRealisedPnl.Value
-		insertMargin.PrevRealisedPnl.Valid = v.PrevRealisedPnl.Valid
+		insertMargin.PrevRealisedPnl.Value = (*inserts)[v].PrevRealisedPnl.Value
+		insertMargin.PrevRealisedPnl.Valid = (*inserts)[v].PrevRealisedPnl.Valid
 
-		insertMargin.PrevUnrealisedPnl.Value = v.PrevUnrealisedPnl.Value
-		insertMargin.PrevUnrealisedPnl.Valid = v.PrevUnrealisedPnl.Valid
+		insertMargin.PrevUnrealisedPnl.Value = (*inserts)[v].PrevUnrealisedPnl.Value
+		insertMargin.PrevUnrealisedPnl.Valid = (*inserts)[v].PrevUnrealisedPnl.Valid
 
-		insertMargin.GrossComm.Value = v.GrossComm.Value
-		insertMargin.GrossComm.Valid = v.GrossComm.Valid
+		insertMargin.GrossComm.Value = (*inserts)[v].GrossComm.Value
+		insertMargin.GrossComm.Valid = (*inserts)[v].GrossComm.Valid
 
-		insertMargin.GrossOpenCost.Value = v.GrossOpenCost.Value
-		insertMargin.GrossOpenCost.Valid = v.GrossOpenCost.Valid
+		insertMargin.GrossOpenCost.Value = (*inserts)[v].GrossOpenCost.Value
+		insertMargin.GrossOpenCost.Valid = (*inserts)[v].GrossOpenCost.Valid
 
-		insertMargin.GrossOpenPremium.Value = v.GrossOpenPremium.Value
-		insertMargin.GrossOpenPremium.Valid = v.GrossOpenPremium.Valid
+		insertMargin.GrossOpenPremium.Value = (*inserts)[v].GrossOpenPremium.Value
+		insertMargin.GrossOpenPremium.Valid = (*inserts)[v].GrossOpenPremium.Valid
 
-		insertMargin.GrossExecCost.Value = v.GrossExecCost.Value
-		insertMargin.GrossExecCost.Valid = v.GrossExecCost.Valid
+		insertMargin.GrossExecCost.Value = (*inserts)[v].GrossExecCost.Value
+		insertMargin.GrossExecCost.Valid = (*inserts)[v].GrossExecCost.Valid
 
-		insertMargin.GrossMarkValue.Value = v.GrossMarkValue.Value
-		insertMargin.GrossMarkValue.Valid = v.GrossMarkValue.Valid
+		insertMargin.GrossMarkValue.Value = (*inserts)[v].GrossMarkValue.Value
+		insertMargin.GrossMarkValue.Valid = (*inserts)[v].GrossMarkValue.Valid
 
-		insertMargin.RiskLimit.Value = v.RiskLimit.Value
-		insertMargin.RiskLimit.Valid = v.RiskLimit.Valid
+		insertMargin.RiskLimit.Value = (*inserts)[v].RiskLimit.Value
+		insertMargin.RiskLimit.Valid = (*inserts)[v].RiskLimit.Valid
 
-		insertMargin.TaxableMargin.Value = v.TaxableMargin.Value
-		insertMargin.TaxableMargin.Valid = v.TaxableMargin.Valid
+		insertMargin.TaxableMargin.Value = (*inserts)[v].TaxableMargin.Value
+		insertMargin.TaxableMargin.Valid = (*inserts)[v].TaxableMargin.Valid
 
-		insertMargin.InitMargin.Value = v.InitMargin.Value
-		insertMargin.InitMargin.Valid = v.InitMargin.Valid
+		insertMargin.InitMargin.Value = (*inserts)[v].InitMargin.Value
+		insertMargin.InitMargin.Valid = (*inserts)[v].InitMargin.Valid
 
-		insertMargin.MaintMargin.Value = v.MaintMargin.Value
-		insertMargin.MaintMargin.Valid = v.MaintMargin.Valid
+		insertMargin.MaintMargin.Value = (*inserts)[v].MaintMargin.Value
+		insertMargin.MaintMargin.Valid = (*inserts)[v].MaintMargin.Valid
 
-		insertMargin.SessionMargin.Value = v.SessionMargin.Value
-		insertMargin.SessionMargin.Valid = v.SessionMargin.Valid
+		insertMargin.SessionMargin.Value = (*inserts)[v].SessionMargin.Value
+		insertMargin.SessionMargin.Valid = (*inserts)[v].SessionMargin.Valid
 
-		insertMargin.TargetExcessMargin.Value = v.TargetExcessMargin.Value
-		insertMargin.TargetExcessMargin.Valid = v.TargetExcessMargin.Valid
+		insertMargin.TargetExcessMargin.Value = (*inserts)[v].TargetExcessMargin.Value
+		insertMargin.TargetExcessMargin.Valid = (*inserts)[v].TargetExcessMargin.Valid
 
-		insertMargin.VarMargin.Value = v.VarMargin.Value
-		insertMargin.VarMargin.Valid = v.VarMargin.Valid
+		insertMargin.VarMargin.Value = (*inserts)[v].VarMargin.Value
+		insertMargin.VarMargin.Valid = (*inserts)[v].VarMargin.Valid
 
-		insertMargin.RealisedPnl.Value = v.RealisedPnl.Value
-		insertMargin.RealisedPnl.Valid = v.RealisedPnl.Valid
+		insertMargin.RealisedPnl.Value = (*inserts)[v].RealisedPnl.Value
+		insertMargin.RealisedPnl.Valid = (*inserts)[v].RealisedPnl.Valid
 
-		insertMargin.UnrealisedPnl.Value = v.UnrealisedPnl.Value
-		insertMargin.UnrealisedPnl.Valid = v.UnrealisedPnl.Valid
+		insertMargin.UnrealisedPnl.Value = (*inserts)[v].UnrealisedPnl.Value
+		insertMargin.UnrealisedPnl.Valid = (*inserts)[v].UnrealisedPnl.Valid
 
-		insertMargin.UnrealisedPnl.Value = v.UnrealisedPnl.Value
-		insertMargin.UnrealisedPnl.Valid = v.UnrealisedPnl.Valid
+		insertMargin.UnrealisedPnl.Value = (*inserts)[v].UnrealisedPnl.Value
+		insertMargin.UnrealisedPnl.Valid = (*inserts)[v].UnrealisedPnl.Valid
 
-		insertMargin.UnrealisedProfit.Value = v.UnrealisedProfit.Value
-		insertMargin.UnrealisedProfit.Valid = v.UnrealisedProfit.Valid
+		insertMargin.UnrealisedProfit.Value = (*inserts)[v].UnrealisedProfit.Value
+		insertMargin.UnrealisedProfit.Valid = (*inserts)[v].UnrealisedProfit.Valid
 
-		insertMargin.SyntheticMargin.Value = v.SyntheticMargin.Value
-		insertMargin.SyntheticMargin.Valid = v.SyntheticMargin.Valid
+		insertMargin.SyntheticMargin.Value = (*inserts)[v].SyntheticMargin.Value
+		insertMargin.SyntheticMargin.Valid = (*inserts)[v].SyntheticMargin.Valid
 
-		insertMargin.WalletBalance.Value = v.WalletBalance.Value
-		insertMargin.WalletBalance.Valid = v.WalletBalance.Valid
+		insertMargin.WalletBalance.Value = (*inserts)[v].WalletBalance.Value
+		insertMargin.WalletBalance.Valid = (*inserts)[v].WalletBalance.Valid
 
-		insertMargin.MarginBalance.Value = v.MarginBalance.Value
-		insertMargin.MarginBalance.Valid = v.MarginBalance.Valid
+		insertMargin.MarginBalance.Value = (*inserts)[v].MarginBalance.Value
+		insertMargin.MarginBalance.Valid = (*inserts)[v].MarginBalance.Valid
 
-		insertMargin.MarginBalancePcnt.Value = v.MarginBalancePcnt.Value
-		insertMargin.MarginBalancePcnt.Valid = v.MarginBalancePcnt.Valid
+		insertMargin.MarginBalancePcnt.Value = (*inserts)[v].MarginBalancePcnt.Value
+		insertMargin.MarginBalancePcnt.Valid = (*inserts)[v].MarginBalancePcnt.Valid
 
-		insertMargin.MarginLeverage.Value = v.MarginLeverage.Value
-		insertMargin.MarginLeverage.Valid = v.MarginLeverage.Valid
+		insertMargin.MarginLeverage.Value = (*inserts)[v].MarginLeverage.Value
+		insertMargin.MarginLeverage.Valid = (*inserts)[v].MarginLeverage.Valid
 
-		insertMargin.MarginUsedPcnt.Value = v.MarginUsedPcnt.Value
-		insertMargin.MarginUsedPcnt.Valid = v.MarginUsedPcnt.Valid
+		insertMargin.MarginUsedPcnt.Value = (*inserts)[v].MarginUsedPcnt.Value
+		insertMargin.MarginUsedPcnt.Valid = (*inserts)[v].MarginUsedPcnt.Valid
 
-		insertMargin.ExcessMargin.Value = v.ExcessMargin.Value
-		insertMargin.ExcessMargin.Valid = v.ExcessMargin.Valid
+		insertMargin.ExcessMargin.Value = (*inserts)[v].ExcessMargin.Value
+		insertMargin.ExcessMargin.Valid = (*inserts)[v].ExcessMargin.Valid
 
-		insertMargin.ExcessMarginPcnt.Value = v.ExcessMarginPcnt.Value
-		insertMargin.ExcessMarginPcnt.Valid = v.ExcessMarginPcnt.Valid
+		insertMargin.ExcessMarginPcnt.Value = (*inserts)[v].ExcessMarginPcnt.Value
+		insertMargin.ExcessMarginPcnt.Valid = (*inserts)[v].ExcessMarginPcnt.Valid
 
-		insertMargin.AvailableMargin.Value = v.AvailableMargin.Value
-		insertMargin.AvailableMargin.Valid = v.AvailableMargin.Valid
+		insertMargin.AvailableMargin.Value = (*inserts)[v].AvailableMargin.Value
+		insertMargin.AvailableMargin.Valid = (*inserts)[v].AvailableMargin.Valid
 
-		insertMargin.WithdrawableMargin.Value = v.WithdrawableMargin.Value
-		insertMargin.WithdrawableMargin.Valid = v.WithdrawableMargin.Valid
+		insertMargin.WithdrawableMargin.Value = (*inserts)[v].WithdrawableMargin.Value
+		insertMargin.WithdrawableMargin.Valid = (*inserts)[v].WithdrawableMargin.Valid
 
-		insertMargin.Timestamp.Value = v.Timestamp.Value
-		insertMargin.Timestamp.Valid = v.Timestamp.Valid
+		insertMargin.Timestamp.Value = (*inserts)[v].Timestamp.Value
+		insertMargin.Timestamp.Valid = (*inserts)[v].Timestamp.Valid
 
-		insertMargin.GrossLastValue.Value = v.GrossLastValue.Value
-		insertMargin.GrossLastValue.Valid = v.GrossLastValue.Valid
+		insertMargin.GrossLastValue.Value = (*inserts)[v].GrossLastValue.Value
+		insertMargin.GrossLastValue.Valid = (*inserts)[v].GrossLastValue.Valid
 
 		*margin = append(*margin, insertMargin)
 	}
@@ -311,217 +311,217 @@ func (margin *MarginSlice) MarginInsert(inserts *[]MarginResponseData) {
 
 func (margin *MarginSlice) MarginUpdate(updates *[]MarginResponseData) {
 	InfoLogger.Println("Margin Updates Processing")
-	for _, u := range *updates {
-		for i, v := range *margin {
+	for u := range *updates {
+		for i := range *margin {
 
-			if u.Account.Value == v.Account.Value {
-				if u.Account.Set {
-					v.Account.Value = u.Account.Value
-					v.Account.Valid = u.Account.Valid
+			if (*updates)[u].Account.Value == (*margin)[i].Account.Value {
+				if (*updates)[u].Account.Set {
+					(*margin)[i].Account.Value = (*updates)[u].Account.Value
+					(*margin)[i].Account.Valid = (*updates)[u].Account.Valid
 				}
 
-				if u.Currency.Set {
-					v.Currency.Value = u.Currency.Value
-					v.Currency.Valid = u.Currency.Valid
+				if (*updates)[u].Currency.Set {
+					(*margin)[i].Currency.Value = (*updates)[u].Currency.Value
+					(*margin)[i].Currency.Valid = (*updates)[u].Currency.Valid
 				}
 
-				if u.RiskLimit.Set {
-					v.RiskLimit.Value = u.RiskLimit.Value
-					v.RiskLimit.Valid = u.RiskLimit.Valid
+				if (*updates)[u].RiskLimit.Set {
+					(*margin)[i].RiskLimit.Value = (*updates)[u].RiskLimit.Value
+					(*margin)[i].RiskLimit.Valid = (*updates)[u].RiskLimit.Valid
 				}
 
-				if u.PrevState.Set {
-					v.PrevState.Value = u.PrevState.Value
-					v.PrevState.Valid = u.PrevState.Valid
+				if (*updates)[u].PrevState.Set {
+					(*margin)[i].PrevState.Value = (*updates)[u].PrevState.Value
+					(*margin)[i].PrevState.Valid = (*updates)[u].PrevState.Valid
 				}
 
-				if u.State.Set {
-					v.State.Value = u.State.Value
-					v.State.Valid = u.State.Valid
+				if (*updates)[u].State.Set {
+					(*margin)[i].State.Value = (*updates)[u].State.Value
+					(*margin)[i].State.Valid = (*updates)[u].State.Valid
 				}
 
-				if u.Action.Set {
-					v.Action.Value = u.Action.Value
-					v.Action.Valid = u.Action.Valid
+				if (*updates)[u].Action.Set {
+					(*margin)[i].Action.Value = (*updates)[u].Action.Value
+					(*margin)[i].Action.Valid = (*updates)[u].Action.Valid
 				}
 
-				if u.Amount.Set {
-					v.Amount.Value = u.Amount.Value
-					v.Amount.Valid = u.Amount.Valid
+				if (*updates)[u].Amount.Set {
+					(*margin)[i].Amount.Value = (*updates)[u].Amount.Value
+					(*margin)[i].Amount.Valid = (*updates)[u].Amount.Valid
 				}
 
-				if u.PendingCredit.Set {
-					v.PendingCredit.Value = u.PendingCredit.Value
-					v.PendingCredit.Valid = u.PendingCredit.Valid
+				if (*updates)[u].PendingCredit.Set {
+					(*margin)[i].PendingCredit.Value = (*updates)[u].PendingCredit.Value
+					(*margin)[i].PendingCredit.Valid = (*updates)[u].PendingCredit.Valid
 				}
 
-				if u.PendingDebit.Set {
-					v.PendingDebit.Value = u.PendingDebit.Value
-					v.PendingDebit.Valid = u.PendingDebit.Valid
+				if (*updates)[u].PendingDebit.Set {
+					(*margin)[i].PendingDebit.Value = (*updates)[u].PendingDebit.Value
+					(*margin)[i].PendingDebit.Valid = (*updates)[u].PendingDebit.Valid
 				}
 
-				if u.ConfirmedDebit.Set {
-					v.ConfirmedDebit.Value = u.ConfirmedDebit.Value
-					v.ConfirmedDebit.Valid = u.ConfirmedDebit.Valid
+				if (*updates)[u].ConfirmedDebit.Set {
+					(*margin)[i].ConfirmedDebit.Value = (*updates)[u].ConfirmedDebit.Value
+					(*margin)[i].ConfirmedDebit.Valid = (*updates)[u].ConfirmedDebit.Valid
 				}
 
-				if u.PrevRealisedPnl.Set {
-					v.PrevRealisedPnl.Value = u.PrevRealisedPnl.Value
-					v.PrevRealisedPnl.Valid = u.PrevRealisedPnl.Valid
+				if (*updates)[u].PrevRealisedPnl.Set {
+					(*margin)[i].PrevRealisedPnl.Value = (*updates)[u].PrevRealisedPnl.Value
+					(*margin)[i].PrevRealisedPnl.Valid = (*updates)[u].PrevRealisedPnl.Valid
 				}
 
-				if u.PrevUnrealisedPnl.Set {
-					v.PrevUnrealisedPnl.Value = u.PrevUnrealisedPnl.Value
-					v.PrevUnrealisedPnl.Valid = u.PrevUnrealisedPnl.Valid
+				if (*updates)[u].PrevUnrealisedPnl.Set {
+					(*margin)[i].PrevUnrealisedPnl.Value = (*updates)[u].PrevUnrealisedPnl.Value
+					(*margin)[i].PrevUnrealisedPnl.Valid = (*updates)[u].PrevUnrealisedPnl.Valid
 				}
 
-				if u.GrossComm.Set {
-					v.GrossComm.Value = u.GrossComm.Value
-					v.GrossComm.Valid = u.GrossComm.Valid
+				if (*updates)[u].GrossComm.Set {
+					(*margin)[i].GrossComm.Value = (*updates)[u].GrossComm.Value
+					(*margin)[i].GrossComm.Valid = (*updates)[u].GrossComm.Valid
 				}
 
-				if u.GrossOpenCost.Set {
-					v.GrossOpenCost.Value = u.GrossOpenCost.Value
-					v.GrossOpenCost.Valid = u.GrossOpenCost.Valid
+				if (*updates)[u].GrossOpenCost.Set {
+					(*margin)[i].GrossOpenCost.Value = (*updates)[u].GrossOpenCost.Value
+					(*margin)[i].GrossOpenCost.Valid = (*updates)[u].GrossOpenCost.Valid
 				}
 
-				if u.GrossOpenPremium.Set {
-					v.GrossOpenPremium.Value = u.GrossOpenPremium.Value
-					v.GrossOpenPremium.Valid = u.GrossOpenPremium.Valid
+				if (*updates)[u].GrossOpenPremium.Set {
+					(*margin)[i].GrossOpenPremium.Value = (*updates)[u].GrossOpenPremium.Value
+					(*margin)[i].GrossOpenPremium.Valid = (*updates)[u].GrossOpenPremium.Valid
 				}
 
-				if u.GrossExecCost.Set {
-					v.GrossExecCost.Value = u.GrossExecCost.Value
-					v.GrossExecCost.Valid = u.GrossExecCost.Valid
+				if (*updates)[u].GrossExecCost.Set {
+					(*margin)[i].GrossExecCost.Value = (*updates)[u].GrossExecCost.Value
+					(*margin)[i].GrossExecCost.Valid = (*updates)[u].GrossExecCost.Valid
 				}
 
-				if u.GrossMarkValue.Set {
-					v.GrossMarkValue.Value = u.GrossMarkValue.Value
-					v.GrossMarkValue.Valid = u.GrossMarkValue.Valid
+				if (*updates)[u].GrossMarkValue.Set {
+					(*margin)[i].GrossMarkValue.Value = (*updates)[u].GrossMarkValue.Value
+					(*margin)[i].GrossMarkValue.Valid = (*updates)[u].GrossMarkValue.Valid
 				}
 
-				if u.RiskValue.Set {
-					v.RiskValue.Value = u.RiskValue.Value
-					v.RiskValue.Valid = u.RiskValue.Valid
+				if (*updates)[u].RiskValue.Set {
+					(*margin)[i].RiskValue.Value = (*updates)[u].RiskValue.Value
+					(*margin)[i].RiskValue.Valid = (*updates)[u].RiskValue.Valid
 				}
 
-				if u.TaxableMargin.Set {
-					v.TaxableMargin.Value = u.TaxableMargin.Value
-					v.TaxableMargin.Valid = u.TaxableMargin.Valid
+				if (*updates)[u].TaxableMargin.Set {
+					(*margin)[i].TaxableMargin.Value = (*updates)[u].TaxableMargin.Value
+					(*margin)[i].TaxableMargin.Valid = (*updates)[u].TaxableMargin.Valid
 				}
 
-				if u.InitMargin.Set {
-					v.InitMargin.Value = u.InitMargin.Value
-					v.InitMargin.Valid = u.InitMargin.Valid
+				if (*updates)[u].InitMargin.Set {
+					(*margin)[i].InitMargin.Value = (*updates)[u].InitMargin.Value
+					(*margin)[i].InitMargin.Valid = (*updates)[u].InitMargin.Valid
 				}
 
-				if u.MaintMargin.Set {
-					v.MaintMargin.Value = u.MaintMargin.Value
-					v.MaintMargin.Valid = u.MaintMargin.Valid
+				if (*updates)[u].MaintMargin.Set {
+					(*margin)[i].MaintMargin.Value = (*updates)[u].MaintMargin.Value
+					(*margin)[i].MaintMargin.Valid = (*updates)[u].MaintMargin.Valid
 				}
 
-				if u.SessionMargin.Set {
-					v.SessionMargin.Value = u.SessionMargin.Value
-					v.SessionMargin.Valid = u.SessionMargin.Valid
+				if (*updates)[u].SessionMargin.Set {
+					(*margin)[i].SessionMargin.Value = (*updates)[u].SessionMargin.Value
+					(*margin)[i].SessionMargin.Valid = (*updates)[u].SessionMargin.Valid
 				}
 
-				if u.TargetExcessMargin.Set {
-					v.TargetExcessMargin.Value = u.TargetExcessMargin.Value
-					v.TargetExcessMargin.Valid = u.TargetExcessMargin.Valid
+				if (*updates)[u].TargetExcessMargin.Set {
+					(*margin)[i].TargetExcessMargin.Value = (*updates)[u].TargetExcessMargin.Value
+					(*margin)[i].TargetExcessMargin.Valid = (*updates)[u].TargetExcessMargin.Valid
 				}
 
-				if u.VarMargin.Set {
-					v.VarMargin.Value = u.VarMargin.Value
-					v.VarMargin.Valid = u.VarMargin.Valid
+				if (*updates)[u].VarMargin.Set {
+					(*margin)[i].VarMargin.Value = (*updates)[u].VarMargin.Value
+					(*margin)[i].VarMargin.Valid = (*updates)[u].VarMargin.Valid
 				}
 
-				if u.RealisedPnl.Set {
-					v.RealisedPnl.Value = u.RealisedPnl.Value
-					v.RealisedPnl.Valid = u.RealisedPnl.Valid
+				if (*updates)[u].RealisedPnl.Set {
+					(*margin)[i].RealisedPnl.Value = (*updates)[u].RealisedPnl.Value
+					(*margin)[i].RealisedPnl.Valid = (*updates)[u].RealisedPnl.Valid
 				}
 
-				if u.UnrealisedPnl.Set {
-					v.UnrealisedPnl.Value = u.UnrealisedPnl.Value
-					v.UnrealisedPnl.Valid = u.UnrealisedPnl.Valid
+				if (*updates)[u].UnrealisedPnl.Set {
+					(*margin)[i].UnrealisedPnl.Value = (*updates)[u].UnrealisedPnl.Value
+					(*margin)[i].UnrealisedPnl.Valid = (*updates)[u].UnrealisedPnl.Valid
 				}
 
-				if u.IndicativeTax.Set {
-					v.IndicativeTax.Value = u.IndicativeTax.Value
-					v.IndicativeTax.Valid = u.IndicativeTax.Valid
+				if (*updates)[u].IndicativeTax.Set {
+					(*margin)[i].IndicativeTax.Value = (*updates)[u].IndicativeTax.Value
+					(*margin)[i].IndicativeTax.Valid = (*updates)[u].IndicativeTax.Valid
 				}
 
-				if u.UnrealisedProfit.Set {
-					v.UnrealisedProfit.Value = u.UnrealisedProfit.Value
-					v.UnrealisedProfit.Valid = u.UnrealisedProfit.Valid
+				if (*updates)[u].UnrealisedProfit.Set {
+					(*margin)[i].UnrealisedProfit.Value = (*updates)[u].UnrealisedProfit.Value
+					(*margin)[i].UnrealisedProfit.Valid = (*updates)[u].UnrealisedProfit.Valid
 				}
 
-				if u.SyntheticMargin.Set {
-					v.SyntheticMargin.Value = u.SyntheticMargin.Value
-					v.SyntheticMargin.Valid = u.SyntheticMargin.Valid
+				if (*updates)[u].SyntheticMargin.Set {
+					(*margin)[i].SyntheticMargin.Value = (*updates)[u].SyntheticMargin.Value
+					(*margin)[i].SyntheticMargin.Valid = (*updates)[u].SyntheticMargin.Valid
 				}
 
-				if u.WalletBalance.Set {
-					v.WalletBalance.Value = u.WalletBalance.Value
-					v.WalletBalance.Valid = u.WalletBalance.Valid
+				if (*updates)[u].WalletBalance.Set {
+					(*margin)[i].WalletBalance.Value = (*updates)[u].WalletBalance.Value
+					(*margin)[i].WalletBalance.Valid = (*updates)[u].WalletBalance.Valid
 				}
 
-				if u.MarginBalance.Set {
-					v.MarginBalance.Value = u.MarginBalance.Value
-					v.MarginBalance.Valid = u.MarginBalance.Valid
+				if (*updates)[u].MarginBalance.Set {
+					(*margin)[i].MarginBalance.Value = (*updates)[u].MarginBalance.Value
+					(*margin)[i].MarginBalance.Valid = (*updates)[u].MarginBalance.Valid
 				}
 
-				if u.MarginBalancePcnt.Set {
-					v.MarginBalancePcnt.Value = u.MarginBalancePcnt.Value
-					v.MarginBalancePcnt.Valid = u.MarginBalancePcnt.Valid
+				if (*updates)[u].MarginBalancePcnt.Set {
+					(*margin)[i].MarginBalancePcnt.Value = (*updates)[u].MarginBalancePcnt.Value
+					(*margin)[i].MarginBalancePcnt.Valid = (*updates)[u].MarginBalancePcnt.Valid
 				}
 
-				if u.MarginLeverage.Set {
-					v.MarginLeverage.Value = u.MarginLeverage.Value
-					v.MarginLeverage.Valid = u.MarginLeverage.Valid
+				if (*updates)[u].MarginLeverage.Set {
+					(*margin)[i].MarginLeverage.Value = (*updates)[u].MarginLeverage.Value
+					(*margin)[i].MarginLeverage.Valid = (*updates)[u].MarginLeverage.Valid
 				}
 
-				if u.MarginUsedPcnt.Set {
-					v.MarginUsedPcnt.Value = u.MarginUsedPcnt.Value
-					v.MarginUsedPcnt.Valid = u.MarginUsedPcnt.Valid
+				if (*updates)[u].MarginUsedPcnt.Set {
+					(*margin)[i].MarginUsedPcnt.Value = (*updates)[u].MarginUsedPcnt.Value
+					(*margin)[i].MarginUsedPcnt.Valid = (*updates)[u].MarginUsedPcnt.Valid
 				}
 
-				if u.ExcessMargin.Set {
-					v.ExcessMargin.Value = u.ExcessMargin.Value
-					v.ExcessMargin.Valid = u.ExcessMargin.Valid
+				if (*updates)[u].ExcessMargin.Set {
+					(*margin)[i].ExcessMargin.Value = (*updates)[u].ExcessMargin.Value
+					(*margin)[i].ExcessMargin.Valid = (*updates)[u].ExcessMargin.Valid
 				}
 
-				if u.ExcessMarginPcnt.Set {
-					v.ExcessMarginPcnt.Value = u.ExcessMarginPcnt.Value
-					v.ExcessMarginPcnt.Valid = u.ExcessMarginPcnt.Valid
+				if (*updates)[u].ExcessMarginPcnt.Set {
+					(*margin)[i].ExcessMarginPcnt.Value = (*updates)[u].ExcessMarginPcnt.Value
+					(*margin)[i].ExcessMarginPcnt.Valid = (*updates)[u].ExcessMarginPcnt.Valid
 				}
 
-				if u.AvailableMargin.Set {
-					v.AvailableMargin.Value = u.AvailableMargin.Value
-					v.AvailableMargin.Valid = u.AvailableMargin.Valid
+				if (*updates)[u].AvailableMargin.Set {
+					(*margin)[i].AvailableMargin.Value = (*updates)[u].AvailableMargin.Value
+					(*margin)[i].AvailableMargin.Valid = (*updates)[u].AvailableMargin.Valid
 				}
 
-				if u.WithdrawableMargin.Set {
-					v.WithdrawableMargin.Value = u.WithdrawableMargin.Value
-					v.WithdrawableMargin.Valid = u.WithdrawableMargin.Valid
+				if (*updates)[u].WithdrawableMargin.Set {
+					(*margin)[i].WithdrawableMargin.Value = (*updates)[u].WithdrawableMargin.Value
+					(*margin)[i].WithdrawableMargin.Valid = (*updates)[u].WithdrawableMargin.Valid
 				}
 
-				if u.Timestamp.Set {
-					v.Timestamp.Value = u.Timestamp.Value
-					v.Timestamp.Valid = u.Timestamp.Valid
+				if (*updates)[u].Timestamp.Set {
+					(*margin)[i].Timestamp.Value = (*updates)[u].Timestamp.Value
+					(*margin)[i].Timestamp.Valid = (*updates)[u].Timestamp.Valid
 				}
 
-				if u.GrossLastValue.Set {
-					v.GrossLastValue.Value = u.GrossLastValue.Value
-					v.GrossLastValue.Valid = u.GrossLastValue.Valid
+				if (*updates)[u].GrossLastValue.Set {
+					(*margin)[i].GrossLastValue.Value = (*updates)[u].GrossLastValue.Value
+					(*margin)[i].GrossLastValue.Valid = (*updates)[u].GrossLastValue.Valid
 				}
 
-				if u.Commission.Set {
-					v.Commission.Value = u.Commission.Value
-					v.Commission.Valid = u.Commission.Valid
+				if (*updates)[u].Commission.Set {
+					(*margin)[i].Commission.Value = (*updates)[u].Commission.Value
+					(*margin)[i].Commission.Valid = (*updates)[u].Commission.Valid
 				}
 
 				later := (*margin)[i+1:]
-				*margin = append((*margin)[:i], v)
+				*margin = append((*margin)[:i], (*margin)[i])
 				*margin = append(*margin, later...)
 			}
 		}
@@ -531,9 +531,9 @@ func (margin *MarginSlice) MarginUpdate(updates *[]MarginResponseData) {
 
 func (margin *MarginSlice) MarginDelete(deletes *[]MarginResponseData) {
 	InfoLogger.Println("Margin Deletes Processing")
-	for _, u := range *deletes {
-		for i, v := range *margin {
-			if u.Account.Value == v.Account.Value {
+	for u := range *deletes {
+		for i := range *margin {
+			if (*deletes)[u].Account.Value == (*margin)[i].Account.Value {
 				*margin = append((*margin)[:i], (*margin)[i+1:]...)
 			}
 		}
