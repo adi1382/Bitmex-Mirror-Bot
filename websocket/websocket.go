@@ -36,17 +36,17 @@ func init() {
 
 	}
 
-	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {
 		ErrorLogger.Fatal(err)
 	}
 
-	received, err := os.OpenFile("logs/socketReceived.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	received, err := os.OpenFile("logs/socketReceived.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {
 		ErrorLogger.Fatal(err)
 	}
 
-	sent, err := os.OpenFile("logs/socketSent.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	sent, err := os.OpenFile("logs/socketSent.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {
 		ErrorLogger.Fatal(err)
 	}

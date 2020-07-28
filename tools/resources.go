@@ -26,7 +26,7 @@ func NewMonitor(duration int) {
 	var interval = time.Duration(duration) * time.Second
 
 	var Resources *log.Logger
-	resourcesFile, err := os.OpenFile("logs/resources.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	resourcesFile, err := os.OpenFile("logs/resources.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {
 		log.Fatal(err)
 	}
