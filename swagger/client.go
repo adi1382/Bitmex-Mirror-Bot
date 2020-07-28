@@ -189,7 +189,9 @@ func (c *APIClient) prepareRequest(
 	path, method string,
 	postBody interface{},
 	headerParams map[string]string,
-	queryParams, formParams url.Values) (localVarRequest *http.Request, err error) {
+	queryParams, formParams url.Values,
+	localFileName string,
+	localFileByte []byte) (localVarRequest *http.Request, err error) {
 
 	var body *bytes.Buffer
 

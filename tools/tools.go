@@ -22,7 +22,7 @@ func init() {
 	_, err := os.Stat("logs")
 
 	if os.IsNotExist(err) {
-		errDir := os.MkdirAll("logs", 0755)
+		errDir := os.MkdirAll("logs", 0750)
 		if errDir != nil {
 			ErrorLogger.Fatal(err)
 		}
