@@ -44,7 +44,7 @@ func (c *SubClient) OrderHandler() {
 				break
 			}
 
-			if calibrateBool == false && calibrateBoolReset.Unix() < time.Now().Unix() {
+			if !calibrateBool && calibrateBoolReset.Unix() < time.Now().Unix() {
 				calibrateBoolReset = time.Now().Add(time.Second * time.Duration(c.calibrationTime))
 				calibrateBool = true
 			}
