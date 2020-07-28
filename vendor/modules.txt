@@ -1,0 +1,22 @@
+# github.com/gorilla/websocket v1.4.2
+## explicit
+github.com/gorilla/websocket
+# github.com/sparrc/go-ping v0.0.0-20190613174326-4e5b6552494c
+## explicit
+github.com/sparrc/go-ping
+# go.uber.org/atomic v1.6.0
+## explicit
+go.uber.org/atomic
+# golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+golang.org/x/net/bpf
+golang.org/x/net/icmp
+golang.org/x/net/internal/iana
+golang.org/x/net/internal/socket
+golang.org/x/net/ipv4
+golang.org/x/net/ipv6
+# golang.org/x/sys v0.0.0-20200728102440-3e129f6d46b1
+## explicit
+golang.org/x/sys/internal/unsafeheader
+golang.org/x/sys/unix
+golang.org/x/sys/windows
+golang.org/x/sys/windows/registry
