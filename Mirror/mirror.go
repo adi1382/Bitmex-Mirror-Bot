@@ -105,11 +105,11 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 func (m *Mirror) SubChecker() {
 	go func() {
 		for {
-			m.remover()
-
 			if m.RestartCounter.Load() > 0 {
 				break
 			}
+
+			m.remover()
 
 			time.Sleep(time.Second * 5)
 		}

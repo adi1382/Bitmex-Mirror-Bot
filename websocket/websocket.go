@@ -166,6 +166,7 @@ func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter
 		}
 
 		if messageType == 1 {
+			receiveLogger.Println("Length of channel:", len(chRead), "Message:", string(message))
 			chRead <- message
 		} else {
 			continue
@@ -249,13 +250,14 @@ func WriteFromChannelToWS(c *websocket.Conn, chWrite <-chan interface{}, Restart
 			continue
 		}
 
+		sendLogger.Println("Length of channel:", len(chWrite), "Message:", string(message.([]byte)))
 		err = c.WriteMessage(websocket.TextMessage, message.([]byte))
 
 		tools.WebsocketErr(err, RestartCounter)
 	}
 }
 
-func GetAuthMessage(key string, secret string) Message {
+func GetAuthMessage(key, secret string) Message {
 	timestamp := time.Now().Add(time.Second * 412).Unix()
 	sig := hmac.New(sha256.New, []byte(secret))
 	sig.Write([]byte(fmt.Sprintf("GET/realtime%d", timestamp)))

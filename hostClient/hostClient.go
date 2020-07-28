@@ -146,10 +146,8 @@ func (c *HostClient) marginUpdate() {
 			time.Sleep(time.Second * 5)
 			if time.Now().Unix() > resetTime.Unix() {
 				break
-			} else {
-				if !c.RunningStatus() {
-					break
-				}
+			} else if !c.RunningStatus() {
+				break
 			}
 		}
 	}
@@ -362,9 +360,11 @@ L:
 		case 1:
 			continue L
 		case 2:
-			fmt.Println("Remove the current sub subClient")
-			c.CloseConnection()
-			return -404
+			fmt.Println("API key Invalid/Disabled on Host")
+			InfoLogger.Println("API key Invalid/Disabled on Host")
+			os.Exit(-1)
+			//c.CloseConnection()
+			//return -404
 			//break function
 		case 3:
 			fmt.Println("Restart the bot")

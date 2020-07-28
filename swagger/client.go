@@ -154,7 +154,7 @@ func contains(haystack []string, needle string) bool {
 }
 
 // Verify optional parameters are of the correct type.
-func typeCheckParameter(obj interface{}, expected string, name string) error {
+func typeCheckParameter(obj interface{}, expected, name string) error {
 	// Make sure there is an object.
 	if obj == nil {
 		return nil
@@ -202,13 +202,11 @@ func (c *APIClient) ChangeBasePath(path string) {
 // prepareRequest build the request
 func (c *APIClient) prepareRequest(
 	ctx context.Context,
-	path string, method string,
+	path, method string,
 	postBody interface{},
 	headerParams map[string]string,
-	queryParams url.Values,
-	formParams url.Values,
-	fileName string,
-	fileBytes []byte) (localVarRequest *http.Request, err error) {
+	queryParams, formParams url.Values,
+	fileName string, fileBytes []byte) (localVarRequest *http.Request, err error) {
 
 	var body *bytes.Buffer
 

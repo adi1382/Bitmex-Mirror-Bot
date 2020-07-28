@@ -36,10 +36,8 @@ func PingPong(conn *websocket.Conn, RestartCounter *atomic.Uint32, wg *sync.Wait
 				time.Sleep(time.Nanosecond)
 				if time.Now().Unix() > resetTime.Unix() {
 					break
-				} else {
-					if RestartCounter.Load() > 0 {
-						break
-					}
+				} else if RestartCounter.Load() > 0 {
+					break
 				}
 			}
 			//time.Sleep(time.Second*5)

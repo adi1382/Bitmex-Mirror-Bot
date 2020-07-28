@@ -39,10 +39,14 @@ func init() {
 }
 
 func NewSubClient(
-	apiKey, apiSecret string, test bool, balanceProportion bool,
-	fixedRatio float64, ch chan<- interface{}, marginUpdateTime int64,
-	calibrationTime int64, limitFilledTimeout int64,
-	RestartCounter *atomic.Uint32, hostClient *hostClient.HostClient) *SubClient {
+	apiKey, apiSecret string,
+	test, balanceProportion bool,
+	fixedRatio float64,
+	ch chan<- interface{},
+	marginUpdateTime, calibrationTime, limitFilledTimeout int64,
+	RestartCounter *atomic.Uint32,
+	hostClient *hostClient.HostClient) *SubClient {
+
 	c := SubClient{
 		ApiKey:    apiKey,
 		apiSecret: apiSecret,
@@ -187,10 +191,8 @@ func (c *SubClient) marginUpdate() {
 			time.Sleep(time.Nanosecond)
 			if time.Now().Unix() > resetTime.Unix() {
 				break
-			} else {
-				if !c.RunningStatus() {
-					break
-				}
+			} else if !c.RunningStatus() {
+				break
 			}
 		}
 	}

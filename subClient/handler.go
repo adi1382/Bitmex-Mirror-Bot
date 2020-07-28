@@ -27,7 +27,6 @@ func (c *SubClient) OrderHandler() {
 
 	calibrateBool := true
 	calibrateBoolReset := time.Now().Add(time.Second * time.Duration(c.calibrationTime))
-	calibrateBoolClose := false
 
 	go func() {
 
@@ -40,9 +39,6 @@ func (c *SubClient) OrderHandler() {
 
 		for {
 			time.Sleep(time.Nanosecond)
-			if calibrateBoolClose {
-				break
-			}
 
 			if !c.RunningStatus() {
 				break
@@ -62,12 +58,12 @@ func (c *SubClient) OrderHandler() {
 
 	for {
 
+		time.Sleep(time.Nanosecond)
+
 		if !c.RunningStatus() {
-			calibrateBoolClose = true
 			break
 		}
 
-		time.Sleep(time.Nanosecond)
 		select {
 
 		case message := <-c.hostUpdatesFetcher:
