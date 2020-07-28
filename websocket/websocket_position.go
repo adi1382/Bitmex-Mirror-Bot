@@ -389,759 +389,759 @@ func (positions *PositionSlice) PositionInsert(inserts *[]PositionResponseData) 
 	var toInsert []PositionResponseData
 	flag := true
 
-	for _, i := range *inserts {
-		for _, p := range *positions {
-			if i.Symbol.Value == p.Symbol.Value {
-				toUpdate = append(toUpdate, i)
+	for i := range *inserts {
+		for p := range *positions {
+			if (*inserts)[i].Symbol.Value == (*positions)[p].Symbol.Value {
+				toUpdate = append(toUpdate, (*inserts)[i])
 				flag = false
 				break
 			}
 		}
 		if flag {
-			toInsert = append(toInsert, i)
+			toInsert = append(toInsert, (*inserts)[i])
 		}
 	}
 
 	positions.PositionUpdate(&toUpdate)
 	*inserts = toInsert
 
-	for _, v := range *inserts {
+	for v := range *inserts {
 		var insertPosition swagger.Position
 
-		insertPosition.Account.Value = v.Account.Value
-		insertPosition.Account.Valid = v.Account.Valid
+		insertPosition.Account.Value = (*inserts)[v].Account.Value
+		insertPosition.Account.Valid = (*inserts)[v].Account.Valid
 
-		insertPosition.Symbol.Value = v.Symbol.Value
-		insertPosition.Symbol.Valid = v.Symbol.Valid
+		insertPosition.Symbol.Value = (*inserts)[v].Symbol.Value
+		insertPosition.Symbol.Valid = (*inserts)[v].Symbol.Valid
 
-		insertPosition.Currency.Value = v.Currency.Value
-		insertPosition.Currency.Valid = v.Currency.Valid
+		insertPosition.Currency.Value = (*inserts)[v].Currency.Value
+		insertPosition.Currency.Valid = (*inserts)[v].Currency.Valid
 
-		insertPosition.Underlying.Value = v.Underlying.Value
-		insertPosition.Underlying.Valid = v.Underlying.Valid
+		insertPosition.Underlying.Value = (*inserts)[v].Underlying.Value
+		insertPosition.Underlying.Valid = (*inserts)[v].Underlying.Valid
 
-		insertPosition.QuoteCurrency.Value = v.QuoteCurrency.Value
-		insertPosition.QuoteCurrency.Valid = v.QuoteCurrency.Valid
+		insertPosition.QuoteCurrency.Value = (*inserts)[v].QuoteCurrency.Value
+		insertPosition.QuoteCurrency.Valid = (*inserts)[v].QuoteCurrency.Valid
 
-		insertPosition.Commission.Value = v.Commission.Value
-		insertPosition.Commission.Valid = v.Commission.Valid
+		insertPosition.Commission.Value = (*inserts)[v].Commission.Value
+		insertPosition.Commission.Valid = (*inserts)[v].Commission.Valid
 
-		insertPosition.InitMarginReq.Value = v.InitMarginReq.Value
-		insertPosition.InitMarginReq.Valid = v.InitMarginReq.Valid
+		insertPosition.InitMarginReq.Value = (*inserts)[v].InitMarginReq.Value
+		insertPosition.InitMarginReq.Valid = (*inserts)[v].InitMarginReq.Valid
 
-		insertPosition.MaintMarginReq.Value = v.MaintMarginReq.Value
-		insertPosition.MaintMarginReq.Valid = v.MaintMarginReq.Valid
+		insertPosition.MaintMarginReq.Value = (*inserts)[v].MaintMarginReq.Value
+		insertPosition.MaintMarginReq.Valid = (*inserts)[v].MaintMarginReq.Valid
 
-		insertPosition.RiskLimit.Value = v.RiskLimit.Value
-		insertPosition.RiskLimit.Valid = v.RiskLimit.Valid
+		insertPosition.RiskLimit.Value = (*inserts)[v].RiskLimit.Value
+		insertPosition.RiskLimit.Valid = (*inserts)[v].RiskLimit.Valid
 
-		insertPosition.CrossMargin.Value = v.CrossMargin.Value
-		insertPosition.CrossMargin.Valid = v.CrossMargin.Valid
+		insertPosition.CrossMargin.Value = (*inserts)[v].CrossMargin.Value
+		insertPosition.CrossMargin.Valid = (*inserts)[v].CrossMargin.Valid
 
-		insertPosition.Leverage.Value = v.Leverage.Value
-		insertPosition.Leverage.Valid = v.Leverage.Valid
+		insertPosition.Leverage.Value = (*inserts)[v].Leverage.Value
+		insertPosition.Leverage.Valid = (*inserts)[v].Leverage.Valid
 
-		insertPosition.DeleveragePercentile.Value = v.DeleveragePercentile.Value
-		insertPosition.DeleveragePercentile.Valid = v.DeleveragePercentile.Valid
+		insertPosition.DeleveragePercentile.Value = (*inserts)[v].DeleveragePercentile.Value
+		insertPosition.DeleveragePercentile.Valid = (*inserts)[v].DeleveragePercentile.Valid
 
-		insertPosition.RebalancedPnl.Value = v.RebalancedPnl.Value
-		insertPosition.RebalancedPnl.Valid = v.RebalancedPnl.Valid
+		insertPosition.RebalancedPnl.Value = (*inserts)[v].RebalancedPnl.Value
+		insertPosition.RebalancedPnl.Valid = (*inserts)[v].RebalancedPnl.Valid
 
-		insertPosition.PrevRealisedPnl.Value = v.PrevRealisedPnl.Value
-		insertPosition.PrevRealisedPnl.Valid = v.PrevRealisedPnl.Valid
+		insertPosition.PrevRealisedPnl.Value = (*inserts)[v].PrevRealisedPnl.Value
+		insertPosition.PrevRealisedPnl.Valid = (*inserts)[v].PrevRealisedPnl.Valid
 
-		insertPosition.PrevUnrealisedPnl.Value = v.PrevUnrealisedPnl.Value
-		insertPosition.PrevUnrealisedPnl.Valid = v.PrevUnrealisedPnl.Valid
+		insertPosition.PrevUnrealisedPnl.Value = (*inserts)[v].PrevUnrealisedPnl.Value
+		insertPosition.PrevUnrealisedPnl.Valid = (*inserts)[v].PrevUnrealisedPnl.Valid
 
-		insertPosition.PrevClosePrice.Value = v.PrevClosePrice.Value
-		insertPosition.PrevClosePrice.Valid = v.PrevClosePrice.Valid
+		insertPosition.PrevClosePrice.Value = (*inserts)[v].PrevClosePrice.Value
+		insertPosition.PrevClosePrice.Valid = (*inserts)[v].PrevClosePrice.Valid
 
-		insertPosition.OpeningTimestamp.Value = v.OpeningTimestamp.Value
-		insertPosition.OpeningTimestamp.Valid = v.OpeningTimestamp.Valid
+		insertPosition.OpeningTimestamp.Value = (*inserts)[v].OpeningTimestamp.Value
+		insertPosition.OpeningTimestamp.Valid = (*inserts)[v].OpeningTimestamp.Valid
 
-		insertPosition.OpeningQty.Value = v.OpeningQty.Value
-		insertPosition.OpeningQty.Valid = v.OpeningQty.Valid
+		insertPosition.OpeningQty.Value = (*inserts)[v].OpeningQty.Value
+		insertPosition.OpeningQty.Valid = (*inserts)[v].OpeningQty.Valid
 
-		insertPosition.OpeningCost.Value = v.OpeningCost.Value
-		insertPosition.OpeningCost.Valid = v.OpeningCost.Valid
+		insertPosition.OpeningCost.Value = (*inserts)[v].OpeningCost.Value
+		insertPosition.OpeningCost.Valid = (*inserts)[v].OpeningCost.Valid
 
-		insertPosition.OpeningComm.Value = v.OpeningComm.Value
-		insertPosition.OpeningComm.Valid = v.OpeningComm.Valid
+		insertPosition.OpeningComm.Value = (*inserts)[v].OpeningComm.Value
+		insertPosition.OpeningComm.Valid = (*inserts)[v].OpeningComm.Valid
 
-		insertPosition.OpenOrderBuyQty.Value = v.OpenOrderBuyQty.Value
-		insertPosition.OpenOrderBuyQty.Valid = v.OpenOrderBuyQty.Valid
+		insertPosition.OpenOrderBuyQty.Value = (*inserts)[v].OpenOrderBuyQty.Value
+		insertPosition.OpenOrderBuyQty.Valid = (*inserts)[v].OpenOrderBuyQty.Valid
 
-		insertPosition.OpenOrderBuyCost.Value = v.OpenOrderBuyCost.Value
-		insertPosition.OpenOrderBuyCost.Valid = v.OpenOrderBuyCost.Valid
+		insertPosition.OpenOrderBuyCost.Value = (*inserts)[v].OpenOrderBuyCost.Value
+		insertPosition.OpenOrderBuyCost.Valid = (*inserts)[v].OpenOrderBuyCost.Valid
 
-		insertPosition.OpenOrderBuyPremium.Value = v.OpenOrderBuyPremium.Value
-		insertPosition.OpenOrderBuyPremium.Valid = v.OpenOrderBuyPremium.Valid
+		insertPosition.OpenOrderBuyPremium.Value = (*inserts)[v].OpenOrderBuyPremium.Value
+		insertPosition.OpenOrderBuyPremium.Valid = (*inserts)[v].OpenOrderBuyPremium.Valid
 
-		insertPosition.OpenOrderSellQty.Value = v.OpenOrderSellQty.Value
-		insertPosition.OpenOrderSellQty.Valid = v.OpenOrderSellQty.Valid
+		insertPosition.OpenOrderSellQty.Value = (*inserts)[v].OpenOrderSellQty.Value
+		insertPosition.OpenOrderSellQty.Valid = (*inserts)[v].OpenOrderSellQty.Valid
 
-		insertPosition.OpenOrderSellCost.Value = v.OpenOrderSellCost.Value
-		insertPosition.OpenOrderSellCost.Valid = v.OpenOrderSellCost.Valid
+		insertPosition.OpenOrderSellCost.Value = (*inserts)[v].OpenOrderSellCost.Value
+		insertPosition.OpenOrderSellCost.Valid = (*inserts)[v].OpenOrderSellCost.Valid
 
-		insertPosition.OpenOrderSellPremium.Value = v.OpenOrderSellPremium.Value
-		insertPosition.OpenOrderSellPremium.Valid = v.OpenOrderSellPremium.Valid
+		insertPosition.OpenOrderSellPremium.Value = (*inserts)[v].OpenOrderSellPremium.Value
+		insertPosition.OpenOrderSellPremium.Valid = (*inserts)[v].OpenOrderSellPremium.Valid
 
-		insertPosition.ExecBuyQty.Value = v.ExecBuyQty.Value
-		insertPosition.ExecBuyQty.Valid = v.ExecBuyQty.Valid
+		insertPosition.ExecBuyQty.Value = (*inserts)[v].ExecBuyQty.Value
+		insertPosition.ExecBuyQty.Valid = (*inserts)[v].ExecBuyQty.Valid
 
-		insertPosition.ExecBuyCost.Value = v.ExecBuyCost.Value
-		insertPosition.ExecBuyCost.Valid = v.ExecBuyCost.Valid
+		insertPosition.ExecBuyCost.Value = (*inserts)[v].ExecBuyCost.Value
+		insertPosition.ExecBuyCost.Valid = (*inserts)[v].ExecBuyCost.Valid
 
-		insertPosition.ExecSellQty.Value = v.ExecSellQty.Value
-		insertPosition.ExecSellQty.Valid = v.ExecSellQty.Valid
+		insertPosition.ExecSellQty.Value = (*inserts)[v].ExecSellQty.Value
+		insertPosition.ExecSellQty.Valid = (*inserts)[v].ExecSellQty.Valid
 
-		insertPosition.ExecSellCost.Value = v.ExecSellCost.Value
-		insertPosition.ExecSellCost.Valid = v.ExecSellCost.Valid
+		insertPosition.ExecSellCost.Value = (*inserts)[v].ExecSellCost.Value
+		insertPosition.ExecSellCost.Valid = (*inserts)[v].ExecSellCost.Valid
 
-		insertPosition.ExecQty.Value = v.ExecQty.Value
-		insertPosition.ExecQty.Valid = v.ExecQty.Valid
+		insertPosition.ExecQty.Value = (*inserts)[v].ExecQty.Value
+		insertPosition.ExecQty.Valid = (*inserts)[v].ExecQty.Valid
 
-		insertPosition.ExecCost.Value = v.ExecCost.Value
-		insertPosition.ExecCost.Valid = v.ExecCost.Valid
+		insertPosition.ExecCost.Value = (*inserts)[v].ExecCost.Value
+		insertPosition.ExecCost.Valid = (*inserts)[v].ExecCost.Valid
 
-		insertPosition.ExecComm.Value = v.ExecComm.Value
-		insertPosition.ExecComm.Valid = v.ExecComm.Valid
+		insertPosition.ExecComm.Value = (*inserts)[v].ExecComm.Value
+		insertPosition.ExecComm.Valid = (*inserts)[v].ExecComm.Valid
 
-		insertPosition.CurrentTimestamp.Value = v.CurrentTimestamp.Value
-		insertPosition.CurrentTimestamp.Valid = v.CurrentTimestamp.Valid
+		insertPosition.CurrentTimestamp.Value = (*inserts)[v].CurrentTimestamp.Value
+		insertPosition.CurrentTimestamp.Valid = (*inserts)[v].CurrentTimestamp.Valid
 
-		insertPosition.CurrentQty.Value = v.CurrentQty.Value
-		insertPosition.CurrentQty.Valid = v.CurrentQty.Valid
+		insertPosition.CurrentQty.Value = (*inserts)[v].CurrentQty.Value
+		insertPosition.CurrentQty.Valid = (*inserts)[v].CurrentQty.Valid
 
-		insertPosition.CurrentCost.Value = v.CurrentCost.Value
-		insertPosition.CurrentCost.Valid = v.CurrentCost.Valid
+		insertPosition.CurrentCost.Value = (*inserts)[v].CurrentCost.Value
+		insertPosition.CurrentCost.Valid = (*inserts)[v].CurrentCost.Valid
 
-		insertPosition.CurrentComm.Value = v.CurrentComm.Value
-		insertPosition.CurrentComm.Valid = v.CurrentComm.Valid
+		insertPosition.CurrentComm.Value = (*inserts)[v].CurrentComm.Value
+		insertPosition.CurrentComm.Valid = (*inserts)[v].CurrentComm.Valid
 
-		insertPosition.RealisedCost.Value = v.RealisedCost.Value
-		insertPosition.RealisedCost.Valid = v.RealisedCost.Valid
+		insertPosition.RealisedCost.Value = (*inserts)[v].RealisedCost.Value
+		insertPosition.RealisedCost.Valid = (*inserts)[v].RealisedCost.Valid
 
-		insertPosition.UnrealisedCost.Value = v.UnrealisedCost.Value
-		insertPosition.UnrealisedCost.Valid = v.UnrealisedCost.Valid
+		insertPosition.UnrealisedCost.Value = (*inserts)[v].UnrealisedCost.Value
+		insertPosition.UnrealisedCost.Valid = (*inserts)[v].UnrealisedCost.Valid
 
-		insertPosition.GrossOpenCost.Value = v.GrossOpenCost.Value
-		insertPosition.GrossOpenCost.Valid = v.GrossOpenCost.Valid
+		insertPosition.GrossOpenCost.Value = (*inserts)[v].GrossOpenCost.Value
+		insertPosition.GrossOpenCost.Valid = (*inserts)[v].GrossOpenCost.Valid
 
-		insertPosition.GrossOpenPremium.Value = v.GrossOpenPremium.Value
-		insertPosition.GrossOpenPremium.Valid = v.GrossOpenPremium.Valid
+		insertPosition.GrossOpenPremium.Value = (*inserts)[v].GrossOpenPremium.Value
+		insertPosition.GrossOpenPremium.Valid = (*inserts)[v].GrossOpenPremium.Valid
 
-		insertPosition.GrossExecCost.Value = v.GrossExecCost.Value
-		insertPosition.GrossExecCost.Valid = v.GrossExecCost.Valid
+		insertPosition.GrossExecCost.Value = (*inserts)[v].GrossExecCost.Value
+		insertPosition.GrossExecCost.Valid = (*inserts)[v].GrossExecCost.Valid
 
-		insertPosition.IsOpen.Value = v.IsOpen.Value
-		insertPosition.IsOpen.Valid = v.IsOpen.Valid
+		insertPosition.IsOpen.Value = (*inserts)[v].IsOpen.Value
+		insertPosition.IsOpen.Valid = (*inserts)[v].IsOpen.Valid
 
-		insertPosition.MarkPrice.Value = v.MarkPrice.Value
-		insertPosition.MarkPrice.Valid = v.MarkPrice.Valid
+		insertPosition.MarkPrice.Value = (*inserts)[v].MarkPrice.Value
+		insertPosition.MarkPrice.Valid = (*inserts)[v].MarkPrice.Valid
 
-		insertPosition.MarkValue.Value = v.MarkValue.Value
-		insertPosition.MarkValue.Valid = v.MarkValue.Valid
+		insertPosition.MarkValue.Value = (*inserts)[v].MarkValue.Value
+		insertPosition.MarkValue.Valid = (*inserts)[v].MarkValue.Valid
 
-		insertPosition.RiskValue.Value = v.RiskValue.Value
-		insertPosition.RiskValue.Valid = v.RiskValue.Valid
+		insertPosition.RiskValue.Value = (*inserts)[v].RiskValue.Value
+		insertPosition.RiskValue.Valid = (*inserts)[v].RiskValue.Valid
 
-		insertPosition.HomeNotional.Value = v.HomeNotional.Value
-		insertPosition.HomeNotional.Valid = v.HomeNotional.Valid
+		insertPosition.HomeNotional.Value = (*inserts)[v].HomeNotional.Value
+		insertPosition.HomeNotional.Valid = (*inserts)[v].HomeNotional.Valid
 
-		insertPosition.ForeignNotional.Value = v.ForeignNotional.Value
-		insertPosition.ForeignNotional.Valid = v.ForeignNotional.Valid
+		insertPosition.ForeignNotional.Value = (*inserts)[v].ForeignNotional.Value
+		insertPosition.ForeignNotional.Valid = (*inserts)[v].ForeignNotional.Valid
 
-		insertPosition.PosState.Value = v.PosState.Value
-		insertPosition.PosState.Valid = v.PosState.Valid
+		insertPosition.PosState.Value = (*inserts)[v].PosState.Value
+		insertPosition.PosState.Valid = (*inserts)[v].PosState.Valid
 
-		insertPosition.PosCost.Value = v.PosCost.Value
-		insertPosition.PosCost.Valid = v.PosCost.Valid
+		insertPosition.PosCost.Value = (*inserts)[v].PosCost.Value
+		insertPosition.PosCost.Valid = (*inserts)[v].PosCost.Valid
 
-		insertPosition.PosCost2.Value = v.PosCost2.Value
-		insertPosition.PosCost2.Valid = v.PosCost2.Valid
+		insertPosition.PosCost2.Value = (*inserts)[v].PosCost2.Value
+		insertPosition.PosCost2.Valid = (*inserts)[v].PosCost2.Valid
 
-		insertPosition.PosCross.Value = v.PosCross.Value
-		insertPosition.PosCross.Valid = v.PosCross.Valid
+		insertPosition.PosCross.Value = (*inserts)[v].PosCross.Value
+		insertPosition.PosCross.Valid = (*inserts)[v].PosCross.Valid
 
-		insertPosition.PosInit.Value = v.PosInit.Value
-		insertPosition.PosInit.Valid = v.PosInit.Valid
+		insertPosition.PosInit.Value = (*inserts)[v].PosInit.Value
+		insertPosition.PosInit.Valid = (*inserts)[v].PosInit.Valid
 
-		insertPosition.PosComm.Value = v.PosComm.Value
-		insertPosition.PosComm.Valid = v.PosComm.Valid
+		insertPosition.PosComm.Value = (*inserts)[v].PosComm.Value
+		insertPosition.PosComm.Valid = (*inserts)[v].PosComm.Valid
 
-		insertPosition.PosLoss.Value = v.PosLoss.Value
-		insertPosition.PosLoss.Valid = v.PosLoss.Valid
+		insertPosition.PosLoss.Value = (*inserts)[v].PosLoss.Value
+		insertPosition.PosLoss.Valid = (*inserts)[v].PosLoss.Valid
 
-		insertPosition.PosMargin.Value = v.PosMargin.Value
-		insertPosition.PosMargin.Valid = v.PosMargin.Valid
+		insertPosition.PosMargin.Value = (*inserts)[v].PosMargin.Value
+		insertPosition.PosMargin.Valid = (*inserts)[v].PosMargin.Valid
 
-		insertPosition.PosMaint.Value = v.PosMaint.Value
-		insertPosition.PosMaint.Valid = v.PosMaint.Valid
+		insertPosition.PosMaint.Value = (*inserts)[v].PosMaint.Value
+		insertPosition.PosMaint.Valid = (*inserts)[v].PosMaint.Valid
 
-		insertPosition.PosAllowance.Value = v.PosAllowance.Value
-		insertPosition.PosAllowance.Valid = v.PosAllowance.Valid
+		insertPosition.PosAllowance.Value = (*inserts)[v].PosAllowance.Value
+		insertPosition.PosAllowance.Valid = (*inserts)[v].PosAllowance.Valid
 
-		insertPosition.TaxableMargin.Value = v.TaxableMargin.Value
-		insertPosition.TaxableMargin.Valid = v.TaxableMargin.Valid
+		insertPosition.TaxableMargin.Value = (*inserts)[v].TaxableMargin.Value
+		insertPosition.TaxableMargin.Valid = (*inserts)[v].TaxableMargin.Valid
 
-		insertPosition.InitMargin.Value = v.InitMargin.Value
-		insertPosition.InitMargin.Valid = v.InitMargin.Valid
+		insertPosition.InitMargin.Value = (*inserts)[v].InitMargin.Value
+		insertPosition.InitMargin.Valid = (*inserts)[v].InitMargin.Valid
 
-		insertPosition.MaintMargin.Value = v.MaintMargin.Value
-		insertPosition.MaintMargin.Valid = v.MaintMargin.Valid
+		insertPosition.MaintMargin.Value = (*inserts)[v].MaintMargin.Value
+		insertPosition.MaintMargin.Valid = (*inserts)[v].MaintMargin.Valid
 
-		insertPosition.SessionMargin.Value = v.SessionMargin.Value
-		insertPosition.SessionMargin.Valid = v.SessionMargin.Valid
+		insertPosition.SessionMargin.Value = (*inserts)[v].SessionMargin.Value
+		insertPosition.SessionMargin.Valid = (*inserts)[v].SessionMargin.Valid
 
-		insertPosition.TargetExcessMargin.Value = v.TargetExcessMargin.Value
-		insertPosition.TargetExcessMargin.Valid = v.TargetExcessMargin.Valid
+		insertPosition.TargetExcessMargin.Value = (*inserts)[v].TargetExcessMargin.Value
+		insertPosition.TargetExcessMargin.Valid = (*inserts)[v].TargetExcessMargin.Valid
 
-		insertPosition.VarMargin.Value = v.VarMargin.Value
-		insertPosition.VarMargin.Valid = v.VarMargin.Valid
+		insertPosition.VarMargin.Value = (*inserts)[v].VarMargin.Value
+		insertPosition.VarMargin.Valid = (*inserts)[v].VarMargin.Valid
 
-		insertPosition.RealisedGrossPnl.Value = v.RealisedGrossPnl.Value
-		insertPosition.RealisedGrossPnl.Valid = v.RealisedGrossPnl.Valid
+		insertPosition.RealisedGrossPnl.Value = (*inserts)[v].RealisedGrossPnl.Value
+		insertPosition.RealisedGrossPnl.Valid = (*inserts)[v].RealisedGrossPnl.Valid
 
-		insertPosition.RealisedTax.Value = v.RealisedTax.Value
-		insertPosition.RealisedTax.Valid = v.RealisedTax.Valid
+		insertPosition.RealisedTax.Value = (*inserts)[v].RealisedTax.Value
+		insertPosition.RealisedTax.Valid = (*inserts)[v].RealisedTax.Valid
 
-		insertPosition.RealisedPnl.Value = v.RealisedPnl.Value
-		insertPosition.RealisedPnl.Valid = v.RealisedPnl.Valid
+		insertPosition.RealisedPnl.Value = (*inserts)[v].RealisedPnl.Value
+		insertPosition.RealisedPnl.Valid = (*inserts)[v].RealisedPnl.Valid
 
-		insertPosition.UnrealisedGrossPnl.Value = v.UnrealisedGrossPnl.Value
-		insertPosition.UnrealisedGrossPnl.Valid = v.UnrealisedGrossPnl.Valid
+		insertPosition.UnrealisedGrossPnl.Value = (*inserts)[v].UnrealisedGrossPnl.Value
+		insertPosition.UnrealisedGrossPnl.Valid = (*inserts)[v].UnrealisedGrossPnl.Valid
 
-		insertPosition.LongBankrupt.Value = v.LongBankrupt.Value
-		insertPosition.LongBankrupt.Valid = v.LongBankrupt.Valid
+		insertPosition.LongBankrupt.Value = (*inserts)[v].LongBankrupt.Value
+		insertPosition.LongBankrupt.Valid = (*inserts)[v].LongBankrupt.Valid
 
-		insertPosition.ShortBankrupt.Value = v.ShortBankrupt.Value
-		insertPosition.ShortBankrupt.Valid = v.ShortBankrupt.Valid
+		insertPosition.ShortBankrupt.Value = (*inserts)[v].ShortBankrupt.Value
+		insertPosition.ShortBankrupt.Valid = (*inserts)[v].ShortBankrupt.Valid
 
-		insertPosition.TaxBase.Value = v.TaxBase.Value
-		insertPosition.TaxBase.Valid = v.TaxBase.Valid
+		insertPosition.TaxBase.Value = (*inserts)[v].TaxBase.Value
+		insertPosition.TaxBase.Valid = (*inserts)[v].TaxBase.Valid
 
-		insertPosition.IndicativeTaxRate.Value = v.IndicativeTaxRate.Value
-		insertPosition.IndicativeTaxRate.Valid = v.IndicativeTaxRate.Valid
+		insertPosition.IndicativeTaxRate.Value = (*inserts)[v].IndicativeTaxRate.Value
+		insertPosition.IndicativeTaxRate.Valid = (*inserts)[v].IndicativeTaxRate.Valid
 
-		insertPosition.IndicativeTax.Value = v.IndicativeTax.Value
-		insertPosition.IndicativeTax.Valid = v.IndicativeTax.Valid
+		insertPosition.IndicativeTax.Value = (*inserts)[v].IndicativeTax.Value
+		insertPosition.IndicativeTax.Valid = (*inserts)[v].IndicativeTax.Valid
 
-		insertPosition.UnrealisedTax.Value = v.UnrealisedTax.Value
-		insertPosition.UnrealisedTax.Valid = v.UnrealisedTax.Valid
+		insertPosition.UnrealisedTax.Value = (*inserts)[v].UnrealisedTax.Value
+		insertPosition.UnrealisedTax.Valid = (*inserts)[v].UnrealisedTax.Valid
 
-		insertPosition.UnrealisedPnl.Value = v.UnrealisedPnl.Value
-		insertPosition.UnrealisedPnl.Valid = v.UnrealisedPnl.Valid
+		insertPosition.UnrealisedPnl.Value = (*inserts)[v].UnrealisedPnl.Value
+		insertPosition.UnrealisedPnl.Valid = (*inserts)[v].UnrealisedPnl.Valid
 
-		insertPosition.UnrealisedPnlPcnt.Value = v.UnrealisedPnlPcnt.Value
-		insertPosition.UnrealisedPnlPcnt.Valid = v.UnrealisedPnlPcnt.Valid
+		insertPosition.UnrealisedPnlPcnt.Value = (*inserts)[v].UnrealisedPnlPcnt.Value
+		insertPosition.UnrealisedPnlPcnt.Valid = (*inserts)[v].UnrealisedPnlPcnt.Valid
 
-		insertPosition.UnrealisedRoePcnt.Value = v.UnrealisedRoePcnt.Value
-		insertPosition.UnrealisedRoePcnt.Valid = v.UnrealisedRoePcnt.Valid
+		insertPosition.UnrealisedRoePcnt.Value = (*inserts)[v].UnrealisedRoePcnt.Value
+		insertPosition.UnrealisedRoePcnt.Valid = (*inserts)[v].UnrealisedRoePcnt.Valid
 
-		insertPosition.SimpleQty.Value = v.SimpleQty.Value
-		insertPosition.SimpleQty.Valid = v.SimpleQty.Valid
+		insertPosition.SimpleQty.Value = (*inserts)[v].SimpleQty.Value
+		insertPosition.SimpleQty.Valid = (*inserts)[v].SimpleQty.Valid
 
-		insertPosition.SimpleCost.Value = v.SimpleCost.Value
-		insertPosition.SimpleCost.Valid = v.SimpleCost.Valid
+		insertPosition.SimpleCost.Value = (*inserts)[v].SimpleCost.Value
+		insertPosition.SimpleCost.Valid = (*inserts)[v].SimpleCost.Valid
 
-		insertPosition.SimpleValue.Value = v.SimpleValue.Value
-		insertPosition.SimpleValue.Valid = v.SimpleValue.Valid
+		insertPosition.SimpleValue.Value = (*inserts)[v].SimpleValue.Value
+		insertPosition.SimpleValue.Valid = (*inserts)[v].SimpleValue.Valid
 
-		insertPosition.SimplePnl.Value = v.SimplePnl.Value
-		insertPosition.SimplePnl.Valid = v.SimplePnl.Valid
+		insertPosition.SimplePnl.Value = (*inserts)[v].SimplePnl.Value
+		insertPosition.SimplePnl.Valid = (*inserts)[v].SimplePnl.Valid
 
-		insertPosition.SimplePnlPcnt.Value = v.SimplePnlPcnt.Value
-		insertPosition.SimplePnlPcnt.Valid = v.SimplePnlPcnt.Valid
+		insertPosition.SimplePnlPcnt.Value = (*inserts)[v].SimplePnlPcnt.Value
+		insertPosition.SimplePnlPcnt.Valid = (*inserts)[v].SimplePnlPcnt.Valid
 
-		insertPosition.AvgCostPrice.Value = v.AvgCostPrice.Value
-		insertPosition.AvgCostPrice.Valid = v.AvgCostPrice.Valid
+		insertPosition.AvgCostPrice.Value = (*inserts)[v].AvgCostPrice.Value
+		insertPosition.AvgCostPrice.Valid = (*inserts)[v].AvgCostPrice.Valid
 
-		insertPosition.AvgEntryPrice.Value = v.AvgEntryPrice.Value
-		insertPosition.AvgEntryPrice.Valid = v.AvgEntryPrice.Valid
+		insertPosition.AvgEntryPrice.Value = (*inserts)[v].AvgEntryPrice.Value
+		insertPosition.AvgEntryPrice.Valid = (*inserts)[v].AvgEntryPrice.Valid
 
-		insertPosition.BreakEvenPrice.Value = v.BreakEvenPrice.Value
-		insertPosition.BreakEvenPrice.Valid = v.BreakEvenPrice.Valid
+		insertPosition.BreakEvenPrice.Value = (*inserts)[v].BreakEvenPrice.Value
+		insertPosition.BreakEvenPrice.Valid = (*inserts)[v].BreakEvenPrice.Valid
 
-		insertPosition.MarginCallPrice.Value = v.MarginCallPrice.Value
-		insertPosition.MarginCallPrice.Valid = v.MarginCallPrice.Valid
+		insertPosition.MarginCallPrice.Value = (*inserts)[v].MarginCallPrice.Value
+		insertPosition.MarginCallPrice.Valid = (*inserts)[v].MarginCallPrice.Valid
 
-		insertPosition.LiquidationPrice.Value = v.LiquidationPrice.Value
-		insertPosition.LiquidationPrice.Valid = v.LiquidationPrice.Valid
+		insertPosition.LiquidationPrice.Value = (*inserts)[v].LiquidationPrice.Value
+		insertPosition.LiquidationPrice.Valid = (*inserts)[v].LiquidationPrice.Valid
 
-		insertPosition.BankruptPrice.Value = v.BankruptPrice.Value
-		insertPosition.BankruptPrice.Valid = v.BankruptPrice.Valid
+		insertPosition.BankruptPrice.Value = (*inserts)[v].BankruptPrice.Value
+		insertPosition.BankruptPrice.Valid = (*inserts)[v].BankruptPrice.Valid
 
-		insertPosition.Timestamp.Value = v.Timestamp.Value
-		insertPosition.Timestamp.Valid = v.Timestamp.Valid
+		insertPosition.Timestamp.Value = (*inserts)[v].Timestamp.Value
+		insertPosition.Timestamp.Valid = (*inserts)[v].Timestamp.Valid
 
-		insertPosition.LastPrice.Value = v.LastPrice.Value
-		insertPosition.LastPrice.Valid = v.LastPrice.Valid
+		insertPosition.LastPrice.Value = (*inserts)[v].LastPrice.Value
+		insertPosition.LastPrice.Valid = (*inserts)[v].LastPrice.Valid
 
-		insertPosition.LastValue.Value = v.LastValue.Value
-		insertPosition.LastValue.Valid = v.LastValue.Valid
+		insertPosition.LastValue.Value = (*inserts)[v].LastValue.Value
+		insertPosition.LastValue.Valid = (*inserts)[v].LastValue.Valid
 
 		*positions = append(*positions, insertPosition)
 	}
 }
 
 func (positions *PositionSlice) PositionUpdate(updates *[]PositionResponseData) {
-	for _, u := range *updates {
-		for i, v := range *positions {
-			if u.Symbol.Value == v.Symbol.Value {
+	for u := range *updates {
+		for v := range *positions {
+			if (*updates)[u].Symbol.Value == (*positions)[v].Symbol.Value {
 
-				if u.Account.Set {
-					v.Account.Value = u.Account.Value
-					v.Account.Valid = u.Account.Valid
+				if (*updates)[u].Account.Set {
+					(*positions)[v].Account.Value = (*updates)[u].Account.Value
+					(*positions)[v].Account.Valid = (*updates)[u].Account.Valid
 				}
 
-				if u.Symbol.Set {
-					v.Symbol.Value = u.Symbol.Value
-					v.Symbol.Valid = u.Symbol.Valid
+				if (*updates)[u].Symbol.Set {
+					(*positions)[v].Symbol.Value = (*updates)[u].Symbol.Value
+					(*positions)[v].Symbol.Valid = (*updates)[u].Symbol.Valid
 				}
 
-				if u.Currency.Set {
-					v.Currency.Value = u.Currency.Value
-					v.Currency.Valid = u.Currency.Valid
+				if (*updates)[u].Currency.Set {
+					(*positions)[v].Currency.Value = (*updates)[u].Currency.Value
+					(*positions)[v].Currency.Valid = (*updates)[u].Currency.Valid
 				}
 
-				if u.Underlying.Set {
-					v.Underlying.Value = u.Underlying.Value
-					v.Underlying.Valid = u.Underlying.Valid
+				if (*updates)[u].Underlying.Set {
+					(*positions)[v].Underlying.Value = (*updates)[u].Underlying.Value
+					(*positions)[v].Underlying.Valid = (*updates)[u].Underlying.Valid
 				}
 
-				if u.QuoteCurrency.Set {
-					v.QuoteCurrency.Value = u.QuoteCurrency.Value
-					v.QuoteCurrency.Valid = u.QuoteCurrency.Valid
+				if (*updates)[u].QuoteCurrency.Set {
+					(*positions)[v].QuoteCurrency.Value = (*updates)[u].QuoteCurrency.Value
+					(*positions)[v].QuoteCurrency.Valid = (*updates)[u].QuoteCurrency.Valid
 				}
 
-				if u.Commission.Set {
-					v.Commission.Value = u.Commission.Value
-					v.Commission.Valid = u.Commission.Valid
+				if (*updates)[u].Commission.Set {
+					(*positions)[v].Commission.Value = (*updates)[u].Commission.Value
+					(*positions)[v].Commission.Valid = (*updates)[u].Commission.Valid
 				}
 
-				if u.InitMarginReq.Set {
-					v.InitMarginReq.Value = u.InitMarginReq.Value
-					v.InitMarginReq.Valid = u.InitMarginReq.Valid
+				if (*updates)[u].InitMarginReq.Set {
+					(*positions)[v].InitMarginReq.Value = (*updates)[u].InitMarginReq.Value
+					(*positions)[v].InitMarginReq.Valid = (*updates)[u].InitMarginReq.Valid
 				}
 
-				if u.MaintMarginReq.Set {
-					v.MaintMarginReq.Value = u.MaintMarginReq.Value
-					v.MaintMarginReq.Valid = u.MaintMarginReq.Valid
+				if (*updates)[u].MaintMarginReq.Set {
+					(*positions)[v].MaintMarginReq.Value = (*updates)[u].MaintMarginReq.Value
+					(*positions)[v].MaintMarginReq.Valid = (*updates)[u].MaintMarginReq.Valid
 				}
 
-				if u.RiskLimit.Set {
-					v.RiskLimit.Value = u.RiskLimit.Value
-					v.RiskLimit.Valid = u.RiskLimit.Valid
+				if (*updates)[u].RiskLimit.Set {
+					(*positions)[v].RiskLimit.Value = (*updates)[u].RiskLimit.Value
+					(*positions)[v].RiskLimit.Valid = (*updates)[u].RiskLimit.Valid
 				}
 
-				if u.Leverage.Set {
-					v.Leverage.Value = u.Leverage.Value
-					v.Leverage.Valid = u.Leverage.Valid
+				if (*updates)[u].Leverage.Set {
+					(*positions)[v].Leverage.Value = (*updates)[u].Leverage.Value
+					(*positions)[v].Leverage.Valid = (*updates)[u].Leverage.Valid
 				}
 
-				if u.CrossMargin.Set {
-					v.CrossMargin.Value = u.CrossMargin.Value
-					v.CrossMargin.Valid = u.CrossMargin.Valid
+				if (*updates)[u].CrossMargin.Set {
+					(*positions)[v].CrossMargin.Value = (*updates)[u].CrossMargin.Value
+					(*positions)[v].CrossMargin.Valid = (*updates)[u].CrossMargin.Valid
 				}
 
-				if u.DeleveragePercentile.Set {
-					v.DeleveragePercentile.Value = u.DeleveragePercentile.Value
-					v.DeleveragePercentile.Valid = u.DeleveragePercentile.Valid
+				if (*updates)[u].DeleveragePercentile.Set {
+					(*positions)[v].DeleveragePercentile.Value = (*updates)[u].DeleveragePercentile.Value
+					(*positions)[v].DeleveragePercentile.Valid = (*updates)[u].DeleveragePercentile.Valid
 				}
 
-				if u.RebalancedPnl.Set {
-					v.RebalancedPnl.Value = u.RebalancedPnl.Value
-					v.RebalancedPnl.Valid = u.RebalancedPnl.Valid
+				if (*updates)[u].RebalancedPnl.Set {
+					(*positions)[v].RebalancedPnl.Value = (*updates)[u].RebalancedPnl.Value
+					(*positions)[v].RebalancedPnl.Valid = (*updates)[u].RebalancedPnl.Valid
 				}
 
-				if u.PrevRealisedPnl.Set {
-					v.PrevRealisedPnl.Value = u.PrevRealisedPnl.Value
-					v.PrevRealisedPnl.Valid = u.PrevRealisedPnl.Valid
+				if (*updates)[u].PrevRealisedPnl.Set {
+					(*positions)[v].PrevRealisedPnl.Value = (*updates)[u].PrevRealisedPnl.Value
+					(*positions)[v].PrevRealisedPnl.Valid = (*updates)[u].PrevRealisedPnl.Valid
 				}
 
-				if u.PrevUnrealisedPnl.Set {
-					v.PrevUnrealisedPnl.Value = u.PrevUnrealisedPnl.Value
-					v.PrevUnrealisedPnl.Valid = u.PrevUnrealisedPnl.Valid
+				if (*updates)[u].PrevUnrealisedPnl.Set {
+					(*positions)[v].PrevUnrealisedPnl.Value = (*updates)[u].PrevUnrealisedPnl.Value
+					(*positions)[v].PrevUnrealisedPnl.Valid = (*updates)[u].PrevUnrealisedPnl.Valid
 				}
 
-				if u.PrevClosePrice.Set {
-					v.PrevClosePrice.Value = u.PrevClosePrice.Value
-					v.PrevClosePrice.Valid = u.PrevClosePrice.Valid
+				if (*updates)[u].PrevClosePrice.Set {
+					(*positions)[v].PrevClosePrice.Value = (*updates)[u].PrevClosePrice.Value
+					(*positions)[v].PrevClosePrice.Valid = (*updates)[u].PrevClosePrice.Valid
 				}
 
-				if u.OpeningTimestamp.Set {
-					v.OpeningTimestamp.Value = u.OpeningTimestamp.Value
-					v.OpeningTimestamp.Valid = u.OpeningTimestamp.Valid
+				if (*updates)[u].OpeningTimestamp.Set {
+					(*positions)[v].OpeningTimestamp.Value = (*updates)[u].OpeningTimestamp.Value
+					(*positions)[v].OpeningTimestamp.Valid = (*updates)[u].OpeningTimestamp.Valid
 				}
 
-				if u.OpeningQty.Set {
-					v.OpeningQty.Value = u.OpeningQty.Value
-					v.OpeningQty.Valid = u.OpeningQty.Valid
+				if (*updates)[u].OpeningQty.Set {
+					(*positions)[v].OpeningQty.Value = (*updates)[u].OpeningQty.Value
+					(*positions)[v].OpeningQty.Valid = (*updates)[u].OpeningQty.Valid
 				}
 
-				if u.OpeningCost.Set {
-					v.OpeningCost.Value = u.OpeningCost.Value
-					v.OpeningCost.Valid = u.OpeningCost.Valid
+				if (*updates)[u].OpeningCost.Set {
+					(*positions)[v].OpeningCost.Value = (*updates)[u].OpeningCost.Value
+					(*positions)[v].OpeningCost.Valid = (*updates)[u].OpeningCost.Valid
 				}
 
-				if u.OpeningComm.Set {
-					v.OpeningComm.Value = u.OpeningComm.Value
-					v.OpeningComm.Valid = u.OpeningComm.Valid
+				if (*updates)[u].OpeningComm.Set {
+					(*positions)[v].OpeningComm.Value = (*updates)[u].OpeningComm.Value
+					(*positions)[v].OpeningComm.Valid = (*updates)[u].OpeningComm.Valid
 				}
 
-				if u.OpenOrderBuyQty.Set {
-					v.OpenOrderBuyQty.Value = u.OpenOrderBuyQty.Value
-					v.OpenOrderBuyQty.Valid = u.OpenOrderBuyQty.Valid
+				if (*updates)[u].OpenOrderBuyQty.Set {
+					(*positions)[v].OpenOrderBuyQty.Value = (*updates)[u].OpenOrderBuyQty.Value
+					(*positions)[v].OpenOrderBuyQty.Valid = (*updates)[u].OpenOrderBuyQty.Valid
 				}
 
-				if u.OpenOrderBuyCost.Set {
-					v.OpenOrderBuyCost.Value = u.OpenOrderBuyCost.Value
-					v.OpenOrderBuyCost.Valid = u.OpenOrderBuyCost.Valid
+				if (*updates)[u].OpenOrderBuyCost.Set {
+					(*positions)[v].OpenOrderBuyCost.Value = (*updates)[u].OpenOrderBuyCost.Value
+					(*positions)[v].OpenOrderBuyCost.Valid = (*updates)[u].OpenOrderBuyCost.Valid
 				}
 
-				if u.OpenOrderBuyPremium.Set {
-					v.OpenOrderBuyPremium.Value = u.OpenOrderBuyPremium.Value
-					v.OpenOrderBuyPremium.Valid = u.OpenOrderBuyPremium.Valid
+				if (*updates)[u].OpenOrderBuyPremium.Set {
+					(*positions)[v].OpenOrderBuyPremium.Value = (*updates)[u].OpenOrderBuyPremium.Value
+					(*positions)[v].OpenOrderBuyPremium.Valid = (*updates)[u].OpenOrderBuyPremium.Valid
 				}
 
-				if u.OpenOrderSellQty.Set {
-					v.OpenOrderSellQty.Value = u.OpenOrderSellQty.Value
-					v.OpenOrderSellQty.Valid = u.OpenOrderSellQty.Valid
+				if (*updates)[u].OpenOrderSellQty.Set {
+					(*positions)[v].OpenOrderSellQty.Value = (*updates)[u].OpenOrderSellQty.Value
+					(*positions)[v].OpenOrderSellQty.Valid = (*updates)[u].OpenOrderSellQty.Valid
 				}
 
-				if u.OpenOrderSellCost.Set {
-					v.OpenOrderSellCost.Value = u.OpenOrderSellCost.Value
-					v.OpenOrderSellCost.Valid = u.OpenOrderSellCost.Valid
+				if (*updates)[u].OpenOrderSellCost.Set {
+					(*positions)[v].OpenOrderSellCost.Value = (*updates)[u].OpenOrderSellCost.Value
+					(*positions)[v].OpenOrderSellCost.Valid = (*updates)[u].OpenOrderSellCost.Valid
 				}
 
-				if u.OpenOrderSellPremium.Set {
-					v.OpenOrderSellPremium.Value = u.OpenOrderSellPremium.Value
-					v.OpenOrderSellPremium.Valid = u.OpenOrderSellPremium.Valid
+				if (*updates)[u].OpenOrderSellPremium.Set {
+					(*positions)[v].OpenOrderSellPremium.Value = (*updates)[u].OpenOrderSellPremium.Value
+					(*positions)[v].OpenOrderSellPremium.Valid = (*updates)[u].OpenOrderSellPremium.Valid
 				}
 
-				if u.ExecBuyQty.Set {
-					v.ExecBuyQty.Value = u.ExecBuyQty.Value
-					v.ExecBuyQty.Valid = u.ExecBuyQty.Valid
+				if (*updates)[u].ExecBuyQty.Set {
+					(*positions)[v].ExecBuyQty.Value = (*updates)[u].ExecBuyQty.Value
+					(*positions)[v].ExecBuyQty.Valid = (*updates)[u].ExecBuyQty.Valid
 				}
 
-				if u.ExecBuyCost.Set {
-					v.ExecBuyCost.Value = u.ExecBuyCost.Value
-					v.ExecBuyCost.Valid = u.ExecBuyCost.Valid
+				if (*updates)[u].ExecBuyCost.Set {
+					(*positions)[v].ExecBuyCost.Value = (*updates)[u].ExecBuyCost.Value
+					(*positions)[v].ExecBuyCost.Valid = (*updates)[u].ExecBuyCost.Valid
 				}
 
-				if u.ExecSellQty.Set {
-					v.ExecSellQty.Value = u.ExecSellQty.Value
-					v.ExecSellQty.Valid = u.ExecSellQty.Valid
+				if (*updates)[u].ExecSellQty.Set {
+					(*positions)[v].ExecSellQty.Value = (*updates)[u].ExecSellQty.Value
+					(*positions)[v].ExecSellQty.Valid = (*updates)[u].ExecSellQty.Valid
 				}
 
-				if u.ExecSellCost.Set {
-					v.ExecSellCost.Value = u.ExecSellCost.Value
-					v.ExecSellCost.Valid = u.ExecSellCost.Valid
+				if (*updates)[u].ExecSellCost.Set {
+					(*positions)[v].ExecSellCost.Value = (*updates)[u].ExecSellCost.Value
+					(*positions)[v].ExecSellCost.Valid = (*updates)[u].ExecSellCost.Valid
 				}
 
-				if u.ExecCost.Set {
-					v.ExecCost.Value = u.ExecCost.Value
-					v.ExecCost.Valid = u.ExecCost.Valid
+				if (*updates)[u].ExecCost.Set {
+					(*positions)[v].ExecCost.Value = (*updates)[u].ExecCost.Value
+					(*positions)[v].ExecCost.Valid = (*updates)[u].ExecCost.Valid
 				}
 
-				if u.ExecComm.Set {
-					v.ExecComm.Value = u.ExecComm.Value
-					v.ExecComm.Valid = u.ExecComm.Valid
+				if (*updates)[u].ExecComm.Set {
+					(*positions)[v].ExecComm.Value = (*updates)[u].ExecComm.Value
+					(*positions)[v].ExecComm.Valid = (*updates)[u].ExecComm.Valid
 				}
 
-				if u.CurrentTimestamp.Set {
-					v.CurrentTimestamp.Value = u.CurrentTimestamp.Value
-					v.CurrentTimestamp.Valid = u.CurrentTimestamp.Valid
+				if (*updates)[u].CurrentTimestamp.Set {
+					(*positions)[v].CurrentTimestamp.Value = (*updates)[u].CurrentTimestamp.Value
+					(*positions)[v].CurrentTimestamp.Valid = (*updates)[u].CurrentTimestamp.Valid
 				}
 
-				if u.CurrentQty.Set {
-					v.CurrentQty.Value = u.CurrentQty.Value
-					v.CurrentQty.Valid = u.CurrentQty.Valid
+				if (*updates)[u].CurrentQty.Set {
+					(*positions)[v].CurrentQty.Value = (*updates)[u].CurrentQty.Value
+					(*positions)[v].CurrentQty.Valid = (*updates)[u].CurrentQty.Valid
 				}
 
-				if u.CurrentCost.Set {
-					v.CurrentCost.Value = u.CurrentCost.Value
-					v.CurrentCost.Valid = u.CurrentCost.Valid
+				if (*updates)[u].CurrentCost.Set {
+					(*positions)[v].CurrentCost.Value = (*updates)[u].CurrentCost.Value
+					(*positions)[v].CurrentCost.Valid = (*updates)[u].CurrentCost.Valid
 				}
 
-				if u.CurrentComm.Set {
-					v.CurrentComm.Value = u.CurrentComm.Value
-					v.CurrentComm.Valid = u.CurrentComm.Valid
+				if (*updates)[u].CurrentComm.Set {
+					(*positions)[v].CurrentComm.Value = (*updates)[u].CurrentComm.Value
+					(*positions)[v].CurrentComm.Valid = (*updates)[u].CurrentComm.Valid
 				}
 
-				if u.RealisedCost.Set {
-					v.RealisedCost.Value = u.RealisedCost.Value
-					v.RealisedCost.Valid = u.RealisedCost.Valid
+				if (*updates)[u].RealisedCost.Set {
+					(*positions)[v].RealisedCost.Value = (*updates)[u].RealisedCost.Value
+					(*positions)[v].RealisedCost.Valid = (*updates)[u].RealisedCost.Valid
 				}
 
-				if u.UnrealisedCost.Set {
-					v.UnrealisedCost.Value = u.UnrealisedCost.Value
-					v.UnrealisedCost.Valid = u.UnrealisedCost.Valid
+				if (*updates)[u].UnrealisedCost.Set {
+					(*positions)[v].UnrealisedCost.Value = (*updates)[u].UnrealisedCost.Value
+					(*positions)[v].UnrealisedCost.Valid = (*updates)[u].UnrealisedCost.Valid
 				}
 
-				if u.GrossOpenCost.Set {
-					v.GrossOpenCost.Value = u.GrossOpenCost.Value
-					v.GrossOpenCost.Valid = u.GrossOpenCost.Valid
+				if (*updates)[u].GrossOpenCost.Set {
+					(*positions)[v].GrossOpenCost.Value = (*updates)[u].GrossOpenCost.Value
+					(*positions)[v].GrossOpenCost.Valid = (*updates)[u].GrossOpenCost.Valid
 				}
 
-				if u.GrossOpenPremium.Set {
-					v.GrossOpenPremium.Value = u.GrossOpenPremium.Value
-					v.GrossOpenPremium.Valid = u.GrossOpenPremium.Valid
+				if (*updates)[u].GrossOpenPremium.Set {
+					(*positions)[v].GrossOpenPremium.Value = (*updates)[u].GrossOpenPremium.Value
+					(*positions)[v].GrossOpenPremium.Valid = (*updates)[u].GrossOpenPremium.Valid
 				}
 
-				if u.GrossExecCost.Set {
-					v.GrossExecCost.Value = u.GrossExecCost.Value
-					v.GrossExecCost.Valid = u.GrossExecCost.Valid
+				if (*updates)[u].GrossExecCost.Set {
+					(*positions)[v].GrossExecCost.Value = (*updates)[u].GrossExecCost.Value
+					(*positions)[v].GrossExecCost.Valid = (*updates)[u].GrossExecCost.Valid
 				}
 
-				if u.IsOpen.Set {
-					v.IsOpen.Value = u.IsOpen.Value
-					v.IsOpen.Valid = u.IsOpen.Valid
+				if (*updates)[u].IsOpen.Set {
+					(*positions)[v].IsOpen.Value = (*updates)[u].IsOpen.Value
+					(*positions)[v].IsOpen.Valid = (*updates)[u].IsOpen.Valid
 				}
 
-				if u.MarkPrice.Set {
-					v.MarkPrice.Value = u.MarkPrice.Value
-					v.MarkPrice.Valid = u.MarkPrice.Valid
+				if (*updates)[u].MarkPrice.Set {
+					(*positions)[v].MarkPrice.Value = (*updates)[u].MarkPrice.Value
+					(*positions)[v].MarkPrice.Valid = (*updates)[u].MarkPrice.Valid
 				}
 
-				if u.MarkValue.Set {
-					v.MarkValue.Value = u.MarkValue.Value
-					v.MarkValue.Valid = u.MarkValue.Valid
+				if (*updates)[u].MarkValue.Set {
+					(*positions)[v].MarkValue.Value = (*updates)[u].MarkValue.Value
+					(*positions)[v].MarkValue.Valid = (*updates)[u].MarkValue.Valid
 				}
 
-				if u.RiskValue.Set {
-					v.RiskValue.Value = u.RiskValue.Value
-					v.RiskValue.Valid = u.RiskValue.Valid
+				if (*updates)[u].RiskValue.Set {
+					(*positions)[v].RiskValue.Value = (*updates)[u].RiskValue.Value
+					(*positions)[v].RiskValue.Valid = (*updates)[u].RiskValue.Valid
 				}
 
-				if u.HomeNotional.Set {
-					v.HomeNotional.Value = u.HomeNotional.Value
-					v.HomeNotional.Valid = u.HomeNotional.Valid
+				if (*updates)[u].HomeNotional.Set {
+					(*positions)[v].HomeNotional.Value = (*updates)[u].HomeNotional.Value
+					(*positions)[v].HomeNotional.Valid = (*updates)[u].HomeNotional.Valid
 				}
 
-				if u.ForeignNotional.Set {
-					v.ForeignNotional.Value = u.ForeignNotional.Value
-					v.ForeignNotional.Valid = u.ForeignNotional.Valid
+				if (*updates)[u].ForeignNotional.Set {
+					(*positions)[v].ForeignNotional.Value = (*updates)[u].ForeignNotional.Value
+					(*positions)[v].ForeignNotional.Valid = (*updates)[u].ForeignNotional.Valid
 				}
 
-				if u.PosState.Set {
-					v.PosState.Value = u.PosState.Value
-					v.PosState.Valid = u.PosState.Valid
+				if (*updates)[u].PosState.Set {
+					(*positions)[v].PosState.Value = (*updates)[u].PosState.Value
+					(*positions)[v].PosState.Valid = (*updates)[u].PosState.Valid
 				}
 
-				if u.PosCost.Set {
-					v.PosCost.Value = u.PosCost.Value
-					v.PosCost.Valid = u.PosCost.Valid
+				if (*updates)[u].PosCost.Set {
+					(*positions)[v].PosCost.Value = (*updates)[u].PosCost.Value
+					(*positions)[v].PosCost.Valid = (*updates)[u].PosCost.Valid
 				}
 
-				if u.PosCost2.Set {
-					v.PosCost2.Value = u.PosCost2.Value
-					v.PosCost2.Valid = u.PosCost2.Valid
+				if (*updates)[u].PosCost2.Set {
+					(*positions)[v].PosCost2.Value = (*updates)[u].PosCost2.Value
+					(*positions)[v].PosCost2.Valid = (*updates)[u].PosCost2.Valid
 				}
 
-				if u.PosCross.Set {
-					v.PosCross.Value = u.PosCross.Value
-					v.PosCross.Valid = u.PosCross.Valid
+				if (*updates)[u].PosCross.Set {
+					(*positions)[v].PosCross.Value = (*updates)[u].PosCross.Value
+					(*positions)[v].PosCross.Valid = (*updates)[u].PosCross.Valid
 				}
 
-				if u.PosInit.Set {
-					v.PosInit.Value = u.PosInit.Value
-					v.PosInit.Valid = u.PosInit.Valid
+				if (*updates)[u].PosInit.Set {
+					(*positions)[v].PosInit.Value = (*updates)[u].PosInit.Value
+					(*positions)[v].PosInit.Valid = (*updates)[u].PosInit.Valid
 				}
 
-				if u.PosComm.Set {
-					v.PosComm.Value = u.PosComm.Value
-					v.PosComm.Valid = u.PosComm.Valid
+				if (*updates)[u].PosComm.Set {
+					(*positions)[v].PosComm.Value = (*updates)[u].PosComm.Value
+					(*positions)[v].PosComm.Valid = (*updates)[u].PosComm.Valid
 				}
 
-				if u.PosLoss.Set {
-					v.PosLoss.Value = u.PosLoss.Value
-					v.PosLoss.Valid = u.PosLoss.Valid
+				if (*updates)[u].PosLoss.Set {
+					(*positions)[v].PosLoss.Value = (*updates)[u].PosLoss.Value
+					(*positions)[v].PosLoss.Valid = (*updates)[u].PosLoss.Valid
 				}
 
-				if u.PosMargin.Set {
-					v.PosMargin.Value = u.PosMargin.Value
-					v.PosMargin.Valid = u.PosMargin.Valid
+				if (*updates)[u].PosMargin.Set {
+					(*positions)[v].PosMargin.Value = (*updates)[u].PosMargin.Value
+					(*positions)[v].PosMargin.Valid = (*updates)[u].PosMargin.Valid
 				}
 
-				if u.PosMaint.Set {
-					v.PosMaint.Value = u.PosMaint.Value
-					v.PosMaint.Valid = u.PosMaint.Valid
+				if (*updates)[u].PosMaint.Set {
+					(*positions)[v].PosMaint.Value = (*updates)[u].PosMaint.Value
+					(*positions)[v].PosMaint.Valid = (*updates)[u].PosMaint.Valid
 				}
 
-				if u.PosAllowance.Set {
-					v.PosAllowance.Value = u.PosAllowance.Value
-					v.PosAllowance.Valid = u.PosAllowance.Valid
+				if (*updates)[u].PosAllowance.Set {
+					(*positions)[v].PosAllowance.Value = (*updates)[u].PosAllowance.Value
+					(*positions)[v].PosAllowance.Valid = (*updates)[u].PosAllowance.Valid
 				}
 
-				if u.TaxableMargin.Set {
-					v.TaxableMargin.Value = u.TaxableMargin.Value
-					v.TaxableMargin.Valid = u.TaxableMargin.Valid
+				if (*updates)[u].TaxableMargin.Set {
+					(*positions)[v].TaxableMargin.Value = (*updates)[u].TaxableMargin.Value
+					(*positions)[v].TaxableMargin.Valid = (*updates)[u].TaxableMargin.Valid
 				}
 
-				if u.InitMargin.Set {
-					v.InitMargin.Value = u.InitMargin.Value
-					v.InitMargin.Valid = u.InitMargin.Valid
+				if (*updates)[u].InitMargin.Set {
+					(*positions)[v].InitMargin.Value = (*updates)[u].InitMargin.Value
+					(*positions)[v].InitMargin.Valid = (*updates)[u].InitMargin.Valid
 				}
 
-				if u.MaintMargin.Set {
-					v.MaintMargin.Value = u.MaintMargin.Value
-					v.MaintMargin.Valid = u.MaintMargin.Valid
+				if (*updates)[u].MaintMargin.Set {
+					(*positions)[v].MaintMargin.Value = (*updates)[u].MaintMargin.Value
+					(*positions)[v].MaintMargin.Valid = (*updates)[u].MaintMargin.Valid
 				}
 
-				if u.SessionMargin.Set {
-					v.SessionMargin.Value = u.SessionMargin.Value
-					v.SessionMargin.Valid = u.SessionMargin.Valid
+				if (*updates)[u].SessionMargin.Set {
+					(*positions)[v].SessionMargin.Value = (*updates)[u].SessionMargin.Value
+					(*positions)[v].SessionMargin.Valid = (*updates)[u].SessionMargin.Valid
 				}
 
-				if u.TargetExcessMargin.Set {
-					v.TargetExcessMargin.Value = u.TargetExcessMargin.Value
-					v.TargetExcessMargin.Valid = u.TargetExcessMargin.Valid
+				if (*updates)[u].TargetExcessMargin.Set {
+					(*positions)[v].TargetExcessMargin.Value = (*updates)[u].TargetExcessMargin.Value
+					(*positions)[v].TargetExcessMargin.Valid = (*updates)[u].TargetExcessMargin.Valid
 				}
 
-				if u.VarMargin.Set {
-					v.VarMargin.Value = u.VarMargin.Value
-					v.VarMargin.Valid = u.VarMargin.Valid
+				if (*updates)[u].VarMargin.Set {
+					(*positions)[v].VarMargin.Value = (*updates)[u].VarMargin.Value
+					(*positions)[v].VarMargin.Valid = (*updates)[u].VarMargin.Valid
 				}
 
-				if u.RealisedGrossPnl.Set {
-					v.RealisedGrossPnl.Value = u.RealisedGrossPnl.Value
-					v.RealisedGrossPnl.Valid = u.RealisedGrossPnl.Valid
+				if (*updates)[u].RealisedGrossPnl.Set {
+					(*positions)[v].RealisedGrossPnl.Value = (*updates)[u].RealisedGrossPnl.Value
+					(*positions)[v].RealisedGrossPnl.Valid = (*updates)[u].RealisedGrossPnl.Valid
 				}
 
-				if u.RealisedTax.Set {
-					v.RealisedTax.Value = u.RealisedTax.Value
-					v.RealisedTax.Valid = u.RealisedTax.Valid
+				if (*updates)[u].RealisedTax.Set {
+					(*positions)[v].RealisedTax.Value = (*updates)[u].RealisedTax.Value
+					(*positions)[v].RealisedTax.Valid = (*updates)[u].RealisedTax.Valid
 				}
 
-				if u.RealisedPnl.Set {
-					v.RealisedPnl.Value = u.RealisedPnl.Value
-					v.RealisedPnl.Valid = u.RealisedPnl.Valid
+				if (*updates)[u].RealisedPnl.Set {
+					(*positions)[v].RealisedPnl.Value = (*updates)[u].RealisedPnl.Value
+					(*positions)[v].RealisedPnl.Valid = (*updates)[u].RealisedPnl.Valid
 				}
 
-				if u.UnrealisedGrossPnl.Set {
-					v.UnrealisedGrossPnl.Value = u.UnrealisedGrossPnl.Value
-					v.UnrealisedGrossPnl.Valid = u.UnrealisedGrossPnl.Valid
+				if (*updates)[u].UnrealisedGrossPnl.Set {
+					(*positions)[v].UnrealisedGrossPnl.Value = (*updates)[u].UnrealisedGrossPnl.Value
+					(*positions)[v].UnrealisedGrossPnl.Valid = (*updates)[u].UnrealisedGrossPnl.Valid
 				}
 
-				if u.LongBankrupt.Set {
-					v.LongBankrupt.Value = u.LongBankrupt.Value
-					v.LongBankrupt.Valid = u.LongBankrupt.Valid
+				if (*updates)[u].LongBankrupt.Set {
+					(*positions)[v].LongBankrupt.Value = (*updates)[u].LongBankrupt.Value
+					(*positions)[v].LongBankrupt.Valid = (*updates)[u].LongBankrupt.Valid
 				}
 
-				if u.ShortBankrupt.Set {
-					v.ShortBankrupt.Value = u.ShortBankrupt.Value
-					v.ShortBankrupt.Valid = u.ShortBankrupt.Valid
+				if (*updates)[u].ShortBankrupt.Set {
+					(*positions)[v].ShortBankrupt.Value = (*updates)[u].ShortBankrupt.Value
+					(*positions)[v].ShortBankrupt.Valid = (*updates)[u].ShortBankrupt.Valid
 				}
 
-				if u.TaxBase.Set {
-					v.TaxBase.Value = u.TaxBase.Value
-					v.TaxBase.Valid = u.TaxBase.Valid
+				if (*updates)[u].TaxBase.Set {
+					(*positions)[v].TaxBase.Value = (*updates)[u].TaxBase.Value
+					(*positions)[v].TaxBase.Valid = (*updates)[u].TaxBase.Valid
 				}
 
-				if u.IndicativeTaxRate.Set {
-					v.IndicativeTaxRate.Value = u.IndicativeTaxRate.Value
-					v.IndicativeTaxRate.Valid = u.IndicativeTaxRate.Valid
+				if (*updates)[u].IndicativeTaxRate.Set {
+					(*positions)[v].IndicativeTaxRate.Value = (*updates)[u].IndicativeTaxRate.Value
+					(*positions)[v].IndicativeTaxRate.Valid = (*updates)[u].IndicativeTaxRate.Valid
 				}
 
-				if u.IndicativeTax.Set {
-					v.IndicativeTax.Value = u.IndicativeTax.Value
-					v.IndicativeTax.Valid = u.IndicativeTax.Valid
+				if (*updates)[u].IndicativeTax.Set {
+					(*positions)[v].IndicativeTax.Value = (*updates)[u].IndicativeTax.Value
+					(*positions)[v].IndicativeTax.Valid = (*updates)[u].IndicativeTax.Valid
 				}
 
-				if u.UnrealisedTax.Set {
-					v.UnrealisedTax.Value = u.UnrealisedTax.Value
-					v.UnrealisedTax.Valid = u.UnrealisedTax.Valid
+				if (*updates)[u].UnrealisedTax.Set {
+					(*positions)[v].UnrealisedTax.Value = (*updates)[u].UnrealisedTax.Value
+					(*positions)[v].UnrealisedTax.Valid = (*updates)[u].UnrealisedTax.Valid
 				}
 
-				if u.UnrealisedPnl.Set {
-					v.UnrealisedPnl.Value = u.UnrealisedPnl.Value
-					v.UnrealisedPnl.Valid = u.UnrealisedPnl.Valid
+				if (*updates)[u].UnrealisedPnl.Set {
+					(*positions)[v].UnrealisedPnl.Value = (*updates)[u].UnrealisedPnl.Value
+					(*positions)[v].UnrealisedPnl.Valid = (*updates)[u].UnrealisedPnl.Valid
 				}
 
-				if u.UnrealisedPnlPcnt.Set {
-					v.UnrealisedPnlPcnt.Value = u.UnrealisedPnlPcnt.Value
-					v.UnrealisedPnlPcnt.Valid = u.UnrealisedPnlPcnt.Valid
+				if (*updates)[u].UnrealisedPnlPcnt.Set {
+					(*positions)[v].UnrealisedPnlPcnt.Value = (*updates)[u].UnrealisedPnlPcnt.Value
+					(*positions)[v].UnrealisedPnlPcnt.Valid = (*updates)[u].UnrealisedPnlPcnt.Valid
 				}
 
-				if u.UnrealisedRoePcnt.Set {
-					v.UnrealisedRoePcnt.Value = u.UnrealisedRoePcnt.Value
-					v.UnrealisedRoePcnt.Valid = u.UnrealisedRoePcnt.Valid
+				if (*updates)[u].UnrealisedRoePcnt.Set {
+					(*positions)[v].UnrealisedRoePcnt.Value = (*updates)[u].UnrealisedRoePcnt.Value
+					(*positions)[v].UnrealisedRoePcnt.Valid = (*updates)[u].UnrealisedRoePcnt.Valid
 				}
 
-				if u.SimpleQty.Set {
-					v.SimpleQty.Value = u.SimpleQty.Value
-					v.SimpleQty.Valid = u.SimpleQty.Valid
+				if (*updates)[u].SimpleQty.Set {
+					(*positions)[v].SimpleQty.Value = (*updates)[u].SimpleQty.Value
+					(*positions)[v].SimpleQty.Valid = (*updates)[u].SimpleQty.Valid
 				}
 
-				if u.SimpleCost.Set {
-					v.SimpleCost.Value = u.SimpleCost.Value
-					v.SimpleCost.Valid = u.SimpleCost.Valid
+				if (*updates)[u].SimpleCost.Set {
+					(*positions)[v].SimpleCost.Value = (*updates)[u].SimpleCost.Value
+					(*positions)[v].SimpleCost.Valid = (*updates)[u].SimpleCost.Valid
 				}
 
-				if u.SimpleValue.Set {
-					v.SimpleValue.Value = u.SimpleValue.Value
-					v.SimpleValue.Valid = u.SimpleValue.Valid
+				if (*updates)[u].SimpleValue.Set {
+					(*positions)[v].SimpleValue.Value = (*updates)[u].SimpleValue.Value
+					(*positions)[v].SimpleValue.Valid = (*updates)[u].SimpleValue.Valid
 				}
 
-				if u.SimplePnl.Set {
-					v.SimplePnl.Value = u.SimplePnl.Value
-					v.SimplePnl.Valid = u.SimplePnl.Valid
+				if (*updates)[u].SimplePnl.Set {
+					(*positions)[v].SimplePnl.Value = (*updates)[u].SimplePnl.Value
+					(*positions)[v].SimplePnl.Valid = (*updates)[u].SimplePnl.Valid
 				}
 
-				if u.SimplePnlPcnt.Set {
-					v.SimplePnlPcnt.Value = u.SimplePnlPcnt.Value
-					v.SimplePnlPcnt.Valid = u.SimplePnlPcnt.Valid
+				if (*updates)[u].SimplePnlPcnt.Set {
+					(*positions)[v].SimplePnlPcnt.Value = (*updates)[u].SimplePnlPcnt.Value
+					(*positions)[v].SimplePnlPcnt.Valid = (*updates)[u].SimplePnlPcnt.Valid
 				}
 
-				if u.AvgCostPrice.Set {
-					v.AvgCostPrice.Value = u.AvgCostPrice.Value
-					v.AvgCostPrice.Valid = u.AvgCostPrice.Valid
+				if (*updates)[u].AvgCostPrice.Set {
+					(*positions)[v].AvgCostPrice.Value = (*updates)[u].AvgCostPrice.Value
+					(*positions)[v].AvgCostPrice.Valid = (*updates)[u].AvgCostPrice.Valid
 				}
 
-				if u.AvgEntryPrice.Set {
-					v.AvgEntryPrice.Value = u.AvgEntryPrice.Value
-					v.AvgEntryPrice.Valid = u.AvgEntryPrice.Valid
+				if (*updates)[u].AvgEntryPrice.Set {
+					(*positions)[v].AvgEntryPrice.Value = (*updates)[u].AvgEntryPrice.Value
+					(*positions)[v].AvgEntryPrice.Valid = (*updates)[u].AvgEntryPrice.Valid
 				}
 
-				if u.BreakEvenPrice.Set {
-					v.BreakEvenPrice.Value = u.BreakEvenPrice.Value
-					v.BreakEvenPrice.Valid = u.BreakEvenPrice.Valid
+				if (*updates)[u].BreakEvenPrice.Set {
+					(*positions)[v].BreakEvenPrice.Value = (*updates)[u].BreakEvenPrice.Value
+					(*positions)[v].BreakEvenPrice.Valid = (*updates)[u].BreakEvenPrice.Valid
 				}
 
-				if u.MarginCallPrice.Set {
-					v.MarginCallPrice.Value = u.MarginCallPrice.Value
-					v.MarginCallPrice.Valid = u.MarginCallPrice.Valid
+				if (*updates)[u].MarginCallPrice.Set {
+					(*positions)[v].MarginCallPrice.Value = (*updates)[u].MarginCallPrice.Value
+					(*positions)[v].MarginCallPrice.Valid = (*updates)[u].MarginCallPrice.Valid
 				}
 
-				if u.LiquidationPrice.Set {
-					v.LiquidationPrice.Value = u.LiquidationPrice.Value
-					v.LiquidationPrice.Valid = u.LiquidationPrice.Valid
+				if (*updates)[u].LiquidationPrice.Set {
+					(*positions)[v].LiquidationPrice.Value = (*updates)[u].LiquidationPrice.Value
+					(*positions)[v].LiquidationPrice.Valid = (*updates)[u].LiquidationPrice.Valid
 				}
 
-				if u.BankruptPrice.Set {
-					v.BankruptPrice.Value = u.BankruptPrice.Value
-					v.BankruptPrice.Valid = u.BankruptPrice.Valid
+				if (*updates)[u].BankruptPrice.Set {
+					(*positions)[v].BankruptPrice.Value = (*updates)[u].BankruptPrice.Value
+					(*positions)[v].BankruptPrice.Valid = (*updates)[u].BankruptPrice.Valid
 				}
 
-				if u.Timestamp.Set {
-					v.Timestamp.Value = u.Timestamp.Value
-					v.Timestamp.Valid = u.Timestamp.Valid
+				if (*updates)[u].Timestamp.Set {
+					(*positions)[v].Timestamp.Value = (*updates)[u].Timestamp.Value
+					(*positions)[v].Timestamp.Valid = (*updates)[u].Timestamp.Valid
 				}
 
-				if u.LastPrice.Set {
-					v.LastPrice.Value = u.LastPrice.Value
-					v.LastPrice.Valid = u.LastPrice.Valid
+				if (*updates)[u].LastPrice.Set {
+					(*positions)[v].LastPrice.Value = (*updates)[u].LastPrice.Value
+					(*positions)[v].LastPrice.Valid = (*updates)[u].LastPrice.Valid
 				}
 
-				if u.LastValue.Set {
-					v.LastValue.Value = u.LastValue.Value
-					v.LastValue.Valid = u.LastValue.Valid
+				if (*updates)[u].LastValue.Set {
+					(*positions)[v].LastValue.Value = (*updates)[u].LastValue.Value
+					(*positions)[v].LastValue.Valid = (*updates)[u].LastValue.Valid
 				}
 
-				later := (*positions)[i+1:]
-				*positions = append((*positions)[:i], v)
+				later := (*positions)[v+1:]
+				*positions = append((*positions)[:v], (*positions)[v])
 				*positions = append(*positions, later...)
 
 			}
@@ -1150,9 +1150,9 @@ func (positions *PositionSlice) PositionUpdate(updates *[]PositionResponseData) 
 }
 
 func (positions *PositionSlice) PositionDelete(deletes *[]PositionResponseData) {
-	for _, u := range *deletes {
-		for i, v := range *positions {
-			if u.Symbol.Value == v.Symbol.Value {
+	for u := range *deletes {
+		for i := range *positions {
+			if (*deletes)[u].Symbol.Value == (*positions)[i].Symbol.Value {
 				*positions = append((*positions)[:i], (*positions)[i+1:]...)
 			}
 		}
