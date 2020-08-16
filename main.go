@@ -6,6 +6,8 @@ import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/hostClient"
 	"github.com/adi1382/Bitmex-Mirror-Bot/subClient"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
+	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/viper"
 	"go.uber.org/atomic"
 	"log"
 	"os"
@@ -49,6 +51,34 @@ func main() {
 	var mirror Mirror.Mirror
 	mirror.RestartCounter = RestartCounter
 
+	//cfg := config.LoadConfig("config.json")
+	viper.SetConfigName("config") // name of config file (without extension)
+	//viper.SetConfigType("json") // REQUIRED if the config file does not have the extension in the name
+	viper.AddConfigPath(".")    // optionally look for config in the working directory
+	err := viper.ReadInConfig() // Find and read the config file
+	if err != nil {             // Handle errors reading the config file
+		panic(fmt.Errorf("Fatal error config file: %s \n", err))
+	}
+	//fmt.Println(viper.AllKeys())
+	fmt.Println(viper.AllKeys())
+	fmt.Println(viper.Sub("Settings").GetDuration("CalibrationRate") * time.Second)
+
+	viper.WatchConfig()
+	viper.OnConfigChange(func(in fsnotify.Event) {
+		fmt.Println(in)
+		fmt.Println("Config File Changed!")
+	})
+
+	fmt.Println(viper.Sub("SubAccounts").AllSettings())
+	fmt.Println(len(viper.Sub("SubAccounts").AllSettings()))
+	//fmt.Println(viper.AllSettings()["subaccounts"])
+
+	//for {
+	//
+	//}
+
+	//os.Exit(0)
+
 	fmt.Println("started")
 
 	baseUrl := "testnet.bitmex.com"
@@ -78,13 +108,34 @@ func main() {
 	//	cfg.Settings.LimitFilledTimeout, &RestartCounter)
 	//hostClient.subscribeTopics("order", "position", "margin")
 
-	hostApi := "hPawIhWrPeMAEpdmjDBZXZqw"
-	hostSecret := "_IQpR1WpEX2Ls4J8QhJHUX82W9xbjZHRsyUOoWlko2tfB0AK"
-
 	subApi := "L-uYMpCeBqQswmFL971PcZIs"
 	subSecret := "zlhP-sCl0rXEgm5Y1o7I2qmOtYZPQXR6_0wigHk05kYZ2Dej"
 
-	host := hostClient.NewHostClient(hostApi, hostSecret, true, chWriteToWS, 10, RestartCounter)
+	host := hostClient.NewHostClient(
+		viper.Sub("HostAccount").GetString("ApiKey"),
+		viper.Sub("HostAccount").GetString("ApiSecret"),
+		viper.Sub("Settings").GetBool("Testnet"),
+		chWriteToWS,
+		viper.Sub("Settings").GetInt64("RatioUpdateRate"),
+		RestartCounter)
+
+	for _, value := range viper.Sub("SubAccounts").AllSettings() {
+		mirror.Subs = append(
+			mirror.Subs,
+			subClient.NewSubClient(
+				value.(map[string]interface{})["ApiKey"].(string),
+				value.(map[string]interface{})["Secret"].(string),
+				viper.Sub("Settings").GetBool("Testnet"),
+				value.(map[string]interface{})["BalanceProportion"].(bool),
+				1,
+				chWriteToWS,
+				60,
+				10,
+				10,
+				RestartCounter,
+				host))
+	}
+
 	sub := subClient.NewSubClient(subApi, subSecret, true, false, 1, chWriteToWS,
 		60, 10, 10, RestartCounter, host)
 	mirror.Host = host
@@ -111,6 +162,8 @@ func main() {
 	fmt.Println("Partials Received")
 
 	go func() {
+		wg.Add(1)
+		defer wg.Done()
 		for {
 			if RestartCounter.Load() > 0 {
 				_ = conn.Close()
