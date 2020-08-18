@@ -1,0 +1,1 @@
+{"level":"error","ts":1597730312.3296268,"caller":"Bitmex-Mirror-Bot/main.go:57","msg":"Hello","stacktrace":"main.main\n\tC:/Users/Aditya/Documents/goworkspace/src/github.com/adi1382/Bitmex-Mirror-Bot/main.go:57\nruntime.main\n\tC:/Go/src/runtime/proc.go:204"}

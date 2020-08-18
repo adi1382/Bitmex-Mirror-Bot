@@ -9,19 +9,17 @@ import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/gorilla/websocket"
 	"go.uber.org/atomic"
+	"go.uber.org/zap"
 	"log"
 	"net/url"
 	"os"
-	"strings"
 	"sync"
 	"time"
 )
 
 var (
-	InfoLogger    *log.Logger
-	ErrorLogger   *log.Logger
-	receiveLogger *log.Logger
-	sendLogger    *log.Logger
+	InfoLogger  *log.Logger
+	ErrorLogger *log.Logger
 )
 
 func init() {
@@ -40,22 +38,6 @@ func init() {
 	if err != nil {
 		ErrorLogger.Fatal(err)
 	}
-
-	received, err := os.OpenFile("logs/socketReceived.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	if err != nil {
-		ErrorLogger.Fatal(err)
-	}
-
-	sent, err := os.OpenFile("logs/socketSent.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	if err != nil {
-		ErrorLogger.Fatal(err)
-	}
-
-	receiveLogger = log.New(received, "RECEIVED: ", log.Ldate|log.Ltime|log.Lshortfile)
-	sendLogger = log.New(sent, "SENT: ", log.Ldate|log.Ltime|log.Lshortfile)
-
-	receiveLogger.Println("\n\n\n\n" + strings.Repeat("#", 50) + "\tNew Session\t" + strings.Repeat("#", 50) + "\n\n\n\n")
-	sendLogger.Println("\n\n\n\n" + strings.Repeat("#", 50) + "\tNew Session\t" + strings.Repeat("#", 50) + "\n\n\n\n")
 
 	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
 	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
@@ -80,6 +62,10 @@ func Connect(host string) (*websocket.Conn, error) {
 	//}
 
 	return conn, err
+}
+
+func GetNewConnection() *websocket.Conn {
+	return &websocket.Conn{}
 }
 
 //func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter *int32) {
@@ -143,7 +129,13 @@ func Connect(host string) (*websocket.Conn, error) {
 //	}
 //}
 
-func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
+func ReadFromWSToChannel(
+	c *websocket.Conn,
+	chRead chan<- []byte,
+	RestartCounter *atomic.Uint32,
+	wg *sync.WaitGroup,
+	incomingLogger *zap.Logger) {
+
 	wg.Add(1)
 	defer wg.Done()
 	defer func() {
@@ -166,7 +158,7 @@ func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter
 		}
 
 		if messageType == 1 {
-			receiveLogger.Println("Length of channel:", len(chRead), "Message:", string(message))
+			incomingLogger.Info("INCOMING MESSAGE", zap.Int("ChLength", len(chRead)), zap.String("message", string(message)))
 			chRead <- message
 		} else {
 			continue
@@ -228,7 +220,12 @@ func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter
 //	}
 //}
 
-func WriteFromChannelToWS(c *websocket.Conn, chWrite <-chan interface{}, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
+func WriteFromChannelToWS(
+	c *websocket.Conn,
+	chWrite <-chan interface{},
+	RestartCounter *atomic.Uint32,
+	wg *sync.WaitGroup,
+	OutgoingLogger *zap.Logger) {
 	wg.Add(1)
 	defer wg.Done()
 
@@ -250,7 +247,10 @@ func WriteFromChannelToWS(c *websocket.Conn, chWrite <-chan interface{}, Restart
 			continue
 		}
 
-		sendLogger.Println("Length of channel:", len(chWrite), "Message:", string(message.([]byte)))
+		OutgoingLogger.Info("OUTGOING MESSAGE",
+			zap.Int("ChLen", len(chWrite)),
+			zap.String("message", string(message.([]byte))))
+
 		err = c.WriteMessage(websocket.TextMessage, message.([]byte))
 
 		tools.WebsocketErr(err, RestartCounter)

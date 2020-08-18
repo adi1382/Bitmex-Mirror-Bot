@@ -1,6 +1,7 @@
 package tools
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"github.com/sparrc/go-ping"
@@ -35,6 +36,12 @@ func init() {
 
 	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
 	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
+}
+
+func EnterToExit() {
+	fmt.Print("\n\nPress 'Enter' to exit")
+	_, _ = bufio.NewReader(os.Stdin).ReadBytes('\n')
+	os.Exit(0)
 }
 
 func CheckConnection(baseUrl *string) {

@@ -3,7 +3,7 @@
     "Settings": {
         "Testnet": true,
         "RatioUpdateRate": 3600,
-        "CalibrationRate": 43,
+        "CalibrationRate": 46,
         "LimitFilledTimeout": 10
     },
 
