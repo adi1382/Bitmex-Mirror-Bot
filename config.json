@@ -1,7 +1,7 @@
 {
 
     "Settings": {
-        "Testnet": true,
+        "Testnet": "true",
         "RatioUpdateRate": 3600,
         "CalibrationRate": 46,
         "LimitFilledTimeout": 10
@@ -9,27 +9,29 @@
 
     "HostAccount": {
         "ApiKey": "hPawIhWrPeMAEpdmjDBZXZqw",
-        "ApiSecret": "_IQpR1WpEX2Ls4J8QhJHUX82W9xbjZHRsyUOoWlko2tfB0AK"
+        "Secret": "_IQpR1WpEX2Ls4J8QhJHUX82W9xbjZHRsyUOoWlko2tfB0AK"
     },
 
     "SubAccounts": {
 
-        "Account 1": {
+        "Account1": {
             "Enabled": true,
             "CopyLeverage": true,
             "BalanceProportion": false,
             "FixedProportion": 1,
             "ApiKey": "kM48RyootuZz0cwimCIIZzDW",
-            "Secret": "-zqVilHjpPYNo2jFtiIyVOitiGfg1WIqKIra9u8L0GVgnlOY"
+            "Secret": "-zqVilHjpPYNo2jFtiIyVOitiGfg1WIqKIra9u8L0GVgnlOY",
+            "AccountName": ""
         },
 
-        "Account 2": {
+        "Account2": {
             "Enabled": false,
             "CopyLeverage": true,
             "BalanceProportion": false,
             "FixedProportion": 1,
             "ApiKey": "",
-            "Secret": ""
+            "Secret": "",
+            "AccountName": ""
         }
     }
 

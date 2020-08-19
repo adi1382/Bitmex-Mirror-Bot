@@ -6,7 +6,6 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/gorilla/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
@@ -24,15 +23,15 @@ var (
 
 func init() {
 
-	_, err := os.Stat("logs")
-
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll("logs", 0750)
-		if errDir != nil {
-			ErrorLogger.Fatal(err)
-		}
-
-	}
+	//_, err := os.Stat("logs")
+	//
+	//if os.IsNotExist(err) {
+	//	errDir := os.MkdirAll("logs", 0750)
+	//	if errDir != nil {
+	//		ErrorLogger.Fatal(err)
+	//	}
+	//
+	//}
 
 	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {
@@ -53,15 +52,32 @@ func (m *Message) AddArgument(argument string) {
 	m.Args = append(m.Args, argument)
 }
 
-func Connect(host string) (*websocket.Conn, error) {
-	u := url.URL{Scheme: "wss", Host: host, Path: "/realtimemd"}
-	InfoLogger.Println("\n\n\nConnecting to: ", u.String())
-	conn, _, err := websocket.DefaultDialer.Dial(u.String(), nil)
+func Connect(host string, logger *zap.Logger) (*websocket.Conn, error) {
+
+	defer logger.Sync()
+
+	for i := 0; ; i++ {
+		u := url.URL{Scheme: "wss", Host: host, Path: "/realtimemd"}
+		InfoLogger.Println("\n\n\nConnecting to: ", u.String())
+		conn, httpResponse, err := websocket.DefaultDialer.Dial(u.String(), nil)
+
+		if err != nil {
+			logger.Sugar().Error(
+				"Unable to establish websocket connection",
+				conn, httpResponse, err, zap.Int("attempt", i))
+
+			if i > 5 {
+				return nil, fmt.Errorf("cannot connect to Bitmex's websocket")
+			}
+			time.Sleep(time.Second)
+			continue
+		}
+
+		return conn, err
+	}
 	//if err != nil{
 	//	panic(err)
 	//}
-
-	return conn, err
 }
 
 func GetNewConnection() *websocket.Conn {
@@ -132,36 +148,45 @@ func GetNewConnection() *websocket.Conn {
 func ReadFromWSToChannel(
 	c *websocket.Conn,
 	chRead chan<- []byte,
-	RestartCounter *atomic.Uint32,
-	wg *sync.WaitGroup,
-	incomingLogger *zap.Logger) {
+	incomingLogger *zap.Logger,
+	logger *zap.Logger,
+	RestartRequired *atomic.Bool) {
 
-	wg.Add(1)
-	defer wg.Done()
+	logger.Info("Socket Status", zap.String("status", "Socket Reader Routine Started"))
+
 	defer func() {
-		fmt.Println("Channel Reader Closed")
+		logger.Info("Socket Status", zap.String("status", "Socket Reader Routine Closed"))
 	}()
 
 	for {
 		messageType, message, err := c.ReadMessage()
 
-		if RestartCounter.Load() != 0 {
-			chRead <- []byte("quit")
-			break
-		}
-
 		if err != nil {
-			RestartCounter.Add(1)
-			ErrorLogger.Println(err)
+			RestartRequired.Store(true)
+
+			if websocket.IsUnexpectedCloseError(err) {
+				logger.Error("Unexpected websocket closure", zap.Error(err))
+			}
+
+			if websocket.IsCloseError(err) {
+				logger.Info("Expected websocket closure", zap.Error(err))
+			}
+
+			fmt.Println("Expected: ", websocket.IsCloseError(err))
+			fmt.Println("Unexpected: ", websocket.IsUnexpectedCloseError(err))
+
 			chRead <- []byte("quit")
 			break
 		}
 
 		if messageType == 1 {
-			incomingLogger.Info("INCOMING MESSAGE", zap.Int("ChLength", len(chRead)), zap.String("message", string(message)))
+			incomingLogger.Info(
+				"INCOMING MESSAGE",
+				zap.Int("ChLength",
+					len(chRead)),
+				zap.String("message", string(message)))
+
 			chRead <- message
-		} else {
-			continue
 		}
 	}
 }
@@ -223,14 +248,17 @@ func ReadFromWSToChannel(
 func WriteFromChannelToWS(
 	c *websocket.Conn,
 	chWrite <-chan interface{},
-	RestartCounter *atomic.Uint32,
-	wg *sync.WaitGroup,
-	OutgoingLogger *zap.Logger) {
+	OutgoingLogger *zap.Logger,
+	logger *zap.Logger,
+	restartRequired *atomic.Bool,
+	wg *sync.WaitGroup) {
+
 	wg.Add(1)
 	defer wg.Done()
 
+	logger.Info("Socket writer started")
 	defer func() {
-		fmt.Println("Socket writer Closed")
+		logger.Info("Socket writer closed")
 	}()
 
 	for {
@@ -238,13 +266,16 @@ func WriteFromChannelToWS(
 		s, ok := message.(string)
 		if ok {
 			if s == "quit" {
+				restartRequired.Store(true)
 				break
 			}
 		}
 
 		message, err := json.Marshal(message)
 		if err != nil {
-			continue
+			restartRequired.Store(true)
+			logger.Sugar().Error("Error in SocketWriter while Marshaling message", message, zap.Error(err))
+			break
 		}
 
 		OutgoingLogger.Info("OUTGOING MESSAGE",
@@ -253,7 +284,11 @@ func WriteFromChannelToWS(
 
 		err = c.WriteMessage(websocket.TextMessage, message.([]byte))
 
-		tools.WebsocketErr(err, RestartCounter)
+		if err != nil {
+			logger.Error("Error while writing message to socket", zap.Error(err))
+			restartRequired.Store(true)
+			break
+		}
 	}
 }
 

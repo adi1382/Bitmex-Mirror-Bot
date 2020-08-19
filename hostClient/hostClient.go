@@ -21,14 +21,14 @@ var (
 )
 
 func init() {
-	_, err := os.Stat("logs")
-
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll("logs", 0750)
-		if errDir != nil {
-			ErrorLogger.Fatal(err)
-		}
-	}
+	//_, err := os.Stat("logs")
+	//
+	//if os.IsNotExist(err) {
+	//	errDir := os.MkdirAll("logs", 0750)
+	//	if errDir != nil {
+	//		ErrorLogger.Fatal(err)
+	//	}
+	//}
 
 	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {

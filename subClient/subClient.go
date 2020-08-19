@@ -20,14 +20,14 @@ var (
 )
 
 func init() {
-	_, err := os.Stat("logs")
-
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll("logs", 0750)
-		if errDir != nil {
-			ErrorLogger.Fatal(err)
-		}
-	}
+	//_, err := os.Stat("logs")
+	//
+	//if os.IsNotExist(err) {
+	//	errDir := os.MkdirAll("logs", 0750)
+	//	if errDir != nil {
+	//		ErrorLogger.Fatal(err)
+	//	}
+	//}
 
 	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
 	if err != nil {
@@ -41,9 +41,8 @@ func init() {
 func NewSubClient(
 	apiKey, apiSecret string,
 	test, balanceProportion bool,
-	fixedRatio float64,
+	fixedRatio, marginUpdateTime, calibrationTime, limitFilledTimeout float64,
 	ch chan<- interface{},
-	marginUpdateTime, calibrationTime, limitFilledTimeout int64,
 	RestartCounter *atomic.Uint32,
 	hostClient *hostClient.HostClient) *SubClient {
 
@@ -82,14 +81,14 @@ func NewSubClient(
 
 type SubClient struct {
 	active             atomic.Bool
-	marginUpdateTime   int64
+	marginUpdateTime   float64
 	BalanceProportion  bool
 	FixedRatio         float64
 	test               bool
 	marginUpdated      atomic.Bool
 	partials           atomic.Uint32
 	marginBalance      atomic.Float64
-	LimitFilledTimeout int64
+	LimitFilledTimeout float64
 	activeOrders       websocket.OrderSlice
 	activePositions    websocket.PositionSlice
 	currentMargin      websocket.MarginSlice
@@ -103,7 +102,7 @@ type SubClient struct {
 	chReadFromWSClient chan []byte
 	Rest               *swagger.APIClient
 	hostClient         *hostClient.HostClient
-	calibrationTime    int64
+	calibrationTime    float64
 	hostUpdatesFetcher chan []byte
 	restartCounter     *atomic.Uint32
 }
