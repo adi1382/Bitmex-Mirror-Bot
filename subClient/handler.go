@@ -109,7 +109,7 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 		ratio = c.FixedRatio
 	}
 
-	response, table := bitmex.DecodeMessage([]byte(strResponse))
+	response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger)
 
 	c.logger.Debug("Updating table from mirror on subClient",
 		zap.String("table", table),

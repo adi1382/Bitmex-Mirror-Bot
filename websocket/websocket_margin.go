@@ -49,7 +49,6 @@ type MarginResponseData struct {
 }
 
 func (margin *MarginSlice) MarginPartial(inserts *[]MarginResponseData) {
-	InfoLogger.Println("Margin Partials Processing")
 	*margin = nil
 	for v := range *inserts {
 		var insertMargin swagger.Margin
@@ -176,11 +175,9 @@ func (margin *MarginSlice) MarginPartial(inserts *[]MarginResponseData) {
 
 		*margin = append(*margin, insertMargin)
 	}
-	InfoLogger.Println("Margin Partials Processed")
 }
 
 func (margin *MarginSlice) MarginInsert(inserts *[]MarginResponseData) {
-	InfoLogger.Println("Margin Inserts Processing")
 	for v := range *inserts {
 		var insertMargin swagger.Margin
 
@@ -306,11 +303,9 @@ func (margin *MarginSlice) MarginInsert(inserts *[]MarginResponseData) {
 
 		*margin = append(*margin, insertMargin)
 	}
-	InfoLogger.Println("Margin Inserts Processed")
 }
 
 func (margin *MarginSlice) MarginUpdate(updates *[]MarginResponseData) {
-	InfoLogger.Println("Margin Updates Processing")
 	for u := range *updates {
 		for i := range *margin {
 
@@ -526,11 +521,9 @@ func (margin *MarginSlice) MarginUpdate(updates *[]MarginResponseData) {
 			}
 		}
 	}
-	InfoLogger.Println("Margin Updates Processed")
 }
 
 func (margin *MarginSlice) MarginDelete(deletes *[]MarginResponseData) {
-	InfoLogger.Println("Margin Deletes Processing")
 	for u := range *deletes {
 		for i := range *margin {
 			if (*deletes)[u].Account.Value == (*margin)[i].Account.Value {
@@ -538,5 +531,4 @@ func (margin *MarginSlice) MarginDelete(deletes *[]MarginResponseData) {
 			}
 		}
 	}
-	InfoLogger.Println("Margin Deletes Processed")
 }

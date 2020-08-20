@@ -6,7 +6,7 @@ import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"go.uber.org/atomic"
-	"log"
+	"go.uber.org/zap"
 	"net/http"
 	"os"
 	"strconv"
@@ -15,32 +15,8 @@ import (
 	"time"
 )
 
-var (
-	InfoLogger  *log.Logger
-	ErrorLogger *log.Logger
-)
-
-func init() {
-	//_, err := os.Stat("logs")
-	//
-	//if os.IsNotExist(err) {
-	//	errDir := os.MkdirAll("logs", 0750)
-	//	if errDir != nil {
-	//		ErrorLogger.Fatal(err)
-	//	}
-	//}
-
-	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	if err != nil {
-		ErrorLogger.Fatal(err)
-	}
-
-	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
-	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
-}
-
 func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, marginUpdateTime int64,
-	RestartCounter *atomic.Uint32) *HostClient {
+	RestartCounter *atomic.Uint32, logger *zap.Logger) *HostClient {
 	c := HostClient{
 		ApiKey:    apiKey,
 		apiSecret: apiSecret,
@@ -60,7 +36,11 @@ func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, m
 	c.marginUpdateTime = marginUpdateTime
 	c.chWriteToWSClient = ch
 	c.chReadFromWSClient = make(chan []byte, 100)
-	InfoLogger.Println("New HostClient Initialized | ", c.WebsocketTopic, " | ", apiKey)
+	c.logger = logger
+
+	c.logger.Info("New SubClient Created",
+		zap.String("websocketTopic", c.WebsocketTopic),
+		zap.String("apiKey", apiKey))
 
 	return &c
 }
@@ -85,6 +65,7 @@ type HostClient struct {
 	chReadFromWSClient chan []byte
 	Rest               *swagger.APIClient
 	restartCounter     *atomic.Uint32
+	logger             *zap.Logger
 }
 
 func (c *HostClient) Initialize() {
@@ -93,7 +74,9 @@ func (c *HostClient) Initialize() {
 	go c.marginUpdate()
 	go c.dataHandler()
 
-	InfoLogger.Println("New Client Initialized | ", c.WebsocketTopic, " | ", c.ApiKey)
+	c.logger.Info("New hostClient Initialized",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 }
 
 func (c *HostClient) CloseConnection() {
@@ -103,7 +86,10 @@ func (c *HostClient) CloseConnection() {
 	c.chWriteToWSClient <- message
 	c.chReadFromWSClient <- []byte("quit")
 	c.restartCounter.Add(1)
-	InfoLogger.Println("Closed connection for hostClient", c.ApiKey)
+
+	c.logger.Info("Closed Connection for hostClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 }
 
 func (c *HostClient) WaitForPartial() {
@@ -128,15 +114,15 @@ func (c *HostClient) marginUpdate() {
 		}
 
 		marginBalance := c.restMargin()
-		InfoLogger.Println("Margin Balance is: ", marginBalance)
 
-		InfoLogger.Println("Updating margin on ", c.ApiKey)
+		c.logger.Info("Updating marginBalance on hostAccount",
+			zap.Float64("marginBalance", marginBalance),
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
 
 		c.marginBalance.Store(marginBalance)
 
 		c.marginUpdated.Store(true)
-
-		InfoLogger.Println("Margin updated on ", c.ApiKey)
 
 		resetTime := time.Now().Add(time.Second * time.Duration(c.marginUpdateTime))
 
@@ -166,16 +152,21 @@ func (c *HostClient) GetMarginBalance() float64 {
 }
 
 func (c *HostClient) startSocketConnection() {
-	InfoLogger.Println("Initiating connection of subClient ", c.ApiKey, " to sockets.")
+	c.logger.Info("Starting socket connection on hostClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 	var message []interface{}
 	message = append(message, 1, c.ApiKey, c.WebsocketTopic)
 	c.chWriteToWSClient <- message
-	InfoLogger.Println("Initiated connection of subClient ", c.ApiKey, " to sockets.")
 }
 
 func (c *HostClient) socketAuthentication() {
 	var message []interface{}
-	InfoLogger.Println("Authenticating websocket connection of subClient ", c.ApiKey)
+
+	c.logger.Info("Authenticating websocket connection on hostClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
+
 	message = append(message, 0, c.ApiKey, c.WebsocketTopic, websocket.GetAuthMessage(c.ApiKey, c.apiSecret))
 	c.chWriteToWSClient <- message
 }
@@ -188,7 +179,9 @@ func (c *HostClient) SubscribeTopics(tables ...string) {
 		command.AddArgument(v)
 	}
 
-	InfoLogger.Println("Subscribing tables ", tables, " on subClient ", c.ApiKey)
+	c.logger.Info("Subscribing Tables on hostClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 
 	message = append(message, 0, c.ApiKey, c.WebsocketTopic, command)
 	c.chWriteToWSClient <- message
@@ -196,7 +189,9 @@ func (c *HostClient) SubscribeTopics(tables ...string) {
 
 func (c *HostClient) UnsubscribeTopics(tables ...string) {
 
-	InfoLogger.Println("Unsubscribing tables ", tables, " on subClient ", c.ApiKey)
+	c.logger.Info("Unsubscribing Tables on hostClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 
 	var message []interface{}
 	command := websocket.Message{Op: "unsubscribe"}
@@ -216,7 +211,9 @@ func (c *HostClient) Push(message *[]byte) {
 func (c *HostClient) dataHandler() {
 	//fmt.Println("Data Handler started for subClient ", c.ApiKey)
 	defer func() {
-		InfoLogger.Println("Data Handler Closed for subClient ", c.ApiKey)
+		c.logger.Info("Data Handler Closed for subClient ",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
 		//fmt.Println("Data Handler Closed for subClient ", c.ApiKey)
 	}()
 	for {
@@ -226,7 +223,10 @@ func (c *HostClient) dataHandler() {
 		}
 
 		message := <-c.chReadFromWSClient
-		InfoLogger.Println("Received new message in Data Handler for subClient ", c.ApiKey)
+		c.logger.Debug("Received new message in Data Handler for subClient ",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
+
 		strResponse := string(message)
 		if strResponse == "quit" {
 			break
@@ -235,36 +235,36 @@ func (c *HostClient) dataHandler() {
 		if strings.Contains(strResponse, "Access Token expired for subscription") {
 			c.restartCounter.Add(1)
 			//atomic.AddInt64(c.restartCounter, 1)
-			ErrorLogger.Println(strResponse)
+
+			c.logger.Error("Expiration Error",
+				zap.String("errorMessage", string(message)),
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
+
 			//fmt.Println(string(message))
 		}
 
 		if strings.Contains(strResponse, "Invalid API Key") {
 			fmt.Println("API key ", c.ApiKey, " is invalid.")
-			ErrorLogger.Println(strResponse)
-			ErrorLogger.Println("API key ", c.ApiKey, " is invalid.")
-			if c.WebsocketTopic == "hostAccount" {
-				fmt.Println("host Account API key is Invalid. Closing the bot in 10 seconds.")
-				ErrorLogger.Println("host Account API key is Invalid. Closing the bot in 10 seconds.")
-				time.Sleep(time.Second * 10)
-				os.Exit(-1)
-			} else {
-				c.CloseConnection()
-			}
+
+			c.logger.Error("api key invalid for hostCLient",
+				zap.String("errMessage", strResponse),
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
+
+			time.Sleep(time.Second * 10)
+			os.Exit(-1)
 		}
 
 		if strings.Contains(strResponse, "This key is disabled") {
-			ErrorLogger.Println(strResponse)
-			fmt.Println("API key ", c.ApiKey, " is disabled.")
-			ErrorLogger.Println("API key ", c.ApiKey, " is disabled.")
-			if c.WebsocketTopic == "hostAccount" {
-				fmt.Println("host Account API key is disabled. Closing the bot in 10 seconds.")
-				ErrorLogger.Println("host Account API key is disabled. Closing the bot in 10 seconds.")
-				time.Sleep(time.Second * 10)
-				os.Exit(-1)
-			} else {
-				c.CloseConnection()
-			}
+
+			c.logger.Error("apiKey is disabled on hostClient",
+				zap.String("errorMessage", strResponse),
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
+
+			time.Sleep(time.Second * 10)
+			os.Exit(-1)
 		}
 
 		prefix := fmt.Sprintf(`[0,"%s","%s",`, c.ApiKey, c.WebsocketTopic)
@@ -275,9 +275,12 @@ func (c *HostClient) dataHandler() {
 			continue
 		}
 
-		response, table := bitmex.DecodeMessage([]byte(strResponse))
+		response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger)
 
-		InfoLogger.Println("Manipulating ", table, " table on subClient ", c.ApiKey)
+		c.logger.Debug("Updating table on hostClient",
+			zap.String("table", table),
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
 
 		// Potential Race Condition when fetching
 		if table == "order" {
@@ -338,14 +341,22 @@ func (c *HostClient) RunningStatus() bool {
 }
 
 func (c *HostClient) CurrentMargin() websocket.MarginSlice {
-	InfoLogger.Println("Fetching Current margin for subClient ", c.ApiKey)
+
+	c.logger.Debug("Fetching Current margin for hostAccount ",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
+
 	c.marginLock.Lock()
 	defer c.marginLock.Unlock()
 	return c.currentMargin
 }
 
 func (c *HostClient) restMargin() float64 {
-	InfoLogger.Println("Fetching Current margin for subClient ", c.ApiKey)
+
+	c.logger.Info("Updating current margin on hostClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
+
 	var currency swagger.UserGetMarginOpts
 
 L:
@@ -357,8 +368,9 @@ L:
 		case 1:
 			continue L
 		case 2:
-			fmt.Println("API key Invalid/Disabled on host")
-			InfoLogger.Println("API key Invalid/Disabled on host")
+			c.logger.Error("API key Invalid/Disabled on host")
+			fmt.Println("API key Invalid/Disabled on host, closing in 10 seconds")
+			time.Sleep(time.Second * 10)
 			os.Exit(-1)
 			//c.CloseConnection()
 			//return -404
@@ -377,7 +389,9 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 	if err != nil {
 
 		//fmt.Println(err)
-		ErrorLogger.Println("Error on subClient", c.ApiKey)
+		c.logger.Error("Error on subClient",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
 
 		if strings.Contains(err.Error(), "401") || strings.Contains(err.Error(), "403") {
 			return 2
@@ -389,10 +403,10 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 
 			if ok {
 				e := k.Error_
-				ErrorLogger.Println(e.Message.Value, "///", e.Name.Value)
-				ErrorLogger.Println(string(err.(swagger.GenericSwaggerError).Body()))
-				ErrorLogger.Println(err.(swagger.GenericSwaggerError).Error())
-				ErrorLogger.Println(err.Error())
+				c.logger.Sugar().Error(e.Message.Value, "///", e.Name.Value)
+				c.logger.Sugar().Error(string(err.(swagger.GenericSwaggerError).Body()))
+				c.logger.Sugar().Error(err.(swagger.GenericSwaggerError).Error())
+				c.logger.Sugar().Error(err.Error())
 
 				//fmt.Println(e)
 				//panic(err)
@@ -408,11 +422,11 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 				}
 
 				if response.StatusCode > 300 {
-					ErrorLogger.Println(*response)
+					c.logger.Sugar().Error(*response)
 				}
 
 				if response.StatusCode == 400 {
-					ErrorLogger.Println(e.Message, e.Name)
+					c.logger.Sugar().Error(e.Message, e.Name)
 
 					if e.Message.Valid {
 						if strings.Contains(e.Message.Value, "Account has insufficient Available Balance") {
@@ -436,12 +450,12 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 				} else if response.StatusCode == 404 {
 					return 0
 				} else if response.StatusCode == 429 {
-					ErrorLogger.Printf("\n\n\nReceived 429 too many errors")
-					ErrorLogger.Println(e.Name, e.Message)
+					c.logger.Sugar().Error("\n\n\nReceived 429 too many errors")
+					c.logger.Sugar().Error(e.Name, e.Message)
 					a, _ := strconv.Atoi(response.Header["X-Ratelimit-Reset"][0])
 					reset := int64(a) - time.Now().Unix()
-					ErrorLogger.Printf("Time to reset: %v\n", reset)
-					ErrorLogger.Printf("Slept for %v seconds.\n", reset)
+					c.logger.Sugar().Error("Time to reset: %v\n", reset)
+					c.logger.Sugar().Error("Slept for %v seconds.\n", reset)
 					time.Sleep(time.Second * time.Duration(reset))
 					return 1
 				} else if response.StatusCode == 503 {

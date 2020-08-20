@@ -45,7 +45,6 @@ type OrderResponseData struct {
 // -1 values signifies a null value
 
 func (orders *OrderSlice) OrderPartial(inserts *[]OrderResponseData) {
-	InfoLogger.Println("Order Partials Processing")
 	*orders = nil
 	for v := range *inserts {
 		var insertOrder swagger.Order
@@ -151,12 +150,9 @@ func (orders *OrderSlice) OrderPartial(inserts *[]OrderResponseData) {
 
 		*orders = append(*orders, insertOrder)
 	}
-	InfoLogger.Println("Order Partials Processed")
 }
 
 func (orders *OrderSlice) OrderInsert(inserts *[]OrderResponseData) {
-
-	InfoLogger.Println("Order Inserts Processing")
 
 	for i := range *inserts {
 		{
@@ -283,13 +279,9 @@ func (orders *OrderSlice) OrderInsert(inserts *[]OrderResponseData) {
 			*orders = append(*orders, insertOrder)
 		}
 	}
-
-	InfoLogger.Println("Order Inserts Processed")
 }
 
 func (orders *OrderSlice) OrderUpdate(updates *[]OrderResponseData) {
-
-	InfoLogger.Println("Order Updates Processing")
 
 	for u := range *updates {
 		for i := range *orders {
@@ -468,13 +460,9 @@ func (orders *OrderSlice) OrderUpdate(updates *[]OrderResponseData) {
 			}
 		}
 	}
-
-	InfoLogger.Println("Order Updates Processed")
 }
 
 func (orders *OrderSlice) OrderDelete(deletes *[]OrderResponseData) {
-
-	InfoLogger.Println("Order Deletes Processing")
 	for u := range *deletes {
 		for i := range *orders {
 			if (*deletes)[u].OrderID.Value == (*orders)[i].OrderID.Value {
@@ -482,5 +470,4 @@ func (orders *OrderSlice) OrderDelete(deletes *[]OrderResponseData) {
 			}
 		}
 	}
-	InfoLogger.Println("Order Deletes Processed")
 }

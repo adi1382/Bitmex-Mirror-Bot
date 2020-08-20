@@ -1,10 +1,15 @@
 package hostClient
 
-import "github.com/adi1382/Bitmex-Mirror-Bot/websocket"
+import (
+	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
+	"go.uber.org/zap"
+)
 
 func (c *HostClient) ActivePositions() websocket.PositionSlice {
 
-	InfoLogger.Printf("Fetching active positons for subClient %s\n", c.ApiKey)
+	c.logger.Debug("Fetching active positions for hostClient %s\n",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 
 	c.positionsLock.Lock()
 	defer c.positionsLock.Unlock()

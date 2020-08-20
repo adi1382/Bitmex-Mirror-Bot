@@ -9,38 +9,36 @@ import (
 	"github.com/gorilla/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
-	"log"
 	"net/url"
-	"os"
 	"sync"
 	"time"
 )
 
-var (
-	InfoLogger  *log.Logger
-	ErrorLogger *log.Logger
-)
-
-func init() {
-
-	//_, err := os.Stat("logs")
-	//
-	//if os.IsNotExist(err) {
-	//	errDir := os.MkdirAll("logs", 0750)
-	//	if errDir != nil {
-	//		ErrorLogger.Fatal(err)
-	//	}
-	//
-	//}
-
-	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	if err != nil {
-		ErrorLogger.Fatal(err)
-	}
-
-	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
-	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
-}
+//var (
+//	InfoLogger  *log.Logger
+//	ErrorLogger *log.Logger
+//)
+//
+//func init() {
+//
+//	//_, err := os.Stat("logs")
+//	//
+//	//if os.IsNotExist(err) {
+//	//	errDir := os.MkdirAll("logs", 0750)
+//	//	if errDir != nil {
+//	//		ErrorLogger.Fatal(err)
+//	//	}
+//	//
+//	//}
+//
+//	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
+//	if err != nil {
+//		ErrorLogger.Fatal(err)
+//	}
+//
+//	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
+//	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
+//}
 
 type Message struct {
 	Op   string        `json:"op,omitempty"`
@@ -48,7 +46,6 @@ type Message struct {
 }
 
 func (m *Message) AddArgument(argument string) {
-	InfoLogger.Println("Add args to websocket msg", *m, "adding: ", argument)
 	m.Args = append(m.Args, argument)
 }
 
@@ -66,7 +63,8 @@ func Connect(test bool, logger *zap.Logger) (*websocket.Conn, error) {
 
 	for i := 0; ; i++ {
 		u := url.URL{Scheme: "wss", Host: host, Path: "/realtimemd"}
-		InfoLogger.Println("\n\n\nConnecting to: ", u.String())
+		logger.Info("Connecting to socket",
+			zap.String("url", u.String()))
 		conn, httpResponse, err := websocket.DefaultDialer.Dial(u.String(), nil)
 
 		if err != nil {
@@ -303,11 +301,7 @@ func WriteFromChannelToWS(
 func GetAuthMessage(key, secret string) Message {
 	timestamp := time.Now().Add(time.Second * 412).Unix()
 	sig := hmac.New(sha256.New, []byte(secret))
-	_, err := sig.Write([]byte(fmt.Sprintf("GET/realtime%d", timestamp)))
-
-	if err != nil {
-		ErrorLogger.Fatal("Was unable to generate signature for socket authentication!!!")
-	}
+	sig.Write([]byte(fmt.Sprintf("GET/realtime%d", timestamp)))
 
 	signature := hex.EncodeToString(sig.Sum(nil))
 

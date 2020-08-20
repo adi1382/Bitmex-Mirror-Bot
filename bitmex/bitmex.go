@@ -4,33 +4,32 @@ import (
 	"encoding/json"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
-	"log"
-	"os"
+	"go.uber.org/zap"
 )
 
-var (
-	InfoLogger  *log.Logger
-	ErrorLogger *log.Logger
-)
-
-func init() {
-	//_, err := os.Stat("logs")
-	//
-	//if os.IsNotExist(err) {
-	//	errDir := os.MkdirAll("logs", 0750)
-	//	if errDir != nil {
-	//		ErrorLogger.Fatal(err)
-	//	}
-	//}
-
-	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	if err != nil {
-		ErrorLogger.Fatal(err)
-	}
-
-	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
-	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
-}
+//var (
+//	InfoLogger  *log.Logger
+//	ErrorLogger *log.Logger
+//)
+//
+//func init() {
+//	//_, err := os.Stat("logs")
+//	//
+//	//if os.IsNotExist(err) {
+//	//	errDir := os.MkdirAll("logs", 0750)
+//	//	if errDir != nil {
+//	//		ErrorLogger.Fatal(err)
+//	//	}
+//	//}
+//
+//	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
+//	if err != nil {
+//		ErrorLogger.Fatal(err)
+//	}
+//
+//	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
+//	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
+//}
 
 type Response interface {
 	getTable() string
@@ -82,9 +81,9 @@ type MarginResponse struct {
 	Data   []websocket.MarginResponseData `json:"data,omitempty"`
 }
 
-func DecodeMessage(message []byte) (Response, string) {
+func DecodeMessage(message []byte, logger *zap.Logger) (Response, string) {
 
-	InfoLogger.Println("Decoding Socket Message")
+	logger.Debug("Decoding Socket Message")
 
 	var response Response
 	var table string
@@ -117,7 +116,7 @@ func DecodeMessage(message []byte) (Response, string) {
 		table = ""
 	}
 
-	InfoLogger.Println("Socket Message Decoded")
+	logger.Debug("Socket Message Decoded")
 
 	return response, table
 }

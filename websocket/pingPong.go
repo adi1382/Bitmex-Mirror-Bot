@@ -12,7 +12,7 @@ func PingPong(conn *websocket.Conn, RestartRequired *atomic.Bool, logger *zap.Lo
 	wg.Add(1)
 	defer wg.Done()
 
-	InfoLogger.Println("Ping Pong protocol Initiated")
+	logger.Info("Ping Pong protocol Initiated")
 
 	pongWait := time.Second * 10
 	err := conn.SetReadDeadline(time.Now().Add(pongWait))

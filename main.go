@@ -120,7 +120,8 @@ func main() {
 		config.Sub("Settings").GetBool("Testnet"),
 		chWriteToWS,
 		config.Sub("Settings").GetInt64("RatioUpdateRate"),
-		RestartCounter)
+		RestartCounter,
+		logger)
 
 	mirror.SetHost(host)
 
@@ -137,7 +138,7 @@ func main() {
 			subAccounts.Sub(subKeys[i]).GetString("Secret"),
 			config.Sub("Settings").GetBool("Testnet"),
 			subAccounts.Sub(subKeys[i]).GetBool("BalanceProportion"),
-			subAccounts.Sub(subKeys[i]).GetFloat64("FixedRatio"),
+			subAccounts.Sub(subKeys[i]).GetFloat64("FixedProportion"),
 			config.Sub("Settings").GetFloat64("RatioUpdateRate"),
 			config.Sub("Settings").GetFloat64("CalibrationRate"),
 			config.Sub("Settings").GetFloat64("LimitFilledTimeout"),
@@ -245,12 +246,12 @@ func NewLogger(fileName, level string) (*zap.Logger, error) {
 			Initial:    100,
 			Thereafter: 100,
 		},
-		Encoding:         "json",
-		EncoderConfig:    zap.NewProductionEncoderConfig(),
-		OutputPaths:      []string{"stderr"},
-		ErrorOutputPaths: []string{"stderr"},
-		//OutputPaths:      []string{"./logs/" + fileName + ".log"},
-		//ErrorOutputPaths: []string{"./logs/" + fileName + ".log"},
+		Encoding:      "json",
+		EncoderConfig: zap.NewProductionEncoderConfig(),
+		//OutputPaths:      []string{"stderr"},
+		//ErrorOutputPaths: []string{"stderr"},
+		OutputPaths:      []string{"./logs/" + fileName + ".log"},
+		ErrorOutputPaths: []string{"./logs/" + fileName + ".log"},
 	}
 
 	config.EncoderConfig.TimeKey = "TimeUTC"
