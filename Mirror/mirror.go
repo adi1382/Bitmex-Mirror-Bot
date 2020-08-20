@@ -9,23 +9,72 @@ import (
 )
 
 type Mirror struct {
-	Host            *hostClient.HostClient
-	Subs            []*subClient.SubClient
-	RestartRequired *atomic.Bool
+	host            *hostClient.HostClient
+	subs            []*subClient.SubClient
+	restartRequired *atomic.Bool
 	logger          *zap.Logger
-	subLock         sync.Mutex
+	subsLock        sync.Mutex
+	hostLock        sync.Mutex
+	wg              *sync.WaitGroup
+}
+
+func NewMirror(restartRequired *atomic.Bool, logger *zap.Logger, wg *sync.WaitGroup) *Mirror {
+	mirror := Mirror{
+		restartRequired: restartRequired,
+		logger:          logger,
+		wg:              wg,
+	}
+	return &mirror
+}
+
+func (m *Mirror) StartMirroring() {
+	m.hostLock.Lock()
+	m.subsLock.Lock()
+	defer m.subsLock.Unlock()
+	defer m.hostLock.Unlock()
+
+	m.host.SubscribeTopics("order", "position", "margin")
+	for i := range m.subs {
+		m.subs[i].SubscribeTopics("order", "position", "margin")
+	}
 }
 
 func (m *Mirror) InitializeAll() {
-
+	m.InitializeHost()
+	m.InitializeSubs()
 }
 
 func (m *Mirror) InitializeHost() {
-
+	m.host.Initialize()
 }
 
-func (m *Mirror) InitializeSub() {
+func (m *Mirror) InitializeSubs() {
+	m.subsLock.Lock()
+	defer m.subsLock.Unlock()
 
+	for i := range m.subs {
+		m.subs[i].Initialize()
+	}
+}
+
+func (m *Mirror) SetHost(host *hostClient.HostClient) {
+	m.hostLock.Lock()
+	defer m.hostLock.Unlock()
+	m.host = host
+}
+
+func (m *Mirror) AddSub(sub *subClient.SubClient) {
+	m.subsLock.Lock()
+	defer m.subsLock.Unlock()
+	m.subs = append(m.subs, sub)
+}
+
+func (m *Mirror) AddAndStartSub(sub *subClient.SubClient) {
+	m.subsLock.Lock()
+	defer m.subsLock.Unlock()
+	sub.Initialize()
+	sub.SubscribeTopics("order", "position", "margin")
+	m.subs = append(m.subs, sub)
 }
 
 //func (m *Mirror) SubChecker() {
@@ -43,14 +92,14 @@ func (m *Mirror) InitializeSub() {
 //}
 
 func (m *Mirror) remover() {
-	m.subLock.Lock()
-	for i := range m.Subs {
-		if !m.Subs[i].RunningStatus() {
-			m.Subs = append(m.Subs[:i], m.Subs[i+1:]...)
+	m.subsLock.Lock()
+	for i := range m.subs {
+		if !m.subs[i].RunningStatus() {
+			m.subs = append(m.subs[:i], m.subs[i+1:]...)
 			break
 		}
 	}
-	m.subLock.Unlock()
+	m.subsLock.Unlock()
 }
 
 //func (m *Mirror) SocketResponseDistributor(c <-chan []byte, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {
@@ -64,11 +113,11 @@ func (m *Mirror) remover() {
 //		case message := <-c:
 //			if RestartCounter.Load() > 0 {
 //				//subClient.AllClientsLock.Lock()
-//				for _, v := range m.Subs {
+//				for _, v := range m.subs {
 //					v.DropConnection()
 //				}
-//				m.Host.CloseConnection()
-//				m.Subs = make([]*subClient.SubClient, 0, 5)
+//				m.host.CloseConnection()
+//				m.subs = make([]*subClient.SubClient, 0, 5)
 //				//subClient.AllClientsLock.Unlock()
 //				RestartCounter.Add(1)
 //				subClient.InfoLogger.Println("Distributor closed")
@@ -87,7 +136,7 @@ func (m *Mirror) remover() {
 //
 //			go func() {
 //				//subClient.AllClientsLock.Lock()
-//				for _, v := range m.Subs {
+//				for _, v := range m.subs {
 //					if v.WebsocketTopic == "hostAccount" {
 //						continue
 //					}
@@ -103,9 +152,9 @@ func (m *Mirror) remover() {
 //			go func() {
 //				//subClient.AllClientsLock.Lock()
 //				if socketTopic == "hostAccount" {
-//					m.Host.Push(&message)
+//					m.host.Push(&message)
 //				} else {
-//					for _, v := range m.Subs {
+//					for _, v := range m.subs {
 //						if v.ApiKey == key {
 //							v.Push(&message)
 //							break
@@ -117,11 +166,11 @@ func (m *Mirror) remover() {
 //		default:
 //			if RestartCounter.Load() > 0 {
 //				//subClient.AllClientsLock.Lock()
-//				for _, v := range m.Subs {
+//				for _, v := range m.subs {
 //					v.DropConnection()
 //				}
-//				m.Host.CloseConnection()
-//				m.Subs = make([]*subClient.SubClient, 0, 5)
+//				m.host.CloseConnection()
+//				m.subs = make([]*subClient.SubClient, 0, 5)
 //				//subClient.AllClientsLock.Unlock()
 //				RestartCounter.Add(1)
 //				subClient.InfoLogger.Println("Distributor closed")

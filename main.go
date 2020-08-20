@@ -54,9 +54,10 @@ func main() {
 
 	var RestartC uint32
 	RestartCounter := atomic.NewUint32(RestartC)
+
 	var wg sync.WaitGroup
-	var mirror Mirror.Mirror
-	mirror.RestartCounter = RestartCounter
+
+	mirror := Mirror.NewMirror(restartRequired, logger, &wg)
 
 	//cfg := config.LoadConfig("config.json")
 	config.SetConfigName("config") // name of config file (without extension)
@@ -84,15 +85,9 @@ func main() {
 
 	logger.Info("hellp")
 	//os.Exit(1)
-	var baseUrl string
-	if config.Sub("Settings").GetBool("Testnet") {
-		baseUrl = "testnet.bitmex.com"
-	} else {
-		baseUrl = "www.bitmex.com"
-	}
 
 	// Connect to WS
-	conn, err := websocket.Connect(baseUrl, logger)
+	conn, err := websocket.Connect(config.Sub("Settings").GetBool("Testnet"), logger)
 
 	if err != nil {
 		botStatus.Store("Stop")
@@ -111,7 +106,7 @@ func main() {
 
 	websocket.PingPong(conn, restartRequired, logger, &wg)
 
-	RestartCounter.Store(0)
+	//RestartCounter.Store(0)
 
 	//hostClient.Initialize(cfg.HostAccount.ApiKey, cfg.HostAccount.ApiSecret,
 	//	"hostAccount", chWriteToWS, false,
@@ -127,6 +122,8 @@ func main() {
 		config.Sub("Settings").GetInt64("RatioUpdateRate"),
 		RestartCounter)
 
+	mirror.SetHost(host)
+
 	subKeys := make([]string, 0, 5)
 	for key := range config.Sub("SubAccounts").AllSettings() {
 		subKeys = append(subKeys, key)
@@ -134,32 +131,28 @@ func main() {
 
 	subAccounts := config.Sub("SubAccounts")
 	for i := range subKeys {
-		mirror.Subs = append(
-			mirror.Subs,
-			subClient.NewSubClient(
-				subAccounts.Sub(subKeys[i]).GetString("ApiKey"),
-				subAccounts.Sub(subKeys[i]).GetString("Secret"),
-				config.Sub("Settings").GetBool("Testnet"),
-				subAccounts.Sub(subKeys[i]).GetBool("BalanceProportion"),
-				subAccounts.Sub(subKeys[i]).GetFloat64("FixedRatio"),
-				config.Sub("Settings").GetFloat64("RatioUpdateRate"),
-				config.Sub("Settings").GetFloat64("CalibrationRate"),
-				config.Sub("Settings").GetFloat64("LimitFilledTimeout"),
-				chWriteToWS,
-				RestartCounter,
-				host))
+
+		sub := subClient.NewSubClient(
+			subAccounts.Sub(subKeys[i]).GetString("ApiKey"),
+			subAccounts.Sub(subKeys[i]).GetString("Secret"),
+			config.Sub("Settings").GetBool("Testnet"),
+			subAccounts.Sub(subKeys[i]).GetBool("BalanceProportion"),
+			subAccounts.Sub(subKeys[i]).GetFloat64("FixedRatio"),
+			config.Sub("Settings").GetFloat64("RatioUpdateRate"),
+			config.Sub("Settings").GetFloat64("CalibrationRate"),
+			config.Sub("Settings").GetFloat64("LimitFilledTimeout"),
+			chWriteToWS,
+			RestartCounter,
+			host,
+			logger)
+
+		mirror.AddSub(sub)
 	}
 
-	go mirror.SocketResponseDistributor(chReadFromWS, &wg)
+	go mirror.SocketResponseDistributor(chReadFromWS)
 
-	sub.Initialize()
-	host.Initialize()
-	host.SubscribeTopics("order", "position", "margin")
-
-	sub.SubscribeTopics("order", "position", "margin")
-
-	sub.WaitForPartial()
-	fmt.Println("Sub Partial Received")
+	mirror.InitializeAll()
+	mirror.StartMirroring()
 
 	fmt.Println("reached")
 

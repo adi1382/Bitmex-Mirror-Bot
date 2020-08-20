@@ -2,38 +2,38 @@ package Mirror
 
 import (
 	"encoding/json"
-	"fmt"
+	"go.uber.org/zap"
 	"strings"
-	"sync"
 )
 
-func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) {
-	wg.Add(1)
-	defer wg.Done()
+func (m *Mirror) SocketResponseDistributor(c <-chan []byte) {
+	m.wg.Add(1)
+	defer m.wg.Done()
 
 	defer func() {
-		fmt.Println("Socket Distributor Closed")
+		m.logger.Info("Socket Distributor Closed")
 	}()
 
 	defer func() {
-		m.Host.CloseConnection()
+		m.host.CloseConnection()
 
-		m.subLock.Lock()
-		for _, v := range m.Subs {
+		m.subsLock.Lock()
+		for _, v := range m.subs {
 			v.CloseConnection()
 		}
-		m.subLock.Unlock()
+		m.subsLock.Unlock()
 	}()
 
 	for {
 		message := <-c
 
-		if m.RestartCounter.Load() > 0 {
+		if m.restartRequired.Load() {
 			break
 		}
 
 		if string(message) == "quit" {
-			m.RestartCounter.Add(1)
+			m.logger.Info("Close message received in socket distributor")
+			m.restartRequired.Store(true)
 			break
 		}
 
@@ -42,7 +42,11 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 		err := json.Unmarshal(message, &u)
 
 		if err != nil {
-			m.RestartCounter.Add(1)
+
+			m.logger.Error("Error while performing Unmarshal in socket distributor",
+				zap.String("message", string(message)), zap.Error(err))
+
+			m.restartRequired.Store(true)
 			break
 		}
 
@@ -53,8 +57,8 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 		socketTopic := u[2].(string)
 
 		go func() {
-			m.subLock.Lock()
-			for _, v := range m.Subs {
+			m.subsLock.Lock()
+			for _, v := range m.subs {
 
 				if !v.RunningStatus() {
 					continue
@@ -66,15 +70,15 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 					}
 				}
 			}
-			m.subLock.Unlock()
+			m.subsLock.Unlock()
 		}()
 
 		go func() {
 			if socketTopic == "hostAccount" {
-				m.Host.Push(&message)
+				m.host.Push(&message)
 			} else {
-				m.subLock.Lock()
-				for _, v := range m.Subs {
+				m.subsLock.Lock()
+				for _, v := range m.subs {
 
 					if !v.RunningStatus() {
 						continue
@@ -85,7 +89,7 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte, wg *sync.WaitGroup) 
 						break
 					}
 				}
-				m.subLock.Unlock()
+				m.subsLock.Unlock()
 			}
 		}()
 	}

@@ -244,8 +244,8 @@ func (c *HostClient) dataHandler() {
 			ErrorLogger.Println(strResponse)
 			ErrorLogger.Println("API key ", c.ApiKey, " is invalid.")
 			if c.WebsocketTopic == "hostAccount" {
-				fmt.Println("Host Account API key is Invalid. Closing the bot in 10 seconds.")
-				ErrorLogger.Println("Host Account API key is Invalid. Closing the bot in 10 seconds.")
+				fmt.Println("host Account API key is Invalid. Closing the bot in 10 seconds.")
+				ErrorLogger.Println("host Account API key is Invalid. Closing the bot in 10 seconds.")
 				time.Sleep(time.Second * 10)
 				os.Exit(-1)
 			} else {
@@ -258,8 +258,8 @@ func (c *HostClient) dataHandler() {
 			fmt.Println("API key ", c.ApiKey, " is disabled.")
 			ErrorLogger.Println("API key ", c.ApiKey, " is disabled.")
 			if c.WebsocketTopic == "hostAccount" {
-				fmt.Println("Host Account API key is disabled. Closing the bot in 10 seconds.")
-				ErrorLogger.Println("Host Account API key is disabled. Closing the bot in 10 seconds.")
+				fmt.Println("host Account API key is disabled. Closing the bot in 10 seconds.")
+				ErrorLogger.Println("host Account API key is disabled. Closing the bot in 10 seconds.")
 				time.Sleep(time.Second * 10)
 				os.Exit(-1)
 			} else {
@@ -357,8 +357,8 @@ L:
 		case 1:
 			continue L
 		case 2:
-			fmt.Println("API key Invalid/Disabled on Host")
-			InfoLogger.Println("API key Invalid/Disabled on Host")
+			fmt.Println("API key Invalid/Disabled on host")
+			InfoLogger.Println("API key Invalid/Disabled on host")
 			os.Exit(-1)
 			//c.CloseConnection()
 			//return -404

@@ -6,6 +6,7 @@ import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/bitmex"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
+	"go.uber.org/zap"
 	"log"
 	"strings"
 	"time"
@@ -17,7 +18,9 @@ func (c *SubClient) OrderHandler() {
 	c.hostClient.WaitForPartial()
 
 	defer func() {
-		InfoLogger.Println("Order Handler Closed for subClient ", c.ApiKey)
+		c.logger.Info("Order handler closed for subClient",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
 		//fmt.Println("Order Handler Closed for subClient ", c.ApiKey)
 	}()
 
@@ -31,7 +34,9 @@ func (c *SubClient) OrderHandler() {
 	go func() {
 
 		defer func() {
-			InfoLogger.Println("Calibrator timer closed for subClient ", c.ApiKey)
+			c.logger.Info("Calibrator timer closed for subClient ",
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
 			//fmt.Println("Calibrator timer closed for subClient ", c.ApiKey)
 		}()
 
@@ -82,7 +87,9 @@ func (c *SubClient) OrderHandler() {
 
 func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, calibrateBool *bool) {
 
-	InfoLogger.Println("Starting Mirror for subClient ", c.ApiKey)
+	c.logger.Debug("Starting Mirror for subClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 
 	strResponse := string(*message)
 	prefix := fmt.Sprintf(`[0,"%s","%s",`, c.hostClient.ApiKey, "hostAccount")
@@ -91,7 +98,11 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 	strResponse = strings.TrimSuffix(strResponse, suffix)
 
 	var ratio float64
-	InfoLogger.Println("Calculating ratio on subClient ", c.ApiKey)
+
+	c.logger.Debug("Calculating ratio on subClient",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
+
 	if c.BalanceProportion {
 		ratio = c.GetMarginBalance() / c.hostClient.GetMarginBalance()
 	} else {
@@ -100,22 +111,37 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 
 	response, table := bitmex.DecodeMessage([]byte(strResponse))
 
-	InfoLogger.Println("Manipulating ", table, " from mirror on subClient ", c.ApiKey)
+	c.logger.Debug("Updating table from mirror on subClient",
+		zap.String("table", table),
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic))
 
 	// Potential Race Condition when fetching
 	if table == "order" {
 		orderResponse, ok := response.(bitmex.OrderResponse)
 
 		if !ok {
-			ErrorLogger.Println("Invalid Interface Conversion of ", orderResponse)
-			panic("Invalid Conversion")
+			c.logger.Debug("Updating table from mirror on subClient",
+				zap.String("table", table),
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
+
+			c.logger.Sugar().Error("Invalid Interface Conversion",
+				orderResponse,
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
+
+			c.restartCounter.Add(1)
+			return
 		}
 
 		if orderResponse.Action == "insert" {
 
-			InfoLogger.Println("New Order Inserted for SubClient ", c.ApiKey)
+			c.logger.Debug("New Order Inserted in subClient",
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
 
-			//fmt.Println("Host Margin Balance: ", hostClient.GetMarginBalance())
+			//fmt.Println("host Margin Balance: ", hostClient.GetMarginBalance())
 			//fmt.Println("Sub Margin Balance: ", subClient.GetMarginBalance())
 
 			orders := make([]map[string]interface{}, 0, 5)
@@ -179,14 +205,20 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 					}
 				}
 
-				InfoLogger.Println("New Order placed for symbol ", symbol, " on subClient ", c.ApiKey)
+				c.logger.Debug("New Order Placed on subClient",
+					zap.String("symbol", symbol),
+					zap.String("apiKey", c.ApiKey),
+					zap.String("websocketTopic", c.WebsocketTopic))
 
 				c.OrderNewBulk(&placeNewOrders)
 
 			}
 
 		} else if orderResponse.Action == "update" {
-			InfoLogger.Println("New Order update received for SubClient ", c.ApiKey)
+
+			c.logger.Debug("New Order Update received for subClient",
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
 
 			amendOrders := make([]map[string]interface{}, 0, 5)
 
@@ -197,7 +229,11 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 
 				if orderResponse.Data[h].OrdStatus.Valid {
 					if orderResponse.Data[h].OrdStatus.Value == "Filled" || orderResponse.Data[h].OrdStatus.Value == "PartiallyFilled" {
-						InfoLogger.Println("Order " + orderResponse.Data[h].OrdStatus.Value)
+						c.logger.Debug("OrderStatus Update subClient",
+							zap.String("orderStatus", orderResponse.Data[h].OrdStatus.Value),
+							zap.String("apiKey", c.ApiKey),
+							zap.String("websocketTopic", c.WebsocketTopic))
+
 						*calibrateBool = false
 						*calibrateBoolReset = time.Now().Add(time.Second * time.Duration(c.LimitFilledTimeout))
 					}
@@ -206,7 +242,9 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 				if !orderResponse.Data[h].OrdStatus.Valid {
 					if orderResponse.Data[h].Price.Valid || orderResponse.Data[h].StopPx.Valid || orderResponse.Data[h].LeavesQty.Valid || orderResponse.Data[h].PegOffsetValue.Valid {
 
-						InfoLogger.Println("Amended order detected for SubClient ", c.ApiKey)
+						c.logger.Debug("Amended Order Detected for SubClient",
+							zap.String("apiKey", c.ApiKey),
+							zap.String("websocketTopic", c.WebsocketTopic))
 
 						subOrders := getSubOrder(orderResponse.Data[h].OrderID.Value, activeOrders)
 
@@ -311,19 +349,26 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 					}
 				}
 
-				InfoLogger.Println("Order amended for symbol ", symbol, " on subClient ", c.ApiKey)
+				c.logger.Debug("Order Amended on subClient",
+					zap.String("symbol", symbol),
+					zap.String("apiKey", c.ApiKey),
+					zap.String("websocketTopic", c.WebsocketTopic))
 
 				c.OrderAmendBulk(&amendOldOrders)
 			}
 
-			InfoLogger.Println(len(toCancel), " Orders canceled for subClient ", c.ApiKey)
+			c.logger.Debug("Order Cancel request on subClient",
+				zap.Int("noOfOrders", len(toCancel)),
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
 			c.OrderCancelBulk(&toCancel)
 		}
 
 	} else if table == "position" {
 
-		InfoLogger.Println("Position Update from mirror for subClient ", c.ApiKey)
-
+		c.logger.Debug("Position update from mirror on subClient",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
 		positionResponse := response.(bitmex.PositionResponse)
 
 		if positionResponse.Action == "update" {

@@ -46,7 +46,7 @@ func checkConfig(config *Config) {
 	hostAPI := config.HostAccount.ApiKey
 
 	if hostAPI == "" {
-		fmt.Println("No API key for Host account")
+		fmt.Println("No API key for host account")
 		fmt.Println("Closing Bot in 5 seconds....")
 		time.Sleep(time.Second * 5)
 		os.Exit(-1)
@@ -65,7 +65,7 @@ func checkConfig(config *Config) {
 			for _, aK := range apiKeys {
 
 				if hostAPI == v.ApiKey {
-					fmt.Println("Host account duplicate in sub account.")
+					fmt.Println("host account duplicate in sub account.")
 					fmt.Println("Closing Bot in 5 seconds....")
 					time.Sleep(time.Second * 5)
 					os.Exit(-1)

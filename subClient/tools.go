@@ -2,6 +2,7 @@ package subClient
 
 import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
+	"go.uber.org/zap"
 	"net/http"
 	"strconv"
 	"strings"
@@ -13,7 +14,9 @@ func (c *SubClient) SwaggerError(err error, response *http.Response) int {
 	if err != nil {
 
 		//fmt.Println(err)
-		ErrorLogger.Println("Error on subClient", c.ApiKey)
+		c.logger.Error("Error on subClient",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
 
 		if strings.Contains(err.Error(), "401") || strings.Contains(err.Error(), "403") {
 			return 2
@@ -25,10 +28,10 @@ func (c *SubClient) SwaggerError(err error, response *http.Response) int {
 
 			if ok {
 				e := k.Error_
-				ErrorLogger.Println(e.Message.Value, "///", e.Name.Value)
-				ErrorLogger.Println(string(err.(swagger.GenericSwaggerError).Body()))
-				ErrorLogger.Println(err.(swagger.GenericSwaggerError).Error())
-				ErrorLogger.Println(err.Error())
+				c.logger.Sugar().Error(e.Message.Value, "///", e.Name.Value)
+				c.logger.Sugar().Error(string(err.(swagger.GenericSwaggerError).Body()))
+				c.logger.Sugar().Error(err.(swagger.GenericSwaggerError).Error())
+				c.logger.Sugar().Error(err.Error())
 
 				//fmt.Println(e)
 				//panic(err)
@@ -44,11 +47,11 @@ func (c *SubClient) SwaggerError(err error, response *http.Response) int {
 				}
 
 				if response.StatusCode > 300 {
-					ErrorLogger.Println(*response)
+					c.logger.Sugar().Error(*response)
 				}
 
 				if response.StatusCode == 400 {
-					ErrorLogger.Println(e.Message, e.Name)
+					c.logger.Sugar().Error(e.Message, e.Name)
 
 					if e.Message.Valid {
 						if strings.Contains(e.Message.Value, "Account has insufficient Available Balance") {
@@ -72,12 +75,12 @@ func (c *SubClient) SwaggerError(err error, response *http.Response) int {
 				} else if response.StatusCode == 404 {
 					return 0
 				} else if response.StatusCode == 429 {
-					ErrorLogger.Printf("\n\n\nReceived 429 too many errors")
-					ErrorLogger.Println(e.Name, e.Message)
+					c.logger.Sugar().Error("\n\n\nReceived 429 too many errors")
+					c.logger.Sugar().Error(e.Name, e.Message)
 					a, _ := strconv.Atoi(response.Header["X-Ratelimit-Reset"][0])
 					reset := int64(a) - time.Now().Unix()
-					ErrorLogger.Printf("Time to reset: %v\n", reset)
-					ErrorLogger.Printf("Slept for %v seconds.\n", reset)
+					c.logger.Sugar().Error("Time to reset: %v\n", reset)
+					c.logger.Sugar().Error("Slept for %v seconds.\n", reset)
 					time.Sleep(time.Second * time.Duration(reset))
 					return 1
 				} else if response.StatusCode == 503 {

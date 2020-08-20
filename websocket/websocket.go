@@ -52,9 +52,17 @@ func (m *Message) AddArgument(argument string) {
 	m.Args = append(m.Args, argument)
 }
 
-func Connect(host string, logger *zap.Logger) (*websocket.Conn, error) {
+func Connect(test bool, logger *zap.Logger) (*websocket.Conn, error) {
 
 	defer logger.Sync()
+
+	var host string
+
+	if test {
+		host = "testnet.bitmex.com"
+	} else {
+		host = "www.bitmex.com"
+	}
 
 	for i := 0; ; i++ {
 		u := url.URL{Scheme: "wss", Host: host, Path: "/realtimemd"}
