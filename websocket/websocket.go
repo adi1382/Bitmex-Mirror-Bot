@@ -86,10 +86,6 @@ func Connect(test bool, logger *zap.Logger) (*websocket.Conn, error) {
 	//}
 }
 
-func GetNewConnection() *websocket.Conn {
-	return &websocket.Conn{}
-}
-
 //func ReadFromWSToChannel(c *websocket.Conn, chRead chan<- []byte, RestartCounter *int32) {
 //
 //	for {
@@ -156,7 +152,10 @@ func ReadFromWSToChannel(
 	chRead chan<- []byte,
 	incomingLogger *zap.Logger,
 	logger *zap.Logger,
-	RestartRequired *atomic.Bool) {
+	RestartRequired *atomic.Bool,
+	wg *sync.WaitGroup) {
+	wg.Add(1)
+	defer wg.Done()
 
 	logger.Info("Socket Status", zap.String("status", "Socket Reader Routine Started"))
 

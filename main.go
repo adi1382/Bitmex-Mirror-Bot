@@ -33,11 +33,12 @@ func init() {
 		err = os.MkdirAll("logs", 0750)
 		if err != nil {
 			fmt.Println("Unable to create log folder.")
-			//tools.EnterToExit()
+			tools.EnterToExit()
 		}
 	} else if err != nil {
 		fmt.Println("Unable to perform logging operations due to the following error(s)")
 		fmt.Println(err)
+		tools.EnterToExit()
 	}
 
 	botStatus = atomic.NewString("running")
@@ -100,7 +101,7 @@ func main() {
 
 	// Listen write WS
 	chReadFromWS := make(chan []byte, 100)
-	go websocket.ReadFromWSToChannel(conn, chReadFromWS, socketIncomingLogger, logger, restartRequired)
+	go websocket.ReadFromWSToChannel(conn, chReadFromWS, socketIncomingLogger, logger, restartRequired, &wg)
 
 	// Write to WS
 	chWriteToWS := make(chan interface{}, 100)
@@ -158,14 +159,16 @@ func main() {
 	mirror.InitializeAll()
 	mirror.StartMirroring()
 
-	fmt.Println("reached")
-
-	//host.WaitForPartial()
-	//time.Sleep(5 * time.Second)
-	fmt.Println("Printing margin balance")
-	fmt.Println(host.GetMarginBalance())
+	//fmt.Println("reached")
+	//
+	////host.WaitForPartial()
+	////time.Sleep(5 * time.Second)
+	//fmt.Println("Printing margin balance")
+	//fmt.Println(host.GetMarginBalance())
 	host.WaitForPartial()
-	fmt.Println("Partials Received")
+	fmt.Println("Running...")
+
+	//fmt.Println("Partials Received")
 
 	go func() {
 		wg.Add(1)
@@ -214,7 +217,6 @@ func ReadConfig(restart bool, logger *zap.Logger) {
 		botStatus.Store("stop")
 		//tools.EnterToExit()
 	} else {
-		fmt.Println(time.Now())
 		isConfigValid, str := tools.CheckConfig(config)
 
 		if !isConfigValid {
