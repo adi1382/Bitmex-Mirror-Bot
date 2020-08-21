@@ -131,7 +131,8 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 				zap.String("apiKey", c.ApiKey),
 				zap.String("websocketTopic", c.WebsocketTopic))
 
-			c.restartCounter.Add(1)
+			c.logger.Info("RestartRequiredToTrue")
+			c.restartRequired.Store(true)
 			return
 		}
 

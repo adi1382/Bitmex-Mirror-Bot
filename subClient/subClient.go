@@ -19,7 +19,7 @@ func NewSubClient(
 	test, balanceProportion bool,
 	fixedRatio, marginUpdateTime, calibrationTime, limitFilledTimeout float64,
 	ch chan<- interface{},
-	RestartCounter *atomic.Uint32,
+	restartRequired *atomic.Bool,
 	hostClient *hostClient.HostClient,
 	logger *zap.Logger) *SubClient {
 
@@ -36,7 +36,7 @@ func NewSubClient(
 	c.Rest.InitializeAuth(c.ApiKey, c.apiSecret)
 	c.WebsocketTopic = ""
 
-	c.restartCounter = RestartCounter
+	c.restartRequired = restartRequired
 	c.active.Store(true)
 	c.marginUpdateTime = marginUpdateTime
 	c.chWriteToWSClient = ch
@@ -86,7 +86,7 @@ type SubClient struct {
 	hostClient              *hostClient.HostClient
 	calibrationTime         float64
 	hostUpdatesFetcher      chan []byte
-	restartCounter          *atomic.Uint32
+	restartRequired         *atomic.Bool
 	logger                  *zap.Logger
 }
 
@@ -323,7 +323,8 @@ func (c *SubClient) dataHandler() {
 		}
 
 		if strings.Contains(string(message), "Access Token expired for subscription") {
-			c.restartCounter.Add(1)
+			c.logger.Info("RestartRequiredToTrue")
+			c.restartRequired.Store(true)
 
 			c.logger.Error("Expiration Error",
 				zap.String("errorMessage", string(message)),

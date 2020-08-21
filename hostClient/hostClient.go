@@ -16,7 +16,7 @@ import (
 )
 
 func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, marginUpdateTime int64,
-	RestartCounter *atomic.Uint32, logger *zap.Logger) *HostClient {
+	restartRequired *atomic.Bool, logger *zap.Logger) *HostClient {
 	c := HostClient{
 		ApiKey:    apiKey,
 		apiSecret: apiSecret,
@@ -29,7 +29,7 @@ func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, m
 	}
 	c.Rest.InitializeAuth(c.ApiKey, c.apiSecret)
 	c.WebsocketTopic = "hostAccount"
-	c.restartCounter = RestartCounter
+	c.restartRequired = restartRequired
 
 	c.active.Store(true)
 
@@ -64,8 +64,9 @@ type HostClient struct {
 	chWriteToWSClient  chan<- interface{}
 	chReadFromWSClient chan []byte
 	Rest               *swagger.APIClient
-	restartCounter     *atomic.Uint32
-	logger             *zap.Logger
+	restartRequired    *atomic.Bool
+	//restartCounter     *atomic.Uint32
+	logger *zap.Logger
 }
 
 func (c *HostClient) Initialize() {
@@ -85,7 +86,8 @@ func (c *HostClient) CloseConnection() {
 	message = append(message, 2, c.ApiKey, c.WebsocketTopic)
 	c.chWriteToWSClient <- message
 	c.chReadFromWSClient <- []byte("quit")
-	c.restartCounter.Add(1)
+	c.logger.Info("RestartRequiredToTrue")
+	c.restartRequired.Store(true)
 
 	c.logger.Info("Closed Connection for hostClient",
 		zap.String("apiKey", c.ApiKey),
@@ -233,7 +235,8 @@ func (c *HostClient) dataHandler() {
 		}
 
 		if strings.Contains(strResponse, "Access Token expired for subscription") {
-			c.restartCounter.Add(1)
+			c.logger.Info("RestartRequiredToTrue")
+			c.restartRequired.Store(true)
 			//atomic.AddInt64(c.restartCounter, 1)
 
 			c.logger.Error("Expiration Error",

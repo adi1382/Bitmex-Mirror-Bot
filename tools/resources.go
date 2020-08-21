@@ -2,8 +2,7 @@ package tools
 
 import (
 	"encoding/json"
-	"log"
-	"os"
+	"go.uber.org/zap"
 	"runtime"
 	"time"
 )
@@ -20,17 +19,11 @@ type Monitor struct {
 	NumGoroutine int
 }
 
-func NewMonitor(duration int) {
+func NewMonitor(duration int, resourceLogger *zap.Logger) {
 	var m Monitor
 	var rtm runtime.MemStats
 	var interval = time.Duration(duration) * time.Second
 
-	var Resources *log.Logger
-	resourcesFile, err := os.OpenFile("logs/resources.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	if err != nil {
-		log.Fatal(err)
-	}
-	Resources = log.New(resourcesFile, "MONITOR: ", log.Ldate|log.Ltime|log.Lmicroseconds)
 	for {
 		<-time.After(interval)
 
@@ -56,6 +49,6 @@ func NewMonitor(duration int) {
 
 		// Just encode to json and print
 		b, _ := json.Marshal(m)
-		Resources.Println(string(b))
+		resourceLogger.Info(string(b))
 	}
 }

@@ -51,9 +51,12 @@ func main() {
 	logger, _ := NewLogger("Mirror", "debug")
 	socketIncomingLogger, _ := NewLogger("SocketIncoming", "debug")
 	socketOutgoingLogger, _ := NewLogger("SocketOutgoing", "debug")
+	resourceLogger, _ := NewLogger("ResourceLogger", "debug")
 
-	var RestartC uint32
-	RestartCounter := atomic.NewUint32(RestartC)
+	go tools.NewMonitor(1, resourceLogger)
+
+	//var RestartC uint32
+	//RestartCounter := atomic.NewUint32(RestartC)
 
 	var wg sync.WaitGroup
 
@@ -120,7 +123,7 @@ func main() {
 		config.Sub("Settings").GetBool("Testnet"),
 		chWriteToWS,
 		config.Sub("Settings").GetInt64("RatioUpdateRate"),
-		RestartCounter,
+		restartRequired,
 		logger)
 
 	mirror.SetHost(host)
@@ -143,7 +146,7 @@ func main() {
 			config.Sub("Settings").GetFloat64("CalibrationRate"),
 			config.Sub("Settings").GetFloat64("LimitFilledTimeout"),
 			chWriteToWS,
-			RestartCounter,
+			restartRequired,
 			host,
 			logger)
 
@@ -168,7 +171,7 @@ func main() {
 		wg.Add(1)
 		defer wg.Done()
 		for {
-			if RestartCounter.Load() > 0 {
+			if restartRequired.Load() {
 				_ = conn.Close()
 				chWriteToWS <- "quit"
 				break
