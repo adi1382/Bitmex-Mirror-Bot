@@ -7,6 +7,8 @@ import (
 	"github.com/sparrc/go-ping"
 	"github.com/spf13/viper"
 	"go.uber.org/atomic"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 	"os"
 	"strconv"
 	"strings"
@@ -32,6 +34,86 @@ func EnterToExit() {
 	fmt.Print("\n\nPress 'Enter' to exit")
 	_, _ = bufio.NewReader(os.Stdin).ReadBytes('\n')
 	os.Exit(0)
+}
+
+func ReadConfig(restart bool,
+	logger *zap.Logger,
+	config *viper.Viper,
+	botStatus *atomic.String,
+	restartRequired *atomic.Bool) {
+
+	defer logger.Sync()
+
+	err := config.ReadInConfig() // Find and read the config file
+
+	if err != nil {
+		fmt.Println("The recent changes that were made to the config file have made it inaccessible.")
+		fmt.Println("Kindly reconfigure the configuration and restart the program.")
+		logger.Error("Unable to Read config file", zap.Error(err))
+		botStatus.Store("stop")
+		//tools.EnterToExit()
+	} else {
+		isConfigValid, str := CheckConfig(config)
+
+		if !isConfigValid {
+			fmt.Println("Invalid Configuration")
+			fmt.Println(str)
+			EnterToExit()
+		}
+
+		if botStatus.Load() == "stop" {
+			botStatus.Store("running")
+		}
+
+		if restart {
+			restartRequired.Store(true)
+			botStatus.Store("running")
+		}
+	}
+}
+
+func NewLogger(fileName, level string, sessionID zap.Field) (*zap.Logger, error) {
+
+	logLevel := zap.DebugLevel
+
+	if strings.EqualFold(level, "INFO") {
+		logLevel = zap.InfoLevel
+	} else if strings.EqualFold(level, "WARN") {
+		logLevel = zap.WarnLevel
+	} else if strings.EqualFold(level, "ERROR") {
+		logLevel = zap.ErrorLevel
+	}
+
+	config := zap.Config{
+		Level:       zap.NewAtomicLevelAt(logLevel),
+		Development: true,
+		Sampling: &zap.SamplingConfig{
+			Initial:    100,
+			Thereafter: 100,
+		},
+		Encoding:      "json",
+		EncoderConfig: zap.NewProductionEncoderConfig(),
+		//OutputPaths:      []string{"stderr"},
+		//ErrorOutputPaths: []string{"stderr"},
+		OutputPaths:      []string{"./logs/" + fileName + ".log"},
+		ErrorOutputPaths: []string{"./logs/" + fileName + ".log"},
+	}
+
+	config.EncoderConfig.TimeKey = "TimeUTC"
+
+	config.EncoderConfig.EncodeTime = func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
+		enc.AppendString(t.UTC().Format("2006-01-02T15:04:05Z0700"))
+		// 2019-08-13T04:39:11Z
+	}
+
+	logger, err := config.Build()
+
+	if err != nil {
+		panic(err)
+	}
+
+	logger = logger.With(sessionID)
+	return logger, err
 }
 
 func CheckConfig(config *viper.Viper) (bool, string) {
@@ -97,7 +179,7 @@ func CheckConfig(config *viper.Viper) (bool, string) {
 
 	if config.Sub("SubAccounts") != nil {
 		subAccounts := config.Sub("SubAccounts").AllSettings()
-		for key, _ := range subAccounts {
+		for key := range subAccounts {
 			allKeys = append(allKeys, key)
 		}
 	} else {

@@ -12,11 +12,8 @@ import (
 	"github.com/spf13/viper"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 	"os"
-	"strings"
 	"sync"
-	"time"
 )
 
 var (
@@ -49,31 +46,42 @@ func init() {
 
 func main() {
 
-	logger, _ := NewLogger("Mirror", "debug")
-	socketIncomingLogger, _ := NewLogger("SocketIncoming", "debug")
-	socketOutgoingLogger, _ := NewLogger("SocketOutgoing", "debug")
-	resourceLogger, _ := NewLogger("ResourceLogger", "debug")
+	logger, _ := tools.NewLogger("Mirror", "debug", sessionID)
+	socketIncomingLogger, _ := tools.NewLogger("SocketIncoming", "debug", sessionID)
+	socketOutgoingLogger, _ := tools.NewLogger("SocketOutgoing", "debug", sessionID)
+	resourceLogger, _ := tools.NewLogger("ResourceLogger", "debug", sessionID)
 
 	go tools.NewMonitor(1, resourceLogger)
 
-	//var RestartC uint32
-	//RestartCounter := atomic.NewUint32(RestartC)
+	config.SetConfigName("config") // name of config file (without extension)
+	config.SetConfigType("json")   // REQUIRED if the config file does not have the extension in the name
+	config.AddConfigPath(".")      // optionally look for config in the working directory
+	tools.ReadConfig(false, logger, config, botStatus, restartRequired)
 
+	config.WatchConfig()
+	config.OnConfigChange(func(in fsnotify.Event) {
+		fmt.Println("Config File Changed!")
+		tools.ReadConfig(true, logger, config, botStatus, restartRequired)
+	})
+
+	fmt.Println("started")
+
+	for {
+
+		if botStatus.Load() == "running" {
+			restartRequired.Store(false)
+			trader(logger, socketIncomingLogger, socketOutgoingLogger)
+		}
+
+	}
+}
+
+func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 	var wg sync.WaitGroup
 
 	mirror := Mirror.NewMirror(restartRequired, logger, &wg)
 
 	//cfg := config.LoadConfig("config.json")
-	config.SetConfigName("config") // name of config file (without extension)
-	config.SetConfigType("json")   // REQUIRED if the config file does not have the extension in the name
-	config.AddConfigPath(".")      // optionally look for config in the working directory
-	ReadConfig(false, logger)
-
-	config.WatchConfig()
-	config.OnConfigChange(func(in fsnotify.Event) {
-		fmt.Println("Config File Changed!")
-		ReadConfig(true, logger)
-	})
 	//fmt.Println(viper.Sub("SubAccounts").AllSettings())
 	//fmt.Println(len(viper.Sub("SubAccounts").AllSettings()))
 	//fmt.Println(viper.AllSettings()["subaccounts"])
@@ -83,8 +91,6 @@ func main() {
 	//}
 
 	//os.Exit(0)
-
-	fmt.Println("started")
 	logger.Info("logging started")
 	//os.Exit(1)
 
@@ -183,14 +189,8 @@ func main() {
 		}
 	}()
 
-	//go func() {
-	//	time.Sleep(10*time.Second)
-	//	fmt.Println("Setting to true", time.Now())
-	//	restartRequired.Store(true)
-	//}()
-
 	wg.Wait()
-	fmt.Println("All wait groups completed", time.Now())
+	logger.Info("All wait groups completed")
 
 	//fmt.Println(host.ActiveOrders())
 	//n := 0
@@ -201,78 +201,4 @@ func main() {
 	//	}
 	//	time.Sleep(time.Nanosecond)
 	//}
-
-	select {}
-}
-
-func ReadConfig(restart bool, logger *zap.Logger) {
-
-	defer logger.Sync()
-
-	err := config.ReadInConfig() // Find and read the config file
-
-	if err != nil {
-		fmt.Println("The recent changes that were made to the config file have made it inaccessible.")
-		fmt.Println("Kindly reconfigure the configuration and restart the program.")
-		logger.Error("Unable to Read config file", zap.Error(err))
-		botStatus.Store("stop")
-		//tools.EnterToExit()
-	} else {
-		isConfigValid, str := tools.CheckConfig(config)
-
-		if !isConfigValid {
-			fmt.Println("Invalid Configuration")
-			fmt.Println(str)
-			tools.EnterToExit()
-		}
-
-		if restart {
-			restartRequired.Store(true)
-			botStatus.Store("running")
-		}
-	}
-}
-
-func NewLogger(fileName, level string) (*zap.Logger, error) {
-
-	logLevel := zap.DebugLevel
-
-	if strings.EqualFold(level, "INFO") {
-		logLevel = zap.InfoLevel
-	} else if strings.EqualFold(level, "WARN") {
-		logLevel = zap.WarnLevel
-	} else if strings.EqualFold(level, "ERROR") {
-		logLevel = zap.ErrorLevel
-	}
-
-	config := zap.Config{
-		Level:       zap.NewAtomicLevelAt(logLevel),
-		Development: true,
-		Sampling: &zap.SamplingConfig{
-			Initial:    100,
-			Thereafter: 100,
-		},
-		Encoding:      "json",
-		EncoderConfig: zap.NewProductionEncoderConfig(),
-		//OutputPaths:      []string{"stderr"},
-		//ErrorOutputPaths: []string{"stderr"},
-		OutputPaths:      []string{"./logs/" + fileName + ".log"},
-		ErrorOutputPaths: []string{"./logs/" + fileName + ".log"},
-	}
-
-	config.EncoderConfig.TimeKey = "TimeUTC"
-
-	config.EncoderConfig.EncodeTime = func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-		enc.AppendString(t.UTC().Format("2006-01-02T15:04:05Z0700"))
-		// 2019-08-13T04:39:11Z
-	}
-
-	logger, err := config.Build()
-
-	if err != nil {
-		panic(err)
-	}
-
-	logger = logger.With(sessionID)
-	return logger, err
 }
