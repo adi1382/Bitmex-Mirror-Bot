@@ -14,6 +14,8 @@ import (
 	"time"
 )
 
+var socketWriterLock sync.Mutex
+
 //var (
 //	InfoLogger  *log.Logger
 //	ErrorLogger *log.Logger
@@ -177,9 +179,6 @@ func ReadFromWSToChannel(
 				logger.Info("Expected websocket closure", zap.Error(err))
 			}
 
-			fmt.Println("Expected: ", websocket.IsCloseError(err))
-			fmt.Println("Unexpected: ", websocket.IsUnexpectedCloseError(err))
-
 			chRead <- []byte("quit")
 			break
 		}
@@ -287,7 +286,9 @@ func WriteFromChannelToWS(
 			zap.Int("ChLen", len(chWrite)),
 			zap.String("message", string(message.([]byte))))
 
+		socketWriterLock.Lock()
 		err = c.WriteMessage(websocket.TextMessage, message.([]byte))
+		socketWriterLock.Unlock()
 
 		if err != nil {
 			logger.Error("Error while writing message to socket", zap.Error(err))

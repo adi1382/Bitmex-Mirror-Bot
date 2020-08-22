@@ -16,7 +16,10 @@ import (
 )
 
 func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, marginUpdateTime int64,
-	restartRequired *atomic.Bool, logger *zap.Logger) *HostClient {
+	restartRequired *atomic.Bool, logger *zap.Logger, wg *sync.WaitGroup) *HostClient {
+
+	defer logger.Sync()
+
 	c := HostClient{
 		ApiKey:    apiKey,
 		apiSecret: apiSecret,
@@ -37,6 +40,7 @@ func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, m
 	c.chWriteToWSClient = ch
 	c.chReadFromWSClient = make(chan []byte, 100)
 	c.logger = logger
+	c.wg = wg
 
 	c.logger.Info("New SubClient Created",
 		zap.String("websocketTopic", c.WebsocketTopic),
@@ -65,11 +69,14 @@ type HostClient struct {
 	chReadFromWSClient chan []byte
 	Rest               *swagger.APIClient
 	restartRequired    *atomic.Bool
-	//restartCounter     *atomic.Uint32
-	logger *zap.Logger
+	logger             *zap.Logger
+	wg                 *sync.WaitGroup
 }
 
 func (c *HostClient) Initialize() {
+
+	defer c.logger.Sync()
+
 	c.startSocketConnection()
 	c.socketAuthentication()
 	go c.marginUpdate()
@@ -81,6 +88,9 @@ func (c *HostClient) Initialize() {
 }
 
 func (c *HostClient) CloseConnection() {
+
+	defer c.logger.Sync()
+
 	c.active.Store(false)
 	var message []interface{}
 	message = append(message, 2, c.ApiKey, c.WebsocketTopic)
@@ -108,6 +118,11 @@ func (c *HostClient) WaitForPartial() {
 
 func (c *HostClient) marginUpdate() {
 
+	defer c.logger.Sync()
+
+	c.wg.Add(1)
+	defer c.wg.Done()
+
 	c.marginUpdated.Store(false)
 
 	for {
@@ -128,10 +143,10 @@ func (c *HostClient) marginUpdate() {
 
 		resetTime := time.Now().Add(time.Second * time.Duration(c.marginUpdateTime))
 
-		time.Sleep(time.Second * 5)
+		time.Sleep(time.Nanosecond)
 
 		for {
-			time.Sleep(time.Second * 5)
+			time.Sleep(time.Nanosecond)
 			if time.Now().Unix() > resetTime.Unix() {
 				break
 			} else if !c.RunningStatus() {
@@ -154,6 +169,9 @@ func (c *HostClient) GetMarginBalance() float64 {
 }
 
 func (c *HostClient) startSocketConnection() {
+
+	defer c.logger.Sync()
+
 	c.logger.Info("Starting socket connection on hostClient",
 		zap.String("apiKey", c.ApiKey),
 		zap.String("websocketTopic", c.WebsocketTopic))
@@ -163,6 +181,9 @@ func (c *HostClient) startSocketConnection() {
 }
 
 func (c *HostClient) socketAuthentication() {
+
+	defer c.logger.Sync()
+
 	var message []interface{}
 
 	c.logger.Info("Authenticating websocket connection on hostClient",
@@ -174,6 +195,9 @@ func (c *HostClient) socketAuthentication() {
 }
 
 func (c *HostClient) SubscribeTopics(tables ...string) {
+
+	defer c.logger.Sync()
+
 	var message []interface{}
 	command := websocket.Message{Op: "subscribe"}
 
@@ -190,6 +214,8 @@ func (c *HostClient) SubscribeTopics(tables ...string) {
 }
 
 func (c *HostClient) UnsubscribeTopics(tables ...string) {
+
+	defer c.logger.Sync()
 
 	c.logger.Info("Unsubscribing Tables on hostClient",
 		zap.String("apiKey", c.ApiKey),
@@ -211,8 +237,11 @@ func (c *HostClient) Push(message *[]byte) {
 }
 
 func (c *HostClient) dataHandler() {
+	c.wg.Add(1)
+	defer c.wg.Done()
 	//fmt.Println("Data Handler started for subClient ", c.ApiKey)
 	defer func() {
+		_ = c.logger.Sync()
 		c.logger.Info("Data Handler Closed for subClient ",
 			zap.String("apiKey", c.ApiKey),
 			zap.String("websocketTopic", c.WebsocketTopic))
@@ -278,7 +307,10 @@ func (c *HostClient) dataHandler() {
 			continue
 		}
 
-		response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger)
+		response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger, c.restartRequired)
+		if c.restartRequired.Load() {
+			return
+		}
 
 		c.logger.Debug("Updating table on hostClient",
 			zap.String("table", table),
@@ -345,6 +377,8 @@ func (c *HostClient) RunningStatus() bool {
 
 func (c *HostClient) CurrentMargin() websocket.MarginSlice {
 
+	defer c.logger.Sync()
+
 	c.logger.Debug("Fetching Current margin for hostAccount ",
 		zap.String("apiKey", c.ApiKey),
 		zap.String("websocketTopic", c.WebsocketTopic))
@@ -388,6 +422,8 @@ L:
 }
 
 func (c *HostClient) SwaggerError(err error, response *http.Response) int {
+
+	defer c.logger.Sync()
 
 	if err != nil {
 

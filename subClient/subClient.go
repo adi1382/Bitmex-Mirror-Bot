@@ -21,7 +21,8 @@ func NewSubClient(
 	ch chan<- interface{},
 	restartRequired *atomic.Bool,
 	hostClient *hostClient.HostClient,
-	logger *zap.Logger) *SubClient {
+	logger *zap.Logger,
+	wg *sync.WaitGroup) *SubClient {
 
 	c := SubClient{
 		ApiKey:    apiKey,
@@ -33,6 +34,7 @@ func NewSubClient(
 	} else {
 		c.Rest = swagger.NewAPIClient(swagger.NewConfiguration())
 	}
+	c.wg = wg
 	c.Rest.InitializeAuth(c.ApiKey, c.apiSecret)
 	c.WebsocketTopic = ""
 
@@ -88,6 +90,7 @@ type SubClient struct {
 	hostUpdatesFetcher      chan []byte
 	restartRequired         *atomic.Bool
 	logger                  *zap.Logger
+	wg                      *sync.WaitGroup
 }
 
 func (c *SubClient) Initialize() {
@@ -157,6 +160,8 @@ func (c *SubClient) WaitForPartial() {
 }
 
 func (c *SubClient) marginUpdate() {
+	c.wg.Add(1)
+	defer c.wg.Done()
 
 	defer func() {
 		//fmt.Println("Margin Update Stopped for subClient ", c.ApiKey)
@@ -298,6 +303,8 @@ func (c *SubClient) HostUpdatePush(message *[]byte) {
 }
 
 func (c *SubClient) dataHandler() {
+	c.wg.Add(1)
+	defer c.wg.Done()
 	//fmt.Println("Data Handler started for subClient ", c.ApiKey)
 	defer func() {
 		c.logger.Info("Data Handler Closed for subClient",
@@ -377,7 +384,10 @@ func (c *SubClient) dataHandler() {
 			continue
 		}
 
-		response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger)
+		response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger, c.restartRequired)
+		if c.restartRequired.Load() {
+			return
+		}
 
 		c.logger.Debug("Updating table on subClient",
 			zap.String("table", table),

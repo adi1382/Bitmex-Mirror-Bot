@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
+	"go.uber.org/atomic"
 	"go.uber.org/zap"
 )
 
@@ -81,7 +82,7 @@ type MarginResponse struct {
 	Data   []websocket.MarginResponseData `json:"data,omitempty"`
 }
 
-func DecodeMessage(message []byte, logger *zap.Logger) (Response, string) {
+func DecodeMessage(message []byte, logger *zap.Logger, restartRequired *atomic.Bool) (Response, string) {
 
 	logger.Debug("Decoding Socket Message")
 
@@ -93,7 +94,11 @@ func DecodeMessage(message []byte, logger *zap.Logger) (Response, string) {
 	var orderResponse OrderResponse
 	var marginResponse MarginResponse
 	err := json.Unmarshal(message, &res)
-	tools.CheckErr(err)
+	if err != nil {
+		logger.Error("UnMarshal Error", zap.Error(err))
+		restartRequired.Store(true)
+		return response, table
+	}
 
 	table = res.Table
 

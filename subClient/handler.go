@@ -14,6 +14,9 @@ import (
 
 func (c *SubClient) OrderHandler() {
 
+	c.wg.Add(1)
+	defer c.wg.Done()
+
 	c.WaitForPartial()
 	c.hostClient.WaitForPartial()
 
@@ -32,6 +35,9 @@ func (c *SubClient) OrderHandler() {
 	calibrateBoolReset := time.Now().Add(time.Second * time.Duration(c.calibrationTime))
 
 	go func() {
+
+		c.wg.Add(1)
+		defer c.wg.Done()
 
 		defer func() {
 			c.logger.Info("Calibrator timer closed for subClient ",
@@ -109,7 +115,10 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 		ratio = c.FixedRatio
 	}
 
-	response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger)
+	response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger, c.restartRequired)
+	if c.restartRequired.Load() {
+		return
+	}
 
 	c.logger.Debug("Updating table from mirror on subClient",
 		zap.String("table", table),
@@ -137,7 +146,6 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 		}
 
 		if orderResponse.Action == "insert" {
-
 			c.logger.Debug("New Order Inserted in subClient",
 				zap.String("apiKey", c.ApiKey),
 				zap.String("websocketTopic", c.WebsocketTopic))
@@ -154,38 +162,51 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 				if orderResponse.Data[h].Symbol.Valid {
 					ord["symbol"] = orderResponse.Data[h].Symbol.Value
 				}
-				if orderResponse.Data[h].Side.Valid {
-					ord["side"] = orderResponse.Data[h].Side.Value
-				}
-				if orderResponse.Data[h].LeavesQty.Valid {
-					ord["orderQty"] = int(orderResponse.Data[h].LeavesQty.Value * ratio)
-				}
-				if orderResponse.Data[h].Price.Valid {
-					ord["price"] = orderResponse.Data[h].Price.Value
-				}
-				if orderResponse.Data[h].DisplayQty.Valid {
-					ord["displayQty"] = int(orderResponse.Data[h].DisplayQty.Value * ratio)
-				}
-				if orderResponse.Data[h].StopPx.Valid {
-					ord["stopPx"] = orderResponse.Data[h].StopPx.Value
-				}
-				if orderResponse.Data[h].PegOffsetValue.Valid {
-					ord["pegOffsetValue"] = orderResponse.Data[h].PegOffsetValue.Value
-				}
-				if orderResponse.Data[h].PegPriceType.Valid {
-					ord["pegPriceType"] = orderResponse.Data[h].PegPriceType.Value
-				}
-				if orderResponse.Data[h].OrdType.Valid {
-					ord["ordType"] = orderResponse.Data[h].OrdType.Value
-				}
-				if orderResponse.Data[h].TimeInForce.Valid {
-					ord["timeInForce"] = orderResponse.Data[h].TimeInForce.Value
-				}
-				if orderResponse.Data[h].ExecInst.Valid {
-					ord["execInst"] = orderResponse.Data[h].ExecInst.Value
-				}
-				if orderResponse.Data[h].Text.Valid {
-					ord["text"] = orderResponse.Data[h].Text.Value
+
+				if orderResponse.Data[h].OrdType.Value == "Market" {
+					ord["ordType"] = "Market"
+					if orderResponse.Data[h].Side.Valid {
+						ord["side"] = orderResponse.Data[h].Side.Value
+					}
+
+					if orderResponse.Data[h].LeavesQty.Valid {
+						ord["orderQty"] = int(orderResponse.Data[h].OrderQty.Value * ratio)
+					}
+				} else {
+					if orderResponse.Data[h].Side.Valid {
+						ord["side"] = orderResponse.Data[h].Side.Value
+					}
+
+					if orderResponse.Data[h].LeavesQty.Valid {
+						ord["orderQty"] = int(orderResponse.Data[h].OrderQty.Value * ratio)
+					}
+					if orderResponse.Data[h].Price.Valid {
+						ord["price"] = orderResponse.Data[h].Price.Value
+					}
+					if orderResponse.Data[h].DisplayQty.Valid {
+						ord["displayQty"] = int(orderResponse.Data[h].DisplayQty.Value * ratio)
+					}
+					if orderResponse.Data[h].StopPx.Valid {
+						ord["stopPx"] = orderResponse.Data[h].StopPx.Value
+					}
+					if orderResponse.Data[h].PegOffsetValue.Valid {
+						ord["pegOffsetValue"] = orderResponse.Data[h].PegOffsetValue.Value
+					}
+					if orderResponse.Data[h].PegPriceType.Valid {
+						ord["pegPriceType"] = orderResponse.Data[h].PegPriceType.Value
+					}
+					if orderResponse.Data[h].OrdType.Valid {
+						ord["ordType"] = orderResponse.Data[h].OrdType.Value
+					}
+					if orderResponse.Data[h].TimeInForce.Valid {
+						ord["timeInForce"] = orderResponse.Data[h].TimeInForce.Value
+					}
+					if orderResponse.Data[h].ExecInst.Valid {
+						ord["execInst"] = orderResponse.Data[h].ExecInst.Value
+					}
+					if orderResponse.Data[h].Text.Valid {
+						ord["text"] = orderResponse.Data[h].Text.Value
+					}
 				}
 				orders = append(orders, ord)
 			}
@@ -210,7 +231,6 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 					zap.String("symbol", symbol),
 					zap.String("apiKey", c.ApiKey),
 					zap.String("websocketTopic", c.WebsocketTopic))
-
 				c.OrderNewBulk(&placeNewOrders)
 
 			}

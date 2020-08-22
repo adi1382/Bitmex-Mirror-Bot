@@ -6,6 +6,7 @@ import (
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 	"sync"
+	"time"
 )
 
 type Mirror struct {
@@ -24,7 +25,9 @@ func NewMirror(restartRequired *atomic.Bool, logger *zap.Logger, wg *sync.WaitGr
 		logger:          logger,
 		wg:              wg,
 	}
+	mirror.remover()
 	return &mirror
+
 }
 
 func (m *Mirror) StartMirroring() {
@@ -72,9 +75,9 @@ func (m *Mirror) AddSub(sub *subClient.SubClient) {
 func (m *Mirror) AddAndStartSub(sub *subClient.SubClient) {
 	m.subsLock.Lock()
 	defer m.subsLock.Unlock()
+	m.subs = append(m.subs, sub)
 	sub.Initialize()
 	sub.SubscribeTopics("order", "position", "margin")
-	m.subs = append(m.subs, sub)
 }
 
 //func (m *Mirror) SubChecker() {
@@ -92,14 +95,21 @@ func (m *Mirror) AddAndStartSub(sub *subClient.SubClient) {
 //}
 
 func (m *Mirror) remover() {
-	m.subsLock.Lock()
-	for i := range m.subs {
-		if !m.subs[i].RunningStatus() {
-			m.subs = append(m.subs[:i], m.subs[i+1:]...)
-			break
+	m.wg.Add(1)
+	defer m.wg.Done()
+	go func() {
+		for {
+			m.subsLock.Lock()
+			for i := range m.subs {
+				if !m.subs[i].RunningStatus() {
+					m.subs = append(m.subs[:i], m.subs[i+1:]...)
+					break
+				}
+			}
+			m.subsLock.Unlock()
+			time.Sleep(time.Millisecond)
 		}
-	}
-	m.subsLock.Unlock()
+	}()
 }
 
 //func (m *Mirror) SocketResponseDistributor(c <-chan []byte, RestartCounter *atomic.Uint32, wg *sync.WaitGroup) {

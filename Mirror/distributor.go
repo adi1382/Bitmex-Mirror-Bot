@@ -26,7 +26,6 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte) {
 
 	for {
 		message := <-c
-
 		if m.restartRequired.Load() {
 			break
 		}

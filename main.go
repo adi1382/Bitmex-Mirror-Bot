@@ -74,7 +74,6 @@ func main() {
 		fmt.Println("Config File Changed!")
 		ReadConfig(true, logger)
 	})
-
 	//fmt.Println(viper.Sub("SubAccounts").AllSettings())
 	//fmt.Println(len(viper.Sub("SubAccounts").AllSettings()))
 	//fmt.Println(viper.AllSettings()["subaccounts"])
@@ -86,8 +85,7 @@ func main() {
 	//os.Exit(0)
 
 	fmt.Println("started")
-
-	logger.Info("hellp")
+	logger.Info("logging started")
 	//os.Exit(1)
 
 	// Connect to WS
@@ -125,7 +123,8 @@ func main() {
 		chWriteToWS,
 		config.Sub("Settings").GetInt64("RatioUpdateRate"),
 		restartRequired,
-		logger)
+		logger,
+		&wg)
 
 	mirror.SetHost(host)
 
@@ -137,26 +136,29 @@ func main() {
 	subAccounts := config.Sub("SubAccounts")
 	for i := range subKeys {
 
-		sub := subClient.NewSubClient(
-			subAccounts.Sub(subKeys[i]).GetString("ApiKey"),
-			subAccounts.Sub(subKeys[i]).GetString("Secret"),
-			config.Sub("Settings").GetBool("Testnet"),
-			subAccounts.Sub(subKeys[i]).GetBool("BalanceProportion"),
-			subAccounts.Sub(subKeys[i]).GetFloat64("FixedProportion"),
-			config.Sub("Settings").GetFloat64("RatioUpdateRate"),
-			config.Sub("Settings").GetFloat64("CalibrationRate"),
-			config.Sub("Settings").GetFloat64("LimitFilledTimeout"),
-			chWriteToWS,
-			restartRequired,
-			host,
-			logger)
-
-		mirror.AddSub(sub)
+		if subAccounts.Sub(subKeys[i]).GetBool("Enabled") {
+			sub := subClient.NewSubClient(
+				subAccounts.Sub(subKeys[i]).GetString("ApiKey"),
+				subAccounts.Sub(subKeys[i]).GetString("Secret"),
+				config.Sub("Settings").GetBool("Testnet"),
+				subAccounts.Sub(subKeys[i]).GetBool("BalanceProportion"),
+				subAccounts.Sub(subKeys[i]).GetFloat64("FixedProportion"),
+				config.Sub("Settings").GetFloat64("RatioUpdateRate"),
+				config.Sub("Settings").GetFloat64("CalibrationRate"),
+				config.Sub("Settings").GetFloat64("LimitFilledTimeout"),
+				chWriteToWS,
+				restartRequired,
+				host,
+				logger,
+				&wg)
+			mirror.AddSub(sub)
+		}
 	}
 
 	go mirror.SocketResponseDistributor(chReadFromWS)
 
 	mirror.InitializeAll()
+
 	mirror.StartMirroring()
 
 	//fmt.Println("reached")
@@ -167,7 +169,6 @@ func main() {
 	//fmt.Println(host.GetMarginBalance())
 	host.WaitForPartial()
 	fmt.Println("Running...")
-
 	//fmt.Println("Partials Received")
 
 	go func() {
@@ -183,9 +184,9 @@ func main() {
 	}()
 
 	//go func() {
-	//	time.Sleep(time.Second*20)
-	//	RestartCounter.Add(1)
-	//	fmt.Println("Added to counter", time.Now())
+	//	time.Sleep(10*time.Second)
+	//	fmt.Println("Setting to true", time.Now())
+	//	restartRequired.Store(true)
 	//}()
 
 	wg.Wait()

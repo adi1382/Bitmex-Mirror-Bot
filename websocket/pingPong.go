@@ -31,7 +31,10 @@ func PingPong(conn *websocket.Conn, RestartRequired *atomic.Bool, logger *zap.Lo
 				break
 			}
 
+			socketWriterLock.Lock()
 			err := conn.WriteMessage(9, []byte{})
+			socketWriterLock.Unlock()
+
 			if err != nil {
 				logger.Error("Error for PingPong", zap.Error(conn.Close()))
 				RestartRequired.Store(true)
