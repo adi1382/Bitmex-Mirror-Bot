@@ -1,7 +1,6 @@
 package websocket
 
 import (
-	"fmt"
 	"github.com/gorilla/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
@@ -30,7 +29,6 @@ func PingPong(conn *websocket.Conn, RestartRequired *atomic.Bool, logger *zap.Lo
 
 	pingSender := func() {
 		socketWriterLock.Lock()
-		fmt.Println("Ping Sent", time.Now())
 		err := conn.WriteMessage(9, []byte{})
 		socketWriterLock.Unlock()
 		isPingSent.Store(true)
