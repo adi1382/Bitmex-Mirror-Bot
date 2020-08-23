@@ -3,6 +3,7 @@ package subClient
 import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/hostClient"
 	"strings"
+	"time"
 )
 
 func (c *SubClient) calibrate() {
@@ -19,6 +20,7 @@ func (c *SubClient) calibrate() {
 		doMirror(c.hostClient, c)
 
 		if len(c.hostUpdatesFetcher) > 0 {
+			time.Sleep(time.Second)
 			continue
 		} else {
 			break

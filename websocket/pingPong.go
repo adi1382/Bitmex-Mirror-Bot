@@ -1,6 +1,7 @@
 package websocket
 
 import (
+	"fmt"
 	"github.com/gorilla/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
@@ -25,29 +26,35 @@ func PingPong(conn *websocket.Conn, RestartRequired *atomic.Bool, logger *zap.Lo
 
 	conn.SetPongHandler(func(string) error { err = conn.SetReadDeadline(time.Now().Add(pongWait)); return err })
 
+	isPingSent := atomic.NewBool(false)
+
+	pingSender := func() {
+		socketWriterLock.Lock()
+		fmt.Println("Ping Sent", time.Now())
+		err := conn.WriteMessage(9, []byte{})
+		socketWriterLock.Unlock()
+		isPingSent.Store(true)
+		if err != nil {
+			logger.Error("Error for PingPong, closing socket connection", zap.Error(conn.Close()))
+			RestartRequired.Store(true)
+		}
+	}
+
 	go func() {
+		pingSender()
+		timer := time.NewTimer(time.Nanosecond)
 		for {
+			if isPingSent.Load() {
+				isPingSent.Store(false)
+				timer = time.AfterFunc(time.Second*5, pingSender)
+			}
+
+			time.Sleep(time.Nanosecond)
+
 			if RestartRequired.Load() {
+				logger.Warn("Did timer stopped?", zap.Bool("PingPong Timer status", timer.Stop()))
+				logger.Info("Closing Socket", zap.Error(conn.Close()))
 				break
-			}
-
-			socketWriterLock.Lock()
-			err := conn.WriteMessage(9, []byte{})
-			socketWriterLock.Unlock()
-
-			if err != nil {
-				logger.Error("Error for PingPong", zap.Error(conn.Close()))
-				RestartRequired.Store(true)
-				break
-			}
-			resetTime := time.Now().Add(time.Second * 5)
-			for {
-				time.Sleep(time.Nanosecond)
-				if time.Now().Unix() > resetTime.Unix() {
-					break
-				} else if RestartRequired.Load() {
-					break
-				}
 			}
 		}
 	}()

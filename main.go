@@ -8,12 +8,13 @@ import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"github.com/fsnotify/fsnotify"
-	guuid "github.com/google/uuid"
+	"github.com/google/uuid"
 	"github.com/spf13/viper"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 	"os"
 	"sync"
+	"time"
 )
 
 var (
@@ -40,7 +41,7 @@ func init() {
 
 	botStatus = atomic.NewString("running")
 	restartRequired = atomic.NewBool(false)
-	sessionID = zap.String("sessionID", guuid.New().String())
+	sessionID = zap.String("sessionID", uuid.New().String())
 	config = viper.New()
 }
 
@@ -81,18 +82,7 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 
 	mirror := Mirror.NewMirror(restartRequired, logger, &wg)
 
-	//cfg := config.LoadConfig("config.json")
-	//fmt.Println(viper.Sub("SubAccounts").AllSettings())
-	//fmt.Println(len(viper.Sub("SubAccounts").AllSettings()))
-	//fmt.Println(viper.AllSettings()["subaccounts"])
-
-	//for {
-	//
-	//}
-
-	//os.Exit(0)
 	logger.Info("logging started")
-	//os.Exit(1)
 
 	// Connect to WS
 	conn, err := websocket.Connect(config.Sub("Settings").GetBool("Testnet"), logger)
@@ -186,6 +176,7 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 				chWriteToWS <- "quit"
 				break
 			}
+			<-time.After(time.Nanosecond)
 		}
 	}()
 
