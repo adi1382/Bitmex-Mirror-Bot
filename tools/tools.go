@@ -30,16 +30,28 @@ import (
 //	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
 //}
 
+type RunningStatus struct {
+	IsRunning *atomic.Bool
+	Message   *atomic.String
+}
+
+func NewBotStatus() *RunningStatus {
+	return &RunningStatus{
+		IsRunning: atomic.NewBool(true),
+		Message:   atomic.NewString("OK"),
+	}
+}
+
 func EnterToExit() {
 	fmt.Print("\n\nPress 'Enter' to exit")
 	_, _ = bufio.NewReader(os.Stdin).ReadBytes('\n')
 	os.Exit(0)
 }
 
-func ReadConfig(restart bool,
+func ReadConfig(
 	logger *zap.Logger,
 	config *viper.Viper,
-	botStatus *atomic.String,
+	botStatus *RunningStatus,
 	restartRequired *atomic.Bool) {
 
 	defer logger.Sync()
@@ -50,7 +62,9 @@ func ReadConfig(restart bool,
 		fmt.Println("The recent changes that were made to the config file have made it inaccessible.")
 		fmt.Println("Kindly reconfigure the configuration and restart the program.")
 		logger.Error("Unable to Read config file", zap.Error(err))
-		botStatus.Store("stop")
+
+		botStatus.IsRunning.Store(false)
+		botStatus.Message.Store("invalid configuration")
 		//tools.EnterToExit()
 	} else {
 		isConfigValid, str := CheckConfig(config)
@@ -61,14 +75,12 @@ func ReadConfig(restart bool,
 			EnterToExit()
 		}
 
-		if botStatus.Load() == "stop" {
-			botStatus.Store("running")
+		if !botStatus.IsRunning.Load() {
+			botStatus.IsRunning.Store(true)
+			botStatus.Message.Store("OK")
 		}
 
-		if restart {
-			restartRequired.Store(true)
-			botStatus.Store("running")
-		}
+		restartRequired.Store(true)
 	}
 }
 

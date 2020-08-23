@@ -19,7 +19,7 @@ import (
 
 var (
 	sessionID       zap.Field
-	botStatus       *atomic.String
+	botStatus       *tools.RunningStatus
 	config          *viper.Viper
 	restartRequired *atomic.Bool
 )
@@ -39,7 +39,8 @@ func init() {
 		tools.EnterToExit()
 	}
 
-	botStatus = atomic.NewString("running")
+	botStatus = tools.NewBotStatus()
+
 	restartRequired = atomic.NewBool(false)
 	sessionID = zap.String("sessionID", uuid.New().String())
 	config = viper.New()
@@ -57,19 +58,19 @@ func main() {
 	config.SetConfigName("config") // name of config file (without extension)
 	config.SetConfigType("json")   // REQUIRED if the config file does not have the extension in the name
 	config.AddConfigPath(".")      // optionally look for config in the working directory
-	tools.ReadConfig(false, logger, config, botStatus, restartRequired)
+	tools.ReadConfig(logger, config, botStatus, restartRequired)
 
 	config.WatchConfig()
 	config.OnConfigChange(func(in fsnotify.Event) {
 		fmt.Println("Config File Changed!")
-		tools.ReadConfig(true, logger, config, botStatus, restartRequired)
+		tools.ReadConfig(logger, config, botStatus, restartRequired)
 	})
 
 	fmt.Println("started")
 
 	for {
 
-		if botStatus.Load() == "running" {
+		if botStatus.IsRunning.Load() {
 			restartRequired.Store(false)
 			trader(logger, socketIncomingLogger, socketOutgoingLogger)
 		}
@@ -88,7 +89,8 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 	conn, err := websocket.Connect(config.Sub("Settings").GetBool("Testnet"), logger)
 
 	if err != nil {
-		botStatus.Store("Stop")
+		botStatus.IsRunning.Store(false)
+		botStatus.Message.Store("Unable to establish websocket connection")
 		fmt.Println(err)
 		tools.EnterToExit()
 	}
