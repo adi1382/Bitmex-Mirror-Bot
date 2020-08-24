@@ -286,7 +286,7 @@ func (c *HostClient) dataHandler() {
 		if strings.Contains(strResponse, "Invalid API Key") {
 			fmt.Println("API key ", c.ApiKey, " is invalid.")
 
-			c.logger.Error("api key invalid for hostCLient",
+			c.logger.Error("api key invalid for hostClient",
 				zap.String("errMessage", strResponse),
 				zap.String("apiKey", c.ApiKey),
 				zap.String("websocketTopic", c.WebsocketTopic))

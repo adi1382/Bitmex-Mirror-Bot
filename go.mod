@@ -10,5 +10,5 @@ require (
 	github.com/spf13/viper v1.7.1
 	go.uber.org/atomic v1.6.0
 	go.uber.org/zap v1.15.0
-	golang.org/x/sys v0.0.0-20200821140526-fda516888d29
+	golang.org/x/sys v0.0.0-20200824131525-c12d262b63d8
 )
