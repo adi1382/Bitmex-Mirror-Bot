@@ -57,12 +57,12 @@ func NewSubClient(
 
 	// balanceProportion bool, fixedRatio float64,
 	//hostClient *SubClient, calibrationTime int64, LimitFilledTimeout int64
-
 	return &c
 }
 
 type SubClient struct {
 	active                  atomic.Bool
+	calibrateBool           atomic.Bool
 	isConnectedToSocket     bool
 	isAuthenticatedToSocket bool
 	marginUpdateTime        float64

@@ -1,12 +1,14 @@
 package subClient
 
 import (
+	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/hostClient"
 	"strings"
 	"time"
 )
 
 func (c *SubClient) calibrate() {
+	fmt.Println("Calibrating", time.Now())
 	for {
 	L:
 		for {

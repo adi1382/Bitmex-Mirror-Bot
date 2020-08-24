@@ -185,6 +185,7 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 
 	wg.Wait()
 	logger.Info("All wait groups completed")
+	fmt.Println("All wait groups completed")
 
 	//fmt.Println(host.ActiveOrders())
 	//n := 0

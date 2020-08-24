@@ -31,8 +31,10 @@ func (c *SubClient) OrderHandler() {
 
 	c.calibrate()
 
-	calibrateBool := true
+	c.calibrateBool.Store(true)
+	//calibrateBool := true
 	calibrateBoolReset := time.Now().Add(time.Second * time.Duration(c.calibrationTime))
+	//calibrateTrigger := time.After(time.Second*time.Duration(c.calibrationTime))
 
 	go func() {
 
@@ -55,9 +57,9 @@ func (c *SubClient) OrderHandler() {
 				break
 			}
 
-			if !calibrateBool && calibrateBoolReset.Unix() < time.Now().Unix() {
+			if !c.calibrateBool.Load() && calibrateBoolReset.Unix() < time.Now().Unix() {
 				calibrateBoolReset = time.Now().Add(time.Second * time.Duration(c.calibrationTime))
-				calibrateBool = true
+				c.calibrateBool.Store(true)
 			}
 
 			//if calibrateBool == false {
@@ -78,12 +80,12 @@ func (c *SubClient) OrderHandler() {
 		select {
 
 		case message := <-c.hostUpdatesFetcher:
-			c.mirroring(&message, &calibrateBoolReset, &calibrateBool)
+			c.mirroring(&message, &calibrateBoolReset)
 			continue
 		default:
-			if calibrateBool {
+			if c.calibrateBool.Load() {
 				c.calibrate()
-				calibrateBool = false
+				c.calibrateBool.Store(false)
 				continue
 			}
 			continue
@@ -91,7 +93,7 @@ func (c *SubClient) OrderHandler() {
 	}
 }
 
-func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, calibrateBool *bool) {
+func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time) {
 
 	c.logger.Debug("Starting Mirror for subClient",
 		zap.String("apiKey", c.ApiKey),
@@ -255,7 +257,7 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time, ca
 							zap.String("apiKey", c.ApiKey),
 							zap.String("websocketTopic", c.WebsocketTopic))
 
-						*calibrateBool = false
+						c.calibrateBool.Store(false)
 						*calibrateBoolReset = time.Now().Add(time.Second * time.Duration(c.LimitFilledTimeout))
 					}
 				}
