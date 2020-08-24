@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/bitmex"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
+	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 	"sync"
@@ -16,7 +16,7 @@ import (
 )
 
 func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, marginUpdateTime int64,
-	restartRequired *atomic.Bool, logger *zap.Logger, wg *sync.WaitGroup) *HostClient {
+	restartRequired *atomic.Bool, logger *zap.Logger, wg *sync.WaitGroup, botStatus *tools.RunningStatus) *HostClient {
 
 	defer logger.Sync()
 
@@ -41,6 +41,7 @@ func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, m
 	c.chReadFromWSClient = make(chan []byte, 100)
 	c.logger = logger
 	c.wg = wg
+	c.botStatus = botStatus
 
 	c.logger.Info("New SubClient Created",
 		zap.String("websocketTopic", c.WebsocketTopic),
@@ -71,6 +72,7 @@ type HostClient struct {
 	restartRequired    *atomic.Bool
 	logger             *zap.Logger
 	wg                 *sync.WaitGroup
+	botStatus          *tools.RunningStatus
 }
 
 func (c *HostClient) Initialize() {
@@ -131,6 +133,11 @@ func (c *HostClient) marginUpdate() {
 		}
 
 		marginBalance := c.restMargin()
+
+		if c.restartRequired.Load() {
+			c.CloseConnection()
+			break
+		}
 
 		c.logger.Info("Updating marginBalance on hostAccount",
 			zap.Float64("marginBalance", marginBalance),
@@ -284,8 +291,10 @@ func (c *HostClient) dataHandler() {
 				zap.String("apiKey", c.ApiKey),
 				zap.String("websocketTopic", c.WebsocketTopic))
 
-			time.Sleep(time.Second * 10)
-			os.Exit(-1)
+			c.botStatus.IsRunning.Store(false)
+			c.restartRequired.Store(true)
+			c.botStatus.Message.Store("Invalid host API Key")
+			return
 		}
 
 		if strings.Contains(strResponse, "This key is disabled") {
@@ -295,8 +304,10 @@ func (c *HostClient) dataHandler() {
 				zap.String("apiKey", c.ApiKey),
 				zap.String("websocketTopic", c.WebsocketTopic))
 
-			time.Sleep(time.Second * 10)
-			os.Exit(-1)
+			c.botStatus.IsRunning.Store(false)
+			c.restartRequired.Store(true)
+			c.botStatus.Message.Store("API Key disabled on host client")
+			return
 		}
 
 		prefix := fmt.Sprintf(`[0,"%s","%s",`, c.ApiKey, c.WebsocketTopic)
@@ -406,9 +417,12 @@ L:
 			continue L
 		case 2:
 			c.logger.Error("API key Invalid/Disabled on host")
+			c.logger.Error("Rest Margin request failed")
 			fmt.Println("API key Invalid/Disabled on host, closing in 10 seconds")
-			time.Sleep(time.Second * 10)
-			os.Exit(-1)
+			c.restartRequired.Store(true)
+			c.botStatus.IsRunning.Store(false)
+			c.botStatus.Message.Store("API key Invalid/Disabled on host")
+			return 0
 			//c.CloseConnection()
 			//return -404
 			//break function
@@ -460,8 +474,13 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 					return 0
 				}
 
-				if response.StatusCode > 300 {
+				if response.StatusCode > 300 && response.StatusCode < 400 {
 					c.logger.Sugar().Error(*response)
+					c.logger.Error("NEW ERROR!!!!!",
+						zap.Int("statusCode", response.StatusCode),
+						zap.String("name", e.Name.Value),
+						zap.String("message", e.Message.Value))
+					return 3
 				}
 
 				if response.StatusCode == 400 {
@@ -478,6 +497,7 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 							return 2
 						} else if strings.Contains(e.Message.Value, "Invalid amend: orderQty, leavesQty, price, stopPx unchanged") {
 							time.Sleep(time.Millisecond * 500)
+							return 0
 						}
 					}
 
@@ -496,10 +516,18 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 					c.logger.Sugar().Error("Time to reset: %v\n", reset)
 					c.logger.Sugar().Error("Slept for %v seconds.\n", reset)
 					time.Sleep(time.Second * time.Duration(reset))
+					time.Sleep(time.Millisecond * 500)
 					return 1
 				} else if response.StatusCode == 503 {
 					time.Sleep(time.Millisecond * 500)
 					return 1
+				} else {
+					c.logger.Sugar().Error(*response)
+					c.logger.Error("NEW ERROR!!!!!",
+						zap.Int("statusCode", response.StatusCode),
+						zap.String("name", e.Name.Value),
+						zap.String("message", e.Message.Value))
+					return 3
 				}
 			}
 		}

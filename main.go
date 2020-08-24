@@ -122,7 +122,8 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 		config.Sub("Settings").GetInt64("RatioUpdateRate"),
 		restartRequired,
 		logger,
-		&wg)
+		&wg,
+		botStatus)
 
 	mirror.SetHost(host)
 
