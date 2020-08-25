@@ -8,7 +8,6 @@ import (
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
-	"os"
 	"strings"
 	"sync"
 	"time"
@@ -348,14 +347,7 @@ func (c *SubClient) dataHandler() {
 				zap.String("apiKey", c.ApiKey),
 				zap.String("websocketTopic", c.WebsocketTopic))
 
-			if c.WebsocketTopic == "hostAccount" {
-				fmt.Println("host Account API key is Invalid. Closing the bot in 10 seconds.")
-				c.logger.Error("host Account API key is Invalid. Closing the bot in 10 seconds.")
-				time.Sleep(time.Second * 10)
-				os.Exit(-1)
-			} else {
-				c.CloseConnection()
-			}
+			c.CloseConnection()
 		}
 
 		if strings.Contains(string(message), "This key is disabled") {
@@ -366,14 +358,7 @@ func (c *SubClient) dataHandler() {
 
 			fmt.Println("API key ", c.ApiKey, " is disabled.")
 
-			if c.WebsocketTopic == "hostAccount" {
-				fmt.Println("host Account API key is disabled. Closing the bot in 10 seconds.")
-				c.logger.Error("host Account API key is disabled. Closing the bot in 10 seconds.")
-				time.Sleep(time.Second * 10)
-				os.Exit(-1)
-			} else {
-				c.CloseConnection()
-			}
+			c.CloseConnection()
 		}
 
 		prefix := fmt.Sprintf(`[0,"%s","%s",`, c.ApiKey, c.WebsocketTopic)
