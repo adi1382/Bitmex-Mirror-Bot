@@ -377,7 +377,7 @@ func (c *SubClient) dataHandler() {
 		}
 
 		prefix := fmt.Sprintf(`[0,"%s","%s",`, c.ApiKey, c.WebsocketTopic)
-		suffix := fmt.Sprintf("]")
+		suffix := "]"
 		strResponse = strings.TrimPrefix(strResponse, prefix)
 		strResponse = strings.TrimSuffix(strResponse, suffix)
 		if !strings.Contains(string(message), "table") {

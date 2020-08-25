@@ -101,7 +101,7 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time) {
 
 	strResponse := string(*message)
 	prefix := fmt.Sprintf(`[0,"%s","%s",`, c.hostClient.ApiKey, "hostAccount")
-	suffix := fmt.Sprintf("]")
+	suffix := "]"
 	strResponse = strings.TrimPrefix(strResponse, prefix)
 	strResponse = strings.TrimSuffix(strResponse, suffix)
 
