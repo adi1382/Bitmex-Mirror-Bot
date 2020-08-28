@@ -1,6 +1,8 @@
 package subClient
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"go.uber.org/zap"
 	"net/http"
@@ -8,6 +10,88 @@ import (
 	"strings"
 	"time"
 )
+
+func (c *SubClient) socketError(strMessage *string) (bool, string) {
+	if !strings.Contains(*strMessage, "error") {
+		return false, ""
+	} else {
+		var obj map[string]interface{}
+		var returnString string
+		err := json.Unmarshal([]byte(*strMessage), &obj)
+
+		if err != nil {
+			c.logger.Error("Cannot unmarshal socket error message",
+				zap.Error(err),
+				zap.String("message", *strMessage))
+			c.restartRequired.Store(true)
+			return true, "cannot unmarshal socket error message"
+		}
+
+		returnInterface, ok := obj["error"]
+
+		if ok {
+			returnString, ok = returnInterface.(string)
+
+			if !ok {
+				c.restartRequired.Store(true)
+				c.logger.Error("error message is not of type string",
+					zap.String("message", *strMessage))
+				return true, "error message is not of type string"
+			}
+
+		} else {
+			c.logger.Error("NEW ERROR!!",
+				zap.String("socketErrMessage", *strMessage))
+
+			c.restartRequired.Store(true)
+			return true, "NEW SOCKET ERROR"
+		}
+
+		if ok {
+			return true, returnString
+		} else {
+			c.restartRequired.Store(true)
+			return true, ""
+		}
+	}
+}
+
+func (c *SubClient) extractCoreMessage(strMessage *string) {
+	prefix := fmt.Sprintf(`[0,"%s","%s",`, c.ApiKey, c.WebsocketTopic)
+	suffix := "]"
+	*strMessage = strings.TrimPrefix(*strMessage, prefix)
+	*strMessage = strings.TrimSuffix(*strMessage, suffix)
+}
+
+func (c *SubClient) checkIfConnected(strMessage string) {
+	if strings.Contains(strMessage, "Welcome to the BitMEX Realtime API.") {
+		c.isConnectedToSocket.Store(true)
+
+		c.logger.Info("Successfully connected to websockets",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
+	} else {
+		c.CloseConnection("First message on subClient is something different")
+		c.restartRequired.Store(true)
+		c.logger.Error("NEW ERROR!! First message on subClient is something different",
+			zap.String("error", strMessage))
+	}
+}
+
+func (c *SubClient) checkIfAuthenticated(strMessage string) {
+	if strings.Contains(strMessage, `"success":true`) && strings.Contains(strMessage, "authKeyExpires") {
+		c.isAuthenticatedToSocket.Store(true)
+
+		c.logger.Info("Successfully authenticated to websockets",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
+	} else if strings.Contains(strMessage, "Signature not valid.") {
+		c.CloseConnection("Signature not valid.")
+		c.logger.Error("API Secret is Invalid.",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
+	}
+}
 
 func (c *SubClient) SwaggerError(err error, response *http.Response) int {
 

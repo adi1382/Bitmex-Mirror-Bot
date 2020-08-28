@@ -19,7 +19,7 @@ func (m *Mirror) SocketResponseDistributor(c <-chan []byte) {
 
 		m.subsLock.Lock()
 		for _, v := range m.subs {
-			v.CloseConnection()
+			v.CloseConnection("socket distributor closed")
 		}
 		m.subsLock.Unlock()
 	}()

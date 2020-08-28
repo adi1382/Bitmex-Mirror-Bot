@@ -1,69 +1,20 @@
 package subClient
 
 import (
-	"fmt"
-	"github.com/adi1382/Bitmex-Mirror-Bot/bitmex"
 	"github.com/adi1382/Bitmex-Mirror-Bot/hostClient"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
-	"strings"
 	"sync"
 	"time"
 )
 
-func NewSubClient(
-	apiKey, apiSecret string,
-	test, balanceProportion bool,
-	fixedRatio, marginUpdateTime, calibrationTime, limitFilledTimeout float64,
-	ch chan<- interface{},
-	restartRequired *atomic.Bool,
-	hostClient *hostClient.HostClient,
-	logger *zap.Logger,
-	wg *sync.WaitGroup) *SubClient {
-
-	c := SubClient{
-		ApiKey:    apiKey,
-		apiSecret: apiSecret,
-		test:      test,
-	}
-	if c.test {
-		c.Rest = swagger.NewAPIClient(swagger.NewTestnetConfiguration())
-	} else {
-		c.Rest = swagger.NewAPIClient(swagger.NewConfiguration())
-	}
-	c.wg = wg
-	c.Rest.InitializeAuth(c.ApiKey, c.apiSecret)
-	c.WebsocketTopic = ""
-
-	c.restartRequired = restartRequired
-	c.active.Store(true)
-	c.marginUpdateTime = marginUpdateTime
-	c.chWriteToWSClient = ch
-	c.chReadFromWSClient = make(chan []byte, 100)
-	c.BalanceProportion = balanceProportion
-	c.FixedRatio = fixedRatio
-	c.calibrationTime = calibrationTime
-	c.LimitFilledTimeout = limitFilledTimeout
-	c.hostClient = hostClient
-	c.logger = logger
-	c.initiateRest()
-
-	c.logger.Info("New SubClient Created",
-		zap.String("websocketTopic", c.WebsocketTopic),
-		zap.String("apiKey", apiKey))
-
-	// balanceProportion bool, fixedRatio float64,
-	//hostClient *SubClient, calibrationTime int64, LimitFilledTimeout int64
-	return &c
-}
-
 type SubClient struct {
 	active                  atomic.Bool
 	calibrateBool           atomic.Bool
-	isConnectedToSocket     bool
-	isAuthenticatedToSocket bool
+	isConnectedToSocket     atomic.Bool
+	isAuthenticatedToSocket atomic.Bool
 	marginUpdateTime        float64
 	BalanceProportion       bool
 	FixedRatio              float64
@@ -102,8 +53,6 @@ func (c *SubClient) Initialize() {
 	c.hostUpdatesFetcher = make(chan []byte, 100)
 	c.active.Store(true)
 	c.chReadFromWSClient = make(chan []byte, 100)
-	c.StartConnection()
-	c.Authorize()
 	go c.marginUpdate()
 	go c.dataHandler()
 	go c.OrderHandler()
@@ -114,18 +63,27 @@ func (c *SubClient) Initialize() {
 		zap.String("apiKey", c.ApiKey))
 }
 
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-func (c *SubClient) CloseConnection() {
+func (c *SubClient) Start() {
+	c.connectToSocket()
+	c.authorize()
+	c.subscribeTopics("order", "position", "margin")
+}
 
-	c.logger.Info("close connection request for sub client",
-		zap.String("apiKey", c.ApiKey),
-		zap.String("websocketTopic", c.WebsocketTopic))
-	c.active.Store(false)
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+func (c *SubClient) CloseConnection(reason string) {
 	var message []interface{}
 	message = append(message, 2, c.ApiKey, c.WebsocketTopic)
 	c.chWriteToWSClient <- message
+
+	c.logger.Info("closing connection for sub client",
+		zap.String("apiKey", c.ApiKey),
+		zap.String("websocketTopic", c.WebsocketTopic),
+		zap.String("reason", reason))
 	c.chReadFromWSClient <- []byte("quit")
+	c.isConnectedToSocket.Store(false)
+	c.isAuthenticatedToSocket.Store(false)
+	c.active.Store(false)
 	c.removeCurrentClient()
 
 }
@@ -237,62 +195,6 @@ func (c *SubClient) initiateRest() {
 		zap.String("websocketTopic", c.WebsocketTopic))
 }
 
-func (c *SubClient) StartConnection() {
-
-	c.logger.Info("Starting Connection on subClient to sockets",
-		zap.String("apiKey", c.ApiKey),
-		zap.String("websocketTopic", c.WebsocketTopic))
-
-	var message []interface{}
-	message = append(message, 1, c.ApiKey, c.WebsocketTopic)
-	c.chWriteToWSClient <- message
-
-}
-
-func (c *SubClient) Authorize() {
-	var message []interface{}
-
-	c.logger.Info("Authenticating websocket connection of subClient",
-		zap.String("apiKey", c.ApiKey),
-		zap.String("websocketTopic", c.WebsocketTopic))
-
-	message = append(message, 0, c.ApiKey, c.WebsocketTopic, websocket.GetAuthMessage(c.ApiKey, c.apiSecret))
-	c.chWriteToWSClient <- message
-}
-
-func (c *SubClient) SubscribeTopics(tables ...string) {
-	var message []interface{}
-	command := websocket.Message{Op: "subscribe"}
-
-	for _, v := range tables {
-		command.AddArgument(v)
-	}
-
-	c.logger.Info("Subscribing Tables on SubClient",
-		zap.String("apiKey", c.ApiKey),
-		zap.String("websocketTopic", c.WebsocketTopic))
-
-	message = append(message, 0, c.ApiKey, c.WebsocketTopic, command)
-	c.chWriteToWSClient <- message
-}
-
-func (c *SubClient) UnsubscribeTopics(tables ...string) {
-
-	c.logger.Info("Unsubscribing Tables on SubClient",
-		zap.String("apiKey", c.ApiKey),
-		zap.String("websocketTopic", c.WebsocketTopic))
-
-	var message []interface{}
-	command := websocket.Message{Op: "unsubscribe"}
-
-	for _, v := range tables {
-		command.AddArgument(v)
-	}
-
-	message = append(message, 0, c.ApiKey, c.WebsocketTopic, command)
-	c.chWriteToWSClient <- message
-}
-
 func (c *SubClient) Push(message *[]byte) {
 	c.chReadFromWSClient <- *message
 }
@@ -301,164 +203,14 @@ func (c *SubClient) HostUpdatePush(message *[]byte) {
 	c.hostUpdatesFetcher <- *message
 }
 
-func (c *SubClient) dataHandler() {
-	c.wg.Add(1)
-	defer c.wg.Done()
-	//fmt.Println("Data Handler started for subClient ", c.ApiKey)
-	defer func() {
-		c.logger.Info("Data Handler Closed for subClient",
-			zap.String("apiKey", c.ApiKey),
-			zap.String("websocketTopic", c.WebsocketTopic))
-		//fmt.Println("Data Handler Closed for subClient ", c.ApiKey)
-	}()
-	for {
-
-		if !c.RunningStatus() {
-			break
-		}
-
-		message := <-c.chReadFromWSClient
-
-		c.logger.Debug("New Message in Data Handler for subClient",
-			zap.String("apiKey", c.ApiKey),
-			zap.String("websocketTopic", c.WebsocketTopic))
-
-		strResponse := string(message)
-		if strResponse == "quit" {
-			break
-		}
-
-		if strings.Contains(string(message), "Access Token expired for subscription") {
-			c.logger.Info("RestartRequiredToTrue")
-			c.restartRequired.Store(true)
-
-			c.logger.Error("Expiration Error",
-				zap.String("errorMessage", string(message)),
-				zap.String("apiKey", c.ApiKey),
-				zap.String("websocketTopic", c.WebsocketTopic))
-			//fmt.Println(string(message))
-		}
-
-		if strings.Contains(string(message), "Invalid API Key") {
-			fmt.Println("API key ", c.ApiKey, " is invalid.")
-
-			c.logger.Error("api key invalid for subClient",
-				zap.String("errMessage", strResponse),
-				zap.String("apiKey", c.ApiKey),
-				zap.String("websocketTopic", c.WebsocketTopic))
-
-			c.CloseConnection()
-		}
-
-		if strings.Contains(string(message), "This key is disabled") {
-			c.logger.Error("apiKey is disabled on subClient",
-				zap.String("errorMessage", strResponse),
-				zap.String("apiKey", c.ApiKey),
-				zap.String("websocketTopic", c.WebsocketTopic))
-
-			fmt.Println("API key ", c.ApiKey, " is disabled.")
-
-			c.CloseConnection()
-		}
-
-		prefix := fmt.Sprintf(`[0,"%s","%s",`, c.ApiKey, c.WebsocketTopic)
-		suffix := "]"
-		strResponse = strings.TrimPrefix(strResponse, prefix)
-		strResponse = strings.TrimSuffix(strResponse, suffix)
-		if !strings.Contains(string(message), "table") {
-			continue
-		}
-
-		response, table := bitmex.DecodeMessage([]byte(strResponse), c.logger, c.restartRequired)
-		if c.restartRequired.Load() {
-			return
-		}
-
-		c.logger.Debug("Updating table on subClient",
-			zap.String("table", table),
-			zap.String("apiKey", c.ApiKey),
-			zap.String("websocketTopic", c.WebsocketTopic))
-
-		// Potential Race Condition when fetching
-		if table == "order" {
-
-			orderResponse := response.(bitmex.OrderResponse)
-
-			c.ordersLock.Lock()
-			if orderResponse.Action == "partial" {
-				c.partials.Add(1)
-				c.activeOrders.OrderPartial(&orderResponse.Data)
-			} else if orderResponse.Action == "insert" {
-				c.activeOrders.OrderInsert(&orderResponse.Data)
-			} else if orderResponse.Action == "update" {
-				c.activeOrders.OrderUpdate(&orderResponse.Data)
-			} else if orderResponse.Action == "delete" {
-				c.activeOrders.OrderDelete(&orderResponse.Data)
-			}
-			c.ordersLock.Unlock()
-
-		} else if table == "position" {
-			positionResponse := response.(bitmex.PositionResponse)
-
-			c.positionsLock.Lock()
-			if positionResponse.Action == "partial" {
-				c.partials.Add(1)
-				c.activePositions.PositionPartial(&positionResponse.Data)
-			} else if positionResponse.Action == "insert" {
-				c.activePositions.PositionInsert(&positionResponse.Data)
-			} else if positionResponse.Action == "update" {
-				c.activePositions.PositionUpdate(&positionResponse.Data)
-			} else if positionResponse.Action == "delete" {
-				c.activePositions.PositionDelete(&positionResponse.Data)
-			}
-			c.positionsLock.Unlock()
-
-		} else if table == "margin" {
-			marginResponse := response.(bitmex.MarginResponse)
-
-			c.marginLock.Lock()
-			if marginResponse.Action == "partial" {
-				c.partials.Add(1)
-				c.currentMargin.MarginPartial(&marginResponse.Data)
-			} else if marginResponse.Action == "insert" {
-				c.currentMargin.MarginInsert(&marginResponse.Data)
-			} else if marginResponse.Action == "update" {
-				c.currentMargin.MarginUpdate(&marginResponse.Data)
-			} else if marginResponse.Action == "delete" {
-				c.currentMargin.MarginDelete(&marginResponse.Data)
-			}
-			c.marginLock.Unlock()
-		}
-	}
-}
-
 func (c *SubClient) RunningStatus() bool {
 	return c.active.Load()
 }
 
 func (c *SubClient) removeCurrentClient() {
 
-	c.logger.Info("Removing subClient from all clients",
+	c.logger.Info("Removed subClient",
 		zap.String("apiKey", c.ApiKey),
 		zap.String("websocketTopic", c.WebsocketTopic))
 
 }
-
-//func GetAllClients() []*SubClient {
-//	AllClientsLock.Lock()
-//	defer AllClientsLock.Unlock()
-//	return AllClients
-//}
-
-//func ResetAllClients() {
-//	AllClientsLock.Lock()
-//	defer AllClientsLock.Unlock()
-//
-//	fmt.Println("Removing all clients")
-//	//for i := range AllClients {
-//	//	AllClients[i].closeConnection()
-//	//}
-//	fmt.Println("All clients removed")
-//
-//	AllClients = AllClients[:0]
-//}

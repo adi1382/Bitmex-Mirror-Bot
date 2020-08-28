@@ -46,7 +46,7 @@ func (c *SubClient) OrderNewMarket(symbol string, quantity int) {
 			case 1:
 				continue L
 			case 2:
-				c.CloseConnection()
+				c.CloseConnection("Rest error")
 				break L
 			case 3:
 				fmt.Println("Restart the bot")
@@ -96,7 +96,7 @@ func (c *SubClient) OrderAmendBulk(toAmend *[]interface{}) {
 				continue L
 			case 2:
 				fmt.Println("Remove the current sub subClient")
-				c.CloseConnection()
+				c.CloseConnection("Rest Error")
 				return
 				//break function
 			case 3:
@@ -150,7 +150,7 @@ func (c *SubClient) OrderCancelBulk(toCancelOrderIDs *[]string) {
 				continue L
 			case 2:
 				fmt.Println("Remove the current sub subClient")
-				c.CloseConnection()
+				c.CloseConnection("Rest Error")
 				return
 				//break function
 			case 3:
@@ -198,7 +198,7 @@ func (c *SubClient) OrderNewBulk(toPlace *[]interface{}) {
 				continue L
 			case 2:
 				fmt.Println("Remove the current sub subClient")
-				c.CloseConnection()
+				c.CloseConnection("Rest Error")
 				return
 				//break function
 			case 3:

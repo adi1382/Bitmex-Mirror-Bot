@@ -40,7 +40,7 @@ L:
 			continue L
 		case 2:
 			fmt.Println("Remove the current sub subClient")
-			c.CloseConnection()
+			c.CloseConnection("Error while fetching margin")
 			return -404
 			//break function
 		case 3:

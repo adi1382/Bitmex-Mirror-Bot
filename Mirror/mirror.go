@@ -38,7 +38,7 @@ func (m *Mirror) StartMirroring() {
 
 	m.host.SubscribeTopics("order", "position", "margin")
 	for i := range m.subs {
-		m.subs[i].SubscribeTopics("order", "position", "margin")
+		m.subs[i].Start()
 	}
 }
 
@@ -77,7 +77,7 @@ func (m *Mirror) AddAndStartSub(sub *subClient.SubClient) {
 	defer m.subsLock.Unlock()
 	m.subs = append(m.subs, sub)
 	sub.Initialize()
-	sub.SubscribeTopics("order", "position", "margin")
+	sub.Start()
 }
 
 //func (m *Mirror) SubChecker() {

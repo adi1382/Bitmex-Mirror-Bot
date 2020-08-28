@@ -12,7 +12,162 @@ import (
 	"time"
 )
 
+func (c *SubClient) dataHandler() {
+	c.wg.Add(1)
+	defer c.wg.Done()
+	//fmt.Println("Data Handler started for subClient ", c.ApiKey)
+	defer func() {
+		c.logger.Info("Data Handler Closed for subClient",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
+		//fmt.Println("Data Handler Closed for subClient ", c.ApiKey)
+	}()
+	for {
+
+		if !c.RunningStatus() {
+			return
+		}
+
+		message := <-c.chReadFromWSClient
+
+		c.logger.Debug("New Message in Data Handler for subClient",
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
+
+		strMessage := string(message)
+		//fmt.Println(strMessage)
+		if strMessage == "quit" {
+			c.active.Store(false)
+			return
+		}
+
+		//if strings.Contains(strMessage, "Access Token expired for subscription") {
+		//	c.logger.Info("RestartRequiredToTrue")
+		//	c.restartRequired.Store(true)
+		//
+		//	c.logger.Error("Expiration Error",
+		//		zap.String("errorMessage", strMessage),
+		//		zap.String("apiKey", c.ApiKey),
+		//		zap.String("websocketTopic", c.WebsocketTopic))
+		//	//fmt.Println(string(message))
+		//}
+		//
+		//if strings.Contains(strMessage, "Invalid API Key") {
+		//	fmt.Println("API key ", c.ApiKey, " is invalid.")
+		//
+		//	c.logger.Error("api key invalid for subClient",
+		//		zap.String("errMessage", strMessage),
+		//		zap.String("apiKey", c.ApiKey),
+		//		zap.String("websocketTopic", c.WebsocketTopic))
+		//
+		//	c.CloseConnection()
+		//}
+		//
+		//if strings.Contains(strMessage, "This key is disabled") {
+		//	c.logger.Error("apiKey is disabled on subClient",
+		//		zap.String("errorMessage", strMessage),
+		//		zap.String("apiKey", c.ApiKey),
+		//		zap.String("websocketTopic", c.WebsocketTopic))
+		//
+		//	fmt.Println("API key ", c.ApiKey, " is disabled.")
+		//
+		//	c.CloseConnection()
+		//}
+
+		c.extractCoreMessage(&strMessage)
+		shouldClose, whyClose := c.socketError(&strMessage)
+
+		if shouldClose {
+			if strings.Contains(whyClose, "Signature not valid") ||
+				strings.Contains(whyClose, "This key is disabled") ||
+				strings.Contains(whyClose, "Invalid API Key") {
+				c.CloseConnection(whyClose)
+			} else {
+				c.restartRequired.Store(true)
+				c.logger.Error("Socket Error", zap.String("error", whyClose))
+				return
+			}
+		}
+
+		if !c.RunningStatus() {
+			return
+		}
+
+		if !c.isConnectedToSocket.Load() {
+			c.checkIfConnected(strMessage)
+		} else if !c.isAuthenticatedToSocket.Load() {
+			c.checkIfAuthenticated(strMessage)
+		}
+
+		if !strings.Contains(strMessage, "table") {
+			continue
+		}
+
+		response, table := bitmex.DecodeMessage([]byte(strMessage), c.logger, c.restartRequired)
+		if c.restartRequired.Load() {
+			return
+		}
+
+		c.logger.Debug("Updating table on subClient",
+			zap.String("table", table),
+			zap.String("apiKey", c.ApiKey),
+			zap.String("websocketTopic", c.WebsocketTopic))
+
+		// Potential Race Condition when fetching
+		if table == "order" {
+
+			orderResponse := response.(bitmex.OrderResponse)
+
+			c.ordersLock.Lock()
+			if orderResponse.Action == "partial" {
+				c.partials.Add(1)
+				c.activeOrders.OrderPartial(&orderResponse.Data)
+			} else if orderResponse.Action == "insert" {
+				c.activeOrders.OrderInsert(&orderResponse.Data)
+			} else if orderResponse.Action == "update" {
+				c.activeOrders.OrderUpdate(&orderResponse.Data)
+			} else if orderResponse.Action == "delete" {
+				c.activeOrders.OrderDelete(&orderResponse.Data)
+			}
+			c.ordersLock.Unlock()
+
+		} else if table == "position" {
+			positionResponse := response.(bitmex.PositionResponse)
+
+			c.positionsLock.Lock()
+			if positionResponse.Action == "partial" {
+				c.partials.Add(1)
+				c.activePositions.PositionPartial(&positionResponse.Data)
+			} else if positionResponse.Action == "insert" {
+				c.activePositions.PositionInsert(&positionResponse.Data)
+			} else if positionResponse.Action == "update" {
+				c.activePositions.PositionUpdate(&positionResponse.Data)
+			} else if positionResponse.Action == "delete" {
+				c.activePositions.PositionDelete(&positionResponse.Data)
+			}
+			c.positionsLock.Unlock()
+
+		} else if table == "margin" {
+			marginResponse := response.(bitmex.MarginResponse)
+
+			c.marginLock.Lock()
+			if marginResponse.Action == "partial" {
+				c.partials.Add(1)
+				c.currentMargin.MarginPartial(&marginResponse.Data)
+			} else if marginResponse.Action == "insert" {
+				c.currentMargin.MarginInsert(&marginResponse.Data)
+			} else if marginResponse.Action == "update" {
+				c.currentMargin.MarginUpdate(&marginResponse.Data)
+			} else if marginResponse.Action == "delete" {
+				c.currentMargin.MarginDelete(&marginResponse.Data)
+			}
+			c.marginLock.Unlock()
+		}
+	}
+}
+
 func (c *SubClient) OrderHandler() {
+	var lenOfOrdersCounter int
 
 	c.wg.Add(1)
 	defer c.wg.Done()
@@ -85,6 +240,17 @@ func (c *SubClient) OrderHandler() {
 		default:
 			if c.calibrateBool.Load() {
 				c.calibrate()
+
+				if len(c.hostClient.ActiveOrders()) != len(c.ActiveOrders()) {
+					lenOfOrdersCounter++
+					if lenOfOrdersCounter > 3 {
+						c.restartRequired.Store(true)
+						return
+					}
+				} else {
+					lenOfOrdersCounter = 0
+				}
+
 				c.calibrateBool.Store(false)
 				continue
 			}
