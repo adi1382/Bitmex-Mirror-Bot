@@ -241,9 +241,10 @@ func (c *SubClient) OrderHandler() {
 			if c.calibrateBool.Load() {
 				c.calibrate()
 
-				if len(c.hostClient.ActiveOrders()) != len(c.ActiveOrders()) {
+				if len(c.hostClient.ActiveOrders()) != len(c.getActiveOrders()) {
 					lenOfOrdersCounter++
 					if lenOfOrdersCounter > 3 {
+						c.orderCancelAll()
 						c.restartRequired.Store(true)
 						return
 					}
@@ -399,7 +400,7 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time) {
 					zap.String("symbol", symbol),
 					zap.String("apiKey", c.ApiKey),
 					zap.String("websocketTopic", c.WebsocketTopic))
-				c.OrderNewBulk(&placeNewOrders)
+				c.orderNewBulk(&placeNewOrders)
 
 			}
 
@@ -411,7 +412,7 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time) {
 
 			amendOrders := make([]map[string]interface{}, 0, 5)
 
-			activeOrders := c.ActiveOrders()
+			activeOrders := c.getActiveOrders()
 
 			var toCancel []string
 			for h := range orderResponse.Data {
@@ -543,14 +544,14 @@ func (c *SubClient) mirroring(message *[]byte, calibrateBoolReset *time.Time) {
 					zap.String("apiKey", c.ApiKey),
 					zap.String("websocketTopic", c.WebsocketTopic))
 
-				c.OrderAmendBulk(&amendOldOrders)
+				c.orderAmendBulk(&amendOldOrders)
 			}
 
 			c.logger.Debug("Order Cancel request on subClient",
 				zap.Int("noOfOrders", len(toCancel)),
 				zap.String("apiKey", c.ApiKey),
 				zap.String("websocketTopic", c.WebsocketTopic))
-			c.OrderCancelBulk(&toCancel)
+			c.orderCancelBulk(&toCancel)
 		}
 
 	} else if table == "position" {

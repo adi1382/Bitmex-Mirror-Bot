@@ -9,13 +9,13 @@ import (
 	"net/http"
 )
 
-func (c *SubClient) ActiveOrders() websocket.OrderSlice {
+func (c *SubClient) getActiveOrders() websocket.OrderSlice {
 	c.ordersLock.Lock()
 	defer c.ordersLock.Unlock()
 	return c.activeOrders
 }
 
-func (c *SubClient) OrderNewMarket(symbol string, quantity int) {
+func (c *SubClient) orderNewMarket(symbol string, quantity int) {
 	var side string
 	if quantity != 0 {
 		if quantity > 0 {
@@ -76,7 +76,7 @@ func (c *SubClient) OrderNewMarket(symbol string, quantity int) {
 	}
 }
 
-func (c *SubClient) OrderAmendBulk(toAmend *[]interface{}) {
+func (c *SubClient) orderAmendBulk(toAmend *[]interface{}) {
 	if len(*toAmend) > 0 {
 		message, err := json.Marshal(toAmend)
 		tools.CheckErr(err)
@@ -130,7 +130,7 @@ func (c *SubClient) OrderAmendBulk(toAmend *[]interface{}) {
 	}
 }
 
-func (c *SubClient) OrderCancelBulk(toCancelOrderIDs *[]string) {
+func (c *SubClient) orderCancelBulk(toCancelOrderIDs *[]string) {
 	if len(*toCancelOrderIDs) > 0 {
 		messageCancel, err := json.Marshal(toCancelOrderIDs)
 		tools.CheckErr(err)
@@ -178,7 +178,7 @@ func (c *SubClient) OrderCancelBulk(toCancelOrderIDs *[]string) {
 
 }
 
-func (c *SubClient) OrderNewBulk(toPlace *[]interface{}) {
+func (c *SubClient) orderNewBulk(toPlace *[]interface{}) {
 	if len(*toPlace) > 0 {
 		message, err := json.Marshal(toPlace)
 		tools.CheckErr(err)
@@ -228,5 +228,29 @@ func (c *SubClient) OrderNewBulk(toPlace *[]interface{}) {
 			c.activeOrders = append(c.activeOrders, or[no])
 		}
 		defer c.ordersLock.Unlock()
+	}
+}
+
+func (c *SubClient) orderCancelAll() {
+	orderCancelStruct := swagger.OrderCancelAllOpts{}
+	//var err error
+L:
+	for {
+		_, response, err := c.Rest.OrderApi.OrderCancelAll(&orderCancelStruct)
+		switch c.SwaggerError(err, response) {
+		case 0:
+			break L
+		case 1:
+			continue L
+		case 2:
+			fmt.Println("Remove the current sub subClient")
+			c.CloseConnection("Rest Error")
+			return
+			//break function
+		case 3:
+			fmt.Println("Restart the bot")
+			return
+		}
+
 	}
 }

@@ -84,7 +84,7 @@ func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 	hostPositions := hostClient.ActivePositions()
 	hostOrders := hostClient.ActiveOrders()
 	subPositions := subClient.ActivePositions()
-	subOrders := subClient.ActiveOrders()
+	subOrders := subClient.getActiveOrders()
 
 	// Sequence of events
 	// 1. Cancel not required Orders
@@ -277,7 +277,7 @@ func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 	}
 
 	// Step 1. Cancel Orders
-	subClient.OrderCancelBulk(&cancelOrderIds)
+	subClient.orderCancelBulk(&cancelOrderIds)
 
 	//////////////////////////////////////////////////////////
 
@@ -323,13 +323,13 @@ func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 			if hostPositions[hIdx].Symbol.Value == subPositions[sIdx].Symbol.Value {
 				positionFound = true
 				if int(hostPositions[hIdx].CurrentQty.Value*ratio) != int(subPositions[sIdx].CurrentQty.Value) {
-					subClient.OrderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio)-int(subPositions[sIdx].CurrentQty.Value))
+					subClient.orderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio)-int(subPositions[sIdx].CurrentQty.Value))
 				}
 			}
 		}
 
 		if !positionFound {
-			subClient.OrderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio))
+			subClient.orderNewMarket(hostPositions[hIdx].Symbol.Value, int(hostPositions[hIdx].CurrentQty.Value*ratio))
 		}
 
 	}
@@ -345,7 +345,7 @@ func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 		}
 
 		if !positionFound {
-			subClient.OrderNewMarket(subPositions[sIdx].Symbol.Value, -int(subPositions[sIdx].CurrentQty.Value))
+			subClient.orderNewMarket(subPositions[sIdx].Symbol.Value, -int(subPositions[sIdx].CurrentQty.Value))
 		}
 	}
 
@@ -395,7 +395,7 @@ func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 					placeNewOrders = append(placeNewOrders, ordersToPlace[oIdx])
 				}
 			}
-			subClient.OrderNewBulk(&placeNewOrders)
+			subClient.orderNewBulk(&placeNewOrders)
 
 		}
 	}
@@ -420,7 +420,7 @@ func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 					ordersToAmend[aIdx]["symbol"] = symbols[idx]
 				}
 			}
-			subClient.OrderAmendBulk(&amendOldOrders)
+			subClient.orderAmendBulk(&amendOldOrders)
 		}
 	}
 
