@@ -2,35 +2,10 @@ package bitmex
 
 import (
 	"encoding/json"
-	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 )
-
-//var (
-//	InfoLogger  *log.Logger
-//	ErrorLogger *log.Logger
-//)
-//
-//func init() {
-//	//_, err := os.Stat("logs")
-//	//
-//	//if os.IsNotExist(err) {
-//	//	errDir := os.MkdirAll("logs", 0750)
-//	//	if errDir != nil {
-//	//		ErrorLogger.Fatal(err)
-//	//	}
-//	//}
-//
-//	file, err := os.OpenFile("logs/logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-//	if err != nil {
-//		ErrorLogger.Fatal(err)
-//	}
-//
-//	InfoLogger = log.New(file, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
-//	ErrorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
-//}
 
 type Response interface {
 	getTable() string
@@ -104,19 +79,27 @@ func DecodeMessage(message []byte, logger *zap.Logger, restartRequired *atomic.B
 
 	if res.Table == "position" {
 		err = json.Unmarshal(message, &positionResponse)
-		tools.CheckErr(err)
+		if checkError(err, restartRequired, logger) {
+			return response, ""
+		}
 		response = positionResponse
 	} else if res.Table == "order" {
 		err = json.Unmarshal(message, &orderResponse)
-		tools.CheckErr(err)
+		if checkError(err, restartRequired, logger) {
+			return response, ""
+		}
 		response = orderResponse
 	} else if res.Table == "margin" {
 		err = json.Unmarshal(message, &marginResponse)
-		tools.CheckErr(err)
+		if checkError(err, restartRequired, logger) {
+			return response, ""
+		}
 		response = marginResponse
 	} else {
 		err = json.Unmarshal(message, &res)
-		tools.CheckErr(err)
+		if checkError(err, restartRequired, logger) {
+			return response, ""
+		}
 		response = res
 		table = ""
 	}
@@ -124,4 +107,13 @@ func DecodeMessage(message []byte, logger *zap.Logger, restartRequired *atomic.B
 	logger.Debug("Socket Message Decoded")
 
 	return response, table
+}
+
+func checkError(err error, restartRequired *atomic.Bool, logger *zap.Logger) bool {
+	if err != nil {
+		logger.Error("New Error in Bitmex Package", zap.Error(err))
+		restartRequired.Store(true)
+		return true
+	}
+	return false
 }

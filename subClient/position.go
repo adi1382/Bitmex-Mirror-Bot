@@ -1,9 +1,11 @@
 package subClient
 
 import (
+	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"go.uber.org/zap"
+	"net/http"
 )
 
 func (c *SubClient) UpdateLeverage(symbol string, leverage float64) {
@@ -14,8 +16,28 @@ func (c *SubClient) UpdateLeverage(symbol string, leverage float64) {
 		zap.String("apiKey", c.ApiKey),
 		zap.String("websocketTopic", c.WebsocketTopic))
 
-	res, _, err := c.Rest.PositionApi.PositionUpdateLeverage(symbol, leverage)
-	tools.CheckErr(err)
+	var res swagger.Position
+	var response *http.Response
+	var err error
+
+L:
+	for {
+		res, response, err = c.Rest.PositionApi.PositionUpdateLeverage(symbol, leverage)
+		switch c.SwaggerError(err, response) {
+		case 0:
+			break L
+		case 1:
+			continue L
+		case 2:
+			c.CloseConnection("Rest Error")
+			return
+			//break function
+		case 3:
+			c.restartRequired.Store(true)
+			return
+		}
+
+	}
 
 	c.positionsLock.Lock()
 	defer c.positionsLock.Unlock()
@@ -25,8 +47,6 @@ func (c *SubClient) UpdateLeverage(symbol string, leverage float64) {
 			c.activePositions[idx].Leverage.Value = res.Leverage.Value
 		}
 	}
-
-	tools.CheckErr(err)
 }
 
 func (c *SubClient) ActivePositions() websocket.PositionSlice {

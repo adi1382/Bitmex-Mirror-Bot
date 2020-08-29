@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
-	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
 	"net/http"
 )
@@ -79,7 +78,12 @@ func (c *SubClient) orderNewMarket(symbol string, quantity int) {
 func (c *SubClient) orderAmendBulk(toAmend *[]interface{}) {
 	if len(*toAmend) > 0 {
 		message, err := json.Marshal(toAmend)
-		tools.CheckErr(err)
+		c.checkErr(err)
+
+		if c.restartRequired.Load() {
+			return
+		}
+
 		var bulkAmend swagger.OrderAmendBulkOpts
 		bulkAmend.Orders.Set(string(message))
 
@@ -133,7 +137,12 @@ func (c *SubClient) orderAmendBulk(toAmend *[]interface{}) {
 func (c *SubClient) orderCancelBulk(toCancelOrderIDs *[]string) {
 	if len(*toCancelOrderIDs) > 0 {
 		messageCancel, err := json.Marshal(toCancelOrderIDs)
-		tools.CheckErr(err)
+
+		if err != nil {
+			c.checkErr(err)
+			c.restartRequired.Store(true)
+		}
+
 		var cancelBulk swagger.OrderCancelOpts
 		cancelBulk.OrderID.Set(string(messageCancel))
 
@@ -149,12 +158,12 @@ func (c *SubClient) orderCancelBulk(toCancelOrderIDs *[]string) {
 			case 1:
 				continue L
 			case 2:
-				fmt.Println("Remove the current sub subClient")
 				c.CloseConnection("Rest Error")
 				return
 				//break function
 			case 3:
-				fmt.Println("Restart the bot")
+				c.logger.Error("Restart Required")
+				c.restartRequired.Store(true)
 				return
 			}
 
@@ -181,7 +190,7 @@ func (c *SubClient) orderCancelBulk(toCancelOrderIDs *[]string) {
 func (c *SubClient) orderNewBulk(toPlace *[]interface{}) {
 	if len(*toPlace) > 0 {
 		message, err := json.Marshal(toPlace)
-		tools.CheckErr(err)
+		c.checkErr(err)
 		var subBulkOrder swagger.OrderNewBulkOpts
 		subBulkOrder.Orders.Set(string(message))
 
@@ -197,12 +206,11 @@ func (c *SubClient) orderNewBulk(toPlace *[]interface{}) {
 			case 1:
 				continue L
 			case 2:
-				fmt.Println("Remove the current sub subClient")
 				c.CloseConnection("Rest Error")
 				return
 				//break function
 			case 3:
-				fmt.Println("Restart the bot")
+				c.restartRequired.Store(true)
 				return
 			}
 

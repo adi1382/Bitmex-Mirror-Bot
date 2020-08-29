@@ -11,6 +11,12 @@ import (
 	"time"
 )
 
+func (c *SubClient) checkErr(err error) {
+	c.logger.Error("New Error Detected",
+		zap.Error(err))
+	c.restartRequired.Store(true)
+}
+
 func (c *SubClient) socketError(strMessage *string) (bool, string) {
 	if !strings.Contains(*strMessage, "error") {
 		return false, ""
