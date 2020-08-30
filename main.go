@@ -176,15 +176,7 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 
 	mirror.StartMirroring()
 
-	//fmt.Println("reached")
-	//
-	////host.WaitForPartial()
-	////time.Sleep(5 * time.Second)
-	//fmt.Println("Printing margin balance")
-	//fmt.Println(host.GetMarginBalance())
-	host.WaitForPartial()
 	fmt.Println("Running...")
-	//fmt.Println("Partials Received")
 
 	go func() {
 		wg.Add(1)
@@ -201,15 +193,4 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 
 	wg.Wait()
 	logger.Info("All wait groups completed")
-	fmt.Println("All wait groups completed")
-
-	//fmt.Println(host.ActiveOrders())
-	//n := 0
-	//for {
-	//	if len(host.ActiveOrders()) != n {
-	//		n = len(host.ActiveOrders())
-	//		fmt.Println(host.ActiveOrders())
-	//	}
-	//	time.Sleep(time.Nanosecond)
-	//}
 }
