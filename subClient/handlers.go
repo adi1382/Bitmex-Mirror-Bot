@@ -209,7 +209,7 @@ func (c *SubClient) OrderHandler() {
 			time.Sleep(time.Nanosecond)
 
 			if !c.RunningStatus() {
-				break
+				return
 			}
 
 			if !c.calibrateBool.Load() && calibrateBoolReset.Unix() < time.Now().Unix() {
@@ -225,11 +225,10 @@ func (c *SubClient) OrderHandler() {
 	}()
 
 	for {
-
 		time.Sleep(time.Nanosecond)
 
 		if !c.RunningStatus() {
-			break
+			return
 		}
 
 		select {

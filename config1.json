@@ -1,0 +1,59 @@
+{
+	"settings": {
+		"testnet": false,
+		"ratioUpdateRate": 3600,
+		"calibrationRate": 10,
+		"limitFilledTimeout": 10
+	},
+	"hostAccount": {
+		"apiKey": "",
+		"secret": ""
+	},
+	"subAccounts": {
+		"account0": {
+			"enabled": false,
+			"copyLeverage": true,
+			"balanceProportion": false,
+			"fixedProportion": 1,
+			"apiKey": "",
+			"secret": "",
+			"accountName": ""
+		},
+		"account1": {
+			"enabled": false,
+			"copyLeverage": true,
+			"balanceProportion": false,
+			"fixedProportion": 1,
+			"apiKey": "",
+			"secret": "",
+			"accountName": ""
+		},
+		"account2": {
+			"enabled": false,
+			"copyLeverage": true,
+			"balanceProportion": false,
+			"fixedProportion": 1,
+			"apiKey": "",
+			"secret": "",
+			"accountName": ""
+		},
+		"account3": {
+			"enabled": false,
+			"copyLeverage": true,
+			"balanceProportion": false,
+			"fixedProportion": 1,
+			"apiKey": "",
+			"secret": "",
+			"accountName": ""
+		},
+		"account4": {
+			"enabled": false,
+			"copyLeverage": true,
+			"balanceProportion": false,
+			"fixedProportion": 1,
+			"apiKey": "",
+			"secret": "",
+			"accountName": ""
+		}
+	}
+}

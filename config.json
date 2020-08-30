@@ -1,37 +1,37 @@
 {
 
-    "Settings": {
-        "Testnet": "true",
-        "RatioUpdateRate": 3600,
-        "CalibrationRate": 11,
-        "LimitFilledTimeout": 10
+    "settings": {
+        "testnet": true,
+        "ratioUpdateRate": 3600,
+        "calibrationRate": 11,
+        "limitFilledTimeout": 10
     },
 
-    "HostAccount": {
-        "ApiKey": "KprVFL_v63F3Q2aLgXGnMUMH",
-        "Secret": "fn2zW8XrW950M2eylWdC07Niq_TS_4_t64DuPjtweY7GSlSV"
+    "hostAccount": {
+        "apiKey": "KprVFL_v63F3Q2aLgXGnMUMH",
+        "secret": "fn2zW8XrW950M2eylWdC07Niq_TS_4_t64DuPjtweY7GSlSV"
     },
 
-    "SubAccounts": {
+    "subAccounts": {
 
-        "Account1": {
-            "Enabled": true,
-            "CopyLeverage": true,
-            "BalanceProportion": false,
-            "FixedProportion": 1,
-            "ApiKey": "flqc_dl52OnBlkrHZUBylrlQ",
-            "Secret": "uXnTbpxa6ewm4J7xnPGJ70-Nii4oCyq-kWQnkDii9hEmnMMy",
-            "AccountName": ""
+        "account1": {
+            "enabled": true,
+            "copyLeverage": true,
+            "balanceProportion": false,
+            "fixedProportion": 1,
+            "apiKey": "flqc_dl52OnBlkrHZUBylrlQ",
+            "secret": "uXnTbpxa6ewm4J7xnPGJ70-Nii4oCyq-kWQnkDii9hEmnMMy",
+            "accountName": ""
         },
 
-        "Account2": {
-            "Enabled": false,
-            "CopyLeverage": true,
-            "BalanceProportion": false,
-            "FixedProportion": 1,
-            "ApiKey": "",
-            "Secret": "",
-            "AccountName": ""
+        "account2": {
+            "enabled": true,
+            "copyLeverage": true,
+            "balanceProportion": false,
+            "fixedProportion": 1,
+            "apiKey": "flqc_dl52OnBlkrHZUBylrlQ",
+            "secret": "uXnTbpxa6ewm4J7xnPGJ70-Nii4oCyq-kWQnkDii9hEmnMMy",
+            "accountName": ""
         }
     }
 

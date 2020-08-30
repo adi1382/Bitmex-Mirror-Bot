@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, marginUpdateTime int64,
+func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, marginUpdateTime float64,
 	restartRequired *atomic.Bool, logger *zap.Logger, wg *sync.WaitGroup, botStatus *tools.RunningStatus) *HostClient {
 
 	defer logger.Sync()
@@ -43,7 +43,7 @@ func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, m
 	c.wg = wg
 	c.botStatus = botStatus
 
-	c.logger.Info("New SubClient Created",
+	c.logger.Info("New HostClient Created",
 		zap.String("websocketTopic", c.WebsocketTopic),
 		zap.String("apiKey", apiKey))
 
@@ -52,7 +52,7 @@ func NewHostClient(apiKey, apiSecret string, test bool, ch chan<- interface{}, m
 
 type HostClient struct {
 	active             atomic.Bool
-	marginUpdateTime   int64
+	marginUpdateTime   float64
 	test               bool
 	marginUpdated      atomic.Bool
 	partials           atomic.Uint32
@@ -83,6 +83,18 @@ func (c *HostClient) Initialize() {
 	c.socketAuthentication()
 	go c.marginUpdate()
 	go c.dataHandler()
+
+	go func() {
+		for {
+			if c.restartRequired.Load() {
+				c.active.Store(false)
+				return
+			} else if !c.RunningStatus() {
+				return
+			}
+			<-time.After(time.Nanosecond)
+		}
+	}()
 
 	c.logger.Info("New hostClient Initialized",
 		zap.String("apiKey", c.ApiKey),
@@ -246,13 +258,11 @@ func (c *HostClient) Push(message *[]byte) {
 func (c *HostClient) dataHandler() {
 	c.wg.Add(1)
 	defer c.wg.Done()
-	//fmt.Println("Data Handler started for subClient ", c.ApiKey)
 	defer func() {
 		_ = c.logger.Sync()
-		c.logger.Info("Data Handler Closed for subClient ",
+		c.logger.Info("Data Handler Closed for hostClient ",
 			zap.String("apiKey", c.ApiKey),
 			zap.String("websocketTopic", c.WebsocketTopic))
-		//fmt.Println("Data Handler Closed for subClient ", c.ApiKey)
 	}()
 	for {
 
@@ -261,7 +271,7 @@ func (c *HostClient) dataHandler() {
 		}
 
 		message := <-c.chReadFromWSClient
-		c.logger.Debug("Received new message in Data Handler for subClient ",
+		c.logger.Debug("Received new message in Data Handler for hostClient",
 			zap.String("apiKey", c.ApiKey),
 			zap.String("websocketTopic", c.WebsocketTopic))
 
@@ -442,7 +452,7 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 	if err != nil {
 
 		//fmt.Println(err)
-		c.logger.Error("Error on subClient",
+		c.logger.Error("Error on hostClient",
 			zap.String("apiKey", c.ApiKey),
 			zap.String("websocketTopic", c.WebsocketTopic))
 
@@ -502,7 +512,6 @@ func (c *HostClient) SwaggerError(err error, response *http.Response) int {
 					}
 
 				} else if response.StatusCode == 401 {
-					//fmt.Printf("Sub Account removed: %v\n")
 					return 2
 				} else if response.StatusCode == 403 {
 					return 2

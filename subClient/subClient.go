@@ -57,6 +57,18 @@ func (c *SubClient) Initialize() {
 	go c.dataHandler()
 	go c.OrderHandler()
 
+	go func() {
+		for {
+			if c.restartRequired.Load() {
+				c.active.Store(false)
+				return
+			} else if !c.RunningStatus() {
+				return
+			}
+			<-time.After(time.Nanosecond)
+		}
+	}()
+
 	c.logger.Info(
 		"sub client initialized",
 		zap.String("websocketTopic", c.WebsocketTopic),
@@ -109,6 +121,11 @@ func (c *SubClient) WaitForPartial() {
 	for {
 		if c.partials.Load() >= 3 {
 			break
+		} else if !c.RunningStatus() {
+			c.logger.Debug("partials receiving canceled",
+				zap.String("apiKey", c.ApiKey),
+				zap.String("websocketTopic", c.WebsocketTopic))
+			return
 		}
 	}
 	c.logger.Debug("partials received",
@@ -120,15 +137,12 @@ func (c *SubClient) marginUpdate() {
 	c.wg.Add(1)
 	defer c.wg.Done()
 
-	defer func() {
-		//fmt.Println("Margin Update Stopped for subClient ", c.ApiKey)
-	}()
 	c.marginUpdated.Store(false)
 	c.WaitForPartial()
 	//fmt.Println("Margin Update Started for subClient ", c.ApiKey)
 	for {
 		if !c.RunningStatus() {
-			break
+			return
 		}
 
 		marginBalance := c.RestMargin()
@@ -158,7 +172,7 @@ func (c *SubClient) marginUpdate() {
 			if time.Now().Unix() > resetTime.Unix() {
 				break
 			} else if !c.RunningStatus() {
-				break
+				return
 			}
 		}
 	}
@@ -171,9 +185,10 @@ func (c *SubClient) GetMarginBalance() float64 {
 	for {
 		if c.marginUpdated.Load() {
 			return c.marginBalance.Load()
-		} else {
-			time.Sleep(time.Nanosecond)
+		} else if !c.RunningStatus() {
+			return 0
 		}
+		<-time.After(time.Nanosecond)
 	}
 }
 

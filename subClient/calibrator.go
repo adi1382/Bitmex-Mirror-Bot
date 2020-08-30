@@ -8,70 +8,22 @@ import (
 
 func (c *SubClient) calibrate() {
 	for {
-	L:
-		for {
-			select {
-			case <-c.hostUpdatesFetcher:
-			default:
-				break L
-			}
+
+		for len(c.hostUpdatesFetcher) > 0 {
+			<-c.hostUpdatesFetcher
 		}
 
 		doMirror(c.hostClient, c)
 
-		if len(c.hostUpdatesFetcher) > 0 {
-			time.Sleep(time.Second)
-			continue
-		} else {
-			break
+		if len(c.hostUpdatesFetcher) == 0 {
+			return
+		} else if !c.RunningStatus() {
+			return
 		}
+		<-time.After(time.Millisecond)
+
 	}
 }
-
-//func (c *SubClient) StartMirroring(orderHandlerMutex *sync.Mutex) {
-//
-//	for {
-//
-//		if !c.RunningStatus() {
-//			fmt.Println("Closed Mirror")
-//			break
-//		}
-//
-//		fmt.Println("Calibration Sequence initiated 1..........................")
-//		orderHandlerMutex.Lock()
-//
-//		//for len(c.hostUpdatesFetcher) > 0 {
-//		//	fmt.Println(len(c.hostUpdatesFetcher))
-//		//	fmt.Println("emptying fetcher")
-//		//	<-c.hostUpdatesFetcher
-//		//}
-//
-//		L:
-//			for {
-//				fmt.Println("Length channel: ", len(c.hostUpdatesFetcher))
-//				select {
-//				case <-c.hostUpdatesFetcher:
-//				default:
-//					break L
-//				}
-//			}
-//		fmt.Println("Calibration Sequence initiated..........................")
-//		time.Sleep(time.Second*5)
-//
-//		doMirror(c.hostClient, c)
-//
-//		if len(c.hostUpdatesFetcher) != 0 {
-//			fmt.Println("looped")
-//			orderHandlerMutex.Unlock()
-//			continue
-//		}
-//
-//		fmt.Println("Calibration Sequence completed..........................")
-//		orderHandlerMutex.Unlock()
-//		time.Sleep(time.Second*time.Duration(c.calibrationTime))
-//	}
-//
-//}
 
 func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
 	var ratio float64

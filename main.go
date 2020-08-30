@@ -3,13 +3,12 @@ package main
 import (
 	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/Mirror"
+	"github.com/adi1382/Bitmex-Mirror-Bot/configuration"
 	"github.com/adi1382/Bitmex-Mirror-Bot/hostClient"
 	"github.com/adi1382/Bitmex-Mirror-Bot/subClient"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/websocket"
-	"github.com/fsnotify/fsnotify"
 	"github.com/google/uuid"
-	"github.com/spf13/viper"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 	"os"
@@ -20,7 +19,6 @@ import (
 var (
 	sessionID       zap.Field
 	botStatus       *tools.RunningStatus
-	config          *viper.Viper
 	restartRequired *atomic.Bool
 )
 
@@ -31,19 +29,18 @@ func init() {
 		err = os.MkdirAll("logs", 0750)
 		if err != nil {
 			fmt.Println("Unable to create log folder.")
-			tools.EnterToExit()
+			tools.EnterToExit("Unable to create log folder.")
 		}
 	} else if err != nil {
 		fmt.Println("Unable to perform logging operations due to the following error(s)")
 		fmt.Println(err)
-		tools.EnterToExit()
+		tools.EnterToExit("Unable to perform logging operations due to the following error(s)")
 	}
 
 	botStatus = tools.NewBotStatus()
 
 	restartRequired = atomic.NewBool(false)
 	sessionID = zap.String("sessionID", uuid.New().String())
-	config = viper.New()
 }
 
 func main() {
@@ -55,30 +52,49 @@ func main() {
 
 	go tools.NewMonitor(1, resourceLogger)
 
-	config.SetConfigName("config") // name of config file (without extension)
-	config.SetConfigType("json")   // REQUIRED if the config file does not have the extension in the name
-	config.AddConfigPath(".")      // optionally look for config in the working directory
-	tools.ReadConfig(logger, config, botStatus, restartRequired)
-
-	config.WatchConfig()
-	config.OnConfigChange(func(in fsnotify.Event) {
-		fmt.Println("Config File Changed!")
-		tools.ReadConfig(logger, config, botStatus, restartRequired)
-	})
-
 	fmt.Println("started")
+
+	restartRequired.Store(false)
+
+	configuration.OnConfigChange(func() {
+		restartRequired.Store(true)
+		botStatus.IsRunning.Store(true)
+		botStatus.Message.Store("OK")
+		logger.Info("Configuration File Updated")
+	})
 
 	for {
 
 		if botStatus.IsRunning.Load() {
 			restartRequired.Store(false)
+			fmt.Println("Trader Initiated..")
 			trader(logger, socketIncomingLogger, socketOutgoingLogger)
+			fmt.Printf("\n\n\n")
 		}
-
+		time.Sleep(time.Nanosecond)
 	}
 }
 
 func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
+
+	defer func() {
+		fmt.Println("Trader closed..")
+	}()
+
+	config := configuration.ReadConfig(logger, botStatus, restartRequired)
+	isOK, message := configuration.ValidateConfig(&config)
+
+	if !isOK {
+		fmt.Println("Invalid Configuration File")
+		fmt.Println(message)
+		botStatus.Message.Store(message)
+		botStatus.IsRunning.Store(false)
+	}
+
+	if !botStatus.IsRunning.Load() {
+		return
+	}
+
 	var wg sync.WaitGroup
 
 	mirror := Mirror.NewMirror(restartRequired, logger, &wg)
@@ -86,13 +102,13 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 	logger.Info("logging started")
 
 	// Connect to WS
-	conn, err := websocket.Connect(config.Sub("Settings").GetBool("Testnet"), logger)
+	conn, err := websocket.Connect(config.Settings.Testnet, logger)
 
 	if err != nil {
 		botStatus.IsRunning.Store(false)
 		botStatus.Message.Store("Unable to establish websocket connection")
 		fmt.Println(err)
-		tools.EnterToExit()
+		tools.EnterToExit("Unable to establish websocket connection")
 	}
 
 	// Listen write WS
@@ -102,7 +118,7 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 	// Write to WS
 	chWriteToWS := make(chan interface{}, 100)
 	go websocket.WriteFromChannelToWS(conn, chWriteToWS, socketOutgoingLogger, logger, restartRequired, &wg)
-	//go config.SocketResponseDistributor(chReadFromWS, RestartCounter, &wg)
+	//go viperConfig.SocketResponseDistributor(chReadFromWS, RestartCounter, &wg)
 
 	websocket.PingPong(conn, restartRequired, logger, &wg)
 
@@ -115,11 +131,11 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 	//hostClient.subscribeTopics("order", "position", "margin")
 
 	host := hostClient.NewHostClient(
-		config.Sub("HostAccount").GetString("ApiKey"),
-		config.Sub("HostAccount").GetString("Secret"),
-		config.Sub("Settings").GetBool("Testnet"),
+		config.HostAccount.ApiKey,
+		config.HostAccount.Secret,
+		config.Settings.Testnet,
 		chWriteToWS,
-		config.Sub("Settings").GetInt64("RatioUpdateRate"),
+		config.Settings.RatioUpdateRate,
 		restartRequired,
 		logger,
 		&wg,
@@ -128,23 +144,23 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
 	mirror.SetHost(host)
 
 	subKeys := make([]string, 0, 5)
-	for key := range config.Sub("SubAccounts").AllSettings() {
+	for key := range config.SubAccounts {
 		subKeys = append(subKeys, key)
 	}
 
-	subAccounts := config.Sub("SubAccounts")
+	//subAccounts := viperConfig.Sub("SubAccounts")
 	for i := range subKeys {
 
-		if subAccounts.Sub(subKeys[i]).GetBool("Enabled") {
+		if config.SubAccounts[subKeys[i]].Enabled {
 			sub := subClient.NewSubClient(
-				subAccounts.Sub(subKeys[i]).GetString("ApiKey"),
-				subAccounts.Sub(subKeys[i]).GetString("Secret"),
-				config.Sub("Settings").GetBool("Testnet"),
-				subAccounts.Sub(subKeys[i]).GetBool("BalanceProportion"),
-				subAccounts.Sub(subKeys[i]).GetFloat64("FixedProportion"),
-				config.Sub("Settings").GetFloat64("RatioUpdateRate"),
-				config.Sub("Settings").GetFloat64("CalibrationRate"),
-				config.Sub("Settings").GetFloat64("LimitFilledTimeout"),
+				config.SubAccounts[subKeys[i]].ApiKey,
+				config.SubAccounts[subKeys[i]].Secret,
+				config.Settings.Testnet,
+				config.SubAccounts[subKeys[i]].BalanceProportion,
+				config.SubAccounts[subKeys[i]].FixedProportion,
+				config.Settings.RatioUpdateRate,
+				config.Settings.CalibrationRate,
+				config.Settings.LimitFilledTimeout,
 				chWriteToWS,
 				restartRequired,
 				host,

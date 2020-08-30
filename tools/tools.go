@@ -5,12 +5,10 @@ import (
 	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"github.com/sparrc/go-ping"
-	"github.com/spf13/viper"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"os"
-	"strconv"
 	"strings"
 	"time"
 )
@@ -27,46 +25,11 @@ func NewBotStatus() *RunningStatus {
 	}
 }
 
-func EnterToExit() {
+func EnterToExit(errMessage string) {
+	fmt.Println(errMessage)
 	fmt.Print("\n\nPress 'Enter' to exit")
 	_, _ = bufio.NewReader(os.Stdin).ReadBytes('\n')
 	os.Exit(0)
-}
-
-func ReadConfig(
-	logger *zap.Logger,
-	config *viper.Viper,
-	botStatus *RunningStatus,
-	restartRequired *atomic.Bool) {
-
-	defer logger.Sync()
-
-	err := config.ReadInConfig() // Find and read the config file
-
-	if err != nil {
-		fmt.Println("The recent changes that were made to the config file have made it inaccessible.")
-		fmt.Println("Kindly reconfigure the configuration and restart the program.")
-		logger.Error("Unable to Read config file", zap.Error(err))
-
-		botStatus.IsRunning.Store(false)
-		botStatus.Message.Store("invalid configuration")
-		//tools.EnterToExit()
-	} else {
-		isConfigValid, str := CheckConfig(config)
-
-		if !isConfigValid {
-			fmt.Println("Invalid Configuration")
-			fmt.Println(str)
-			EnterToExit()
-		}
-
-		if !botStatus.IsRunning.Load() {
-			botStatus.IsRunning.Store(true)
-			botStatus.Message.Store("OK")
-		}
-
-		restartRequired.Store(true)
-	}
 }
 
 func NewLogger(fileName, level string, sessionID zap.Field) (*zap.Logger, error) {
@@ -111,128 +74,6 @@ func NewLogger(fileName, level string, sessionID zap.Field) (*zap.Logger, error)
 
 	logger = logger.With(sessionID)
 	return logger, err
-}
-
-func CheckConfig(config *viper.Viper) (bool, string) {
-	//fmt.Println("Check config", viper.Sub("Settings").GetDuration("CalibrationRate") * time.Second)
-	//if !strings.EqualFold(viper.Sub("Settings").GetString("Testnet"), "true") &&
-	//	!strings.EqualFold(viper.Sub("Settings").GetString("Testnet"), "false") {
-	//	return false
-	//}
-
-	//fmt.Println(viper.Sub("Settings"))
-	var errStr string
-
-	if config.Sub("Settings") != nil {
-		settings := config.Sub("Settings")
-
-		_, err := strconv.ParseBool(settings.GetString("Testnet"))
-		if err != nil {
-			errStr = "Invalid configuration (Testnet)"
-			return false, errStr
-		}
-
-		_, err = strconv.ParseFloat(settings.GetString("RatioUpdateRate"), 64)
-		if err != nil {
-			errStr = "Invalid configuration (RatioUpdateRate)"
-			return false, errStr
-		}
-
-		_, err = strconv.ParseFloat(settings.GetString("CalibrationRate"), 64)
-		if err != nil {
-			errStr = "Invalid configuration (CalibrationRate)"
-			return false, errStr
-		}
-
-		_, err = strconv.ParseFloat(settings.GetString("LimitFilledTimeout"), 64)
-		if err != nil {
-			errStr = "Invalid configuration (LimitFilledTimeout)"
-			return false, errStr
-		}
-	} else {
-		errStr = "Settings does not exists"
-		return false, errStr
-	}
-
-	if config.Sub("HostAccount") != nil {
-		hostAccount := config.Sub("HostAccount")
-
-		if hostAccount.GetString("ApiKey") == "" {
-			errStr = "HostAccount ApiKey does not exists"
-			return false, errStr
-		}
-
-		if hostAccount.GetString("Secret") == "" {
-			errStr = "HostAccount Secret does not exists"
-			return false, errStr
-		}
-
-	} else {
-		errStr = "HostAccount does not exists"
-		return false, errStr
-	}
-
-	allKeys := make([]string, 0, 5)
-
-	if config.Sub("SubAccounts") != nil {
-		subAccounts := config.Sub("SubAccounts").AllSettings()
-		for key := range subAccounts {
-			allKeys = append(allKeys, key)
-		}
-	} else {
-		errStr = "Invalid Configuration (SubAccounts)"
-		return false, errStr
-	}
-
-	for i := range allKeys {
-		subAccount := config.Sub("SubAccounts").Sub(allKeys[i])
-
-		_, ok := subAccount.AllSettings()[strings.ToLower("AccountName")]
-
-		if !ok {
-			errStr = "AccountName option does not exists for " + allKeys[i]
-			return false, errStr
-		}
-
-		isEnabled, err := strconv.ParseBool(subAccount.GetString("Enabled"))
-		if err != nil {
-			errStr = "Invalid configuration for 'Enabled' on " + allKeys[i]
-			return false, errStr
-		}
-
-		if isEnabled {
-
-			if subAccount.GetString("ApiKey") == "" {
-				errStr = "Invalid API key for " + allKeys[i]
-				return false, errStr
-			}
-
-			if subAccount.GetString("Secret") == "" {
-				errStr = "Invalid Secret key for " + allKeys[i]
-				return false, errStr
-			}
-
-			_, err := strconv.ParseBool(subAccount.GetString("CopyLeverage"))
-			if err != nil {
-				errStr = "Invalid configuration for 'CopyLeverage' on " + allKeys[i]
-				return false, errStr
-			}
-
-			_, err = strconv.ParseBool(subAccount.GetString("BalanceProportion"))
-			if err != nil {
-				errStr = "Invalid configuration for 'BalanceProportion' on " + allKeys[i]
-				return false, errStr
-			}
-
-			_, err = strconv.ParseFloat(subAccount.GetString("FixedProportion"), 64)
-			if err != nil {
-				errStr = "Invalid configuration for 'FixedProportion' on " + allKeys[i]
-				return false, errStr
-			}
-		}
-	}
-
-	return true, "OK"
 }
 
 func CheckConnection(baseUrl *string) {
