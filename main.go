@@ -11,6 +11,8 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
+	"html/template"
+	"net/http"
 	"os"
 	"sync"
 	"time"
@@ -63,16 +65,37 @@ func main() {
 		logger.Info("Configuration File Updated")
 	})
 
-	for {
+	go func() {
+		for {
 
-		if botStatus.IsRunning.Load() {
-			restartRequired.Store(false)
-			fmt.Println("Trader Initiated..")
-			trader(logger, socketIncomingLogger, socketOutgoingLogger)
-			fmt.Printf("\n\n\n")
+			if botStatus.IsRunning.Load() {
+				restartRequired.Store(false)
+				fmt.Println("Trader Initiated..")
+				for {
+				}
+				trader(logger, socketIncomingLogger, socketOutgoingLogger)
+				fmt.Printf("\n\n\n")
+			}
+			time.Sleep(time.Nanosecond)
 		}
-		time.Sleep(time.Nanosecond)
-	}
+	}()
+
+	tmpl := template.Must(template.ParseFiles("templates/index.gohtml"))
+	fmt.Println(*tmpl)
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			tmpl.Execute(w, nil)
+			return
+		}
+
+		tmpl.Execute(w, struct{ Success bool }{true})
+	})
+
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
+
+	http.ListenAndServe(":8080", nil)
+
 }
 
 func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger) {
