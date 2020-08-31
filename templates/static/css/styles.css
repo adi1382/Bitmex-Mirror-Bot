@@ -1,0 +1,24 @@
+p {
+  display: table-row;
+}
+
+label {
+  display: table-cell;
+}
+
+input {
+  display: table-cell;
+}
+
+.form-group {
+  display: table;
+}
+
+select {
+  display: table-cell;
+}
+
+form {
+  display: table;
+}
+

@@ -81,20 +81,29 @@ func main() {
 	}()
 
 	tmpl := template.Must(template.ParseFiles("templates/index.gohtml"))
-	fmt.Println(*tmpl)
-
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	configHandler := func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
-			tmpl.Execute(w, nil)
+			err := tmpl.Execute(w, configuration.ReadConfig(logger, botStatus, restartRequired))
+			if err != nil {
+				logger.Error("GET config Error", zap.Error(err))
+			}
 			return
 		}
 
-		tmpl.Execute(w, struct{ Success bool }{true})
-	})
+		err := tmpl.Execute(w, struct{ Success bool }{true})
+		if err != nil {
+			logger.Error("POST config Error", zap.Error(err))
+		}
+	}
 
+	http.HandleFunc("/", configHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
+	http.Handle("/logs/", http.StripPrefix("/logs/", http.FileServer(http.Dir("logs"))))
 
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		logger.Error("Listen And Serve Error", zap.Error(err))
+	}
 
 }
 
