@@ -1,23 +1,24 @@
 {
 	"settings": {
 		"testnet": false,
-		"ratioUpdateRate": 3600,
+		"ratioUpdateRate": 3500,
 		"calibrationRate": 10,
 		"limitFilledTimeout": 10
 	},
 	"hostAccount": {
-		"apiKey": "KprVFL_v63F3Q2aLgXGnMUMH",
-		"secret": "fn2zW8XrW950M2eylWdC07Niq_TS_4_t64DuPjtweY7GSlSV"
+		"apiKey": "",
+		"secret": ""
 	},
 	"subAccounts": {
 		"account1": {
-			"enabled": true,
+			"enabled": false,
 			"copyLeverage": true,
 			"balanceProportion": false,
 			"fixedProportion": 1,
-			"apiKey": "flqc_dl52OnBlkrHZUBylrlQ",
-			"secret": "uXnTbpxa6ewm4J7xnPGJ70-Nii4oCyq-kWQnkDii9hEmnMMy",
-			"accountName": ""
+			"apiKey": "",
+			"secret": "",
+			"accountName": "",
+			"accountNumber": 1
 		},
 		"account2": {
 			"enabled": false,
@@ -26,7 +27,8 @@
 			"fixedProportion": 1,
 			"apiKey": "",
 			"secret": "",
-			"accountName": ""
+			"accountName": "",
+			"accountNumber": 2
 		},
 		"account3": {
 			"enabled": false,
@@ -35,7 +37,8 @@
 			"fixedProportion": 1,
 			"apiKey": "",
 			"secret": "",
-			"accountName": ""
+			"accountName": "",
+			"accountNumber": 3
 		},
 		"account4": {
 			"enabled": false,
@@ -44,7 +47,8 @@
 			"fixedProportion": 1,
 			"apiKey": "",
 			"secret": "",
-			"accountName": ""
+			"accountName": "",
+			"accountNumber": 4
 		},
 		"account5": {
 			"enabled": false,
@@ -53,7 +57,8 @@
 			"fixedProportion": 1,
 			"apiKey": "",
 			"secret": "",
-			"accountName": ""
+			"accountName": "",
+			"accountNumber": 5
 		}
 	}
 }

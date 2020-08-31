@@ -20,7 +20,7 @@ func ReadConfig(logger *zap.Logger, botStatus *tools.RunningStatus, restartRequi
 	var err error
 
 	for {
-		jsonFile, err = os.Open(path)
+		jsonFile, err = os.Open(ConfigPath)
 
 		if err == nil {
 			break

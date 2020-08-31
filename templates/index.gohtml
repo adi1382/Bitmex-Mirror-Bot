@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Form</title>
+    <title>Dapper Trader | Bitmex Mirror Trader</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="static/css/Header-Dark.css">
@@ -44,34 +44,39 @@
                 <div class="col-md-8 offset-md-2">
                     <h1 class="text-center">Bitmex Mirror Trader</h1>
                     <div class="jumbotron">
-                        <form id="mirror-form" style="width: 650px;">
+                        <form id="mirror-form" style="width: 650px;" method="post">
                             <h3>Global Settings</h3>
                             <div class="form-group">
                                 <p>
                                     <label>Exchange Type:</label>
                                     <label>
-                                        <select class="form-control" style="margin-left: 60px;">
-                                            <option value="1" selected="">Mainnet</option>
-                                            <option value="0">Testnet</option>
+                                        <select name="ExchangeType" class="form-control" style="margin-left: 60px;">
+                                            {{if .Settings.Testnet}}
+                                                <option value="1">Mainnet</option>
+                                                <option value="0" selected="">Testnet</option>
+                                            {{else}}
+                                                <option value="1" selected="">Mainnet</option>
+                                                <option value="0">Testnet</option>
+                                            {{end}}
                                         </select>
                                     </label>
                                 </p>
                                 <p>
                                     <label>Ratio Update Rate:</label>
                                     <label>
-                                        <input class="form-control" type="number" min="5" placeholder="Ratio Update Rate (seconds)" step="1" style="margin-left: 60px;">
+                                        <input name="RatioUpdateRate" required class="form-control" value="{{.Settings.RatioUpdateRate}}" type="number" min="5" placeholder="Ratio Update Rate (seconds)" step="1" style="margin-left: 60px;">
                                     </label>
                                 </p>
                                 <p>
                                     <label>Calibration Rate:<br></label>
                                     <label>
-                                        <input class="form-control" type="number" min="5" placeholder="Calibration Rate (seconds)" step="1" style="margin-left: 60px;">
+                                        <input name="CalibrationRate" required class="form-control" value="{{.Settings.CalibrationRate}}" type="number" min="5" placeholder="Calibration Rate (seconds)" step="1" style="margin-left: 60px;">
                                     </label>
                                 </p>
                                 <p>
                                     <label>Filled Timeout:</label>
                                     <label>
-                                        <input class="form-control" type="number" min="0" placeholder="Filled Timeout (seconds)" step="1" style="margin-left: 60px;">
+                                        <input name="LimitFilledTimeout" required class="form-control" value="{{.Settings.LimitFilledTimeout}}" type="number" min="0" placeholder="Filled Timeout (seconds)" step="1" style="margin-left: 60px;">
                                     </label>
                                 </p>
                             </div>
@@ -80,77 +85,92 @@
                                 <p>
                                     <label>API Key:</label>
                                     <label>
-                                        <input class="form-control" type="text" placeholder="Host API key" style="margin-left: 117px;">
+                                        <input name="HostApiKey" required class="form-control" value="{{.HostAccount.ApiKey}}" type="text" placeholder="Host API key" style="margin-left: 117px;">
                                     </label>
                                 </p>
                                 <p>
-                                    <label>API Secret:</label>
+                                    <label>Secret:</label>
                                     <label>
-                                        <input class="form-control" type="text" placeholder="Host API secret" style="margin-left: 117px;">
+                                        <input name="HostSecret" required class="form-control" value="{{.HostAccount.Secret}}" type="text" placeholder="Host secret" style="margin-left: 117px;">
                                     </label>
                                 </p>
                             </div>
                             <h3>Sub Accounts</h3>
                             <div id="subAccounts">
 
+                                {{ range $key, $value := .SubAccounts }}
 
-
-                                <div class="form-group" id="subAccount1">
-                                    <h6>Account 1</h6>
+                                    <div class="form-group" id="subAccount{{$value.AccountNumber}}">
+                                    <h6>Account {{$value.AccountNumber}}</h6>
                                     <p>
                                         <label>Status:</label>
                                         <label>
-                                            <select class="form-control" style="margin-left: 41px;">
-                                                <option value="1" selected="">Enabled</option>
-                                                <option value="0">Disabled</option>
+                                            <select name="sub{{$value.AccountNumber}}_Status" required class="form-control" style="margin-left: 41px;">
+                                                {{if $value.Enabled}}
+                                                    <option value="1" selected="">Enabled</option>
+                                                    <option value="0">Disabled</option>
+                                                {{else}}
+                                                    <option value="1">Enabled</option>
+                                                    <option value="0" selected="">Disabled</option>
+                                                {{end}}
                                             </select>
                                         </label>
                                     </p>
                                     <p>
                                         <label>Copy Leverage:</label>
                                         <label>
-                                            <select class="form-control" style="margin-left: 41px;">
-                                                <option value="1" selected="">Yes</option>
-                                                <option value="0">No</option>
+                                            <select name="sub{{$value.AccountNumber}}_CopyLeverage" required class="form-control" style="margin-left: 41px;">
+                                                {{if $value.CopyLeverage}}
+                                                    <option value="1" selected="">Yes</option>
+                                                    <option value="0">No</option>
+                                                {{else}}
+                                                    <option value="1">Yes</option>
+                                                    <option value="0" selected="">No</option>
+                                                {{end}}
                                             </select>
                                         </label>
                                     </p>
                                     <p>
                                         <label>Balance Proportional:</label>
                                         <label>
-                                            <select class="form-control" style="margin-left: 41px;">
-                                                <option value="1" selected="">Yes</option>
-                                                <option value="0">No</option>
+                                            <select name="sub{{$value.AccountNumber}}_BalanceProportional" required class="form-control" style="margin-left: 41px;">
+                                                {{if $value.BalanceProportion}}
+                                                    <option value="1" selected="">Yes</option>
+                                                    <option value="0">No</option>
+                                                {{else}}
+                                                    <option value="1">Yes</option>
+                                                    <option value="0" selected="">No</option>
+                                                {{end}}
                                             </select>
                                         </label>
                                     </p>
                                     <p>
-                                        <label>Fixed Proportional:</label>
+                                        <label>Fixed Proportion:</label>
                                         <label>
-                                            <input class="form-control" type="number" placeholder="Fixed Proportional" style="margin-left: 41px;">
+                                            <input name="sub{{$value.AccountNumber}}_FixedProportion" required class="form-control" value="{{$value.FixedProportion}}" type="number" placeholder="Fixed Proportion" style="margin-left: 41px;">
                                         </label>
                                     </p>
                                     <p>
                                         <label>API Key:</label>
                                         <label>
-                                            <input class="form-control" type="text" placeholder="Sub API key" style="margin-left: 41px;">
+                                            <input name="sub{{$value.AccountNumber}}_ApiKey" required class="form-control" value="{{$value.ApiKey}}" type="text" placeholder="Sub API key" style="margin-left: 41px;">
                                         </label>
                                     </p>
                                     <p>
-                                        <label>API Secret:</label>
+                                        <label>Secret:</label>
                                         <label>
-                                            <input class="form-control" type="text" placeholder="Sub Secret" style="margin-left: 41px;">
+                                            <input name="sub{{$value.AccountNumber}}_Secret" required class="form-control" value="{{$value.Secret}}" type="text" placeholder="Sub Secret" style="margin-left: 41px;">
                                         </label>
                                     </p>
                                     <p>
                                         <label>Account Name:</label>
                                         <label>
-                                            <input class="form-control" type="text" placeholder="Custom Name" style="margin-left: 41px;">
+                                            <input name="sub{{$value.AccountNumber}}_AccountName" required class="form-control" value="{{$value.AccountName}}" type="text" placeholder="Custom Name" style="margin-left: 41px;">
                                         </label>
                                     </p>
                                 </div>
 
-
+                                {{end}}
 
 
                             </div>
@@ -162,13 +182,9 @@
                             <button id="removeSubAccountButton" class="btn btn-danger btn-sm" type="button" style="margin-left: 10px;" onclick="removeSubAccount()">
                                 Remove Account
                             </button>
-
+                            <br>
+                            <input class="btn btn-primary btn-lg" value="Save and Start" type="submit" style="margin-top: 20px;">
                         </form>
-
-                        <button class="btn btn-primary btn-lg" type="submit" style="margin-top: 20px;">
-                            Save and Start
-                        </button>
-
                     </div>
                 </div>
             </div>

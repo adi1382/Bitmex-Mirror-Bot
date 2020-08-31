@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
+	"go.uber.org/zap"
 	"io/ioutil"
 	"os"
 	"strconv"
@@ -16,7 +17,7 @@ func getConfigModifiedTime() time.Time {
 	defer configLock.Unlock()
 
 	for {
-		fileStat, err := os.Stat(path)
+		fileStat, err := os.Stat(ConfigPath)
 
 		if err == nil {
 			return fileStat.ModTime()
@@ -57,6 +58,7 @@ func generateDummyConfig() {
 			ApiKey:            "",
 			Secret:            "",
 			AccountName:       "",
+			AccountNumber:     i,
 		}
 	}
 
@@ -67,7 +69,7 @@ func generateDummyConfig() {
 		tools.EnterToExit("JSON Marshaling error")
 	}
 
-	pathParts := strings.Split(path, "/")
+	pathParts := strings.Split(ConfigPath, "/")
 
 	_, err = os.Stat(pathParts[0])
 
@@ -79,13 +81,37 @@ func generateDummyConfig() {
 		}
 	}
 
-	_, err = os.Stat(path)
+	_, err = os.Stat(ConfigPath)
 
 	if os.IsNotExist(err) {
-		err = ioutil.WriteFile(path, marshaledJSON, 0644)
+		err = ioutil.WriteFile(ConfigPath, marshaledJSON, 0644)
 		if err != nil {
 			fmt.Println("Unable to write to config file")
 			tools.EnterToExit("Unable to write to config file")
 		}
 	}
+}
+
+func WriteConfig(data *[]byte, logger *zap.Logger) {
+	configLock.Lock()
+	defer configLock.Unlock()
+
+	pathParts := strings.Split(ConfigPath, "/")
+
+	_, err := os.Stat(pathParts[0])
+
+	if os.IsNotExist(err) {
+		err = os.MkdirAll(pathParts[0], 0750)
+		if err != nil {
+			fmt.Println("Unable to create config folder.")
+			tools.EnterToExit("Unable to create config folder.")
+		}
+	}
+
+	err = ioutil.WriteFile(ConfigPath, *data, 0644)
+	if err != nil {
+		logger.Error("Unable to write to config file.")
+		return
+	}
+	return
 }

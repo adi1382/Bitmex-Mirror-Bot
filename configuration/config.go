@@ -4,7 +4,7 @@ import (
 	"sync"
 )
 
-const path = "config/config.json"
+const ConfigPath = "config/config.json"
 
 var configLock sync.Mutex
 
@@ -28,6 +28,7 @@ type SubAccount struct {
 	ApiKey            string  `json:"apiKey"`
 	Secret            string  `json:"secret"`
 	AccountName       string  `json:"accountName"`
+	AccountNumber     int     `json:"accountNumber"`
 }
 
 type Config struct {
