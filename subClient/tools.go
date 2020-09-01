@@ -12,9 +12,11 @@ import (
 )
 
 func (c *SubClient) checkErr(err error) {
-	c.logger.Error("New Error Detected",
-		zap.Error(err))
-	c.restartRequired.Store(true)
+	if err != nil {
+		c.logger.Error("New Error Detected",
+			zap.Error(err))
+		c.restartRequired.Store(true)
+	}
 }
 
 func (c *SubClient) socketError(strMessage *string) (bool, string) {

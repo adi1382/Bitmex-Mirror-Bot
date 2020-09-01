@@ -1,64 +1,24 @@
 {
 	"settings": {
-		"testnet": false,
+		"testnet": true,
 		"ratioUpdateRate": 3500,
 		"calibrationRate": 10,
 		"limitFilledTimeout": 10
 	},
 	"hostAccount": {
-		"apiKey": "",
-		"secret": ""
+		"apiKey": "YJsa4wLQBNYjGWhoerNJvtrh",
+		"secret": "GF6i8V_krLMmPEkOSVyoWFPJZh8Om-bC57yGutflw0Sg91mO"
 	},
 	"subAccounts": {
 		"account1": {
-			"enabled": false,
+			"enabled": true,
 			"copyLeverage": true,
 			"balanceProportion": false,
 			"fixedProportion": 1,
-			"apiKey": "",
-			"secret": "",
-			"accountName": "",
+			"apiKey": "ZnqyDwzyhHKmBYu7pndpjKac",
+			"secret": "5DovQcr3J5CUXeAit9w_LRe73pbgr-Ey1CCskFSz9RfJdUa3",
+			"accountName": "test",
 			"accountNumber": 1
-		},
-		"account2": {
-			"enabled": false,
-			"copyLeverage": true,
-			"balanceProportion": false,
-			"fixedProportion": 1,
-			"apiKey": "",
-			"secret": "",
-			"accountName": "",
-			"accountNumber": 2
-		},
-		"account3": {
-			"enabled": false,
-			"copyLeverage": true,
-			"balanceProportion": false,
-			"fixedProportion": 1,
-			"apiKey": "",
-			"secret": "",
-			"accountName": "",
-			"accountNumber": 3
-		},
-		"account4": {
-			"enabled": false,
-			"copyLeverage": true,
-			"balanceProportion": false,
-			"fixedProportion": 1,
-			"apiKey": "",
-			"secret": "",
-			"accountName": "",
-			"accountNumber": 4
-		},
-		"account5": {
-			"enabled": false,
-			"copyLeverage": true,
-			"balanceProportion": false,
-			"fixedProportion": 1,
-			"apiKey": "",
-			"secret": "",
-			"accountName": "",
-			"accountNumber": 5
 		}
 	}
 }

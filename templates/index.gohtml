@@ -51,7 +51,7 @@
                                     <label>Exchange Type:</label>
                                     <label>
                                         <select name="ExchangeType" class="form-control" style="margin-left: 60px;">
-                                            {{if .Settings.Testnet}}
+                                            {{if .Config.Settings.Testnet}}
                                                 <option value="1">Mainnet</option>
                                                 <option value="0" selected="">Testnet</option>
                                             {{else}}
@@ -64,19 +64,19 @@
                                 <p>
                                     <label>Ratio Update Rate:</label>
                                     <label>
-                                        <input name="RatioUpdateRate" required class="form-control" value="{{.Settings.RatioUpdateRate}}" type="number" min="5" placeholder="Ratio Update Rate (seconds)" step="1" style="margin-left: 60px;">
+                                        <input name="RatioUpdateRate" required class="form-control" value="{{.Config.Settings.RatioUpdateRate}}" type="number" min="5" placeholder="Ratio Update Rate (seconds)" step="1" style="margin-left: 60px;">
                                     </label>
                                 </p>
                                 <p>
                                     <label>Calibration Rate:<br></label>
                                     <label>
-                                        <input name="CalibrationRate" required class="form-control" value="{{.Settings.CalibrationRate}}" type="number" min="5" placeholder="Calibration Rate (seconds)" step="1" style="margin-left: 60px;">
+                                        <input name="CalibrationRate" required class="form-control" value="{{.Config.Settings.CalibrationRate}}" type="number" min="5" placeholder="Calibration Rate (seconds)" step="1" style="margin-left: 60px;">
                                     </label>
                                 </p>
                                 <p>
                                     <label>Filled Timeout:</label>
                                     <label>
-                                        <input name="LimitFilledTimeout" required class="form-control" value="{{.Settings.LimitFilledTimeout}}" type="number" min="0" placeholder="Filled Timeout (seconds)" step="1" style="margin-left: 60px;">
+                                        <input name="LimitFilledTimeout" required class="form-control" value="{{.Config.Settings.LimitFilledTimeout}}" type="number" min="0" placeholder="Filled Timeout (seconds)" step="1" style="margin-left: 60px;">
                                     </label>
                                 </p>
                             </div>
@@ -85,20 +85,20 @@
                                 <p>
                                     <label>API Key:</label>
                                     <label>
-                                        <input name="HostApiKey" required class="form-control" value="{{.HostAccount.ApiKey}}" type="text" placeholder="Host API key" style="margin-left: 117px;">
+                                        <input name="HostApiKey" required class="form-control" value="{{.Config.HostAccount.ApiKey}}" type="text" placeholder="Host API key" style="margin-left: 117px;">
                                     </label>
                                 </p>
                                 <p>
                                     <label>Secret:</label>
                                     <label>
-                                        <input name="HostSecret" required class="form-control" value="{{.HostAccount.Secret}}" type="text" placeholder="Host secret" style="margin-left: 117px;">
+                                        <input name="HostSecret" required class="form-control" value="{{.Config.HostAccount.Secret}}" type="text" placeholder="Host secret" style="margin-left: 117px;">
                                     </label>
                                 </p>
                             </div>
                             <h3>Sub Accounts</h3>
                             <div id="subAccounts">
 
-                                {{ range $key, $value := .SubAccounts }}
+                                {{ range $key, $value := .Config.SubAccounts }}
 
                                     <div class="form-group" id="subAccount{{$value.AccountNumber}}">
                                     <h6>Account {{$value.AccountNumber}}</h6>
@@ -183,7 +183,11 @@
                                 Remove Account
                             </button>
                             <br>
-                            <input class="btn btn-primary btn-lg" value="Save and Start" type="submit" style="margin-top: 20px;">
+                            {{if .BotStatus}}
+                                <input class="btn btn-primary btn-lg" value="Update and Restart" type="submit" style="margin-top: 20px;">
+                            {{else}}
+                                <input class="btn btn-primary btn-lg" value="Save and Start" type="submit" style="margin-top: 20px;">
+                            {{end}}
                         </form>
                     </div>
                 </div>

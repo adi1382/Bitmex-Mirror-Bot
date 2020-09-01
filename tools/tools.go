@@ -20,8 +20,8 @@ type RunningStatus struct {
 
 func NewBotStatus() *RunningStatus {
 	return &RunningStatus{
-		IsRunning: atomic.NewBool(true),
-		Message:   atomic.NewString("OK"),
+		IsRunning: atomic.NewBool(false),
+		Message:   atomic.NewString("First Start Pending"),
 	}
 }
 
