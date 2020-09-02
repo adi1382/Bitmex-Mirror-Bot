@@ -2,7 +2,6 @@ package server
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/configuration"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"go.uber.org/atomic"
@@ -34,7 +33,6 @@ func ConfigHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("templates/index.gohtml"))
 
 	if r.Method == http.MethodPost {
-		fmt.Println("POST")
 		err := r.ParseForm()
 
 		var newConfig configuration.Config
