@@ -197,6 +197,5 @@ func GetHashedKey() string {
 	for i := range diskSerialNumbers {
 		privateKey += diskSerialNumbers[i]
 	}
-
 	return protect("ef393ae49fb4a0426955a0ed47ab352c20d8c355cc4c00be30e15a1e102e7f40", protect("MirrorTrader", privateKey))
 }

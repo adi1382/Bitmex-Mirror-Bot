@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	rice "github.com/GeertJohan/go.rice"
 	"github.com/adi1382/Bitmex-Mirror-Bot/configuration"
 	"github.com/adi1382/Bitmex-Mirror-Bot/server"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
@@ -9,9 +10,13 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
+	"net"
 	"net/http"
 	"os"
+	"strconv"
 )
+
+var port = 5000
 
 var (
 	sessionID            zap.Field
@@ -65,17 +70,28 @@ func init() {
 
 func main() {
 	go trader.BotHandler(logger, socketIncomingLogger, socketOutgoingLogger, botStatus, restartRequired)
+	router := http.NewServeMux()
+	router.HandleFunc("/", server.ConfigHandler)
+	router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(rice.MustFindBox("templates/static").HTTPBox())))
+	router.Handle("/logs/", http.StripPrefix("/logs/", http.FileServer(http.Dir("logs"))))
+	router.Handle("/config/", http.StripPrefix("/config/", http.FileServer(http.Dir("config"))))
 
-	//tmpl := template.Must(template.ParseFiles("templates/index.gohtml"))
+	for {
+		l, err := net.Listen("tcp", ":"+strconv.Itoa(port))
 
-	http.HandleFunc("/", server.ConfigHandler)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
-	http.Handle("/logs/", http.StripPrefix("/logs/", http.FileServer(http.Dir("logs"))))
-	http.Handle("/config/", http.StripPrefix("/config/", http.FileServer(http.Dir("config"))))
-
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		logger.Error("Listen And Serve Error", zap.Error(err))
+		if err == nil {
+			_ = l.Close()
+			break
+		} else {
+			port++
+		}
 	}
 
+	fmt.Printf("\nDT Bitmex Mirror is running on http://127.0.0.1:%d/\n", port)
+
+	err := http.ListenAndServe(":"+strconv.Itoa(port), router)
+	if err != nil {
+		logger.Error("Listen And Serve Error", zap.Error(err))
+		fmt.Println(err.Error())
+	}
 }

@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	rice "github.com/GeertJohan/go.rice"
 	"github.com/adi1382/Bitmex-Mirror-Bot/configuration"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"go.uber.org/atomic"
@@ -24,13 +25,35 @@ func SetServerLogger(loggerMain *zap.Logger, botStatusMain *tools.RunningStatus,
 }
 
 func ConfigHandler(w http.ResponseWriter, r *http.Request) {
-
 	type configHandler struct {
 		BotStatus bool
 		Config    configuration.Config
 	}
 
-	tmpl := template.Must(template.ParseFiles("templates/index.gohtml"))
+	templateBox, err := rice.FindBox(`templates`)
+	if err != nil {
+		logger.Error("Unable to create template box for templates folder", zap.Error(err))
+		return
+	}
+
+	// get file contents as string
+	templateString, err := templateBox.String("index.gohtml")
+	if err != nil {
+		logger.Error("Unable to Find index.gohtml in the templateBox", zap.Error(err))
+	}
+	// parse and execute the template
+	tmpl, err := template.New("index").Parse(templateString)
+	//tmpl, err := template.ParseFiles("templates/index.gohtml")
+
+	if err != nil {
+		logger.Error("UNEXPECTED ERROR",
+			zap.String("msg", "Error while parsing template string in a new template"), zap.Error(err))
+		return
+	}
+
+	//fmt.Println("This ran")
+
+	//tmpl := template.Must(template.ParseFiles("templates/index.gohtml"))
 
 	if r.Method == http.MethodPost {
 		err := r.ParseForm()
@@ -143,7 +166,7 @@ func ConfigHandler(w http.ResponseWriter, r *http.Request) {
 		botStatus.Message.Store("OK")
 	}
 
-	err := tmpl.Execute(w, configHandler{
+	err = tmpl.Execute(w, configHandler{
 		Config:    configuration.ReadConfig(logger, botStatus, restartRequired),
 		BotStatus: botStatus.IsRunning.Load(),
 	})
