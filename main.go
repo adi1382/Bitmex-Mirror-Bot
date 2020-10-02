@@ -30,13 +30,13 @@ var (
 
 func init() {
 
-	fmt.Println(time.Now().Add(7 * 24 * time.Hour).Unix())
+	//fmt.Println(time.Now().Add(7 * 24 * time.Hour).Unix())
 	if !tools.CheckLicense() {
 		fmt.Println("License Validation Failed")
 		tools.EnterToExit("Contact support@dappertrader.com to renew license.")
 	}
 
-	const expireTime = 1601699918
+	const expireTime = 1602221843
 	//fmt.Println(time.Now().Add(7 * 24 * time.Hour).Unix())
 	//fmt.Println(time.Now().Add(time.Minute*1).Unix())
 	//fmt.Println(time.Now().Add(time.Hour*24).Unix())
