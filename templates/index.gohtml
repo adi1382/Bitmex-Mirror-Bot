@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dapper Trader | Bitmex Mirror Trader</title>
+    <title>Dapper Trader | BitMEX Mirror Trader</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="static/css/Header-Dark.css">
@@ -14,194 +14,194 @@
 </head>
 
 <body>
-<div>
-    <div class="header-dark">
-        <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
-            <div class="container">
-                <a class="navbar-brand" href="#">Dapper Trader</a>
-                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse"
-                     id="navcol-1">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" target="_blank" href="https://dappertrader.com">Website</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Legal&nbsp;</a>
-                            <div class="dropdown-menu" role="menu">
-                                <a class="dropdown-item" role="presentation" target="_blank" href="https://dappertrader.com/terms">Terms and Conditions</a>
-                                <a class="dropdown-item" role="presentation" target="_blank" href="https://dappertrader.com/privacy">Privacy Policy</a>
-                            </div>
-                        </li>
-                    </ul>
+    <div>
+        <div class="header-dark">
+            <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Dapper Trader</a>
+                    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                         id="navcol-1">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" target="_blank" href="https://dappertrader.com">Website</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">Legal&nbsp;</a>
+                                <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" role="presentation" target="_blank" href="https://dappertrader.com/terms">Terms and Conditions</a>
+                                    <a class="dropdown-item" role="presentation" target="_blank" href="https://dappertrader.com/privacy">Privacy Policy</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <div class="container hero">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <h1 class="text-center">Bitmex Mirror Trader</h1>
-                    <p style="color: rgb(255,255,255);font-size: 16px;">By using this software you agree to our terms of use (<a target="_blank" href="https://dappertrader.com/terms-of-service">https://dappertrader.com/terms-of-service</a>)</p>
-                    <div class="jumbotron">
-                        <form id="mirror-form" style="width: 650px;" method="post">
-                            <h3>Global Settings</h3>
-                            <div class="form-group">
-                                <p>
-                                    <label>Exchange Type:</label>
-                                    <label>
-                                        <select name="ExchangeType" class="form-control" style="margin-left: 60px;">
-                                            {{if .Config.Settings.Testnet}}
-                                                <option value="1">Mainnet</option>
-                                                <option value="0" selected="">Testnet</option>
-                                            {{else}}
-                                                <option value="1" selected="">Mainnet</option>
-                                                <option value="0">Testnet</option>
-                                            {{end}}
-                                        </select>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>Ratio Update Rate:</label>
-                                    <label>
-                                        <input name="RatioUpdateRate" required class="form-control" value="{{.Config.Settings.RatioUpdateRate}}" type="number" min="5" placeholder="Ratio Update Rate (seconds)" step="1" style="margin-left: 60px;">
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>Calibration Rate:<br></label>
-                                    <label>
-                                        <input name="CalibrationRate" required class="form-control" value="{{.Config.Settings.CalibrationRate}}" type="number" min="5" placeholder="Calibration Rate (seconds)" step="1" style="margin-left: 60px;">
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>Filled Timeout:</label>
-                                    <label>
-                                        <input name="LimitFilledTimeout" required class="form-control" value="{{.Config.Settings.LimitFilledTimeout}}" type="number" min="0" placeholder="Filled Timeout (seconds)" step="1" style="margin-left: 60px;">
-                                    </label>
-                                </p>
-                            </div>
-                            <h3>Host Account</h3>
-                            <div class="form-group">
-                                <p>
-                                    <label>API Key:</label>
-                                    <label>
-                                        <input name="HostApiKey" required class="form-control" value="{{.Config.HostAccount.ApiKey}}" type="text" placeholder="Host API key" style="margin-left: 117px;">
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>Secret:</label>
-                                    <label>
-                                        <input name="HostSecret" required class="form-control" value="{{.Config.HostAccount.Secret}}" type="text" placeholder="Host secret" style="margin-left: 117px;">
-                                    </label>
-                                </p>
-                            </div>
-                            <h3>Sub Accounts</h3>
-                            <div id="subAccounts">
-
-                                {{ range $key, $value := .Config.SubAccounts }}
-
-                                    <div class="form-group" id="subAccount{{$value.AccountNumber}}">
-                                    <h6>Account {{$value.AccountNumber}}</h6>
+            </nav>
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h1 class="text-center">Bitmex Mirror Trader</h1>
+                        <p style="color: rgb(255,255,255);font-size: 16px;">By using this software you agree to our terms of use (<a target="_blank" href="https://dappertrader.com/terms-of-service">https://dappertrader.com/terms-of-service</a>)</p>
+                        <div class="jumbotron">
+                            <form id="mirror-form" style="width: 650px;" method="post">
+                                <h3>Global Settings</h3>
+                                <div class="form-group">
                                     <p>
-                                        <label>Status:</label>
+                                        <label>Exchange Type:</label>
                                         <label>
-                                            <select name="sub{{$value.AccountNumber}}_Status" required class="form-control" style="margin-left: 41px;">
-                                                {{if $value.Enabled}}
-                                                    <option value="1" selected="">Enabled</option>
-                                                    <option value="0">Disabled</option>
+                                            <select name="ExchangeType" class="form-control" style="margin-left: 60px;">
+                                                {{if .Config.Settings.Testnet}}
+                                                    <option value="1">Mainnet</option>
+                                                    <option value="0" selected="">Testnet</option>
                                                 {{else}}
-                                                    <option value="1">Enabled</option>
-                                                    <option value="0" selected="">Disabled</option>
+                                                    <option value="1" selected="">Mainnet</option>
+                                                    <option value="0">Testnet</option>
                                                 {{end}}
                                             </select>
                                         </label>
                                     </p>
                                     <p>
-                                        <label>Copy Leverage:</label>
+                                        <label>Ratio Update Rate:</label>
                                         <label>
-                                            <select name="sub{{$value.AccountNumber}}_CopyLeverage" required class="form-control" style="margin-left: 41px;">
-                                                {{if $value.CopyLeverage}}
-                                                    <option value="1" selected="">Yes</option>
-                                                    <option value="0">No</option>
-                                                {{else}}
-                                                    <option value="1">Yes</option>
-                                                    <option value="0" selected="">No</option>
-                                                {{end}}
-                                            </select>
+                                            <input name="RatioUpdateRate" required class="form-control" value="{{.Config.Settings.RatioUpdateRate}}" type="number" min="5" placeholder="Ratio Update Rate (seconds)" step="1" style="margin-left: 60px;">
                                         </label>
                                     </p>
                                     <p>
-                                        <label>Balance Proportional:</label>
+                                        <label>Calibration Rate:<br></label>
                                         <label>
-                                            <select name="sub{{$value.AccountNumber}}_BalanceProportional" required class="form-control" style="margin-left: 41px;">
-                                                {{if $value.BalanceProportion}}
-                                                    <option value="1" selected="">Yes</option>
-                                                    <option value="0">No</option>
-                                                {{else}}
-                                                    <option value="1">Yes</option>
-                                                    <option value="0" selected="">No</option>
-                                                {{end}}
-                                            </select>
+                                            <input name="CalibrationRate" required class="form-control" value="{{.Config.Settings.CalibrationRate}}" type="number" min="5" placeholder="Calibration Rate (seconds)" step="1" style="margin-left: 60px;">
                                         </label>
                                     </p>
                                     <p>
-                                        <label>Fixed Proportion:</label>
+                                        <label>Filled Timeout:</label>
                                         <label>
-                                            <input name="sub{{$value.AccountNumber}}_FixedProportion" required class="form-control" value="{{$value.FixedProportion}}" type="number" placeholder="Fixed Proportion" style="margin-left: 41px;">
+                                            <input name="LimitFilledTimeout" required class="form-control" value="{{.Config.Settings.LimitFilledTimeout}}" type="number" min="0" placeholder="Filled Timeout (seconds)" step="1" style="margin-left: 60px;">
                                         </label>
                                     </p>
+                                </div>
+                                <h3>Host Account</h3>
+                                <div class="form-group">
                                     <p>
                                         <label>API Key:</label>
                                         <label>
-                                            <input name="sub{{$value.AccountNumber}}_ApiKey" required class="form-control" value="{{$value.ApiKey}}" type="text" placeholder="Sub API key" style="margin-left: 41px;">
+                                            <input name="HostApiKey" required class="form-control" value="{{.Config.HostAccount.ApiKey}}" type="text" placeholder="Host API key" style="margin-left: 117px;">
                                         </label>
                                     </p>
                                     <p>
                                         <label>Secret:</label>
                                         <label>
-                                            <input name="sub{{$value.AccountNumber}}_Secret" required class="form-control" value="{{$value.Secret}}" type="text" placeholder="Sub Secret" style="margin-left: 41px;">
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label>Account Name:</label>
-                                        <label>
-                                            <input name="sub{{$value.AccountNumber}}_AccountName" required class="form-control" value="{{$value.AccountName}}" type="text" placeholder="Custom Name" style="margin-left: 41px;">
+                                            <input name="HostSecret" required class="form-control" value="{{.Config.HostAccount.Secret}}" type="text" placeholder="Host secret" style="margin-left: 117px;">
                                         </label>
                                     </p>
                                 </div>
+                                <h3>Sub Accounts</h3>
+                                <div id="subAccounts">
 
+                                    {{ range $key, $value := .Config.SubAccounts }}
+
+                                        <div class="form-group" id="subAccount{{$value.AccountNumber}}">
+                                        <h6>Account {{$value.AccountNumber}}</h6>
+                                        <p>
+                                            <label>Status:</label>
+                                            <label>
+                                                <select name="sub{{$value.AccountNumber}}_Status" required class="form-control" style="margin-left: 41px;">
+                                                    {{if $value.Enabled}}
+                                                        <option value="1" selected="">Enabled</option>
+                                                        <option value="0">Disabled</option>
+                                                    {{else}}
+                                                        <option value="1">Enabled</option>
+                                                        <option value="0" selected="">Disabled</option>
+                                                    {{end}}
+                                                </select>
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>Copy Leverage:</label>
+                                            <label>
+                                                <select name="sub{{$value.AccountNumber}}_CopyLeverage" required class="form-control" style="margin-left: 41px;">
+                                                    {{if $value.CopyLeverage}}
+                                                        <option value="1" selected="">Yes</option>
+                                                        <option value="0">No</option>
+                                                    {{else}}
+                                                        <option value="1">Yes</option>
+                                                        <option value="0" selected="">No</option>
+                                                    {{end}}
+                                                </select>
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>Balance Proportional:</label>
+                                            <label>
+                                                <select name="sub{{$value.AccountNumber}}_BalanceProportional" required class="form-control" style="margin-left: 41px;">
+                                                    {{if $value.BalanceProportion}}
+                                                        <option value="1" selected="">Yes</option>
+                                                        <option value="0">No</option>
+                                                    {{else}}
+                                                        <option value="1">Yes</option>
+                                                        <option value="0" selected="">No</option>
+                                                    {{end}}
+                                                </select>
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>Fixed Proportion:</label>
+                                            <label>
+                                                <input name="sub{{$value.AccountNumber}}_FixedProportion" required class="form-control" value="{{$value.FixedProportion}}" type="number" placeholder="Fixed Proportion" style="margin-left: 41px;">
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>API Key:</label>
+                                            <label>
+                                                <input name="sub{{$value.AccountNumber}}_ApiKey" required class="form-control" value="{{$value.ApiKey}}" type="text" placeholder="Sub API key" style="margin-left: 41px;">
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>Secret:</label>
+                                            <label>
+                                                <input name="sub{{$value.AccountNumber}}_Secret" required class="form-control" value="{{$value.Secret}}" type="text" placeholder="Sub Secret" style="margin-left: 41px;">
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>Account Name:</label>
+                                            <label>
+                                                <input name="sub{{$value.AccountNumber}}_AccountName" required class="form-control" value="{{$value.AccountName}}" type="text" placeholder="Custom Name" style="margin-left: 41px;">
+                                            </label>
+                                        </p>
+                                    </div>
+
+                                    {{end}}
+
+
+                                </div>
+
+                                <button id="addSubAccountButton" class="btn btn-primary btn-sm" type="button" onclick="addSubAccount()">
+                                    Add Account
+                                </button>
+
+                                <button id="removeSubAccountButton" class="btn btn-danger btn-sm" type="button" style="margin-left: 10px;" onclick="removeSubAccount()">
+                                    Remove Account
+                                </button>
+                                <br>
+                                {{if .BotStatus}}
+                                    <input class="btn btn-primary btn-lg" value="Update and Restart" type="submit" style="margin-top: 20px;">
+                                {{else}}
+                                    <input class="btn btn-primary btn-lg" value="Save and Start" type="submit" style="margin-top: 20px;">
                                 {{end}}
-
-
-                            </div>
-
-                            <button id="addSubAccountButton" class="btn btn-primary btn-sm" type="button" onclick="addSubAccount()">
-                                Add Account
-                            </button>
-
-                            <button id="removeSubAccountButton" class="btn btn-danger btn-sm" type="button" style="margin-left: 10px;" onclick="removeSubAccount()">
-                                Remove Account
-                            </button>
-                            <br>
-                            {{if .BotStatus}}
-                                <input class="btn btn-primary btn-lg" value="Update and Restart" type="submit" style="margin-top: 20px;">
-                            {{else}}
-                                <input class="btn btn-primary btn-lg" value="Save and Start" type="submit" style="margin-top: 20px;">
-                            {{end}}
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<script src="static/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="static/js/main.js"></script>
 
 </body>
 
