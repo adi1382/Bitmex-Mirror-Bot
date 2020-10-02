@@ -30,7 +30,7 @@ func ConfigHandler(w http.ResponseWriter, r *http.Request) {
 		Config    configuration.Config
 	}
 
-	templateBox, err := rice.FindBox(`templates`)
+	templateBox, err := rice.FindBox("../templates")
 	if err != nil {
 		logger.Error("Unable to create template box for templates folder", zap.Error(err))
 		return

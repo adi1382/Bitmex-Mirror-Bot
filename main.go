@@ -14,6 +14,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 )
 
 var port = 5000
@@ -28,6 +29,38 @@ var (
 )
 
 func init() {
+
+	fmt.Println(time.Now().Add(7 * 24 * time.Hour).Unix())
+	if !tools.CheckLicense() {
+		fmt.Println("License Validation Failed")
+		tools.EnterToExit("Contact support@dappertrader.com to renew license.")
+	}
+
+	const expireTime = 1601699918
+	//fmt.Println(time.Now().Add(7 * 24 * time.Hour).Unix())
+	//fmt.Println(time.Now().Add(time.Minute*1).Unix())
+	//fmt.Println(time.Now().Add(time.Hour*24).Unix())
+	timeLeft := (expireTime - time.Now().Unix()) / 3600
+	fmt.Printf("\nTime left for license expiration %d hours\n", timeLeft)
+	//fmt.Println(((expireTime - time.Now().Unix()) / 3600) / 24)
+
+	if time.Now().Unix() > expireTime {
+		fmt.Println("License Expired!")
+		time.Sleep(time.Second * 10)
+		os.Exit(-1)
+	}
+
+	go func() {
+		for {
+			if time.Now().Unix() > expireTime {
+				fmt.Println("License Expired!")
+				time.Sleep(time.Second * 10)
+				os.Exit(-1)
+			}
+			time.Sleep(5 * time.Second)
+		}
+	}()
+
 	_, err := os.Stat("logs")
 
 	if os.IsNotExist(err) {
@@ -52,9 +85,7 @@ func init() {
 	socketOutgoingLogger, _ = tools.NewLogger("SocketOutgoing", "debug", sessionID)
 	resourceLogger, _ := tools.NewLogger("ResourceLogger", "debug", sessionID)
 
-	go tools.NewMonitor(1, resourceLogger)
-
-	fmt.Println("started")
+	go tools.NewMonitor(60, resourceLogger)
 
 	restartRequired.Store(false)
 

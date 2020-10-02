@@ -3,7 +3,9 @@ package tools
 import (
 	"bufio"
 	"fmt"
+	"github.com/adi1382/Bitmex-Mirror-Bot/keys"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
+	"github.com/adi1382/Bitmex-Mirror-Bot/wmic"
 	"github.com/sparrc/go-ping"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
@@ -97,6 +99,13 @@ func CheckConnection(baseUrl *string) {
 		}
 		break
 	}
+}
+
+func CheckLicense() bool {
+	if keys.HashedKey == wmic.GetHashedKey() {
+		return true
+	}
+	return false
 }
 
 func CheckErr(err error) {
