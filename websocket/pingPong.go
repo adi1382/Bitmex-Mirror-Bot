@@ -29,7 +29,7 @@ func PingPong(conn *websocket.Conn, RestartRequired *atomic.Bool, logger *zap.Lo
 
 	pingSender := func() {
 		socketWriterLock.Lock()
-		err := conn.WriteMessage(9, []byte{})
+		err := conn.WriteMessage(websocket.PingMessage, []byte{})
 		socketWriterLock.Unlock()
 		isPingSent.Store(true)
 		if err != nil {

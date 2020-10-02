@@ -1,0 +1,60 @@
+{"level":"info","TimeUTC":"2020-10-02T10:44:47Z","msg":"Configuration File Updated"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:47Z","msg":"Connecting to socket","url":"wss://testnet.bitmex.com/realtimemd"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Ping Pong protocol Initiated"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Socket Status","status":"Socket Reader Routine Started"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"New HostClient Created","websocketTopic":"hostAccount","apiKey":"8I7gjjkwA_JMJV20LanOxwus"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Initiating Rest Object on subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Rest Object Initiated on subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"New SubClient Created","websocketTopic":"","apiKey":"ZnqyDwzyhHKmBYu7pndpjac"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Starting socket connection on hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Socket writer started"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Authenticating websocket connection on hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"New hostClient Initialized","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Initializing sub client","websocketTopic":"","apiKey":"ZnqyDwzyhHKmBYu7pndpjac"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Updating current margin on hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"sub client initialized","websocketTopic":"","apiKey":"ZnqyDwzyhHKmBYu7pndpjac"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Subscribing Tables on hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"waiting for partials","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Starting Connection on subClient to sockets","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Authenticating websocket connection of subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Subscribing Tables on SubClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"waiting for partials","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"New Message in Data Handler for subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Successfully connected to websockets","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Decoding Socket Message"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Socket Message Decoded"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Updating table on hostClient","table":"order","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Decoding Socket Message"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Socket Message Decoded"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Updating table on hostClient","table":"position","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Received new message in Data Handler for hostClient","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"New Message in Data Handler for subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Decoding Socket Message"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"New Message in Data Handler for subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"closing connection for sub client","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":"","reason":"Invalid API Key."}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Removed subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"partials receiving canceled","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Data Handler Closed for subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"partials receiving canceled","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Socket Message Decoded"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Updating table on hostClient","table":"margin","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Fetching active positions for hostClient %s\n","apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-10-02T10:44:49Z","msg":"Fetching active positions for subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"Updating leverage via rest for subClient","symbol":"XBTUSD","leverage":0,"apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"error","TimeUTC":"2020-10-02T10:44:50Z","msg":"Error on subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"closing connection for sub client","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":"","reason":"Rest Error"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"Removed subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"Updating leverage via rest for subClient","symbol":"XBTJPY","leverage":0,"apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"Updating marginBalance on hostAccount","marginBalance":128216442,"apiKey":"8I7gjjkwA_JMJV20LanOxwus","websocketTopic":"hostAccount"}
+{"level":"error","TimeUTC":"2020-10-02T10:44:50Z","msg":"Error on subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"closing connection for sub client","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":"","reason":"Rest Error"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"Removed subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"Calibrator timer closed for subClient ","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"Order handler closed for subClient","apiKey":"ZnqyDwzyhHKmBYu7pndpjac","websocketTopic":""}

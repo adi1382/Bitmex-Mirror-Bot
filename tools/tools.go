@@ -3,15 +3,12 @@ package tools
 import (
 	"bufio"
 	"fmt"
-	"github.com/adi1382/Bitmex-Mirror-Bot/keys"
+	"github.com/adi1382/Bitmex-Mirror-Bot/constants"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
 	"github.com/adi1382/Bitmex-Mirror-Bot/wmic"
 	"github.com/sparrc/go-ping"
 	"go.uber.org/atomic"
-	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -32,50 +29,6 @@ func EnterToExit(errMessage string) {
 	fmt.Print("\n\nPress 'Enter' to exit")
 	_, _ = bufio.NewReader(os.Stdin).ReadBytes('\n')
 	os.Exit(0)
-}
-
-func NewLogger(fileName, level string, sessionID zap.Field) (*zap.Logger, error) {
-
-	logLevel := zap.DebugLevel
-
-	if strings.EqualFold(level, "INFO") {
-		logLevel = zap.InfoLevel
-	} else if strings.EqualFold(level, "WARN") {
-		logLevel = zap.WarnLevel
-	} else if strings.EqualFold(level, "ERROR") {
-		logLevel = zap.ErrorLevel
-	}
-
-	config := zap.Config{
-		Level:       zap.NewAtomicLevelAt(logLevel),
-		Development: true,
-		Sampling: &zap.SamplingConfig{
-			Initial:    100,
-			Thereafter: 100,
-		},
-		Encoding:      "json",
-		EncoderConfig: zap.NewProductionEncoderConfig(),
-		//OutputPaths:      []string{"stderr"},
-		//ErrorOutputPaths: []string{"stderr"},
-		OutputPaths:      []string{"./logs/" + fileName + ".log"},
-		ErrorOutputPaths: []string{"./logs/" + fileName + ".log"},
-	}
-
-	config.EncoderConfig.TimeKey = "TimeUTC"
-
-	config.EncoderConfig.EncodeTime = func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-		enc.AppendString(t.UTC().Format("2006-01-02T15:04:05Z0700"))
-		// 2019-08-13T04:39:11Z
-	}
-
-	logger, err := config.Build()
-
-	if err != nil {
-		panic(err)
-	}
-
-	logger = logger.With(sessionID)
-	return logger, err
 }
 
 func CheckConnection(baseUrl *string) {
@@ -102,7 +55,7 @@ func CheckConnection(baseUrl *string) {
 }
 
 func CheckLicense() bool {
-	if keys.HashedKey == wmic.GetHashedKey() {
+	if constants.HashedKey == wmic.GetHashedKey() {
 		return true
 	}
 	return false

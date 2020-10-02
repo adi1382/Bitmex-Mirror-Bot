@@ -39,21 +39,21 @@ type Res struct {
 type PositionResponse struct {
 	Table  string                           `json:"table,omitempty"`
 	Action string                           `json:"action,omitempty"`
-	Keys   []string                         `json:"keys,omitempty"`
+	Keys   []string                         `json:"constants,omitempty"`
 	Data   []websocket.PositionResponseData `json:"data,omitempty"`
 }
 
 type OrderResponse struct {
 	Table  string                        `json:"table,omitempty"`
 	Action string                        `json:"action,omitempty"`
-	Keys   []string                      `json:"keys,omitempty"`
+	Keys   []string                      `json:"constants,omitempty"`
 	Data   []websocket.OrderResponseData `json:"data,omitempty"`
 }
 
 type MarginResponse struct {
 	Table  string                         `json:"table,omitempty"`
 	Action string                         `json:"action,omitempty"`
-	Keys   []string                       `json:"keys,omitempty"`
+	Keys   []string                       `json:"constants,omitempty"`
 	Data   []websocket.MarginResponseData `json:"data,omitempty"`
 }
 

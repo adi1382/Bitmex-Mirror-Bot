@@ -262,7 +262,7 @@ func (a *APIKeyApiService) APIKeyEnable(ctx context.Context, apiKeyID string) (A
 }
 
 /*
-APIKeyApiService Get your API keys.
+APIKeyApiService Get your API constants.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *APIKeyGetOpts - Optional Parameters:
      * @param "Reverse" (optional.Bool) -  If true, will sort results newest first.
@@ -393,12 +393,12 @@ func (a *APIKeyApiService) APIKeyGet(ctx context.Context, localVarOptionals *API
 
 /*
 APIKeyApiService Create a new API Key.
-API keys can only be created via the frontend.
+API constants can only be created via the frontend.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *APIKeyNewOpts - Optional Parameters:
      * @param "Name" (optional.String) -  Key name. This name is for reference only.
      * @param "Cidr" (optional.String) -  CIDR block to restrict this key to. To restrict to a single address, append \&quot;/32\&quot;, e.g. 207.39.29.22/32. Leave blank or set to 0.0.0.0/0 to allow all IPs. Only one block may be set. &lt;a href&#x3D;\&quot;http://software77.net/cidr-101.html\&quot;&gt;More on CIDR blocks&lt;/a&gt;
-     * @param "Permissions" (optional.String) -  Key Permissions. All keys can read margin and position data. Additional permissions must be added. Available: [\&quot;order\&quot;, \&quot;orderCancel\&quot;, \&quot;withdraw\&quot;].
+     * @param "Permissions" (optional.String) -  Key Permissions. All constants can read margin and position data. Additional permissions must be added. Available: [\&quot;order\&quot;, \&quot;orderCancel\&quot;, \&quot;withdraw\&quot;].
      * @param "Enabled" (optional.Bool) -  Set to true to enable this key on creation. Otherwise, it must be explicitly enabled via /apiKey/enable.
      * @param "Token" (optional.String) -  OTP Token (YubiKey, Google Authenticator)
 

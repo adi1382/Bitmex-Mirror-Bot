@@ -1,0 +1,9 @@
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"OUTGOING MESSAGE","ChLen":1,"message":"[1,\"8I7gjjkwA_JMJV20LanOxwus\",\"hostAccount\"]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"OUTGOING MESSAGE","ChLen":4,"message":"[0,\"8I7gjjkwA_JMJV20LanOxwus\",\"hostAccount\",{\"op\":\"authKeyExpires\",\"args\":[\"8I7gjjkwA_JMJV20LanOxwus\",1601635901,\"9a61716450951056d3d42f8e59b54153aba9754d5a9abf454f33e90cbb5ee545\"]}]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"OUTGOING MESSAGE","ChLen":3,"message":"[0,\"8I7gjjkwA_JMJV20LanOxwus\",\"hostAccount\",{\"op\":\"subscribe\",\"args\":[\"order\",\"position\",\"margin\"]}]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"OUTGOING MESSAGE","ChLen":2,"message":"[1,\"ZnqyDwzyhHKmBYu7pndpjac\",\"\"]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"OUTGOING MESSAGE","ChLen":1,"message":"[0,\"ZnqyDwzyhHKmBYu7pndpjac\",\"\",{\"op\":\"authKeyExpires\",\"args\":[\"ZnqyDwzyhHKmBYu7pndpjac\",1601635901,\"570ebdab68fdd5f5c18845fd0fe2fe4e81fc50c87d3557fa28c9a75430bc6e47\"]}]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"OUTGOING MESSAGE","ChLen":0,"message":"[0,\"ZnqyDwzyhHKmBYu7pndpjac\",\"\",{\"op\":\"subscribe\",\"args\":[\"order\",\"position\",\"margin\"]}]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:49Z","msg":"OUTGOING MESSAGE","ChLen":0,"message":"[2,\"ZnqyDwzyhHKmBYu7pndpjac\",\"\"]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"OUTGOING MESSAGE","ChLen":0,"message":"[2,\"ZnqyDwzyhHKmBYu7pndpjac\",\"\"]"}
+{"level":"info","TimeUTC":"2020-10-02T10:44:50Z","msg":"OUTGOING MESSAGE","ChLen":0,"message":"[2,\"ZnqyDwzyhHKmBYu7pndpjac\",\"\"]"}

@@ -24,7 +24,7 @@ This returns all instruments and indices, including those that have settled or a
  * @param optional nil or *InstrumentGetOpts - Optional Parameters:
      * @param "Symbol" (optional.String) -  Instrument symbol. Send a bare series (e.g. XBU) to get data for the nearest expiring contract in that series.  You can also send a timeframe, e.g. &#x60;XBU:monthly&#x60;. Timeframes are &#x60;daily&#x60;, &#x60;weekly&#x60;, &#x60;monthly&#x60;, &#x60;quarterly&#x60;, and &#x60;biquarterly&#x60;.
      * @param "Filter" (optional.String) -  Generic table filter. Send JSON key/value pairs, such as &#x60;{\&quot;key\&quot;: \&quot;value\&quot;}&#x60;. You can key on individual fields, and do more advanced querying on timestamps. See the [Timestamp Docs](https://www.bitmex.com/app/restAPI#Timestamp-Filters) for more details.
-     * @param "Columns" (optional.String) -  Array of column names to fetch. If omitted, will return all columns.  Note that this method will always return item keys, even when not specified, so you may receive more columns that you expect.
+     * @param "Columns" (optional.String) -  Array of column names to fetch. If omitted, will return all columns.  Note that this method will always return item constants, even when not specified, so you may receive more columns that you expect.
      * @param "Count" (optional.Int) -  Number of results to fetch.
      * @param "Start" (optional.Int) -  Starting point for results.
      * @param "Reverse" (optional.Bool) -  If true, will sort results newest first.
@@ -548,7 +548,7 @@ Composite indices are built from multiple external price sources.  Use this endp
      * @param "Account" (optional.Float64) -
      * @param "Symbol" (optional.String) -  The composite index symbol.
      * @param "Filter" (optional.String) -  Generic table filter. Send JSON key/value pairs, such as &#x60;{\&quot;key\&quot;: \&quot;value\&quot;}&#x60;. You can key on individual fields, and do more advanced querying on timestamps. See the [Timestamp Docs](https://www.bitmex.com/app/restAPI#Timestamp-Filters) for more details.
-     * @param "Columns" (optional.String) -  Array of column names to fetch. If omitted, will return all columns.  Note that this method will always return item keys, even when not specified, so you may receive more columns that you expect.
+     * @param "Columns" (optional.String) -  Array of column names to fetch. If omitted, will return all columns.  Note that this method will always return item constants, even when not specified, so you may receive more columns that you expect.
      * @param "Count" (optional.Int) -  Number of results to fetch.
      * @param "Start" (optional.Int) -  Starting point for results.
      * @param "Reverse" (optional.Bool) -  If true, will sort results newest first.

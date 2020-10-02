@@ -50,8 +50,6 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger, botS
 
 	mirror := Mirror.NewMirror(restartRequired, logger, &wg)
 
-	logger.Info("logging started")
-
 	// Connect to WS
 	conn, err := websocket.Connect(config.Settings.Testnet, logger)
 

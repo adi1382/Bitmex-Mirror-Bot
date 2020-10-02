@@ -1,6 +1,6 @@
 package swagger
 
-// Persistent API keys for Developers
+// Persistent API constants for Developers
 type ApiKey struct {
 	Id          NullString   `json:"id"`
 	Secret      NullString   `json:"secret"`

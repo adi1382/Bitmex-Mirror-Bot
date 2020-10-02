@@ -4,6 +4,7 @@ import (
 	"fmt"
 	rice "github.com/GeertJohan/go.rice"
 	"github.com/adi1382/Bitmex-Mirror-Bot/configuration"
+	"github.com/adi1382/Bitmex-Mirror-Bot/logging"
 	"github.com/adi1382/Bitmex-Mirror-Bot/server"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"github.com/adi1382/Bitmex-Mirror-Bot/trader"
@@ -80,21 +81,22 @@ func init() {
 	restartRequired = atomic.NewBool(false)
 	sessionID = zap.String("sessionID", uuid.New().String())
 
-	logger, _ = tools.NewLogger("Mirror", "debug", sessionID)
-	socketIncomingLogger, _ = tools.NewLogger("SocketIncoming", "debug", sessionID)
-	socketOutgoingLogger, _ = tools.NewLogger("SocketOutgoing", "debug", sessionID)
-	resourceLogger, _ := tools.NewLogger("ResourceLogger", "debug", sessionID)
+	logger = logging.NewLogger("Mirror", "debug", sessionID)
+	socketIncomingLogger = logging.NewLogger("SocketIncoming", "debug", sessionID)
+	socketOutgoingLogger = logging.NewLogger("SocketOutgoing", "debug", sessionID)
+	resourceLogger := logging.NewLogger("ResourceLogger", "debug", sessionID)
 
 	go tools.NewMonitor(60, resourceLogger)
 
 	restartRequired.Store(false)
 
-	configuration.OnConfigChange(func() {
-		restartRequired.Store(true)
-		botStatus.IsRunning.Store(true)
-		botStatus.Message.Store("OK")
-		logger.Info("Configuration File Updated")
-	})
+	configuration.OnConfigChange(
+		func() {
+			restartRequired.Store(true)
+			botStatus.IsRunning.Store(true)
+			botStatus.Message.Store("OK")
+			logger.Info("Configuration File Updated")
+		})
 
 	server.SetServerLogger(logger, botStatus, restartRequired)
 }

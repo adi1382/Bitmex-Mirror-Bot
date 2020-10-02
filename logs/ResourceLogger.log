@@ -1,0 +1,1 @@
+{"level":"info","TimeUTC":"2020-10-02T10:45:43Z","msg":"{\"Alloc\":3404992,\"TotalAlloc\":85748424,\"Sys\":18770512,\"Mallocs\":749838,\"Frees\":721824,\"LiveObjects\":28014,\"PauseTotalNs\":1967900,\"NumGC\":36,\"NumGoroutine\":20}"}
