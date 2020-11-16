@@ -37,12 +37,13 @@ func init() {
 		tools.EnterToExit("Contact support@dappertrader.com to renew license.")
 	}
 
-	const expireTime = 1602221843
-	//fmt.Println(time.Now().Add(7 * 24 * time.Hour).Unix())
-	//fmt.Println(time.Now().Add(time.Minute*1).Unix())
-	//fmt.Println(time.Now().Add(time.Hour*24).Unix())
+	const expireTime = 1605543249
 	timeLeft := (expireTime - time.Now().Unix()) / 3600
 	fmt.Printf("\nTime left for license expiration %d hours\n", timeLeft)
+
+	//fmt.Println(time.Now().Add(14 * 24 * time.Hour).Unix())
+	//fmt.Println(time.Now().Add(time.Minute*1).Unix())
+	//fmt.Println(time.Now().Add(time.Hour*24).Unix())
 	//fmt.Println(((expireTime - time.Now().Unix()) / 3600) / 24)
 
 	if time.Now().Unix() > expireTime {

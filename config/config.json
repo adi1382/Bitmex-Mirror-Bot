@@ -2,21 +2,21 @@
 	"settings": {
 		"testnet": true,
 		"ratioUpdateRate": 3500,
-		"calibrationRate": 10,
+		"calibrationRate": 60,
 		"limitFilledTimeout": 10
 	},
 	"hostAccount": {
-		"apiKey": "8I7gjjkwA_JMJV20LanOxwus",
-		"secret": "M3i1UGBeu8CXNhA6Q1yGZBOuOyOILm2jDfBocg3yny329Iqb"
+		"apiKey": "MzA_b24P0qIl_iBgp-9CZTNV",
+		"secret": "6YJe9jif_y6oLg1u2lDRFFEu_wROnhS1ZfoS2rOLOxgtuLVn"
 	},
 	"subAccounts": {
 		"account1": {
 			"enabled": true,
 			"copyLeverage": true,
-			"balanceProportion": false,
+			"balanceProportion": true,
 			"fixedProportion": 1,
-			"apiKey": "ZnqyDwzyhHKmBYu7pndpjac",
-			"secret": "5DovQcr3J5CUXeAit9w_LRe73pbgr-Ey1CCskFSz9RfJdUa3",
+			"apiKey": "nBLDt55J1KdPEMCGf6CkmYoP",
+			"secret": "3888Nbzlj7Z-rv4Wiv48aYMy2rMz49ijsj9uXC9Swjvfjijx",
 			"accountName": "test",
 			"accountNumber": 1
 		}

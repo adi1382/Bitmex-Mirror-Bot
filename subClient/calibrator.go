@@ -13,7 +13,7 @@ func (c *SubClient) calibrate() {
 			<-c.hostUpdatesFetcher
 		}
 
-		doMirror(c.hostClient, c)
+		doCalibrate(c.hostClient, c)
 
 		if len(c.hostUpdatesFetcher) == 0 {
 			return
@@ -25,7 +25,7 @@ func (c *SubClient) calibrate() {
 	}
 }
 
-func doMirror(hostClient *hostClient.HostClient, subClient *SubClient) {
+func doCalibrate(hostClient *hostClient.HostClient, subClient *SubClient) {
 	var ratio float64
 	if subClient.BalanceProportion {
 		ratio = subClient.GetMarginBalance() / hostClient.GetMarginBalance()

@@ -2,7 +2,7 @@ package constants
 
 import "go.uber.org/zap"
 
-const HashedKey = "346061796feadb10f43336f25d478e4998255c78fd60493b45b7b57a83b708fb"
+//const HashedKey = "bac8814cacb32822bfa16cb4800abae5fdb30d0e41f450b9316409cb3eee9609"
 const logLevel = zap.DebugLevel
 
-//const HashedKey = "8d4ff54b7d22c01c39794f663b0224215f4e6a9fa7563f696545536679f75bfa"
+const HashedKey = "2b4175344308ad95911730d05732a9967205b71992ca021d63d9d9d91a8b8e38"
