@@ -33,7 +33,7 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger, botS
 	}()
 
 	config := configuration.ReadConfig(logger, botStatus, restartRequired)
-	isOK, message := configuration.ValidateConfig(&config)
+	isOK, message := configuration.ValidateConfig(&config, logger)
 
 	if !isOK {
 		fmt.Println("Invalid Configuration File")

@@ -3,6 +3,8 @@ updateRemoveButtonStatus()
 function addSubAccount() {
     let nSubs = getNumberOfSubAccounts();
     let newId = "subAccount"+(nSubs+1).toString()
+    // console.log(newId)
+    // alert(newId)
     let newAccount = document.getElementById("subAccount1").cloneNode(true)
     newAccount.id = newId
 
@@ -10,6 +12,16 @@ function addSubAccount() {
 
     document.getElementById("subAccounts").appendChild(newAccount)
     document.getElementById(newId).getElementsByTagName("h6")[0].textContent = "Account "+(nSubs+1).toString()
+
+    document.getElementById(newId).getElementsByTagName("select")[0].name = "sub"+(nSubs+1).toString()+"_Status"
+    document.getElementById(newId).getElementsByTagName("select")[1].name = "sub"+(nSubs+1).toString()+"_CopyLeverage"
+    document.getElementById(newId).getElementsByTagName("select")[2].name = "sub"+(nSubs+1).toString()+"_BalanceProportional"
+
+
+    document.getElementById(newId).getElementsByTagName("input")[0].name = "sub"+(nSubs+1).toString()+"_FixedProportion"
+    document.getElementById(newId).getElementsByTagName("input")[1].name = "sub"+(nSubs+1).toString()+"_ApiKey"
+    document.getElementById(newId).getElementsByTagName("input")[2].name = "sub"+(nSubs+1).toString()+"_Secret"
+    document.getElementById(newId).getElementsByTagName("input")[3].name = "sub"+(nSubs+1).toString()+"_AccountName"
 
     let newElements = document.getElementById(newId).getElementsByClassName("form-control")
     newElements[0].value = 0

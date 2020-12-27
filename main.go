@@ -37,7 +37,7 @@ func init() {
 		tools.EnterToExit("Contact support@dappertrader.com to renew license.")
 	}
 
-	const expireTime = 1605543249
+	const expireTime = 1610282546
 	timeLeft := (expireTime - time.Now().Unix()) / 3600
 	fmt.Printf("\nTime left for license expiration %d hours\n", timeLeft)
 
@@ -106,6 +106,7 @@ func main() {
 	go trader.BotHandler(logger, socketIncomingLogger, socketOutgoingLogger, botStatus, restartRequired)
 	router := http.NewServeMux()
 	router.HandleFunc("/", server.ConfigHandler)
+	//router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
 	router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(rice.MustFindBox("templates/static").HTTPBox())))
 	router.Handle("/logs/", http.StripPrefix("/logs/", http.FileServer(http.Dir("logs"))))
 	router.Handle("/config/", http.StripPrefix("/config/", http.FileServer(http.Dir("config"))))

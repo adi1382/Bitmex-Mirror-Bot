@@ -3,9 +3,8 @@ module github.com/adi1382/Bitmex-Mirror-Bot
 go 1.15
 
 require (
-	github.com/GeertJohan/go.rice v1.0.0
+	github.com/GeertJohan/go.rice v1.0.2
 	github.com/google/uuid v1.1.1
-	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/gorilla/websocket v1.4.2
 	github.com/sparrc/go-ping v0.0.0-20190613174326-4e5b6552494c
 	go.uber.org/atomic v1.6.0
