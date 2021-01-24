@@ -5574,3 +5574,217 @@
 {"level":"debug","TimeUTC":"2020-12-27T15:32:01Z","msg":"Fetching Margin Balance","sessionID":"79b173cd-ce52-4dc4-89c0-291b7aea017a","apiKey":"MbcpxCOh0lTpIbW-TurJ3qa3","websocketTopic":""}
 {"level":"debug","TimeUTC":"2020-12-27T15:32:01Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"79b173cd-ce52-4dc4-89c0-291b7aea017a","apiKey":"AffT76ZH5hytyDWQPiQIJAr0","websocketTopic":"hostAccount"}
 {"level":"debug","TimeUTC":"2020-12-27T15:32:01Z","msg":"Fetching active positions for subClient","sessionID":"79b173cd-ce52-4dc4-89c0-291b7aea017a","apiKey":"MbcpxCOh0lTpIbW-TurJ3qa3","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-28T15:16:27Z","msg":"Configuration File Updated","sessionID":"16bf53ba-2ac6-457d-96f9-baf344eef447"}
+{"level":"error","TimeUTC":"2020-12-28T15:16:28Z","msg":"Error on hostClient","sessionID":"16bf53ba-2ac6-457d-96f9-baf344eef447","apiKey":"AffT76ZH5hytyDWQPiQIJAr0","websocketTopic":""}
+{"level":"error","TimeUTC":"2020-12-31T17:45:19Z","msg":"was not able to close response body","sessionID":"02976674-be6e-4957-a32b-8d794abd7518"}
+{"level":"error","TimeUTC":"2020-12-31T17:45:41Z","msg":"was not able to close response body","sessionID":"b3e2fb8f-c179-44e3-8f83-565eb37cdea0"}
+{"level":"error","TimeUTC":"2020-12-31T18:03:39Z","msg":"was not able to close response body","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:22Z","msg":"Configuration File Updated","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"error","TimeUTC":"2020-12-31T18:04:22Z","msg":"was not able to close response body","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Connecting to socket","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","url":"wss://testnet.bitmex.com/realtimemd"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Ping Pong protocol Initiated","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket Status","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","status":"Socket Reader Routine Started"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket writer started","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"New HostClient Created","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"hostAccount","apiKey":"tJtsEdFrSlziODvSTy0NycB5"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Initiating Rest Object on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Rest Object Initiated on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"New SubClient Created","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Starting socket connection on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Authenticating websocket connection on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"New hostClient Initialized","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Initializing sub client","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating current margin on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"sub client initialized","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Subscribing Tables on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Starting Connection on subClient to sockets","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"waiting for partials","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Authenticating websocket connection of subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Subscribing Tables on SubClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"waiting for partials","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Successfully connected to websockets","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating marginBalance on hostAccount","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","marginBalance":127733021,"apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:04:23Z","msg":"Successfully authenticated to websockets","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating table on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"order","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating table on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"margin","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating table on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"order","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating table on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"position","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"partials received","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"partials received","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating current margin via rest request","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating table on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"margin","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating table on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"position","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Updating Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","balance":96333892,"apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Margin Balance Updated","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","balance":96333892,"apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:04:23Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:05:24Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:05:24Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:05:24Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:06:25Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:06:25Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:06:25Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:07:26Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:07:26Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:07:26Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:08:27Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:08:27Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:08:27Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:09:28Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:09:28Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:09:28Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:08Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:08Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:08Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Socket Status","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","status":"Socket Reader Routine Closed"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"RestartRequiredToTrue","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Closed Connection for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"closing connection for sub client","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":"","reason":"socket distributor closed"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Removed subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Socket Distributor Closed","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"warn","TimeUTC":"2020-12-31T18:47:08Z","msg":"Did timer stopped?","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","PingPong Timer status":false}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Closing Socket","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","error":"tls: use of closed connection"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:08Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Data Handler Closed for hostClient ","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Socket writer closed","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Calibrator timer closed for subClient ","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:08Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Data Handler Closed for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Mirror removed closed","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Order handler closed for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"All wait groups completed","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"error","TimeUTC":"2020-12-31T18:47:08Z","msg":"Error on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:08Z","msg":"Connecting to socket","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","url":"wss://testnet.bitmex.com/realtimemd"}
+{"level":"error","TimeUTC":"2020-12-31T18:47:08Z","msg":"Unable to establish websocket connection<nil> <nil> dial tcp: lookup testnet.bitmex.com: no such host {attempt 11 0  <nil>}","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:09Z","msg":"Connecting to socket","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","url":"wss://testnet.bitmex.com/realtimemd"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Ping Pong protocol Initiated","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"New HostClient Created","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"hostAccount","apiKey":"tJtsEdFrSlziODvSTy0NycB5"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket Status","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","status":"Socket Reader Routine Started"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Initiating Rest Object on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Rest Object Initiated on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"New SubClient Created","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Starting socket connection on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Authenticating websocket connection on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"New hostClient Initialized","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Initializing sub client","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"sub client initialized","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","websocketTopic":"","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Subscribing Tables on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Starting Connection on subClient to sockets","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Authenticating websocket connection of subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Subscribing Tables on SubClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket writer started","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating current margin on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"waiting for partials","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"waiting for partials","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Successfully connected to websockets","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Successfully authenticated to websockets","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating table on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"order","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating table on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"order","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating table on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"position","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"New Message in Data Handler for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating table on subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"margin","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"partials received","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"partials received","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating current margin via rest request","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating table on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"margin","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Decoding Socket Message","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Socket Message Decoded","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating table on hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","table":"position","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Received new message in Data Handler for hostClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"info","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating marginBalance on hostAccount","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","marginBalance":127733021,"apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Updating Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","balance":96333892,"apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Margin Balance Updated","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","balance":96333892,"apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:47:10Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:48:11Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:48:11Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:48:11Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:49:12Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:49:12Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:49:12Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:50:13Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:50:13Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:50:13Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:51:14Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:51:14Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:51:14Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:52:15Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:52:15Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:52:15Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:53:16Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:53:16Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:53:16Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:54:17Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:54:17Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:54:17Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:55:18Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:55:18Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:55:18Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:56:19Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:56:19Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:56:19Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:57:20Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:57:20Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:57:20Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:58:21Z","msg":"Fetching Margin Balance","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}
+{"level":"debug","TimeUTC":"2020-12-31T18:58:21Z","msg":"Fetching active positions for hostClient %s\n","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"tJtsEdFrSlziODvSTy0NycB5","websocketTopic":"hostAccount"}
+{"level":"debug","TimeUTC":"2020-12-31T18:58:21Z","msg":"Fetching active positions for subClient","sessionID":"63cac354-24b6-442f-8292-e7d00077fd7d","apiKey":"pL6fpaY6uLZL2QTw5RJmDoEV","websocketTopic":""}

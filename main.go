@@ -37,14 +37,12 @@ func init() {
 		tools.EnterToExit("Contact support@dappertrader.com to renew license.")
 	}
 
-	const expireTime = 1610282546
-	timeLeft := (expireTime - time.Now().Unix()) / 3600
-	fmt.Printf("\nTime left for license expiration %d hours\n", timeLeft)
+	const expireTime = 1611985830
+	timeLeftHours := (expireTime - time.Now().Unix()) / 3600
+	timeLeftDays := ((expireTime - time.Now().Unix()) / 3600) / 24
+	fmt.Printf("\nTime left for license expiration %d hours or %d days\n", timeLeftHours, timeLeftDays)
 
-	//fmt.Println(time.Now().Add(14 * 24 * time.Hour).Unix())
-	//fmt.Println(time.Now().Add(time.Minute*1).Unix())
-	//fmt.Println(time.Now().Add(time.Hour*24).Unix())
-	//fmt.Println(((expireTime - time.Now().Unix()) / 3600) / 24)
+	//fmt.Println(time.Now().Add(30 * 24 * time.Hour).Unix())
 
 	if time.Now().Unix() > expireTime {
 		fmt.Println("License Expired!")
@@ -108,6 +106,7 @@ func main() {
 	router.HandleFunc("/", server.ConfigHandler)
 	//router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
 	router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(rice.MustFindBox("templates/static").HTTPBox())))
+	//router.Handle("/raw-html/", http.StripPrefix("/raw-html/", http.Ser(rice.MustFindBox("templates/index.gohtml").HTTPBox())))
 	router.Handle("/logs/", http.StripPrefix("/logs/", http.FileServer(http.Dir("logs"))))
 	router.Handle("/config/", http.StripPrefix("/config/", http.FileServer(http.Dir("config"))))
 
@@ -122,7 +121,7 @@ func main() {
 		}
 	}
 
-	fmt.Printf("\nDT Bitmex Mirror is running on http://127.0.0.1:%d/\n", port)
+	fmt.Printf("\nDT Bitmex Mirror is running on http://127.0.0.1:%d/ and http://localhost:%d/\n", port, port)
 
 	err := http.ListenAndServe(":"+strconv.Itoa(port), router)
 	if err != nil {

@@ -6,8 +6,8 @@
 		"limitFilledTimeout": 10
 	},
 	"hostAccount": {
-		"apiKey": "AffT76ZH5hytyDWQPiQIJAr0",
-		"secret": "VT0U2rpYgBrfJRZjbaCdcvDczM9QinkyryQRkTLkcJRaxmBb"
+		"apiKey": "tJtsEdFrSlziODvSTy0NycB5",
+		"secret": "iLEe_1KjiQrfHRIJTeABE7k3iBvnIksqfUKw3ljKkzsVazXE"
 	},
 	"subAccounts": {
 		"account1": {
@@ -15,20 +15,10 @@
 			"copyLeverage": true,
 			"balanceProportion": true,
 			"fixedProportion": 1,
-			"apiKey": "IKfMxg2ayAq5rIrafgmNCBBf",
-			"secret": "NUY9VHyAGPZT-lmR21eba30LSLuLxrxctwFxTvV4j7IPuJXO",
+			"apiKey": "pL6fpaY6uLZL2QTw5RJmDoEV",
+			"secret": "UpK02c4ljtEowVvcf78l455yyq8PbBghnkI2NT8ZBm0dZak7",
 			"accountName": "test",
 			"accountNumber": 1
-		},
-		"account2": {
-			"enabled": true,
-			"copyLeverage": true,
-			"balanceProportion": true,
-			"fixedProportion": 1,
-			"apiKey": "MbcpxCOh0lTpIbW-TurJ3qa3",
-			"secret": "g8tT48kxRbLvoMYNOGF24bl1Sxn4AjiCND4V3ULUg7po-fLE",
-			"accountName": "sub2",
-			"accountNumber": 2
 		}
 	}
 }

@@ -2,12 +2,13 @@ package server
 
 import (
 	"encoding/json"
-	rice "github.com/GeertJohan/go.rice"
+	"fmt"
 	"github.com/adi1382/Bitmex-Mirror-Bot/configuration"
 	"github.com/adi1382/Bitmex-Mirror-Bot/tools"
 	"go.uber.org/atomic"
 	"go.uber.org/zap"
 	"html/template"
+	"io/ioutil"
 	"net/http"
 	"strconv"
 )
@@ -25,19 +26,53 @@ func SetServerLogger(loggerMain *zap.Logger, botStatusMain *tools.RunningStatus,
 }
 
 func ConfigHandler(w http.ResponseWriter, r *http.Request) {
+	//fmt.Println(r.Host)
+	resp, err := http.Get(fmt.Sprintf("http://%s/static/html/index.txt", r.Host))
+
+	if err != nil {
+		logger.Error("Could not request index file", zap.Error(err))
+		return
+	}
+
+	var body []byte
+
+	if resp != nil {
+
+		defer func() {
+			err = resp.Body.Close()
+			logger.Error("was not able to close response body", zap.Error(err))
+		}()
+
+		body, err = ioutil.ReadAll(resp.Body)
+
+		if err != nil {
+			logger.Error("unable to read response body", zap.Error(err))
+			return
+		}
+	} else {
+		logger.Error("response was nil, this should not have happened")
+		return
+	}
+
+	//fmt.Println(string(body))
+	//fmt.Println(w)
+
 	type configHandler struct {
 		BotStatus bool
 		Config    configuration.Config
 	}
 
-	templateBox, err := rice.FindBox("../templates")
-	if err != nil {
-		logger.Error("Unable to create template box for templates folder", zap.Error(err))
-		return
-	}
+	//templateBox, err := rice.FindBox("../templates")
+	//if err != nil {
+	//	logger.Error("Unable to create template box for templates folder", zap.Error(err))
+	//	return
+	//}
+
+	templateString := string(body)
 
 	// get file contents as string
-	templateString, err := templateBox.String("index.gohtml")
+	//templateString, err := templateBox.String("index.gohtml")
+	//fmt.Println(templateString)
 	if err != nil {
 		logger.Error("Unable to Find index.gohtml in the templateBox", zap.Error(err))
 	}
