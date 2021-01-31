@@ -31,13 +31,13 @@ var (
 
 func init() {
 
-	//fmt.Println(time.Now().Add(7 * 24 * time.Hour).Unix())
-	if !tools.CheckLicense() {
-		fmt.Println("License Validation Failed")
-		tools.EnterToExit("Contact support@dappertrader.com to renew license.")
-	}
+	//fmt.Println(time.Now().Add(30 * 24 * time.Hour).Unix())
+	//if !tools.CheckLicense() {
+	//	fmt.Println("License Validation Failed")
+	//	tools.EnterToExit("Contact support@dappertrader.com to renew license.")
+	//}
 
-	const expireTime = 1611985830
+	const expireTime = 1614711791
 	timeLeftHours := (expireTime - time.Now().Unix()) / 3600
 	timeLeftDays := ((expireTime - time.Now().Unix()) / 3600) / 24
 	fmt.Printf("\nTime left for license expiration %d hours or %d days\n", timeLeftHours, timeLeftDays)

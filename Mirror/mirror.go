@@ -107,7 +107,7 @@ func (m *Mirror) remover() {
 				}
 			}
 			m.subsLock.Unlock()
-			time.Sleep(time.Millisecond)
+			time.Sleep(time.Millisecond * 100)
 
 			if m.restartRequired.Load() {
 				m.logger.Info("Mirror removed closed")

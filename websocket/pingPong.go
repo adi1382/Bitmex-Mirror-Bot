@@ -40,14 +40,14 @@ func PingPong(conn *websocket.Conn, RestartRequired *atomic.Bool, logger *zap.Lo
 
 	go func() {
 		pingSender()
-		timer := time.NewTimer(time.Nanosecond)
+		timer := time.NewTimer(time.Millisecond * 100)
 		for {
 			if isPingSent.Load() {
 				isPingSent.Store(false)
 				timer = time.AfterFunc(time.Second*5, pingSender)
 			}
 
-			time.Sleep(time.Nanosecond)
+			time.Sleep(time.Millisecond * 100)
 
 			if RestartRequired.Load() {
 				logger.Warn("Did timer stopped?", zap.Bool("PingPong Timer status", timer.Stop()))

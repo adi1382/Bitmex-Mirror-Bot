@@ -3,9 +3,8 @@ package tools
 import (
 	"bufio"
 	"fmt"
-	"github.com/adi1382/Bitmex-Mirror-Bot/constants"
 	"github.com/adi1382/Bitmex-Mirror-Bot/swagger"
-	"github.com/adi1382/Bitmex-Mirror-Bot/wmic"
+	//"github.com/adi1382/Bitmex-Mirror-Bot/wmic"
 	"github.com/sparrc/go-ping"
 	"go.uber.org/atomic"
 	"os"
@@ -54,12 +53,12 @@ func CheckConnection(baseUrl *string) {
 	}
 }
 
-func CheckLicense() bool {
-	if constants.HashedKey == wmic.GetHashedKey() {
-		return true
-	}
-	return false
-}
+//func CheckLicense() bool {
+//	if constants.HashedKey == wmic.GetHashedKey() {
+//		return true
+//	}
+//	return false
+//}
 
 func CheckErr(err error) {
 	if err != nil {

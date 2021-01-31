@@ -22,7 +22,7 @@ func BotHandler(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger, 
 			trader(logger, socketIncomingLogger, socketOutgoingLogger, botStatus, restartRequired)
 			fmt.Printf("\n\n\n")
 		}
-		time.Sleep(time.Nanosecond)
+		time.Sleep(time.Millisecond * 100)
 	}
 }
 
@@ -128,7 +128,7 @@ func trader(logger, socketIncomingLogger, socketOutgoingLogger *zap.Logger, botS
 				chWriteToWS <- "quit"
 				break
 			}
-			<-time.After(time.Nanosecond)
+			<-time.After(time.Millisecond * 100)
 		}
 	}()
 

@@ -65,7 +65,7 @@ func (c *SubClient) Initialize() {
 			} else if !c.RunningStatus() {
 				return
 			}
-			<-time.After(time.Nanosecond)
+			<-time.After(time.Millisecond * 100)
 		}
 	}()
 
@@ -168,7 +168,7 @@ func (c *SubClient) marginUpdate() {
 
 		resetTime := time.Now().Add(time.Second * time.Duration(c.marginUpdateTime))
 		for {
-			time.Sleep(time.Nanosecond)
+			time.Sleep(time.Millisecond * 100)
 			if time.Now().Unix() > resetTime.Unix() {
 				break
 			} else if !c.RunningStatus() {
@@ -188,7 +188,7 @@ func (c *SubClient) GetMarginBalance() float64 {
 		} else if !c.RunningStatus() {
 			return 0
 		}
-		<-time.After(time.Nanosecond)
+		<-time.After(time.Millisecond * 100)
 	}
 }
 

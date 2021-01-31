@@ -206,7 +206,7 @@ func (c *SubClient) OrderHandler() {
 		//fmt.Println("Calibrator timer Started for subClient ", c.ApiKey)
 
 		for {
-			time.Sleep(time.Nanosecond)
+			time.Sleep(time.Millisecond * 100)
 
 			if !c.RunningStatus() {
 				return
@@ -225,7 +225,7 @@ func (c *SubClient) OrderHandler() {
 	}()
 
 	for {
-		time.Sleep(time.Nanosecond)
+		time.Sleep(time.Millisecond)
 
 		if !c.RunningStatus() {
 			return

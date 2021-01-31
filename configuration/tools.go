@@ -261,7 +261,7 @@ func OnConfigChange(functionCall func()) {
 	go func() {
 		for {
 
-			time.Sleep(time.Nanosecond)
+			time.Sleep(time.Second)
 			currentModifiedTime = getConfigModifiedTime()
 
 			if currentModifiedTime != previousModifiedTime {

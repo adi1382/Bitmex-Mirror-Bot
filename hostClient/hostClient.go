@@ -92,7 +92,7 @@ func (c *HostClient) Initialize() {
 			} else if !c.RunningStatus() {
 				return
 			}
-			<-time.After(time.Nanosecond)
+			time.Sleep(time.Millisecond * 100)
 		}
 	}()
 
@@ -126,7 +126,7 @@ func (c *HostClient) WaitForPartial() {
 		} else if !c.RunningStatus() {
 			break
 		}
-		time.Sleep(time.Nanosecond * 1)
+		time.Sleep(time.Millisecond * 100)
 	}
 }
 
@@ -162,10 +162,10 @@ func (c *HostClient) marginUpdate() {
 
 		resetTime := time.Now().Add(time.Second * time.Duration(c.marginUpdateTime))
 
-		time.Sleep(time.Nanosecond)
+		time.Sleep(time.Second)
 
 		for {
-			time.Sleep(time.Nanosecond)
+			time.Sleep(time.Second)
 			if time.Now().Unix() > resetTime.Unix() {
 				break
 			} else if !c.RunningStatus() {
@@ -183,7 +183,7 @@ func (c *HostClient) GetMarginBalance() float64 {
 		} else if !c.RunningStatus() {
 			return c.marginBalance.Load()
 		}
-		time.Sleep(time.Nanosecond * 1)
+		time.Sleep(time.Millisecond * 100)
 	}
 }
 

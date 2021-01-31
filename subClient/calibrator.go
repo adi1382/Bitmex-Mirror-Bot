@@ -20,7 +20,8 @@ func (c *SubClient) calibrate() {
 		} else if !c.RunningStatus() {
 			return
 		}
-		<-time.After(time.Millisecond)
+
+		<-time.After(time.Second)
 
 	}
 }
