@@ -1,1 +1,1 @@
-go build -v -a -ldflags="-w -s" -gcflags=-trimpath=C:\Users\Aditya\Documents\goworkspace\src -asmflags=-trimpath=C:\Users\Aditya\Documents\goworkspace\src
+go build -v -a -ldflags="-w -s" -gcflags=-trimpath=/Users/aditya/go/src/github.com/adi1382 -asmflags=-trimpath=/Users/aditya/go/src/github.com/adi1382
